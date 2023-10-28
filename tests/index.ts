@@ -1,4 +1,4 @@
-import type { Numeric } from "../dist/index.mjs";
+import type { Num } from "../dist/index.mjs";
 
-type a = Numeric.Sub<100, 34>;
+type a = Num.Add<100, 30>;
 //   ^?
