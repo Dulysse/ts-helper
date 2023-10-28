@@ -1,0 +1,12 @@
+.husky/
+node_modules/
+tsconfig.json
+pnpm-lock.yaml
+.prettierignore
+.prettierrc.json
+.eslintignore
+.eslintrc
+.vscode/
+src/
+tests/
+tsup.config.ts

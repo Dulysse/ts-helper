@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"lib": ["ESNext"],
+		"allowJs": false,
+		"outDir": "dist",
+		"rootDir": "src",
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"strict": true,
+		"noImplicitAny": true,
+		"moduleResolution": "node",
+		"baseUrl": "src",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"useDefineForClassFields": false,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"declaration": true,
+		"noUncheckedIndexedAccess": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": false,
+		"useUnknownInCatchVariables": true,
+		"strictNullChecks": true,
+		"incremental": false
+	},
+	"include": ["src/**/*"],
+	"exclude": ["dist/**/*"]
+}
