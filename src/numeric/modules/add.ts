@@ -29,7 +29,7 @@ declare type AddNegative<
  * import type { Numeric } from "@dulysse1/ts-helper";
  *
  * type AddPositive = Numeric.Add<10, 10>; // 20
- * type AddNegate = Numeric.Add<10, -40>; // -30
+ * type AddNegative = Numeric.Add<10, -40>; // -30
  * ```
  * ---------------------------
  * Do you have any questions about {@link Add} usage ?

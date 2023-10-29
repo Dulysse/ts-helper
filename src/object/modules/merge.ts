@@ -3,9 +3,9 @@
  * ---------------------------
  * @example
  * ```tsx
- * import type { Object } from "@dulysse1/ts-helper";
+ * import type { Obj } from "@dulysse1/ts-helper";
  *
- * type Merged = Object.Merge<
+ * type Merged = Obj.Merge<
  *  { a: string; },
  *  { b: number; }
  * >; // { a: string; b: number; }

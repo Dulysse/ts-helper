@@ -29,7 +29,7 @@ declare type SubtractNegative<
  * import type { Numeric } from "@dulysse1/ts-helper";
  *
  * type SubtractPositive = Numeric.Subtract<10, 10>; // 0
- * type SubtractNegate = Numeric.Subtract<10, -40>; // 40
+ * type SubtractNegative = Numeric.Subtract<10, -40>; // 40
  * ```
  * ---------------------------
  * Do you have any questions about {@link Subtract} usage ?

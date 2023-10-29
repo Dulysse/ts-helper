@@ -3,22 +3,24 @@ import type { Decrement } from "./modules/decrement";
 import type { Greater } from "./modules/greater";
 import type { Lower } from "./modules/lower";
 import type { IsPositive } from "./modules/isPositive";
-import type { IsNegate } from "./modules/isNegate";
+import type { IsNegative } from "./modules/isNegative";
 import type { Add } from "./modules/add";
 import type { Subtract } from "./modules/subtract";
+import type { Opposite } from "./modules/opposite";
 
 /**
- * ##### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
  * List of `ts-helper` numeric types:
- * - {@link Increment}
- * - {@link Decrement}
- * - {@link Greater}
- * - {@link Lower}
+ * - {@link Increment}*
+ * - {@link Decrement}*
+ * - {@link Greater}*
+ * - {@link Lower}*
  * - {@link IsPositive}
- * - {@link IsNegate}
- * - {@link Add}
- * - {@link Subtract}
+ * - {@link IsNegative}
+ * - {@link Add}*
+ * - {@link Subtract}*
+ * - {@link Opposite}*
  *
+ * ##### <i>* ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️</i>
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -34,9 +36,10 @@ export declare namespace Num {
 		Greater,
 		Lower,
 		IsPositive,
-		IsNegate,
+		IsNegative,
 		Add,
 		Subtract,
+		Opposite,
 	};
 }
 
@@ -46,7 +49,8 @@ export {
 	Greater,
 	Lower,
 	IsPositive,
-	IsNegate,
+	IsNegative,
 	Add,
 	Subtract,
+	Opposite,
 };

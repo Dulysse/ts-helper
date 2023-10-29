@@ -1,4 +1,4 @@
-import type { Num } from "../dist/index.mjs";
+import type { Arr } from "../dist/index.mjs";
 
-type a = Num.Add<100, 30>;
+type a = Arr.Reverse<[100]>;
 //   ^?
