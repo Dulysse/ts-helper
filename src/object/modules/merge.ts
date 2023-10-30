@@ -1,5 +1,5 @@
 /**
- * #### Merge type object `A` with type object `B`
+ * #### Merge type object `TObjectA` with type object `TObjectB`
  * ---------------------------
  * @example
  * ```tsx
@@ -18,10 +18,10 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Merge<A extends object, B extends object> = {
-	[key in keyof (A & B)]: key extends keyof A
-		? A[key]
-		: key extends keyof B
-		? B[key]
+export declare type Merge<TObjectA extends object, TObjectB extends object> = {
+	[key in keyof (TObjectA & TObjectB)]: key extends keyof TObjectA
+		? TObjectA[key]
+		: key extends keyof TObjectB
+		? TObjectB[key]
 		: never;
 };

@@ -18,9 +18,9 @@ declare type _Decrement<
  * ---------------------------
  * @example
  * ```tsx
- * import type { Numeric } from "@dulysse1/ts-helper";
+ * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Num = Numeric.Decrement<10>; // 9
+ * type Num = Num.Decrement<10>; // 9
  * ```
  * ---------------------------
  * Do you have any questions about {@link Decrement} usage ?

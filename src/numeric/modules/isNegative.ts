@@ -3,10 +3,10 @@
  * ---------------------------
  * @example
  * ```tsx
- * import type { Numeric } from "@dulysse1/ts-helper";
+ * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Yes = Numeric.IsNegative<-23>; // true
- * type No = Numeric.IsNegative<10>; // false
+ * type Yes = Num.IsNegative<-23>; // true
+ * type No = Num.IsNegative<10>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link IsNegative} usage ?

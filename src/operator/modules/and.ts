@@ -3,10 +3,10 @@
  * ---------------------------
  * @example
  * ```tsx
- * import type { Operator } from "@dulysse1/ts-helper";
+ * import type { Op } from "@dulysse1/ts-helper";
  *
- * type Yes = Operator.And<true, true>; // true
- * type No = Operator.And<true, false>; // false
+ * type Yes = Op.And<true, true>; // true
+ * type No = Op.And<true, false>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link And} usage ?

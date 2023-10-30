@@ -3,10 +3,10 @@
  * ---------------------------
  * @example
  * ```tsx
- * import type { Operator } from "@dulysse1/ts-helper";
+ * import type { Op } from "@dulysse1/ts-helper";
  *
- * type Yes = Operator.Or<true, false>; // true
- * type No = Operator.Or<false, false>; // false
+ * type Yes = Op.Or<true, false>; // true
+ * type No = Op.Or<false, false>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link Or} usage ?

@@ -1,29 +1,30 @@
 import type { And } from "@/operator";
-import type {} from "@/numeric";
 import type { IsValidInput } from "../utils";
+import type { LowerEq, GreaterEq } from "@/numeric";
 
 /**
- * #### Multiply `N1` and `N2`
+ * #### Create an array of a range between two numbers `N1` and `N2`
  * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
  * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type MultiplyPositive = Num.Multiply<6, 7>; // 42
- * type MultiplyNegative = Num.Multiply<6, -7>; // -42
+ * type No = Num.Between<-1, 1, 5>; // false
+ * type Yes = Num.Between<2, 1, 5>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link Multiply} usage ?
+ * Do you have any questions about {@link Between} usage ?
  * ### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Multiply<N1 extends number, N2 extends number> = And<
-	IsValidInput<N1>,
-	IsValidInput<N2>
-> extends true
-	? N1
+export declare type Between<
+	N extends number,
+	From extends number,
+	To extends number,
+> = And<And<IsValidInput<From>, IsValidInput<To>>, IsValidInput<N>> extends true
+	? And<GreaterEq<N, From>, LowerEq<N, To>>
 	: never;

@@ -15,10 +15,10 @@ declare type OppositeNegative<N extends number> = PositiveNumbers[Satisfy<
  * ---------------------------
  * @example
  * ```tsx
- * import type { Numeric } from "@dulysse1/ts-helper";
+ * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Positive = Numeric.Opposite<23>; // -23
- * type Negative = Numeric.Opposite<-34>; // 34
+ * type Positive = Num.Opposite<23>; // -23
+ * type Negative = Num.Opposite<-34>; // 34
  * ```
  * ---------------------------
  * Do you have any questions about {@link Opposite} usage ?

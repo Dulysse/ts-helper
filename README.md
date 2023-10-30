@@ -43,7 +43,7 @@ For best results, add this to your `tsconfig.json`
 ### With EcmaScript module ✅
 
 ```tsx
-import type { Numeric } from "@dulysse1/ts-helpers";
+import type { Num } from "@dulysse1/ts-helpers";
 // now you can create your types!
 ```
 

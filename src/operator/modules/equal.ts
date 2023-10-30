@@ -3,10 +3,10 @@
  * ---------------------------
  * @example
  * ```tsx
- * import type { Operator } from "@dulysse1/ts-helper";
+ * import type { Op } from "@dulysse1/ts-helper";
  *
- * type Yes = Operator.Equal<"hello", "hello">; // true
- * type No = Operator.Equal<1 | 2, number>; // false
+ * type Yes = Op.Equal<"hello", "hello">; // true
+ * type No = Op.Equal<1 | 2, number>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link Equal} usage ?

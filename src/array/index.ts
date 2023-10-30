@@ -1,8 +1,10 @@
 import type { Reverse } from "./modules/reverse";
+import type { Readable } from "./modules/readable";
 
 /**
  * List of `ts-helper` array types:
  * - {@link Reverse}
+ * - {@link Readable}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -12,7 +14,7 @@ import type { Reverse } from "./modules/reverse";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Arr {
-	export { Reverse };
+	export { Reverse, Readable };
 }
 
-export { Reverse };
+export { Reverse, Readable };

@@ -1,8 +1,10 @@
 import type { Merge } from "./modules/merge";
+import type { KeyOf } from "./modules/keyOf";
 
 /**
  * List of `ts-helper` object types:
  * - {@link Merge}
+ * - {@link KeyOf}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -12,7 +14,7 @@ import type { Merge } from "./modules/merge";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Obj {
-	export { Merge };
+	export { Merge, KeyOf };
 }
 
-export { Merge };
+export { Merge, KeyOf };

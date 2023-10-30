@@ -1,10 +1,13 @@
+import type { IsTuple, TArray } from "../utils";
+import type { Readable } from "@/array";
+
 declare type _Reverse<
-	T extends unknown[] | readonly unknown[],
-	Res extends unknown[] | readonly unknown[] = [],
-> = T extends [...infer Next, infer Last]
+	T extends TArray,
+	Res extends TArray = [],
+> = IsTuple<T> extends false
+	? T
+	: Readable<T> extends [...infer Next, infer Last]
 	? _Reverse<Next, [...Res, Last]>
-	: T extends readonly [...infer Next, infer Last]
-	? _Reverse<Next, readonly [...Res, Last]>
 	: Res;
 
 /**
@@ -26,5 +29,4 @@ declare type _Reverse<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Reverse<T extends unknown[] | readonly unknown[]> =
-	_Reverse<T>;
+export declare type Reverse<T extends TArray> = _Reverse<T>;
