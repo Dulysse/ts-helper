@@ -1,13 +1,11 @@
-import type { ToArray } from "@/union";
-
 /**
- * #### Get an union type `TUnion` length of possibilities
+ * #### Get the length of a string type `TString`
  * ---------------------------
  * @example
  * ```tsx
- * import type { Union } from "@dulysse1/ts-helper";
+ * import type { Arr } from "@dulysse1/ts-helper";
  *
- * type UnionLength = Union.Length<1 | 2 | 3>; // 3
+ * type ArrayLength = Arr.Length<[1, 2, 3]>; // 3
  * ```
  * ---------------------------
  * Do you have any questions about {@link Length} usage ?
@@ -17,8 +15,4 @@ import type { ToArray } from "@/union";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Length<TUnion> = ToArray<TUnion> extends {
-	length: infer Length;
-}
-	? Length
-	: never;
+export declare type Length<TString extends string> = TString; // TODO:

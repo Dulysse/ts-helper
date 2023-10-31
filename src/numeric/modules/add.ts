@@ -1,28 +1,28 @@
 import type { Equal, And, Satisfy } from "@/operator";
 import type { Increment, Decrement, IsPositive } from "@/numeric";
-import type { IsValidInput } from "../utils";
+import type { IsValidNumberInput, InvalidNumberInput } from "../utils";
 
 declare type AddPositive<
-	N1 extends number,
-	N2 extends number,
-> = IsValidInput<N1> extends true
-	? Equal<N2, 0> extends true
-		? N1
-		: AddPositive<Increment<N1>, Decrement<N2>>
-	: never;
+	TNumber1 extends number,
+	TNumber2 extends number,
+> = IsValidNumberInput<TNumber1> extends true
+	? Equal<TNumber2, 0> extends true
+		? TNumber1
+		: AddPositive<Increment<TNumber1>, Decrement<TNumber2>>
+	: InvalidNumberInput<number>;
 
 declare type AddNegative<
-	N1 extends number,
-	N2 extends number,
-> = IsValidInput<N1> extends true
-	? Equal<N2, 0> extends true
-		? N1
-		: AddNegative<Decrement<N1>, Increment<N2>>
-	: never;
+	TNumber1 extends number,
+	TNumber2 extends number,
+> = IsValidNumberInput<TNumber1> extends true
+	? Equal<TNumber2, 0> extends true
+		? TNumber1
+		: AddNegative<Decrement<TNumber1>, Increment<TNumber2>>
+	: InvalidNumberInput<number>;
 
 /**
- * #### Add `N2` to `N1`
- * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
+ * #### Add `TNumber2` to `TNumber1`
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -39,12 +39,12 @@ declare type AddNegative<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Add<N1 extends number, N2 extends number> = And<
-	IsValidInput<N1>,
-	IsValidInput<N2>
+export declare type Add<TNumber1 extends number, TNumber2 extends number> = And<
+	IsValidNumberInput<TNumber1>,
+	IsValidNumberInput<TNumber2>
 > extends true
 	? {
-			true: AddPositive<N1, N2>;
-			false: AddNegative<N1, N2>;
-	  }[`${Satisfy<IsPositive<N2>, boolean>}`]
-	: never;
+			true: AddPositive<TNumber1, TNumber2>;
+			false: AddNegative<TNumber1, TNumber2>;
+	  }[`${Satisfy<IsPositive<TNumber2>, boolean>}`]
+	: InvalidNumberInput<number>;

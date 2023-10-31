@@ -1,4 +1,4 @@
-import type { Num } from "../dist/index.mjs";
+import type { Arr } from "../dist/index.mjs";
 
-type a = Num.Between<22, -44, 23>;
+type a = Arr.Reverse<readonly [1, 2]>;
 //   ^?

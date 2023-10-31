@@ -1,5 +1,5 @@
 import type { And, Equal } from "@/operator";
-import type { IsValidInput } from "../utils";
+import type { IsValidNumberInput, InvalidNumberInput } from "../utils";
 import type { LowerEq, Increment, Decrement } from "@/numeric";
 
 export declare type AscRange<
@@ -19,8 +19,8 @@ export declare type DescRange<
 	: DescRange<Decrement<From>, To, [...Res, From]>;
 
 /**
- * #### Create an array of a range between two numbers `N1` and `N2`
- * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
+ * #### Create an array of a range between two numbers `TNumber1` and `TNumber2`
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -37,11 +37,11 @@ export declare type DescRange<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Range<From extends number, To extends number> = And<
-	IsValidInput<From>,
-	IsValidInput<To>
+	IsValidNumberInput<From>,
+	IsValidNumberInput<To>
 > extends true
 	? {
 			true: AscRange<From, To>;
 			false: DescRange<From, To>;
 	  }[`${LowerEq<From, To> extends boolean ? LowerEq<From, To> : boolean}`]
-	: never;
+	: InvalidNumberInput<number[]>;

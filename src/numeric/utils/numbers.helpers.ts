@@ -1,10 +1,11 @@
-import type { Equal, Satisfy } from "@/operator";
+import type { Equal, Or, Satisfy } from "@/operator";
 import type { Numbers } from "./numbers.map";
 import type { Reverse } from "@/array";
+import type { IsUnion } from "@/union";
 
-export declare type IsValidInput<T extends number> = Equal<
-	T,
-	number
+export declare type IsValidNumberInput<T extends number> = Or<
+	Equal<T, number>,
+	IsUnion<T>
 > extends true
 	? false
 	: T extends Numbers[number]
@@ -14,14 +15,14 @@ export declare type IsValidInput<T extends number> = Equal<
 export declare type Range = `${Numbers[0]}` extends `-${infer R}` ? R : never;
 
 export declare type IndexOf<
-	N extends number,
+	TNumber extends number,
 	L extends readonly number[] = Numbers,
 	I extends number[] = [],
 > = L extends readonly [infer First, ...infer Next]
-	? First extends N
+	? First extends TNumber
 		? I["length"]
 		: IndexOf<
-				N,
+				TNumber,
 				Satisfy<Next, readonly number[]>,
 				Satisfy<[First, ...I], number[]>
 		  >
@@ -50,3 +51,9 @@ export declare type NegativeNumbers<
 				Satisfy<[...Res, Start], readonly number[]>
 		  >
 	: never;
+
+declare const InvalidNumber: unique symbol;
+
+export declare type InvalidNumberInput<TReturnType> = TReturnType & {
+	[InvalidNumber]?: "The number is too large or in invalid format to display the exact result of the operation!";
+};

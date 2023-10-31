@@ -1,7 +1,7 @@
 import type { Equal } from "@/operator";
 
 /**
- * #### Get the opposite of a boolean `T`
+ * #### Get the opposite of a boolean `TOperator`
  * ---------------------------
  * @example
  * ```tsx
@@ -18,8 +18,11 @@ import type { Equal } from "@/operator";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Not<T extends boolean> = Equal<T, boolean> extends true
+export declare type Not<TOperator extends boolean> = Equal<
+	TOperator,
+	boolean
+> extends true
 	? boolean
-	: T extends true
+	: TOperator extends true
 	? false
 	: true;

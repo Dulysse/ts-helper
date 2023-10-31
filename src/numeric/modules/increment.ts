@@ -1,20 +1,20 @@
 import type { Equal, Satisfy } from "@/operator";
-import type { IsValidInput, Numbers } from "../utils";
+import type { IsValidNumberInput, Numbers, InvalidNumberInput } from "../utils";
 
 declare type _Increment<
-	N extends number,
+	TNumber extends number,
 	L extends readonly number[] = Numbers,
-> = IsValidInput<N> extends true
+> = IsValidNumberInput<TNumber> extends true
 	? L extends readonly [infer First, infer Next, ...infer Rest]
-		? Equal<First, N> extends true
+		? Equal<First, TNumber> extends true
 			? Next
-			: _Increment<N, Satisfy<[Next, ...Rest], readonly number[]>>
+			: _Increment<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
 		: never
-	: never;
+	: InvalidNumberInput<number>;
 
 /**
- * #### Increment a number `N` of one
- * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
+ * #### Increment a number `TNumber` of one
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -30,4 +30,4 @@ declare type _Increment<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Increment<N extends number> = _Increment<N>;
+export declare type Increment<TNumber extends number> = _Increment<TNumber>;

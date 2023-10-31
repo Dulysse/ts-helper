@@ -5,7 +5,7 @@ import type { Or } from "./modules/or";
 import type { Not } from "./modules/not";
 
 /**
- * List of `ts-helper` operator types:
+ * ### ✨ List of `ts-helper` operator types ✨:
  * - {@link Equal}
  * - {@link Satisfy}
  * - {@link And}

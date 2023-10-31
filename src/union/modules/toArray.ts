@@ -1,12 +1,14 @@
 import type { Last } from "@/union";
 import type { Satisfy } from "@/operator";
 
-declare type _ToArray<U, Res extends unknown[] = []> = [Last<U>] extends [never]
+declare type _ToArray<TUnion, Res extends unknown[] = []> = [
+	Last<TUnion>,
+] extends [never]
 	? Res
-	: _ToArray<Exclude<U, Last<U>>, [Last<U>, ...Res]>;
+	: _ToArray<Exclude<TUnion, Last<TUnion>>, [Last<TUnion>, ...Res]>;
 
 /**
- * #### Transform an union type `U` to array with each properties
+ * #### Transform an union type `TUnion` to array with each properties
  * ---------------------------
  * @example
  * ```tsx
@@ -22,4 +24,4 @@ declare type _ToArray<U, Res extends unknown[] = []> = [Last<U>] extends [never]
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type ToArray<U> = Satisfy<_ToArray<U>, unknown[]>;
+export declare type ToArray<TUnion> = Satisfy<_ToArray<TUnion>, unknown[]>;

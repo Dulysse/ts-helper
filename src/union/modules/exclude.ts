@@ -1,5 +1,5 @@
 /**
- * #### Exclude an element of an union type `U`
+ * #### Exclude an element of an union type `TUnion`
  * ---------------------------
  * @example
  * ```tsx
@@ -15,4 +15,6 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Exclude<U, T> = U extends T ? never : U;
+export declare type Exclude<TUnion, TExcluded> = TUnion extends TExcluded
+	? never
+	: TUnion;

@@ -1,7 +1,7 @@
 import type { IntersectOf } from "../utils";
 
 /**
- * #### Get the last element of an union type `U`
+ * #### Get the last element of an union type `TUnion`
  * ---------------------------
  * @example
  * ```tsx
@@ -17,8 +17,8 @@ import type { IntersectOf } from "../utils";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Last<U> = IntersectOf<
-	U extends unknown ? (x: U) => void : never
+export declare type Last<TUnion> = IntersectOf<
+	TUnion extends unknown ? (x: TUnion) => void : never
 > extends (x: infer P) => void
 	? P
 	: never;

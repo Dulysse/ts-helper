@@ -1,25 +1,25 @@
 import type { And, Equal, Satisfy } from "@/operator";
-import type { IsValidInput, Numbers } from "../utils";
+import type { IsValidNumberInput, Numbers, InvalidNumberInput } from "../utils";
 
 declare type _Greater<
-	N1 extends number,
-	N2 extends number,
+	TNumber1 extends number,
+	TNumber2 extends number,
 	L extends readonly number[] = Numbers,
-> = And<IsValidInput<N1>, IsValidInput<N2>> extends true
+> = And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
 	? L extends readonly [infer First, ...infer Next]
-		? Equal<First, N1> extends true
+		? Equal<First, TNumber1> extends true
 			? false
-			: Equal<First, N2> extends true
-			? Equal<N1, N2> extends true
+			: Equal<First, TNumber2> extends true
+			? Equal<TNumber1, TNumber2> extends true
 				? false
 				: true
-			: _Greater<N1, N2, Satisfy<Next, readonly number[]>>
+			: _Greater<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
 		: never
-	: never;
+	: InvalidNumberInput<boolean>;
 
 /**
- * #### Check if number `N1` is greater than `N2`
- * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
+ * #### Check if number `TNumber1` is greater than `TNumber2`
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -36,7 +36,7 @@ declare type _Greater<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Greater<N1 extends number, N2 extends number> = _Greater<
-	N1,
-	N2
->;
+export declare type Greater<
+	TNumber1 extends number,
+	TNumber2 extends number,
+> = _Greater<TNumber1, TNumber2>;

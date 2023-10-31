@@ -1,10 +1,20 @@
+import type { IsTuple } from "./modules/isTuple";
 import type { Reverse } from "./modules/reverse";
-import type { Readable } from "./modules/readable";
+import type { UnReadonly } from "./modules/unReadonly";
+import type { Length } from "./modules/length";
+import type { At } from "./modules/at";
+import type { ToUnion } from "./modules/toUnion";
+import type { IsReadonly } from "./modules/isReadonly";
 
 /**
- * List of `ts-helper` array types:
+ * ### ✨ List of `ts-helper` array types ✨:
+ * - {@link IsTuple}
  * - {@link Reverse}
- * - {@link Readable}
+ * - {@link UnReadonly}
+ * - {@link Length}
+ * - {@link At}
+ * - {@link ToUnion}
+ * - {@link IsReadonly}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -14,7 +24,7 @@ import type { Readable } from "./modules/readable";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Arr {
-	export { Reverse, Readable };
+	export { IsTuple, Reverse, UnReadonly, Length, At, ToUnion, IsReadonly };
 }
 
-export { Reverse, Readable };
+export { IsTuple, Reverse, UnReadonly, Length, At, ToUnion, IsReadonly };

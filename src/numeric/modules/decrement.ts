@@ -1,20 +1,20 @@
 import type { Equal, Satisfy } from "@/operator";
-import type { IsValidInput, Numbers } from "../utils";
+import type { IsValidNumberInput, Numbers, InvalidNumberInput } from "../utils";
 
 declare type _Decrement<
-	N extends number,
+	TNumber extends number,
 	L extends readonly number[] = Numbers,
-> = IsValidInput<N> extends true
+> = IsValidNumberInput<TNumber> extends true
 	? L extends readonly [infer First, infer Next, ...infer Rest]
-		? Equal<Next, N> extends true
+		? Equal<Next, TNumber> extends true
 			? First
-			: _Decrement<N, Satisfy<[Next, ...Rest], readonly number[]>>
+			: _Decrement<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
 		: never
-	: never;
+	: InvalidNumberInput<number>;
 
 /**
- * #### Decrement a number `N` of one
- * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
+ * #### Decrement a number `TNumber` of one
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -30,4 +30,4 @@ declare type _Decrement<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Decrement<N extends number> = _Decrement<N>;
+export declare type Decrement<TNumber extends number> = _Decrement<TNumber>;

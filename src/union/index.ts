@@ -3,14 +3,18 @@ import type { Exclude } from "./modules/exclude";
 import type { ToArray } from "./modules/toArray";
 import type { Length } from "./modules/length";
 import type { First } from "./modules/first";
+import type { IsUnion } from "./modules/isUnion";
+import type { At } from "./modules/at";
 
 /**
- * List of `ts-helper` union types:
+ * ### ✨ List of `ts-helper` union types ✨:
  * - {@link Last}
  * - {@link Exclude}
  * - {@link ToArray}
  * - {@link Length}
  * - {@link First}
+ * - {@link IsUnion}
+ * - {@link At}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -20,7 +24,7 @@ import type { First } from "./modules/first";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Union {
-	export { Last, Exclude, ToArray, Length, First };
+	export { Last, Exclude, ToArray, Length, First, IsUnion, At };
 }
 
-export { Last, Exclude, ToArray, Length, First };
+export { Last, Exclude, ToArray, Length, First, IsUnion, At };

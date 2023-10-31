@@ -1,10 +1,10 @@
 import type { And } from "@/operator";
-import type { IsValidInput } from "../utils";
+import type { IsValidNumberInput, InvalidNumberInput } from "../utils";
 import type { LowerEq, GreaterEq } from "@/numeric";
 
 /**
- * #### Create an array of a range between two numbers `N1` and `N2`
- * ### ⚠️ Only works for Numbers in range `[-250; 250]` ⚠️
+ * #### Check if type `TNumber` is between `From` and `To` numbers
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -22,9 +22,12 @@ import type { LowerEq, GreaterEq } from "@/numeric";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Between<
-	N extends number,
+	TNumber extends number,
 	From extends number,
 	To extends number,
-> = And<And<IsValidInput<From>, IsValidInput<To>>, IsValidInput<N>> extends true
-	? And<GreaterEq<N, From>, LowerEq<N, To>>
-	: never;
+> = And<
+	And<IsValidNumberInput<From>, IsValidNumberInput<To>>,
+	IsValidNumberInput<TNumber>
+> extends true
+	? And<GreaterEq<TNumber, From>, LowerEq<TNumber, To>>
+	: InvalidNumberInput<boolean>;

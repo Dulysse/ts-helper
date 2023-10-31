@@ -1,5 +1,5 @@
 /**
- * #### Check if a number `N` is a negative number
+ * #### Check if a number `TNumber` is a negative number
  * ---------------------------
  * @example
  * ```tsx
@@ -16,6 +16,5 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsNegative<N extends number> = `${N}` extends `-${number}`
-	? true
-	: false;
+export declare type IsNegative<TNumber extends number> =
+	`${TNumber}` extends `-${number}` ? true : false;

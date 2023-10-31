@@ -1,8 +1,9 @@
 export type { Numbers } from "./numbers.map";
 export type {
-	IsValidInput,
+	IsValidNumberInput,
 	Range,
 	IndexOf,
 	PositiveNumbers,
 	NegativeNumbers,
+	InvalidNumberInput,
 } from "./numbers.helpers";
