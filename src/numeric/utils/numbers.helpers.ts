@@ -9,8 +9,8 @@ export declare type IsValidNumberInput<T extends number> = Or<
 > extends true
 	? false
 	: T extends Numbers[number]
-	? true
-	: false;
+	  ? true
+	  : false;
 
 export declare type Range = `${Numbers[0]}` extends `-${infer R}` ? R : never;
 
@@ -51,9 +51,3 @@ export declare type NegativeNumbers<
 				Satisfy<[...Res, Start], readonly number[]>
 		  >
 	: never;
-
-declare const InvalidNumber: unique symbol;
-
-export declare type InvalidNumberInput<TReturnType> = TReturnType & {
-	[InvalidNumber]?: "The number is too large or in invalid format to display the exact result of the operation!";
-};

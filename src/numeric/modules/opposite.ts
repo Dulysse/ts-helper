@@ -3,7 +3,6 @@ import type {
 	IsValidNumberInput,
 	PositiveNumbers,
 	NegativeNumbers,
-	InvalidNumberInput,
 } from "../utils";
 import type { Satisfy } from "@/operator";
 
@@ -17,7 +16,7 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
 
 /**
  * #### Check if a number `TNumber` is a negative number
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -40,4 +39,4 @@ export declare type Opposite<TNumber extends number> =
 				true: OppositePositive<TNumber>;
 				false: OppositeNegative<TNumber>;
 		  }[`${Satisfy<IsPositive<TNumber>, boolean>}`]
-		: InvalidNumberInput<number>;
+		: number;

@@ -1,6 +1,6 @@
 import type { Equal, And, Satisfy } from "@/operator";
 import type { Increment, Decrement, IsPositive } from "@/numeric";
-import type { IsValidNumberInput, InvalidNumberInput } from "../utils";
+import type { IsValidNumberInput } from "../utils";
 
 declare type SubtractPositive<
 	TNumber1 extends number,
@@ -9,7 +9,7 @@ declare type SubtractPositive<
 	? Equal<TNumber2, 0> extends true
 		? TNumber1
 		: SubtractPositive<Decrement<TNumber1>, Decrement<TNumber2>>
-	: InvalidNumberInput<number>;
+	: number;
 
 declare type SubtractNegative<
 	TNumber1 extends number,
@@ -18,11 +18,11 @@ declare type SubtractNegative<
 	? Equal<TNumber2, 0> extends true
 		? TNumber1
 		: SubtractNegative<Increment<TNumber1>, Increment<TNumber2>>
-	: InvalidNumberInput<number>;
+	: number;
 
 /**
  * #### Subtract `TNumber2` from `TNumber1`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -47,4 +47,4 @@ export declare type Subtract<
 			true: SubtractPositive<TNumber1, TNumber2>;
 			false: SubtractNegative<TNumber1, TNumber2>;
 	  }[`${Satisfy<IsPositive<TNumber2>, boolean>}`]
-	: InvalidNumberInput<number>;
+	: number;

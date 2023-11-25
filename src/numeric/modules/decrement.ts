@@ -1,5 +1,5 @@
 import type { Equal, Satisfy } from "@/operator";
-import type { IsValidNumberInput, Numbers, InvalidNumberInput } from "../utils";
+import type { IsValidNumberInput, Numbers } from "../utils";
 
 declare type _Decrement<
 	TNumber extends number,
@@ -10,11 +10,11 @@ declare type _Decrement<
 			? First
 			: _Decrement<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
 		: never
-	: InvalidNumberInput<number>;
+	: number;
 
 /**
  * #### Decrement a number `TNumber` of one
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

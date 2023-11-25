@@ -5,5 +5,4 @@ export type {
 	IndexOf,
 	PositiveNumbers,
 	NegativeNumbers,
-	InvalidNumberInput,
 } from "./numbers.helpers";

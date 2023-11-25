@@ -8,7 +8,7 @@ import type {
 	Increment,
 	Decrement,
 } from "@/numeric";
-import type { IsValidNumberInput, InvalidNumberInput } from "../utils";
+import type { IsValidNumberInput } from "../utils";
 
 declare type MultiplyPositive<
 	TNumber1 extends number,
@@ -18,7 +18,7 @@ declare type MultiplyPositive<
 	? IsZero<TNumber2> extends true
 		? Result
 		: MultiplyPositive<TNumber1, Decrement<TNumber2>, Add<Result, TNumber1>>
-	: InvalidNumberInput<number>;
+	: number;
 
 declare type MultiplyNegative<
 	TNumber1 extends number,
@@ -32,11 +32,11 @@ declare type MultiplyNegative<
 				Increment<TNumber2>,
 				Subtract<Result, TNumber1>
 		  >
-	: InvalidNumberInput<number>;
+	: number;
 
 /**
  * #### Multiply `TNumber1` and `TNumber2`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -79,4 +79,4 @@ export declare type Multiply<
 				IsPositive<TNumber2>,
 				boolean
 		  >}`]
-	: InvalidNumberInput<number>;
+	: number;

@@ -1,5 +1,5 @@
 import type { And, Equal, Satisfy } from "@/operator";
-import type { IsValidNumberInput, Numbers, InvalidNumberInput } from "../utils";
+import type { IsValidNumberInput, Numbers } from "../utils";
 
 export declare type _LowerEq<
 	TNumber1 extends number,
@@ -10,14 +10,14 @@ export declare type _LowerEq<
 		? Equal<First, TNumber1> extends true
 			? true
 			: Equal<First, TNumber2> extends true
-			? Equal<TNumber1, TNumber2>
-			: _LowerEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
+			  ? Equal<TNumber1, TNumber2>
+			  : _LowerEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
 		: never
-	: InvalidNumberInput<boolean>;
+	: boolean;
 
 /**
  * #### Check if number `TNumber1` is lower than `TNumber2` or equal to `TNumber2`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an explicit result. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
