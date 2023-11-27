@@ -1,18 +1,21 @@
+import type { Split } from "@/string";
+import type { Length } from "@/array";
+
 /**
  * #### Get the length of a string type `TString`
  * ---------------------------
  * @example
  * ```tsx
- * import type { Arr } from "@dulysse1/ts-helper";
+ * import type { Str } from "@dulysse1/ts-helper";
  *
- * type ArrayLength = Arr.Length<[1, 2, 3]>; // 3
+ * type StringWidth = Str.Width<"Hello world!">; // 12
  * ```
  * ---------------------------
- * Do you have any questions about {@link Length} usage ?
+ * Do you have any questions about {@link Width} usage ?
  * ### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Length<TString extends string> = TString; // TODO:
+export declare type Width<TString extends string> = Length<Split<TString>>;

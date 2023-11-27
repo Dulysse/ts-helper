@@ -1,10 +1,18 @@
 import type { Equal } from "@/operator";
+import type { IsExactString } from "@/string";
 
 declare type _Split<
 	TString extends string,
 	TSeparator extends string = "",
 	Res extends string[] = [],
-> = Equal<TString, string> extends true ? string[] : TSeparator & Res;
+> = IsExactString<TString> extends true
+	? string[]
+	: Equal<TString, ""> extends true
+	  ? Res
+	  : TString extends `${infer Start}${TSeparator}${infer Next}`
+	    ? _Split<Next, TSeparator, [...Res, Start]>
+	    : string[];
+
 /**
  * #### Split a type `TString` to an array for each `TSeparator` string apparition
  * ---------------------------
@@ -12,7 +20,7 @@ declare type _Split<
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type StringSplit = Str.Split<"Hello">; // ["H", "e", "l", "l", "o"]
+ * type StringSplitted = Str.Split<"Hello">; // ["H", "e", "l", "l", "o"]
  * ```
  * ---------------------------
  * Do you have any questions about {@link Split} usage ?

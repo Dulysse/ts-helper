@@ -1,20 +1,20 @@
 import type { Last } from "./modules/last";
 import type { Exclude } from "./modules/exclude";
 import type { ToArray } from "./modules/toArray";
-import type { Length } from "./modules/length";
+import type { Count } from "./modules/count";
 import type { First } from "./modules/first";
 import type { IsUnion } from "./modules/isUnion";
-import type { At } from "./modules/at";
+import type { Through } from "./modules/through";
 
 /**
  * ### ✨ List of `ts-helper` union types ✨:
  * - {@link Last}
  * - {@link Exclude}
  * - {@link ToArray}
- * - {@link Length}
+ * - {@link Count}
  * - {@link First}
  * - {@link IsUnion}
- * - {@link At}
+ * - {@link Through}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -24,7 +24,7 @@ import type { At } from "./modules/at";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Union {
-	export { Last, Exclude, ToArray, Length, First, IsUnion, At };
+	export { Last, Exclude, ToArray, Count, First, IsUnion, Through };
 }
 
-export { Last, Exclude, ToArray, Length, First, IsUnion, At };
+export { Last, Exclude, ToArray, Count, First, IsUnion, Through };
