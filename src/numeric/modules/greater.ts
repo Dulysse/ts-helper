@@ -19,7 +19,7 @@ declare type _Greater<
 
 /**
  * #### Check if number `TNumber1` is greater than `TNumber2`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

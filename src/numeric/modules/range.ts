@@ -20,7 +20,7 @@ export declare type DescRange<
 
 /**
  * #### Create an array of a range between two numbers `TNumber1` and `TNumber2`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-250; 250]`, otherwise it returns an `explicit result`. ⚠️
+ * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

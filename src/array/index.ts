@@ -5,6 +5,7 @@ import type { Length } from "./modules/length";
 import type { At } from "./modules/at";
 import type { ToUnion } from "./modules/toUnion";
 import type { IsReadonly } from "./modules/isReadonly";
+import type { Includes } from "./modules/includes";
 
 /**
  * ### ✨ List of `ts-helper` array types ✨:
@@ -15,6 +16,7 @@ import type { IsReadonly } from "./modules/isReadonly";
  * - {@link At}
  * - {@link ToUnion}
  * - {@link IsReadonly}
+ * - {@link Includes}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -24,7 +26,25 @@ import type { IsReadonly } from "./modules/isReadonly";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Arr {
-	export { IsTuple, Reverse, UnReadonly, Length, At, ToUnion, IsReadonly };
+	export {
+		IsTuple,
+		Reverse,
+		UnReadonly,
+		Length,
+		At,
+		ToUnion,
+		IsReadonly,
+		Includes,
+	};
 }
 
-export { IsTuple, Reverse, UnReadonly, Length, At, ToUnion, IsReadonly };
+export {
+	IsTuple,
+	Reverse,
+	UnReadonly,
+	Length,
+	At,
+	ToUnion,
+	IsReadonly,
+	Includes,
+};

@@ -1,4 +1,4 @@
-import type { Last } from "@/union";
+import type { Last, Exclude } from "@/union";
 import type { Satisfy } from "@/operator";
 
 declare type _ToArray<TUnion, Res extends unknown[] = []> = [

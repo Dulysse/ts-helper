@@ -5,6 +5,7 @@ import type { Count } from "./modules/count";
 import type { First } from "./modules/first";
 import type { IsUnion } from "./modules/isUnion";
 import type { Through } from "./modules/through";
+import type { Has } from "./modules/has";
 
 /**
  * ### ✨ List of `ts-helper` union types ✨:
@@ -15,6 +16,7 @@ import type { Through } from "./modules/through";
  * - {@link First}
  * - {@link IsUnion}
  * - {@link Through}
+ * - {@link Has}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -24,7 +26,7 @@ import type { Through } from "./modules/through";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Union {
-	export { Last, Exclude, ToArray, Count, First, IsUnion, Through };
+	export { Last, Exclude, ToArray, Count, First, IsUnion, Through, Has };
 }
 
-export { Last, Exclude, ToArray, Count, First, IsUnion, Through };
+export { Last, Exclude, ToArray, Count, First, IsUnion, Through, Has };

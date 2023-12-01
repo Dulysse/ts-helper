@@ -1,4 +1,4 @@
-import type { Num } from "../dist/index.mjs";
+import type { Num, Union } from "../dist/index.mjs";
 
 function divide<A extends number, B extends number>(
 	a: A,
@@ -7,4 +7,6 @@ function divide<A extends number, B extends number>(
 	return (a * b) as Num.Divide<A, B>;
 }
 
-const result = divide(240, 3);
+const result = divide(180, 3);
+
+type a = Union.ToArray<1 | 2 | 3 | (number & {})>;
