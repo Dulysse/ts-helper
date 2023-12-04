@@ -7,8 +7,8 @@ import type { ToArray } from "@/union";
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type HasElement = Union.Has<1 | 2 | 3, 2>; // true
- * type HasNotElement = Union.Has<1 | 2 | 3, 4>; // false
+ * type A = Union.Has<1 | 2 | 3, 2>; // true
+ * type B = Union.Has<1 | 2 | 3, 4>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link Has} usage ?

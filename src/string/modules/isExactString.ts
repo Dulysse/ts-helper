@@ -7,8 +7,8 @@ import type { Equal } from "@/operator";
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type Yes = Str.IsExactString<string>; // true
- * type No = Str.IsExactString<"Hello world!">; // false
+ * type A = Str.IsExactString<string>; // true
+ * type B = Str.IsExactString<"Hello world!">; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link IsExactString} usage ?

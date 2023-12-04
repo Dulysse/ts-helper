@@ -14,7 +14,7 @@ declare type _ToArray<TUnion, Res extends unknown[] = []> = [
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type UnionToArray = Union.ToArray<1 | 2 | 3>; // [1, 2, 3]
+ * type A = Union.ToArray<1 | 2 | 3>; // [1, 2, 3]
  * ```
  * ---------------------------
  * Do you have any questions about {@link ToArray} usage ?

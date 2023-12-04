@@ -1,4 +1,4 @@
-import type { And, Or, Satisfy } from "@/operator";
+import type { And, Or } from "@/operator";
 import type {
 	Opposite,
 	IsPositive,
@@ -42,9 +42,9 @@ declare type MultiplyNegative<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type MultiplyPositive = Num.Multiply<6, 7>; // 42
- * type MultiplyNegative = Num.Multiply<6, -7>; // -42
- * type MultiplyZero = Num.Multiply<6, 0>; // 0
+ * type A = Num.Multiply<6, 7>; // 42
+ * type B = Num.Multiply<6, -7>; // -42
+ * type C = Num.Multiply<6, 0>; // 0
  * ```
  * ---------------------------
  * Do you have any questions about {@link Multiply} usage ?
@@ -66,17 +66,8 @@ export declare type Multiply<
 					false: MultiplyNegative<TNumber1, TNumber2>;
 				};
 				false: {
-					true: MultiplyNegative<
-						Satisfy<Opposite<TNumber1>, number>,
-						Satisfy<Opposite<TNumber2>, number>
-					>;
-					false: MultiplyPositive<
-						Satisfy<Opposite<TNumber1>, number>,
-						Satisfy<Opposite<TNumber2>, number>
-					>;
+					true: MultiplyNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
+					false: MultiplyPositive<Opposite<TNumber1>, Opposite<TNumber2>>;
 				};
-		  }[`${Satisfy<IsPositive<TNumber1>, boolean>}`][`${Satisfy<
-				IsPositive<TNumber2>,
-				boolean
-		  >}`]
+		  }[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
 	: number;

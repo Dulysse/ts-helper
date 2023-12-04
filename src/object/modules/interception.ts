@@ -12,7 +12,7 @@ import type { ObjectMode } from "../utils";
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
  *
- * type Intercepted = Obj.Interception<
+ * type A = Obj.Interception<
  *  { a: string; },
  *  { b: number; a: number; }
  * >; // { a: string | number; }

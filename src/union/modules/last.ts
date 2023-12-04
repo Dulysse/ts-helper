@@ -7,7 +7,7 @@ import type { IntersectOf } from "../utils";
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type LastElement = Union.Last<1 | 2 | 3>; // 3
+ * type A = Union.Last<1 | 2 | 3>; // 3
  * ```
  * ---------------------------
  * Do you have any questions about {@link Last} usage ?

@@ -7,8 +7,8 @@ import type { Equal } from "@/operator";
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type No = Num.IsZero<-23>; // false
- * type Yes = Num.IsZero<0>; // true
+ * type A = Num.IsZero<-23>; // false
+ * type B = Num.IsZero<0>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link IsZero} usage ?

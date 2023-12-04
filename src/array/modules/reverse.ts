@@ -17,7 +17,7 @@ declare type _Reverse<
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
  *
- * type Reversed = Arr.Reverse<
+ * type A = Arr.Reverse<
  *  [1, 2, 3]
  * >; // [3, 2, 1]
  * ```

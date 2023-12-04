@@ -5,8 +5,8 @@
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Yes = Num.IsNegative<-23>; // true
- * type No = Num.IsNegative<10>; // false
+ * type A = Num.IsNegative<-23>; // true
+ * type B = Num.IsNegative<10>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link IsNegative} usage ?

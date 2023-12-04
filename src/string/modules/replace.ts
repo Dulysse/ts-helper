@@ -7,7 +7,7 @@ import type { IsExactString } from "@/string";
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type StringReplaced = Str.Replace<"Hello world!", "l", "x">; // "Hexlo world!"
+ * type A = Str.Replace<"Hello world!", "l", "x">; // "Hexlo world!"
  * ```
  * ---------------------------
  * Do you have any questions about {@link Replace} usage ?

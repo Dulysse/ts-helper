@@ -11,7 +11,7 @@ import type { And } from "@/operator";
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
  *
- * type AtArray = Arr.At<
+ * type A = Arr.At<
  *  [1, 2, 3],
  *  -1
  * >; // 3

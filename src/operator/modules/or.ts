@@ -5,8 +5,8 @@
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
  *
- * type Yes = Op.Or<true, false>; // true
- * type No = Op.Or<false, false>; // false
+ * type A = Op.Or<true, false>; // true
+ * type B = Op.Or<false, false>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link Or} usage ?

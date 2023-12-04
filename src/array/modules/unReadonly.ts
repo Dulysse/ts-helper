@@ -5,7 +5,7 @@
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
  *
- * type UnReadonly = Arr.UnReadonly<
+ * type A = Arr.UnReadonly<
  *  readonly [1, 2, 3]
  * >; // [1, 2, 3]
  * ```

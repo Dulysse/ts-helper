@@ -1,4 +1,4 @@
-import type { Equal, And, Satisfy } from "@/operator";
+import type { Equal, And } from "@/operator";
 import type { Increment, Decrement, IsPositive } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
@@ -28,8 +28,8 @@ declare type SubtractNegative<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type SubtractPositive = Num.Subtract<10, 10>; // 0
- * type SubtractNegative = Num.Subtract<10, -40>; // 40
+ * type A = Num.Subtract<10, 10>; // 0
+ * type B = Num.Subtract<10, -40>; // 40
  * ```
  * ---------------------------
  * Do you have any questions about {@link Subtract} usage ?
@@ -46,5 +46,5 @@ export declare type Subtract<
 	? {
 			true: SubtractPositive<TNumber1, TNumber2>;
 			false: SubtractNegative<TNumber1, TNumber2>;
-	  }[`${Satisfy<IsPositive<TNumber2>, boolean>}`]
+	  }[`${IsPositive<TNumber2>}`]
 	: number;

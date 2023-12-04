@@ -13,7 +13,7 @@ import type { Exclude } from "@/union";
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
  *
- * type Omitted = Obj.Omit<{ a: string; b: { a: number } }, "a" | "b">; // {}
+ * type A = Obj.Omit<{ a: string; b: { a: number } }, "a" | "b">; // {}
  * ```
  * ---------------------------
  * Do you have any questions about {@link Omit} usage ?

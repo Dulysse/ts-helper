@@ -10,8 +10,8 @@ import type { LowerEq, GreaterEq } from "@/numeric";
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type No = Num.Between<-1, 1, 5>; // false
- * type Yes = Num.Between<2, 1, 5>; // true
+ * type A = Num.Between<-1, 1, 5>; // false
+ * type B = Num.Between<2, 1, 5>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link Between} usage ?

@@ -8,8 +8,8 @@ import type { Equal } from "@/operator";
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type No = Union.IsUnion<1>; // false
- * type Yes = Union.IsUnion<1 | 2 | 3>; // true
+ * type A = Union.IsUnion<1>; // false
+ * type B = Union.IsUnion<1 | 2 | 3>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link IsUnion} usage ?

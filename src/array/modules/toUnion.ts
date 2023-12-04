@@ -8,7 +8,7 @@ import type { TDefaultArray } from "../utils";
  * import type { Array } from "@dulysse1/ts-helper";
 import IsUnion from '@/union';
  *
- * type ArrayToUnion = Array.ToUnion<[1, 2, 3]>; // 1 | 2 | 3
+ * type A = Array.ToUnion<[1, 2, 3]>; // 1 | 2 | 3
  * ```
  * ---------------------------
  * Do you have any questions about {@link ToUnion} usage ?

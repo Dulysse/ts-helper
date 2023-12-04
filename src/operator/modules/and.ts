@@ -5,8 +5,8 @@
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
  *
- * type Yes = Op.And<true, true>; // true
- * type No = Op.And<true, false>; // false
+ * type A = Op.And<true, true>; // true
+ * type B = Op.And<true, false>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link And} usage ?

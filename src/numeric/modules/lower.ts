@@ -25,8 +25,8 @@ export declare type _Lower<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type No = Num.Lower<10, 10>; // false
- * type Yes = Num.Lower<7, 10>; // true
+ * type A = Num.Lower<10, 10>; // false
+ * type B = Num.Lower<7, 10>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link Lower} usage ?

@@ -7,7 +7,7 @@ import type { Split } from "@/string";
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type StringAt = Str.PlacedAt<
+ * type A = Str.PlacedAt<
  *  "Hello",
  *  -1
  * >; // "o"

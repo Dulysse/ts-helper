@@ -7,7 +7,7 @@ import type { ToArray } from "@/union";
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type FirstElement = Union.First<1 | 2 | 3>; // 1
+ * type A = Union.First<1 | 2 | 3>; // 1
  * ```
  * ---------------------------
  * Do you have any questions about {@link First} usage ?

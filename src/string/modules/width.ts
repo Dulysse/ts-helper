@@ -8,7 +8,7 @@ import type { Length } from "@/array";
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type StringWidth = Str.Width<"Hello world!">; // 12
+ * type A = Str.Width<"Hello world!">; // 12
  * ```
  * ---------------------------
  * Do you have any questions about {@link Width} usage ?

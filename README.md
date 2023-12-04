@@ -43,13 +43,40 @@ For best results, add this to your `tsconfig.json`
 ### With EcmaScript module ✅
 
 ```tsx
-import type { Num } from "@dulysse1/ts-helpers";
+import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 // now you can create your types!
 ```
 
 ## Documentation 🧗
 
-#### 👉 TODO
+### 👉 Numbers
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.IsPositive<-23>; // false
+type B = Num.IsPositive<10>; // true
+type C = Num.IsPositive<0>; // true
+```
+
+### 👉 Array
+
+#### Check if array is a `tuple`
+
+```tsx
+import type { Arr } from "@dulysse1/ts-helper";
+
+type A = Arr.IsTuple<number[]>; // false
+type B = Arr.IsTuple<[1, 2, 3]>; // true
+```
+
+#### Reverse an array
+
+```tsx
+import type { Arr } from "@dulysse1/ts-helper";
+
+type A = Arr.Reverse<[1, 2, 3]>; // [3, 2, 1]
+```
 
 ## Do you have any ideas or recommendations for improvement? 🤔
 

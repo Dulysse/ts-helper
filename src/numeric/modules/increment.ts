@@ -20,7 +20,7 @@ declare type _Increment<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Num = Num.Increment<10>; // 11
+ * type A = Num.Increment<10>; // 11
  * ```
  * ---------------------------
  * Do you have any questions about {@link Increment} usage ?

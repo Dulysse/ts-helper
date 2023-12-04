@@ -7,7 +7,7 @@ import type { ToArray } from "@/union";
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type UnionLength = Union.Count<1 | 2 | 3>; // 3
+ * type A = Union.Count<1 | 2 | 3>; // 3
  * ```
  * ---------------------------
  * Do you have any questions about {@link Count} usage ?

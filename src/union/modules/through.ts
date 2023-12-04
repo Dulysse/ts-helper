@@ -8,7 +8,7 @@ import type { ToArray } from "@/union";
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
  *
- * type AtUnion = Union.Through<
+ * type A = Union.Through<
  *  1 | 2 | 3,
  *  -1
  * >; // 3

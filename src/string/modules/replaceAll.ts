@@ -9,7 +9,7 @@ import type { IsUnion } from "@/union";
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type StringReplaced = Str.ReplaceAll<"Hello world!", "l", "x">; // "Hexxo worxd!"
+ * type A = Str.ReplaceAll<"Hello world!", "l", "x">; // "Hexxo worxd!"
  * ```
  * ---------------------------
  * Do you have any questions about {@link ReplaceAll} usage ?

@@ -5,7 +5,7 @@
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
  *
- * type Keys = Obj.KeyOf<
+ * type A = Obj.KeyOf<
  *  { a: string; b: number; },
  *  string
  * >; // "a"

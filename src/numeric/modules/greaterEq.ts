@@ -23,8 +23,8 @@ declare type _GreaterEq<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type No = Num.GreaterEq<6, 10>; // false
- * type Yes = Num.GreaterEq<10, 10>; // true
+ * type A = Num.GreaterEq<6, 10>; // false
+ * type B = Num.GreaterEq<10, 10>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link GreaterEq} usage ?

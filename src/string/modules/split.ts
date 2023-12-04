@@ -1,9 +1,10 @@
 import type { Equal } from "@/operator";
 import type { IsExactString } from "@/string";
+import type { TDefaultStringSeparator } from "../utils";
 
 declare type _Split<
 	TString extends string,
-	TSeparator extends string = "",
+	TSeparator extends string = TDefaultStringSeparator,
 	Res extends string[] = [],
 > = IsExactString<TString> extends true
 	? string[]
@@ -20,7 +21,7 @@ declare type _Split<
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type StringSplitted = Str.Split<"Hello">; // ["H", "e", "l", "l", "o"]
+ * type A = Str.Split<"Hello">; // ["H", "e", "l", "l", "o"]
  * ```
  * ---------------------------
  * Do you have any questions about {@link Split} usage ?
@@ -32,5 +33,5 @@ declare type _Split<
  */
 export declare type Split<
 	TString extends string,
-	TSeparator extends string = "",
+	TSeparator extends string = TDefaultStringSeparator,
 > = _Split<TString, TSeparator>;

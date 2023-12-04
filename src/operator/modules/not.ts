@@ -7,8 +7,8 @@ import type { Equal } from "@/operator";
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
  *
- * type True = Op.Not<false>; // true
- * type False = Op.Not<true>; // false
+ * type A = Op.Not<false>; // true
+ * type B = Op.Not<true>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link Not} usage ?

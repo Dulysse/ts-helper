@@ -12,7 +12,7 @@ import type { ObjectMode } from "../utils";
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
  *
- * type Merged = Obj.Merge<
+ * type A = Obj.Merge<
  *  { a: string; },
  *  { b: number; }
  * >; // { a: string; b: number; }

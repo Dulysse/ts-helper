@@ -26,7 +26,7 @@ export declare type DescRange<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Range = Num.Range<1, 5>; // [1, 2, 3, 4, 5]
+ * type A = Num.Range<1, 5>; // [1, 2, 3, 4, 5]
  * ```
  * ---------------------------
  * Do you have any questions about {@link Range} usage ?

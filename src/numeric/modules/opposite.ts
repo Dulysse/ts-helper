@@ -22,8 +22,8 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type Positive = Num.Opposite<23>; // -23
- * type Negative = Num.Opposite<-34>; // 34
+ * type A = Num.Opposite<23>; // -23
+ * type B = Num.Opposite<-34>; // 34
  * ```
  * ---------------------------
  * Do you have any questions about {@link Opposite} usage ?
@@ -33,10 +33,12 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Opposite<TNumber extends number> =
+export declare type Opposite<TNumber extends number> = Satisfy<
 	IsValidNumberInput<TNumber> extends true
 		? {
 				true: OppositePositive<TNumber>;
 				false: OppositeNegative<TNumber>;
-		  }[`${Satisfy<IsPositive<TNumber>, boolean>}`]
-		: number;
+		  }[`${IsPositive<TNumber>}`]
+		: number,
+	number
+>;

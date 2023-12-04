@@ -1,4 +1,4 @@
-import type { Equal, And, Satisfy } from "@/operator";
+import type { Equal, And } from "@/operator";
 import type { Increment, Decrement, IsPositive } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
@@ -28,8 +28,8 @@ declare type AddNegative<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type AddPositive = Num.Add<10, 10>; // 20
- * type AddNegative = Num.Add<10, -40>; // -30
+ * type A = Num.Add<10, 10>; // 20
+ * type B = Num.Add<10, -40>; // -30
  * ```
  * ---------------------------
  * Do you have any questions about {@link Add} usage ?
@@ -46,5 +46,5 @@ export declare type Add<TNumber1 extends number, TNumber2 extends number> = And<
 	? {
 			true: AddPositive<TNumber1, TNumber2>;
 			false: AddNegative<TNumber1, TNumber2>;
-	  }[`${Satisfy<IsPositive<TNumber2>, boolean>}`]
+	  }[`${IsPositive<TNumber2>}`]
 	: number;

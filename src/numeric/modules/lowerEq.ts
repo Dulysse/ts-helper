@@ -23,8 +23,8 @@ export declare type _LowerEq<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type No = Num.LowerEq<12, 10>; // false
- * type Yes = Num.LowerEq<10, 10>; // true
+ * type A = Num.LowerEq<12, 10>; // false
+ * type B = Num.LowerEq<10, 10>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link LowerEq} usage ?

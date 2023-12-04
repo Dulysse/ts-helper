@@ -1,4 +1,4 @@
-import type { And, Satisfy } from "@/operator";
+import type { And } from "@/operator";
 import type {
 	Opposite,
 	IsPositive,
@@ -40,9 +40,9 @@ declare type DivideNegative<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type DividePositive = Num.Divide<7, 7>; // 1
- * type DivideNegative = Num.Divide<-14, 7>; // -2
- * type DivideZero = Num.Divide<6, 0>; // number infinite
+ * type A = Num.Divide<7, 7>; // 1
+ * type B = Num.Divide<-14, 7>; // -2
+ * type C = Num.Divide<6, 0>; // number infinite
  * ```
  * ---------------------------
  * Do you have any questions about {@link Divide} usage ?
@@ -66,17 +66,8 @@ export declare type Divide<
 						false: DivideNegative<TNumber1, TNumber2>;
 					};
 					false: {
-						true: DivideNegative<
-							Satisfy<Opposite<TNumber1>, number>,
-							Satisfy<Opposite<TNumber2>, number>
-						>;
-						false: DividePositive<
-							Satisfy<Opposite<TNumber1>, number>,
-							Satisfy<Opposite<TNumber2>, number>
-						>;
+						true: DivideNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
+						false: DividePositive<Opposite<TNumber1>, Opposite<TNumber2>>;
 					};
-		    }[`${Satisfy<IsPositive<TNumber1>, boolean>}`][`${Satisfy<
-					IsPositive<TNumber2>,
-					boolean
-		    >}`]
+		    }[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
 	: number;

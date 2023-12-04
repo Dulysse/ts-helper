@@ -5,8 +5,8 @@
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
  *
- * type Yes = Op.Satisfy<1 | 2, number>; // 1 | 2
- * type No = Op.Satisfy<"hello", number>; // number
+ * type A = Op.Satisfy<1 | 2, number>; // 1 | 2
+ * type B = Op.Satisfy<"hello", number>; // number
  * ```
  * ---------------------------
  * Do you have any questions about {@link Satisfy} usage ?

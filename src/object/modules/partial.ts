@@ -12,7 +12,7 @@ import type { ObjectMode } from "../utils";
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
  *
- * type Keys = Obj.Partial<
+ * type A = Obj.Partial<
  *  { a: string; b: number; }
  * >; // { a?: string; b?: number;  }
  * ```

@@ -18,8 +18,8 @@ declare type IncludesInTuple<
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
  *
- * type HasElement = Arr.Includes<[1, 2, 3], 2>; // true
- * type HasNotElement = Arr.Includes<[1, 2, 3], 4>; // false
+ * type A = Arr.Includes<[1, 2, 3], 2>; // true
+ * type B = Arr.Includes<[1, 2, 3], 4>; // false
  * ```
  * ---------------------------
  * Do you have any questions about {@link Has} usage ?

@@ -8,8 +8,8 @@ import type { TDefaultArray } from "../utils";
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
  *
- * type No = Arr.IsTuple<number[]>; // false
- * type Yes = Arr.IsTuple<[1, 2, 3]>; // true
+ * type A = Arr.IsTuple<number[]>; // false
+ * type B = Arr.IsTuple<[1, 2, 3]>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link IsTuple} usage ?

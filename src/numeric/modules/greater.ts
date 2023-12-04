@@ -25,8 +25,8 @@ declare type _Greater<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type No = Num.Greater<10, 10>; // false
- * type Yes = Num.Greater<30, 10>; // true
+ * type A = Num.Greater<10, 10>; // false
+ * type B = Num.Greater<30, 10>; // true
  * ```
  * ---------------------------
  * Do you have any questions about {@link Greater} usage ?

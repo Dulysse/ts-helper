@@ -6,6 +6,9 @@ import type { At } from "./modules/at";
 import type { ToUnion } from "./modules/toUnion";
 import type { IsReadonly } from "./modules/isReadonly";
 import type { Includes } from "./modules/includes";
+import type { Join } from "./modules/join";
+import type { First } from "./modules/first";
+import type { Last } from "./modules/last";
 
 /**
  * ### ✨ List of `ts-helper` array types ✨:
@@ -17,6 +20,9 @@ import type { Includes } from "./modules/includes";
  * - {@link ToUnion}
  * - {@link IsReadonly}
  * - {@link Includes}
+ * - {@link Join}
+ * - {@link First}
+ * - {@link Last}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * ### Contact me!
@@ -35,6 +41,9 @@ export declare namespace Arr {
 		ToUnion,
 		IsReadonly,
 		Includes,
+		Join,
+		First,
+		Last,
 	};
 }
 
@@ -47,4 +56,7 @@ export {
 	ToUnion,
 	IsReadonly,
 	Includes,
+	Join,
+	First,
+	Last,
 };
