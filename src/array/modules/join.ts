@@ -10,7 +10,7 @@ declare type _Join<
 	? Equal<TArray, []> extends true
 		? TResult
 		: TArray extends [infer First, ...infer Next]
-		  ? _Join<
+			? _Join<
 					Next,
 					TSeparator,
 					`${TResult}${Stringify<First, TSeparator>}${Equal<
@@ -19,8 +19,8 @@ declare type _Join<
 					> extends true
 						? ""
 						: TSeparator}`
-		    >
-		  : never
+				>
+			: never
 	: string;
 
 declare type Stringify<
@@ -29,10 +29,10 @@ declare type Stringify<
 > = T extends unknown[]
 	? _Join<T, TSeparator>
 	: T extends object
-	  ? "[object Object]"
-	  : Or<Equal<T, undefined>, Equal<T, null>> extends true
-	    ? ""
-	    : `${Satisfy<T, string | number | bigint | boolean>}`;
+		? "[object Object]"
+		: Or<Equal<T, undefined>, Equal<T, null>> extends true
+			? ""
+			: `${Satisfy<T, string | number | bigint | boolean>}`;
 
 /**
  * #### Join all element of an array `TArray` type with `TSeparator` for each element

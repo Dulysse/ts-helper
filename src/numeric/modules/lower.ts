@@ -12,8 +12,8 @@ export declare type _Lower<
 				? false
 				: true
 			: Equal<First, TNumber2> extends true
-			  ? false
-			  : _Lower<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
+				? false
+				: _Lower<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
 		: never
 	: boolean;
 

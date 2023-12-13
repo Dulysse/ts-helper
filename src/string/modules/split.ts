@@ -9,10 +9,10 @@ declare type _Split<
 > = IsExactString<TString> extends true
 	? string[]
 	: Equal<TString, ""> extends true
-	  ? Res
-	  : TString extends `${infer Start}${TSeparator}${infer Next}`
-	    ? _Split<Next, TSeparator, [...Res, Start]>
-	    : string[];
+		? Res
+		: TString extends `${infer Start}${TSeparator}${infer Next}`
+			? _Split<Next, TSeparator, [...Res, Start]>
+			: string[];
 
 /**
  * #### Split a type `TString` to an array for each `TSeparator` string apparition

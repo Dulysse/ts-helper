@@ -31,7 +31,7 @@ declare type MultiplyNegative<
 				TNumber1,
 				Increment<TNumber2>,
 				Subtract<Result, TNumber1>
-		  >
+			>
 	: number;
 
 /**
@@ -69,5 +69,5 @@ export declare type Multiply<
 					true: MultiplyNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
 					false: MultiplyPositive<Opposite<TNumber1>, Opposite<TNumber2>>;
 				};
-		  }[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
+			}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
 	: number;

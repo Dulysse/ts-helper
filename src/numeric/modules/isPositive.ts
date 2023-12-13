@@ -23,5 +23,5 @@ export declare type IsPositive<TNumber extends number> = Equal<
 > extends true
 	? boolean
 	: `${TNumber}` extends `-${number}`
-	  ? false
-	  : true;
+		? false
+		: true;

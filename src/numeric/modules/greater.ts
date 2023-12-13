@@ -10,10 +10,10 @@ declare type _Greater<
 		? Equal<First, TNumber1> extends true
 			? false
 			: Equal<First, TNumber2> extends true
-			  ? Equal<TNumber1, TNumber2> extends true
+				? Equal<TNumber1, TNumber2> extends true
 					? false
 					: true
-			  : _Greater<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
+				: _Greater<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
 		: never
 	: boolean;
 

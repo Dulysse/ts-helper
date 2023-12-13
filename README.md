@@ -49,17 +49,91 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ## Documentation 🧗
 
-### 👉 Numbers
+### Here some examples:
+
+### 👉 `Numbers`
+
+#### Check if a number is `positive`
 
 ```tsx
 import type { Num } from "@dulysse1/ts-helper";
 
-type A = Num.IsPositive<-23>; // false
-type B = Num.IsPositive<10>; // true
+type A = Num.IsPositive<-2343>; // false
+type B = Num.IsPositive<134>; // true
 type C = Num.IsPositive<0>; // true
 ```
 
-### 👉 Array
+#### Add two numbers
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.Add<10, 10>; // 20
+type B = Num.Add<-10, 10>; // 0
+type C = Num.Add<-23, -34>; // -57
+```
+
+#### Multiply two numbers
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.Multiply<10, 10>; // 100
+type B = Num.Multiply<-6, 7>; // -42
+type C = Num.Multiply<234, 783>; // number
+```
+
+#### Divide two numbers
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.Divide<20, 10>; // 2
+type B = Num.Divide<0, 7>; // 0
+type C = Num.Divide<7, 0>; // number
+```
+
+### 👉 `Object`
+
+#### Get keys of object by an optional filter
+
+```tsx
+import type { Obj } from "@dulysse1/ts-helper";
+
+type A = Obj.KeyOf<{ a: string; b: number }, string>; // "a"
+```
+
+#### Merge two type objects
+
+```tsx
+import type { Obj } from "@dulysse1/ts-helper";
+
+type A = type A = Obj.Merge<
+ { a: string; },
+ { b: number; }
+>; // { a: string; b: number; }
+```
+
+### 👉 `String`
+
+#### Split a string to array
+
+```tsx
+import type { Str } from "@dulysse1/ts-helper";
+
+type A = Str.Split<"coucou">; // ["c", "o", "u", "c", "o", "u"]
+type B = Str.Split<"coucou", "c">; // ["ou", "ou"]
+```
+
+#### Replace all iteration of one character
+
+```tsx
+import type { Str } from "@dulysse1/ts-helper";
+
+type A = Str.ReplaceAll<"coucou", "c", "x">; // "xouxou"
+```
+
+### 👉 `Array`
 
 #### Check if array is a `tuple`
 
@@ -77,6 +151,8 @@ import type { Arr } from "@dulysse1/ts-helper";
 
 type A = Arr.Reverse<[1, 2, 3]>; // [3, 2, 1]
 ```
+
+### And many more besides! 😲
 
 ## Do you have any ideas or recommendations for improvement? 🤔
 

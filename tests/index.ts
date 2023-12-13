@@ -6,4 +6,4 @@ function divide<A extends number, B extends number>(a: A, b: B) {
 
 const result = divide(150, 3);
 
-type a = Union.ToArray<1 | 2 | 3 | (number & {})>;
+type a = Union.ToArray<"a" | "b" | "c">;

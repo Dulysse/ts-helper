@@ -26,9 +26,9 @@ export declare type ReplaceAll<
 > = IsExactString<TString> extends true
 	? string
 	: IsUnion<TString> extends true
-	  ? TString extends Replace<TString, From, To>
+		? TString extends Replace<TString, From, To>
 			? TString
 			: ReplaceAll<Replace<TString, From, To>, From, To>
-	  : Equal<Replace<TString, From, To>, TString> extends true
-	    ? TString
-	    : ReplaceAll<Replace<TString, From, To>, From, To>;
+		: Equal<Replace<TString, From, To>, TString> extends true
+			? TString
+			: ReplaceAll<Replace<TString, From, To>, From, To>;

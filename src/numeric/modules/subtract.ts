@@ -46,5 +46,5 @@ export declare type Subtract<
 	? {
 			true: SubtractPositive<TNumber1, TNumber2>;
 			false: SubtractNegative<TNumber1, TNumber2>;
-	  }[`${IsPositive<TNumber2>}`]
+		}[`${IsPositive<TNumber2>}`]
 	: number;

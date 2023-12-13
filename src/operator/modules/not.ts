@@ -24,5 +24,5 @@ export declare type Not<TOperator extends boolean> = Equal<
 > extends true
 	? boolean
 	: TOperator extends true
-	  ? false
-	  : true;
+		? false
+		: true;

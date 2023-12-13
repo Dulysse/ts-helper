@@ -24,5 +24,5 @@ export declare type Replace<
 > = IsExactString<TString> extends true
 	? string
 	: TString extends `${infer Before}${From}${infer After}`
-	  ? `${Before}${To}${After}`
-	  : TString;
+		? `${Before}${To}${After}`
+		: TString;

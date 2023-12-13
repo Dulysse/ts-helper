@@ -7,8 +7,8 @@ declare type _Reverse<
 > = IsTuple<TArray> extends false
 	? TArray
 	: UnReadonly<TArray> extends [...infer Next, infer Last]
-	  ? _Reverse<Next, [...Res, Last]>
-	  : Res;
+		? _Reverse<Next, [...Res, Last]>
+		: Res;
 
 /**
  * #### Get a reversed `TArray` array

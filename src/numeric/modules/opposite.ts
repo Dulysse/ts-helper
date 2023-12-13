@@ -38,7 +38,7 @@ export declare type Opposite<TNumber extends number> = Satisfy<
 		? {
 				true: OppositePositive<TNumber>;
 				false: OppositeNegative<TNumber>;
-		  }[`${IsPositive<TNumber>}`]
+			}[`${IsPositive<TNumber>}`]
 		: number,
 	number
 >;

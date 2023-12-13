@@ -30,12 +30,12 @@ export declare type At<
 > = IsTuple<TArray> extends false
 	? TArray[number] | undefined
 	: IsNegative<TIndex> extends true
-	  ? And<
+		? And<
 				IsValidNumberInput<TIndex>,
 				IsValidNumberInput<Add<Length<TArray>, TIndex>>
-	    > extends true
+			> extends true
 			? IsNegative<Add<Length<TArray>, TIndex>> extends true
 				? undefined
 				: TArray[Add<Length<TArray>, TIndex>]
 			: TArray[number] | undefined
-	  : TArray[TIndex];
+		: TArray[TIndex];

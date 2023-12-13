@@ -59,8 +59,8 @@ export declare type Divide<
 	? IsZero<TNumber1> extends true
 		? 0
 		: IsZero<TNumber2> extends true
-		  ? number // Infinity
-		  : {
+			? number // Infinity
+			: {
 					true: {
 						true: DividePositive<TNumber1, TNumber2>;
 						false: DivideNegative<TNumber1, TNumber2>;
@@ -69,5 +69,5 @@ export declare type Divide<
 						true: DivideNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
 						false: DividePositive<Opposite<TNumber1>, Opposite<TNumber2>>;
 					};
-		    }[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
+				}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
 	: number;

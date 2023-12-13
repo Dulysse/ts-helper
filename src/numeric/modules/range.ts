@@ -43,5 +43,5 @@ export declare type Range<From extends number, To extends number> = And<
 	? {
 			true: AscRange<From, To>;
 			false: DescRange<From, To>;
-	  }[`${LowerEq<From, To> extends boolean ? LowerEq<From, To> : boolean}`]
+		}[`${LowerEq<From, To> extends boolean ? LowerEq<From, To> : boolean}`]
 	: number[];

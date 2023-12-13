@@ -10,8 +10,8 @@ export declare type _LowerEq<
 		? Equal<First, TNumber1> extends true
 			? true
 			: Equal<First, TNumber2> extends true
-			  ? Equal<TNumber1, TNumber2>
-			  : _LowerEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
+				? Equal<TNumber1, TNumber2>
+				: _LowerEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
 		: never
 	: boolean;
 

@@ -9,8 +9,8 @@ export declare type IsValidNumberInput<T extends number> = Or<
 > extends true
 	? false
 	: T extends Numbers[number]
-	  ? true
-	  : false;
+		? true
+		: false;
 
 export declare type Range = `${Numbers[0]}` extends `-${infer R}` ? R : never;
 
@@ -25,7 +25,7 @@ export declare type IndexOf<
 				TNumber,
 				Satisfy<Next, readonly number[]>,
 				Satisfy<[First, ...I], number[]>
-		  >
+			>
 	: never;
 
 export declare type PositiveNumbers<
@@ -37,7 +37,7 @@ export declare type PositiveNumbers<
 		: PositiveNumbers<
 				Satisfy<Next, readonly number[]>,
 				Satisfy<[...Res, Start], readonly number[]>
-		  >
+			>
 	: never;
 
 export declare type NegativeNumbers<
@@ -49,5 +49,5 @@ export declare type NegativeNumbers<
 		: PositiveNumbers<
 				Satisfy<Next, readonly number[]>,
 				Satisfy<[...Res, Start], readonly number[]>
-		  >
+			>
 	: never;

@@ -47,18 +47,18 @@ export declare type Interception<
 					TObjectA[Satisfy<key, keyof TObjectA>] extends object ? true : false
 				>,
 				TObjectB[Satisfy<key, keyof TObjectB>] extends object ? true : false
-		  > extends true
+			> extends true
 			? Interception<
 					Satisfy<TObjectA[Satisfy<key, keyof TObjectA>], object>,
 					Satisfy<TObjectB[Satisfy<key, keyof TObjectB>], object>,
 					Mode
-			  >
+				>
 			:
 					| TObjectA[Satisfy<key, keyof TObjectA>]
 					| TObjectB[Satisfy<key, keyof TObjectB>]
 		: key extends keyof TObjectA
-		  ? TObjectA[key]
-		  : key extends keyof TObjectB
-		    ? TObjectB[key]
-		    : never;
+			? TObjectA[key]
+			: key extends keyof TObjectB
+				? TObjectB[key]
+				: never;
 };

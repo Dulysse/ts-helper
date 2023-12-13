@@ -35,7 +35,7 @@ export declare type Includes<
 > = IsTuple<TArray> extends true
 	? IncludesInTuple<TArray, TIncluded>
 	: Equal<TIncluded, TArray[number]> extends true
-	  ? true
-	  : TIncluded extends TArray[number]
-	    ? boolean
-	    : false;
+		? true
+		: TIncluded extends TArray[number]
+			? boolean
+			: false;

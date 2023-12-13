@@ -46,5 +46,5 @@ export declare type Add<TNumber1 extends number, TNumber2 extends number> = And<
 	? {
 			true: AddPositive<TNumber1, TNumber2>;
 			false: AddNegative<TNumber1, TNumber2>;
-	  }[`${IsPositive<TNumber2>}`]
+		}[`${IsPositive<TNumber2>}`]
 	: number;

@@ -32,7 +32,7 @@ export declare type Omit<
 		? And<
 				Equal<Mode, "deep"> extends true ? true : false,
 				keyof TObject[key] extends keyof TObject ? true : false
-		  > extends true
+			> extends true
 			? Omit<Satisfy<TObject[key], object>, TKey, Mode>
 			: TObject[key]
 		: never;
