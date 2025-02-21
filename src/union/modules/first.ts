@@ -1,7 +1,7 @@
 import type { ToArray } from "@/union";
 
 /**
- * #### Get the first element of an union type `TUnion`
+ * - Get the first element of an union type `TUnion`
  * ---------------------------
  * @example
  * ```tsx
@@ -17,9 +17,5 @@ import type { ToArray } from "@/union";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type First<TUnion> = ToArray<TUnion> extends [
-	infer First,
-	...unknown[],
-]
-	? First
-	: never;
+export declare type First<TUnion> =
+	ToArray<TUnion> extends [infer First, ...unknown[]] ? First : never;

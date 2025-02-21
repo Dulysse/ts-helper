@@ -1,5 +1,5 @@
 /**
- * #### Check if both condition `A` and `B` are true, if it's the case, return `true` else return `false`
+ * - Check if both condition `A` and `B` are true, if it's the case, return `true` else return `false`
  * ---------------------------
  * @example
  * ```tsx

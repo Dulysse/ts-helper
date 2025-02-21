@@ -8,7 +8,7 @@ declare type _ToArray<TUnion, Res extends unknown[] = []> = [
 	: _ToArray<Exclude<TUnion, Last<TUnion>>, [Last<TUnion>, ...Res]>;
 
 /**
- * #### Transform an union type `TUnion` to array with each properties
+ * - Transform an union type `TUnion` to array with each properties
  * ---------------------------
  * @example
  * ```tsx

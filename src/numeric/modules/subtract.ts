@@ -5,23 +5,25 @@ import type { IsValidNumberInput } from "../utils";
 declare type SubtractPositive<
 	TNumber1 extends number,
 	TNumber2 extends number,
-> = IsValidNumberInput<TNumber1> extends true
-	? Equal<TNumber2, 0> extends true
-		? TNumber1
-		: SubtractPositive<Decrement<TNumber1>, Decrement<TNumber2>>
-	: number;
+> =
+	IsValidNumberInput<TNumber1> extends true
+		? Equal<TNumber2, 0> extends true
+			? TNumber1
+			: SubtractPositive<Decrement<TNumber1>, Decrement<TNumber2>>
+		: number;
 
 declare type SubtractNegative<
 	TNumber1 extends number,
 	TNumber2 extends number,
-> = IsValidNumberInput<TNumber1> extends true
-	? Equal<TNumber2, 0> extends true
-		? TNumber1
-		: SubtractNegative<Increment<TNumber1>, Increment<TNumber2>>
-	: number;
+> =
+	IsValidNumberInput<TNumber1> extends true
+		? Equal<TNumber2, 0> extends true
+			? TNumber1
+			: SubtractNegative<Increment<TNumber1>, Increment<TNumber2>>
+		: number;
 
 /**
- * #### Subtract `TNumber2` from `TNumber1`
+ * - Subtract `TNumber2` from `TNumber1`
  * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
@@ -39,12 +41,10 @@ declare type SubtractNegative<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Subtract<
-	TNumber1 extends number,
-	TNumber2 extends number,
-> = And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-	? {
-			true: SubtractPositive<TNumber1, TNumber2>;
-			false: SubtractNegative<TNumber1, TNumber2>;
-		}[`${IsPositive<TNumber2>}`]
-	: number;
+export declare type Subtract<TNumber1 extends number, TNumber2 extends number> =
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
+		? {
+				true: SubtractPositive<TNumber1, TNumber2>;
+				false: SubtractNegative<TNumber1, TNumber2>;
+			}[`${IsPositive<TNumber2>}`]
+		: number;

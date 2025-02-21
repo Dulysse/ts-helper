@@ -1,7 +1,7 @@
 import type { TDefaultArray } from "../utils";
 
 /**
- * #### Get the length of an array type `TArray`
+ * - Get the length of an array type `TArray`
  * ---------------------------
  * @example
  * ```tsx

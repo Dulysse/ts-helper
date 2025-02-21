@@ -1,7 +1,7 @@
 import type { Equal } from "@/operator";
 
 /**
- * #### Check if a number `TNumber` is equal to zero
+ * - Check if a number `TNumber` is equal to zero
  * ---------------------------
  * @example
  * ```tsx
@@ -18,9 +18,5 @@ import type { Equal } from "@/operator";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsZero<TNumber extends number> = Equal<
-	TNumber,
-	0
-> extends true
-	? true
-	: false;
+export declare type IsZero<TNumber extends number> =
+	Equal<TNumber, 0> extends true ? true : false;

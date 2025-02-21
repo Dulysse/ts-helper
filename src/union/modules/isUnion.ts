@@ -2,7 +2,7 @@ import type { Exclude, Last } from "@/union";
 import type { Equal } from "@/operator";
 
 /**
- * #### Check if union type `TUnion` is an union with many choices
+ * - Check if union type `TUnion` is an union with many choices
  * ---------------------------
  * @example
  * ```tsx
@@ -19,9 +19,5 @@ import type { Equal } from "@/operator";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsUnion<TUnion> = Equal<
-	TUnion,
-	Exclude<TUnion, Last<TUnion>>
-> extends false
-	? false
-	: true;
+export declare type IsUnion<TUnion> =
+	Equal<TUnion, Exclude<TUnion, Last<TUnion>>> extends false ? false : true;

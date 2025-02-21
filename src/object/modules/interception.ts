@@ -2,7 +2,7 @@ import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 
 /**
- * #### Get the Interception object type of `TObjectA` and `TObjectB`
+ * - Get the Interception object type of `TObjectA` and `TObjectB`
  * ---------------------------
  * @param Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects

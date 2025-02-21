@@ -3,14 +3,12 @@ import type { Numbers } from "./numbers.map";
 import type { Reverse } from "@/array";
 import type { IsUnion } from "@/union";
 
-export declare type IsValidNumberInput<T extends number> = Or<
-	Equal<T, number>,
-	IsUnion<T>
-> extends true
-	? false
-	: T extends Numbers[number]
-		? true
-		: false;
+export declare type IsValidNumberInput<T extends number> =
+	Or<Equal<T, number>, IsUnion<T>> extends true
+		? false
+		: T extends Numbers[number]
+			? true
+			: false;
 
 export declare type Range = `${Numbers[0]}` extends `-${infer R}` ? R : never;
 

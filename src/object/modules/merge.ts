@@ -2,7 +2,7 @@ import type { And, Satisfy, Equal } from "@/operator";
 import type { ObjectMode } from "../utils";
 
 /**
- * #### Merge type object `TObjectA` with type object `TObjectB`
+ * - Merge type object `TObjectA` with type object `TObjectB`
  * ---------------------------
  * @param Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects

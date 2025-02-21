@@ -5,18 +5,19 @@ declare type _GreaterEq<
 	TNumber1 extends number,
 	TNumber2 extends number,
 	L extends readonly number[] = Numbers,
-> = And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-	? L extends readonly [infer First, ...infer Next]
-		? Equal<First, TNumber1> extends true
-			? Equal<TNumber1, TNumber2>
-			: Equal<First, TNumber2> extends true
-				? true
-				: _GreaterEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
-		: never
-	: boolean;
+> =
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
+		? L extends readonly [infer First, ...infer Next]
+			? Equal<First, TNumber1> extends true
+				? Equal<TNumber1, TNumber2>
+				: Equal<First, TNumber2> extends true
+					? true
+					: _GreaterEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
+			: never
+		: boolean;
 
 /**
- * #### Check if number `TNumber1` is greater than `TNumber2` or equal to `TNumber2`
+ * - Check if number `TNumber1` is greater than `TNumber2` or equal to `TNumber2`
  * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example

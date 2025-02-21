@@ -2,7 +2,7 @@ import type { Split } from "@/string";
 import type { Length } from "@/array";
 
 /**
- * #### Get the length of a string type `TString`
+ * - Get the length of a string type `TString`
  * ---------------------------
  * @example
  * ```tsx

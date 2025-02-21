@@ -2,7 +2,7 @@ import type { Equal, Or } from "@/operator";
 import type { TDefaultArray } from "../utils";
 
 /**
- * #### Check whether an array of type `TArray` is a tuple or not
+ * - Check whether an array of type `TArray` is a tuple or not
  * ---------------------------
  * @example
  * ```tsx
@@ -19,15 +19,16 @@ import type { TDefaultArray } from "../utils";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsTuple<TArray extends TDefaultArray> = Or<
+export declare type IsTuple<TArray extends TDefaultArray> =
 	Or<
-		TArray extends [unknown, ...unknown[]] ? true : false,
-		TArray extends readonly [unknown, ...unknown[]] ? true : false
-	>,
-	Or<
-		Equal<TArray, []> extends true ? true : false,
-		Equal<TArray, readonly []> extends true ? true : false
-	>
-> extends true
-	? true
-	: false;
+		Or<
+			TArray extends [unknown, ...unknown[]] ? true : false,
+			TArray extends readonly [unknown, ...unknown[]] ? true : false
+		>,
+		Or<
+			Equal<TArray, []> extends true ? true : false,
+			Equal<TArray, readonly []> extends true ? true : false
+		>
+	> extends true
+		? true
+		: false;

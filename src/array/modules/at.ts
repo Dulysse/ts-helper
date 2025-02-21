@@ -5,7 +5,7 @@ import type { Length, IsTuple } from "@/array";
 import type { And } from "@/operator";
 
 /**
- * #### Get the element with number `TIndex` from the index of array type `TArray`.
+ * - Get the element with number `TIndex` from the index of array type `TArray`.
  * ---------------------------
  * @example
  * ```tsx
@@ -24,18 +24,16 @@ import type { And } from "@/operator";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type At<
-	TArray extends TDefaultArray,
-	TIndex extends number,
-> = IsTuple<TArray> extends false
-	? TArray[number] | undefined
-	: IsNegative<TIndex> extends true
-		? And<
-				IsValidNumberInput<TIndex>,
-				IsValidNumberInput<Add<Length<TArray>, TIndex>>
-			> extends true
-			? IsNegative<Add<Length<TArray>, TIndex>> extends true
-				? undefined
-				: TArray[Add<Length<TArray>, TIndex>]
-			: TArray[number] | undefined
-		: TArray[TIndex];
+export declare type At<TArray extends TDefaultArray, TIndex extends number> =
+	IsTuple<TArray> extends false
+		? TArray[number] | undefined
+		: IsNegative<TIndex> extends true
+			? And<
+					IsValidNumberInput<TIndex>,
+					IsValidNumberInput<Add<Length<TArray>, TIndex>>
+				> extends true
+				? IsNegative<Add<Length<TArray>, TIndex>> extends true
+					? undefined
+					: TArray[Add<Length<TArray>, TIndex>]
+				: TArray[number] | undefined
+			: TArray[TIndex];

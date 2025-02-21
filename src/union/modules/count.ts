@@ -1,7 +1,7 @@
 import type { ToArray } from "@/union";
 
 /**
- * #### Get an union type `TUnion` length of possibilities
+ * - Get an union type `TUnion` length of possibilities
  * ---------------------------
  * @example
  * ```tsx
@@ -17,8 +17,9 @@ import type { ToArray } from "@/union";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Count<TUnion> = ToArray<TUnion> extends {
-	length: infer Count;
-}
-	? Count
-	: never;
+export declare type Count<TUnion> =
+	ToArray<TUnion> extends {
+		length: infer Count;
+	}
+		? Count
+		: never;

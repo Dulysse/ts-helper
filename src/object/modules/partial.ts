@@ -2,7 +2,7 @@ import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 
 /**
- * #### Make all keys of `TObject` object type partial
+ * - Make all keys of `TObject` object type partial
  * ---------------------------
  * @param Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects

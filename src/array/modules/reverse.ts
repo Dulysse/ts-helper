@@ -4,14 +4,15 @@ import type { UnReadonly, IsTuple } from "@/array";
 declare type _Reverse<
 	TArray extends TDefaultArray,
 	Res extends TDefaultArray = [],
-> = IsTuple<TArray> extends false
-	? TArray
-	: UnReadonly<TArray> extends [...infer Next, infer Last]
-		? _Reverse<Next, [...Res, Last]>
-		: Res;
+> =
+	IsTuple<TArray> extends false
+		? TArray
+		: UnReadonly<TArray> extends [...infer Next, infer Last]
+			? _Reverse<Next, [...Res, Last]>
+			: Res;
 
 /**
- * #### Get a reversed `TArray` array
+ * - Get a reversed `TArray` array
  * ---------------------------
  * @example
  * ```tsx

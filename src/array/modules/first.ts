@@ -2,7 +2,7 @@ import type { TDefaultArray } from "../utils";
 import type { IsTuple } from "@/array";
 
 /**
- * #### Get the `first` element of an array type `TArray`
+ * - Get the `first` element of an array type `TArray`
  * ---------------------------
  * @example
  * ```tsx

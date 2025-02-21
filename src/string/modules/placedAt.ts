@@ -1,7 +1,7 @@
 import type { At } from "@/array";
 import type { Split } from "@/string";
 /**
- * #### Get the string with number `TIndex` from the index of string type `TString`.
+ * - Get the string with number `TIndex` from the index of string type `TString`.
  * ---------------------------
  * @example
  * ```tsx

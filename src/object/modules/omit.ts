@@ -3,7 +3,7 @@ import type { ObjectMode } from "../utils";
 import type { Exclude } from "@/union";
 
 /**
- * #### Omit `TKey` keys from object `TObject`
+ * - Omit `TKey` keys from object `TObject`
  * ---------------------------
  * @param Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects

@@ -4,5 +4,6 @@
 pnpm format:fix
 pnpm lint
 npx tsc
+pnpm check-exports
 pnpm build
 git add .

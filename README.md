@@ -2,7 +2,7 @@
 
 # 🛠 ts-helper 🛠
 
-#### <i>Typescript library for type helpers ✨</i>
+- <i>Typescript library for type helpers ✨</i>
 
 ## Getting Started 🆙
 
@@ -53,7 +53,7 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ### 👉 `Numbers`
 
-#### Check if a number is `positive`
+- Check if a number is `positive`
 
 ```tsx
 import type { Num } from "@dulysse1/ts-helper";
@@ -63,7 +63,7 @@ type B = Num.IsPositive<134>; // true
 type C = Num.IsPositive<0>; // true
 ```
 
-#### Add two numbers
+- Add two numbers
 
 ```tsx
 import type { Num } from "@dulysse1/ts-helper";
@@ -73,7 +73,7 @@ type B = Num.Add<-10, 10>; // 0
 type C = Num.Add<-23, -34>; // -57
 ```
 
-#### Multiply two numbers
+- Multiply two numbers
 
 ```tsx
 import type { Num } from "@dulysse1/ts-helper";
@@ -83,7 +83,7 @@ type B = Num.Multiply<-6, 7>; // -42
 type C = Num.Multiply<234, 783>; // number
 ```
 
-#### Divide two numbers
+- Divide two numbers
 
 ```tsx
 import type { Num } from "@dulysse1/ts-helper";
@@ -95,7 +95,7 @@ type C = Num.Divide<7, 0>; // number
 
 ### 👉 `Object`
 
-#### Get keys of object by an optional filter
+- Get keys of object by an optional filter
 
 ```tsx
 import type { Obj } from "@dulysse1/ts-helper";
@@ -103,7 +103,7 @@ import type { Obj } from "@dulysse1/ts-helper";
 type A = Obj.KeyOf<{ a: string; b: number }, string>; // "a"
 ```
 
-#### Merge two type objects
+- Merge two type objects
 
 ```tsx
 import type { Obj } from "@dulysse1/ts-helper";
@@ -116,7 +116,7 @@ type A = type A = Obj.Merge<
 
 ### 👉 `String`
 
-#### Split a string to array
+- Split a string to array
 
 ```tsx
 import type { Str } from "@dulysse1/ts-helper";
@@ -125,7 +125,7 @@ type A = Str.Split<"coucou">; // ["c", "o", "u", "c", "o", "u"]
 type B = Str.Split<"coucou", "c">; // ["ou", "ou"]
 ```
 
-#### Replace all iteration of one character
+- Replace all iteration of one character
 
 ```tsx
 import type { Str } from "@dulysse1/ts-helper";
@@ -135,7 +135,7 @@ type A = Str.ReplaceAll<"coucou", "c", "x">; // "xouxou"
 
 ### 👉 `Array`
 
-#### Check if array is a `tuple`
+- Check if array is a `tuple`
 
 ```tsx
 import type { Arr } from "@dulysse1/ts-helper";
@@ -144,7 +144,7 @@ type A = Arr.IsTuple<number[]>; // false
 type B = Arr.IsTuple<[1, 2, 3]>; // true
 ```
 
-#### Reverse an array
+- Reverse an array
 
 ```tsx
 import type { Arr } from "@dulysse1/ts-helper";

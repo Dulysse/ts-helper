@@ -4,16 +4,17 @@ import type { IsValidNumberInput, Numbers } from "../utils";
 declare type _Decrement<
 	TNumber extends number,
 	L extends readonly number[] = Numbers,
-> = IsValidNumberInput<TNumber> extends true
-	? L extends readonly [infer First, infer Next, ...infer Rest]
-		? Equal<Next, TNumber> extends true
-			? First
-			: _Decrement<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
-		: never
-	: number;
+> =
+	IsValidNumberInput<TNumber> extends true
+		? L extends readonly [infer First, infer Next, ...infer Rest]
+			? Equal<Next, TNumber> extends true
+				? First
+				: _Decrement<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
+			: never
+		: number;
 
 /**
- * #### Decrement a number `TNumber` of one
+ * - Decrement a number `TNumber` of one
  * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example

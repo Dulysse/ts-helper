@@ -3,7 +3,7 @@ import type { TDefaultArray } from "../utils";
 import type { UnReadonly } from "@/array";
 
 /**
- * #### Check if an array `TArray` type is readonly or not
+ * - Check if an array `TArray` type is readonly or not
  * ---------------------------
  * @example
  * ```tsx

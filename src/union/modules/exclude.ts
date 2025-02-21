@@ -1,5 +1,5 @@
 /**
- * #### Exclude an element of an union type `TUnion`
+ * - Exclude an element of an union type `TUnion`
  * ---------------------------
  * @example
  * ```tsx

@@ -4,16 +4,17 @@ import type { IsValidNumberInput, Numbers } from "../utils";
 declare type _Increment<
 	TNumber extends number,
 	L extends readonly number[] = Numbers,
-> = IsValidNumberInput<TNumber> extends true
-	? L extends readonly [infer First, infer Next, ...infer Rest]
-		? Equal<First, TNumber> extends true
-			? Next
-			: _Increment<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
-		: never
-	: number;
+> =
+	IsValidNumberInput<TNumber> extends true
+		? L extends readonly [infer First, infer Next, ...infer Rest]
+			? Equal<First, TNumber> extends true
+				? Next
+				: _Increment<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
+			: never
+		: number;
 
 /**
- * #### Increment a number `TNumber` of one
+ * - Increment a number `TNumber` of one
  * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example

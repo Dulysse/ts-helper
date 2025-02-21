@@ -1,5 +1,5 @@
 /**
- * #### Check if a number `TNumber` is a negative number
+ * - Check if a number `TNumber` is a negative number
  * ---------------------------
  * @example
  * ```tsx

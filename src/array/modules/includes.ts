@@ -12,7 +12,7 @@ declare type IncludesInTuple<
 	: false;
 
 /**
- * #### Check if `TIncluded` is an element of an array type `TArray`
+ * - Check if `TIncluded` is an element of an array type `TArray`
  * ---------------------------
  * @example
  * ```tsx
@@ -29,13 +29,11 @@ declare type IncludesInTuple<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Includes<
-	TArray extends TDefaultArray,
-	TIncluded,
-> = IsTuple<TArray> extends true
-	? IncludesInTuple<TArray, TIncluded>
-	: Equal<TIncluded, TArray[number]> extends true
-		? true
-		: TIncluded extends TArray[number]
-			? boolean
-			: false;
+export declare type Includes<TArray extends TDefaultArray, TIncluded> =
+	IsTuple<TArray> extends true
+		? IncludesInTuple<TArray, TIncluded>
+		: Equal<TIncluded, TArray[number]> extends true
+			? true
+			: TIncluded extends TArray[number]
+				? boolean
+				: false;

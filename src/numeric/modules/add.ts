@@ -2,26 +2,22 @@ import type { Equal, And } from "@/operator";
 import type { Increment, Decrement, IsPositive } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
-declare type AddPositive<
-	TNumber1 extends number,
-	TNumber2 extends number,
-> = IsValidNumberInput<TNumber1> extends true
-	? Equal<TNumber2, 0> extends true
-		? TNumber1
-		: AddPositive<Increment<TNumber1>, Decrement<TNumber2>>
-	: number;
+declare type AddPositive<TNumber1 extends number, TNumber2 extends number> =
+	IsValidNumberInput<TNumber1> extends true
+		? Equal<TNumber2, 0> extends true
+			? TNumber1
+			: AddPositive<Increment<TNumber1>, Decrement<TNumber2>>
+		: number;
 
-declare type AddNegative<
-	TNumber1 extends number,
-	TNumber2 extends number,
-> = IsValidNumberInput<TNumber1> extends true
-	? Equal<TNumber2, 0> extends true
-		? TNumber1
-		: AddNegative<Decrement<TNumber1>, Increment<TNumber2>>
-	: number;
+declare type AddNegative<TNumber1 extends number, TNumber2 extends number> =
+	IsValidNumberInput<TNumber1> extends true
+		? Equal<TNumber2, 0> extends true
+			? TNumber1
+			: AddNegative<Decrement<TNumber1>, Increment<TNumber2>>
+		: number;
 
 /**
- * #### Add `TNumber2` to `TNumber1`
+ * - Add `TNumber2` to `TNumber1`
  * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
@@ -39,12 +35,10 @@ declare type AddNegative<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Add<TNumber1 extends number, TNumber2 extends number> = And<
-	IsValidNumberInput<TNumber1>,
-	IsValidNumberInput<TNumber2>
-> extends true
-	? {
-			true: AddPositive<TNumber1, TNumber2>;
-			false: AddNegative<TNumber1, TNumber2>;
-		}[`${IsPositive<TNumber2>}`]
-	: number;
+export declare type Add<TNumber1 extends number, TNumber2 extends number> =
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
+		? {
+				true: AddPositive<TNumber1, TNumber2>;
+				false: AddNegative<TNumber1, TNumber2>;
+			}[`${IsPositive<TNumber2>}`]
+		: number;

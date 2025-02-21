@@ -3,7 +3,7 @@ import type { Equal } from "@/operator";
 import type { IsUnion } from "@/union";
 
 /**
- * #### Replace all iteration of the `From` character with the `To` character in the `TString` string type.
+ * - Replace all iteration of the `From` character with the `To` character in the `TString` string type.
  * ---------------------------
  * @example
  * ```tsx
@@ -23,12 +23,13 @@ export declare type ReplaceAll<
 	TString extends string,
 	From extends string,
 	To extends string,
-> = IsExactString<TString> extends true
-	? string
-	: IsUnion<TString> extends true
-		? TString extends Replace<TString, From, To>
-			? TString
-			: ReplaceAll<Replace<TString, From, To>, From, To>
-		: Equal<Replace<TString, From, To>, TString> extends true
-			? TString
-			: ReplaceAll<Replace<TString, From, To>, From, To>;
+> =
+	IsExactString<TString> extends true
+		? string
+		: IsUnion<TString> extends true
+			? TString extends Replace<TString, From, To>
+				? TString
+				: ReplaceAll<Replace<TString, From, To>, From, To>
+			: Equal<Replace<TString, From, To>, TString> extends true
+				? TString
+				: ReplaceAll<Replace<TString, From, To>, From, To>;

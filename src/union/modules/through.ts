@@ -2,7 +2,7 @@ import type { At } from "@/array";
 import type { ToArray } from "@/union";
 
 /**
- * #### Get the element with number `TIndex` from the index of union type `TUnion`.
+ * - Get the element with number `TIndex` from the index of union type `TUnion`.
  * ---------------------------
  * @example
  * ```tsx

@@ -6,22 +6,23 @@ declare type _Join<
 	TArray extends TDefaultArray,
 	TSeparator extends string = TDefaultArraySeparator,
 	TResult extends string = "",
-> = IsTuple<TArray> extends true
-	? Equal<TArray, []> extends true
-		? TResult
-		: TArray extends [infer First, ...infer Next]
-			? _Join<
-					Next,
-					TSeparator,
-					`${TResult}${Stringify<First, TSeparator>}${Equal<
+> =
+	IsTuple<TArray> extends true
+		? Equal<TArray, []> extends true
+			? TResult
+			: TArray extends [infer First, ...infer Next]
+				? _Join<
 						Next,
-						[]
-					> extends true
-						? ""
-						: TSeparator}`
-				>
-			: never
-	: string;
+						TSeparator,
+						`${TResult}${Stringify<First, TSeparator>}${Equal<
+							Next,
+							[]
+						> extends true
+							? ""
+							: TSeparator}`
+					>
+				: never
+		: string;
 
 declare type Stringify<
 	T,
@@ -35,7 +36,7 @@ declare type Stringify<
 			: `${Satisfy<T, string | number | bigint | boolean>}`;
 
 /**
- * #### Join all element of an array `TArray` type with `TSeparator` for each element
+ * - Join all element of an array `TArray` type with `TSeparator` for each element
  * ---------------------------
  * @example
  * ```tsx

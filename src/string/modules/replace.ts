@@ -1,7 +1,7 @@
 import type { IsExactString } from "@/string";
 
 /**
- * #### Replace the first iteration of the `From` character with the `To` character in the `TString` string type.
+ * - Replace the first iteration of the `From` character with the `To` character in the `TString` string type.
  * ---------------------------
  * @example
  * ```tsx
@@ -21,8 +21,9 @@ export declare type Replace<
 	TString extends string,
 	From extends string,
 	To extends string,
-> = IsExactString<TString> extends true
-	? string
-	: TString extends `${infer Before}${From}${infer After}`
-		? `${Before}${To}${After}`
-		: TString;
+> =
+	IsExactString<TString> extends true
+		? string
+		: TString extends `${infer Before}${From}${infer After}`
+			? `${Before}${To}${After}`
+			: TString;

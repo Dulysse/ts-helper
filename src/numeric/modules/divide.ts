@@ -15,25 +15,27 @@ declare type DividePositive<
 	TNumber2 extends number,
 	Result extends number = 1,
 	Rest extends number = Subtract<TNumber1, TNumber2>,
-> = And<IsValidNumberInput<TNumber1>, IsValidNumberInput<Result>> extends true
-	? IsZero<Rest> extends true
-		? Result
-		: DividePositive<Rest, TNumber2, Increment<Result>>
-	: number;
+> =
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<Result>> extends true
+		? IsZero<Rest> extends true
+			? Result
+			: DividePositive<Rest, TNumber2, Increment<Result>>
+		: number;
 
 declare type DivideNegative<
 	TNumber1 extends number,
 	TNumber2 extends number,
 	Result extends number = -1,
 	Rest extends number = Add<TNumber1, TNumber2>,
-> = And<IsValidNumberInput<TNumber1>, IsValidNumberInput<Result>> extends true
-	? IsZero<Rest> extends true
-		? Result
-		: DivideNegative<Rest, TNumber2, Decrement<Result>>
-	: number;
+> =
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<Result>> extends true
+		? IsZero<Rest> extends true
+			? Result
+			: DivideNegative<Rest, TNumber2, Decrement<Result>>
+		: number;
 
 /**
- * #### Divide `TNumber1` by `TNumber2`
+ * - Divide `TNumber1` by `TNumber2`
  * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
@@ -52,22 +54,20 @@ declare type DivideNegative<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Divide<
-	TNumber1 extends number,
-	TNumber2 extends number,
-> = And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-	? IsZero<TNumber1> extends true
-		? 0
-		: IsZero<TNumber2> extends true
-			? number // Infinity
-			: {
-					true: {
-						true: DividePositive<TNumber1, TNumber2>;
-						false: DivideNegative<TNumber1, TNumber2>;
-					};
-					false: {
-						true: DivideNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
-						false: DividePositive<Opposite<TNumber1>, Opposite<TNumber2>>;
-					};
-				}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
-	: number;
+export declare type Divide<TNumber1 extends number, TNumber2 extends number> =
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
+		? IsZero<TNumber1> extends true
+			? 0
+			: IsZero<TNumber2> extends true
+				? number // Infinity
+				: {
+						true: {
+							true: DividePositive<TNumber1, TNumber2>;
+							false: DivideNegative<TNumber1, TNumber2>;
+						};
+						false: {
+							true: DivideNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
+							false: DividePositive<Opposite<TNumber1>, Opposite<TNumber2>>;
+						};
+					}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
+		: number;

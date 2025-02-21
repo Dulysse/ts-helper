@@ -1,5 +1,5 @@
 /**
- * #### Get a readonly `TArray` array as writable
+ * - Get a readonly `TArray` array as writable
  * ---------------------------
  * @example
  * ```tsx

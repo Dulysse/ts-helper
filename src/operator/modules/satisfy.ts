@@ -1,5 +1,5 @@
 /**
- * #### Check if `A` is satisfying `B`, if it's the case, return `A` else `B`
+ * - Check if `A` is satisfying `B`, if it's the case, return `A` else `B`
  * ---------------------------
  * @example
  * ```tsx
