@@ -1,6 +1,6 @@
 {
 	"name": "@dulysse1/ts-helper",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Typescript library for typing helpers ✨",
 	"main": "dist/index.mjs",
 	"types": "dist/index.d.mts",
