@@ -6,11 +6,11 @@
  * ```tsx
  * import type { Any } from "@dulysse1/ts-helper";
  *
- * declare type IAnyFunction = (...args: Any.StrictAny[]) => Any.StrictAny; // "right way !"
- * const name: Any.StrictAny = {} // "wrong way !"
+ * declare type IAnyFunction = (...args: Any.Strict[]) => Any.Strict; // "right way !"
+ * const name: Any.Strict = {} // "wrong way !"
  * ```
  * ---------------------------
- * Do you have any questions about {@link StrictAny} usage ?
+ * Do you have any questions about {@link Strict} usage ?
  * ### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
@@ -18,4 +18,4 @@
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export declare type StrictAny = any;
+export declare type Strict = any;

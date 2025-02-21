@@ -1,4 +1,4 @@
-import { StrictAny } from "@/any";
+import { Strict } from "@/any";
 import { Equal } from "@/operator";
 
 /**
@@ -19,4 +19,4 @@ import { Equal } from "@/operator";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Is<T> = boolean extends Equal<T, StrictAny> ? false : true;
+export declare type Is<T> = boolean extends Equal<T, Strict> ? false : true;

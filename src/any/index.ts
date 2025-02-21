@@ -1,9 +1,9 @@
-import type { StrictAny } from "./modules/strict";
+import type { Strict } from "./modules/strict";
 import type { Is } from "./modules/is";
 
 /**
  * ### ✨ List of `ts-helper` any types ✨:
- * - {@link StrictAny}
+ * - {@link Strict}
  * - {@link Is}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
@@ -14,8 +14,8 @@ import type { Is } from "./modules/is";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Any {
-	export { StrictAny };
+	export { Strict };
 	export { Is };
 }
 
-export { StrictAny, Is };
+export { Strict, Is };

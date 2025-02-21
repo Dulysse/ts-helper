@@ -1,4 +1,4 @@
-![https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.png](https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.png)
+![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/logo.svg](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/logo.svg)
 
 # 🛠 ts-helper 🛠
 
@@ -150,6 +150,16 @@ type B = Arr.IsTuple<[1, 2, 3]>; // true
 import type { Arr } from "@dulysse1/ts-helper";
 
 type A = Arr.Reverse<[1, 2, 3]>; // [3, 2, 1]
+```
+
+### 👉 `Any`
+
+- Use a strict any type : The only valid way to use `any` as type. it's provide you to override the default eslint `@typescript-eslint/no-explicit-any` rule. But be careful ! Don't use this type in your code for bad reasons.
+
+```tsx
+declare type IAnyFunction = (...args: Any.Strict[]) => Any.Strict; // "right way !"
+
+const name: Any.Strict = {}; // "wrong way !"
 ```
 
 ### And many more besides! 😲
