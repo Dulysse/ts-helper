@@ -19,7 +19,7 @@ import type { IntersectOf } from "../utils";
  */
 export declare type Last<TUnion> =
 	IntersectOf<TUnion extends unknown ? (x: TUnion) => void : never> extends (
-		x: infer P
+		x: infer P,
 	) => void
 		? P
 		: never;

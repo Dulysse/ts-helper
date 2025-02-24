@@ -10,6 +10,7 @@
 	"semi": true,
 	"singleQuote": false,
 	"tabWidth": 2,
-	"trailingComma": "es5",
-	"useTabs": true
+	"trailingComma": "all",
+	"useTabs": true,
+	"endOfLine": "lf"
 }

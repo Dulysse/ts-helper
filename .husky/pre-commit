@@ -1,9 +1,6 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 pnpm format:fix
 pnpm lint
 npx tsc
-pnpm check-exports
 pnpm build
+pnpm check-exports
 git add .

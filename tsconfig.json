@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"lib": ["ESNext"],
+		"lib": ["ES2022"],
+		"module": "Preserve",
+		"target": "ES2022",
 		"allowJs": false,
 		"outDir": "dist",
 		"rootDir": "src",
@@ -27,6 +27,5 @@
 		"strictNullChecks": true,
 		"incremental": false
 	},
-	"include": ["src/**/*"],
-	"exclude": ["dist/**/*"]
+	"include": ["src"]
 }

@@ -2,14 +2,12 @@
 	"name": "@dulysse1/ts-helper",
 	"version": "1.0.2",
 	"description": "Typescript library for typing helpers ✨",
-	"main": "dist/index.mjs",
-	"types": "dist/index.d.mts",
 	"files": [
 		"dist"
 	],
 	"engines": {
-		"node": ">=18",
-		"pnpm": ">=8"
+		"node": ">=20",
+		"pnpm": ">=9"
 	},
 	"scripts": {
 		"build": "tsup",
@@ -34,24 +32,38 @@
 	],
 	"author": {
 		"name": "Ulysse Dupont",
-		"url": "https://github.com/dulysse"
+		"url": "https://github.com/dulysse",
+		"email": "ulyssedupont2707@gmail.com"
 	},
 	"repository": {
 		"url": "https://github.com/Dulysse/ts-helper",
 		"type": "public"
 	},
+	"bugs": {
+		"url": "https://github.com/Dulysse/ts-helper/issues"
+	},
+	"type": "module",
+	"homepage": "https://github.com/Dulysse/ts-helper/blob/master/README.md",
+	"exports": {
+		"./package.json": "./package.json",
+		".": {
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"main": "./dist/index.js",
 	"private": false,
 	"license": "ISC",
 	"devDependencies": {
-		"@arethetypeswrong/cli": "^0.17.3",
-		"@types/node": "^20.17.19",
-		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"eslint": "^8.57.1",
-		"eslint-config-prettier": "^9.1.0",
+		"@arethetypeswrong/cli": "^0.17.4",
+		"@eslint/js": "^9.21.0",
+		"eslint": "^9.21.0",
 		"eslint-plugin-prettier": "^5.2.3",
-		"husky": "^8.0.3",
-		"prettier": "^3.5.1",
+		"globals": "^16.0.0",
+		"husky": "^9.1.7",
+		"prettier": "^3.5.2",
 		"tsup": "^8.3.6",
-		"typescript": "^5.7.3"
+		"typescript": "^5.7.3",
+		"typescript-eslint": "^8.24.1"
 	}
 }
