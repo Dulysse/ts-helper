@@ -14,6 +14,7 @@ import type { Between } from "./modules/between";
 import type { IsZero } from "./modules/isZero";
 import type { Multiply } from "./modules/multiply";
 import type { Divide } from "./modules/divide";
+import type { Eval } from "./modules/eval";
 
 /**
  * ### ✨ List of `ts-helper` numeric types ✨:
@@ -33,6 +34,7 @@ import type { Divide } from "./modules/divide";
  * - {@link IsZero}
  * - {@link Multiply}*
  * - {@link Divide}*
+ * - {@link Eval}*
  * ---------------------------
  * #- * ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
@@ -61,6 +63,7 @@ export declare namespace Num {
 		IsZero,
 		Multiply,
 		Divide,
+		Eval,
 	};
 }
 
@@ -81,4 +84,5 @@ export {
 	IsZero,
 	Multiply,
 	Divide,
+	Eval,
 };

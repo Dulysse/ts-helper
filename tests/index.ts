@@ -1,9 +1,6 @@
-import type { Num, Union, Any } from "../dist/index.mjs";
+import type { Num } from "../dist";
 
-function divide<A extends number, B extends number>(a: A, b: B) {
-	return (a * b) as Num.Divide<A, B>;
-}
+declare function eval<T extends string>(value: T): Num.Eval<T>;
 
-const result = divide(150, 3);
-
-type a = Any.Is<"any">; // false
+const result = eval("3*(4-2) + 15");
+//     ^?
