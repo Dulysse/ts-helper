@@ -6,58 +6,19 @@ import type { ToArray } from "@/union";
 declare type PriorityOperator = "*" | "/";
 declare type AdditiveOperator = "+" | "-";
 declare type Operator = PriorityOperator | AdditiveOperator;
-
 declare type Calculation = `${number}${Operator}${number}`;
+declare type EvaluationFailed = unknown;
+declare type AllowedEvaluateChar = `${number | Operator | "(" | ")" | " "}`;
 
-declare type Calculate<T extends string> =
-	T extends `${infer First extends number}*${infer Second extends number}`
-		? Multiply<First, Second>
-		: T extends `${infer First extends number}/${infer Second extends number}`
-			? Divide<First, Second>
-			: T extends `${infer First extends number}+${infer Second extends number}`
-				? Add<First, Second>
-				: T extends `${infer First extends number}-${infer Second extends number}`
-					? Subtract<First, Second>
-					: number;
+declare type IsAllowedCharacter<C extends string> =
+	C extends AllowedEvaluateChar ? true : false;
 
-declare type Evaluate<T extends string> =
-	T extends `${infer First}(${infer Priority})${infer Second}` // Check priority calculation
-		? Evaluate<`${First extends `${string}${Operator}` | "" ? First : `${First}*`}${Evaluate<Priority>}${Second extends `${Operator}${string}` | "" ? Second : `*${Second}`}`>
-		: T extends `-${Calculation}` // Check negative simple calculation
-			? Calculate<T>
-			: T extends `${Calculation}` // Check positive simple calculation
-				? Calculate<T>
-				: T extends `${infer Head}${PriorityOperator}${infer Rest}` // then, Check multiple calculation with priority operator "*" and "/"
-					? T extends `${Head}${infer Op}${Super<Rest>}`
-						? T extends `${infer _Head}${Op}${PickFirstNumber<Super<Rest>>}${infer _Rest}`
-							? T extends `${infer __Head}${PickLastNumber<_Head>}${Op}${PickFirstNumber<Super<Rest>>}${_Rest}`
-								? Evaluate<`${__Head}${Calculate<`${PickLastNumber<_Head>}${Op}${PickFirstNumber<Super<Rest>>}`>}${_Rest}`>
-								: never
-							: never
-						: never
-					: T extends `-${infer Head}${AdditiveOperator}${infer Rest}` // finally resolve negative additional operators
-						? T extends `-${Head}${infer Op}${Super<Rest>}`
-							? T extends `-${infer _Head}${Op}${Super<Rest>}`
-								? T extends `-${_Head}${Op}${infer _Rest}`
-									? T extends `-${_Head}${Op}${PickFirstNumber<_Rest>}${infer __Rest}`
-										? Evaluate<`${Calculate<`-${_Head}${Op}${PickFirstNumber<_Rest>}`>}${__Rest}`>
-										: never
-									: never
-								: never
-							: never
-						: T extends `${infer Head}${AdditiveOperator}${infer Rest}` // finally resolve positive additional operators
-							? T extends `${Head}${infer Op}${Super<Rest>}`
-								? T extends `${infer _Head}${Op}${Super<Rest>}`
-									? T extends `${_Head}${Op}${infer _Rest}`
-										? T extends `${_Head}${Op}${PickFirstNumber<_Rest>}${infer __Rest}`
-											? Evaluate<`${Calculate<`${_Head}${Op}${PickFirstNumber<_Rest>}`>}${__Rest}`>
-											: never
-										: never
-									: never
-								: never
-							: T extends `${infer Result extends number}`
-								? Result
-								: number;
+declare type CheckCharacters<T extends string> =
+	T extends `${infer First}${infer Rest}`
+		? IsAllowedCharacter<First> extends true
+			? CheckCharacters<Rest>
+			: false
+		: true;
 
 declare type PickFirstNumber<T extends string> =
 	T extends `${infer Char}${infer Rest}`
@@ -110,6 +71,56 @@ declare type SuperElement<
 
 declare type Super<T> = SuperElement<Satisfy<ToArray<T>, string[]>>;
 
+declare type Calculate<T extends string> =
+	T extends `${infer First extends number}*${infer Second extends number}`
+		? Multiply<First, Second>
+		: T extends `${infer First extends number}/${infer Second extends number}`
+			? Divide<First, Second>
+			: T extends `${infer First extends number}+${infer Second extends number}`
+				? Add<First, Second>
+				: T extends `${infer First extends number}-${infer Second extends number}`
+					? Subtract<First, Second>
+					: number;
+
+declare type Evaluate<T extends string> =
+	T extends `${infer First}(${infer Priority})${infer Second}` // Check priority calculation
+		? Evaluate<`${First extends `${string}${Operator}` | "" ? First : `${First}*`}${Satisfy<Evaluate<Priority>, number>}${Second extends `${Operator}${string}` | "" ? Second : `*${Second}`}`>
+		: T extends `-${Calculation}` // Check negative simple calculation
+			? Calculate<T>
+			: T extends `${Calculation}` // Check positive simple calculation
+				? Calculate<T>
+				: T extends `${infer Head}${PriorityOperator}${infer Rest}` // then, Check multiple calculation with priority operator "*" and "/"
+					? T extends `${Head}${infer Op}${Super<Rest>}`
+						? T extends `${infer _Head}${Op}${PickFirstNumber<Super<Rest>>}${infer _Rest}`
+							? T extends `${infer __Head}${PickLastNumber<_Head>}${Op}${PickFirstNumber<Super<Rest>>}${_Rest}`
+								? Evaluate<`${__Head}${Calculate<`${PickLastNumber<_Head>}${Op}${PickFirstNumber<Super<Rest>>}`>}${_Rest}`>
+								: EvaluationFailed
+							: EvaluationFailed
+						: EvaluationFailed
+					: T extends `-${infer Head}${AdditiveOperator}${infer Rest}` // finally resolve negative additional operators
+						? T extends `-${Head}${infer Op}${Super<Rest>}`
+							? T extends `-${infer _Head}${Op}${Super<Rest>}`
+								? T extends `-${_Head}${Op}${infer _Rest}`
+									? T extends `-${_Head}${Op}${PickFirstNumber<_Rest>}${infer __Rest}`
+										? Evaluate<`${Calculate<`-${_Head}${Op}${PickFirstNumber<_Rest>}`>}${__Rest}`>
+										: EvaluationFailed
+									: EvaluationFailed
+								: EvaluationFailed
+							: EvaluationFailed
+						: T extends `${infer Head}${AdditiveOperator}${infer Rest}` // finally resolve positive additional operators
+							? T extends `${Head}${infer Op}${Super<Rest>}`
+								? T extends `${infer _Head}${Op}${Super<Rest>}`
+									? T extends `${_Head}${Op}${infer _Rest}`
+										? T extends `${_Head}${Op}${PickFirstNumber<_Rest>}${infer __Rest}`
+											? Evaluate<`${Calculate<`${_Head}${Op}${PickFirstNumber<_Rest>}`>}${__Rest}`>
+											: EvaluationFailed
+										: EvaluationFailed
+									: EvaluationFailed
+								: EvaluationFailed
+							: T extends `${infer Result extends number}`
+								? Result
+								: EvaluationFailed;
+
 /**
  * Type-safe evaluation of mathematical expressions represented as string literals.
  * This type allows you to calculate the result of the expression at compile time.
@@ -131,4 +142,7 @@ declare type Super<T> = SuperElement<Satisfy<ToArray<T>, string[]>>;
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Eval<T extends string> = Evaluate<ReplaceAll<T, " ", "">>;
+export declare type Eval<T extends string> =
+	CheckCharacters<T> extends true
+		? Evaluate<ReplaceAll<T, " ", "">>
+		: EvaluationFailed;
