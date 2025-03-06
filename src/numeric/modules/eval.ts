@@ -1,12 +1,11 @@
-import type { Last } from "@/array";
 import type { Add, Multiply, Divide, Subtract } from "@/numeric";
 import type { Satisfy } from "@/operator";
-import type { ReplaceAll, Split } from "@/string";
+import type { ReplaceAll } from "@/string";
 import type { ToArray } from "@/union";
 
-declare type Operator = "+" | "-" | "*" | "/";
-
-declare type _PriorityOperator = "*" | "/"; // TODO: add priority operator
+declare type PriorityOperator = "*" | "/";
+declare type AdditiveOperator = "+" | "-";
+declare type Operator = PriorityOperator | AdditiveOperator;
 
 declare type Calculation = `${number}${Operator}${number}`;
 
@@ -21,28 +20,70 @@ declare type Calculate<T extends string> =
 					? Subtract<First, Second>
 					: number;
 
-declare type _Eval<T extends string> =
+declare type Evaluate<T extends string> =
 	T extends `${infer First}(${infer Priority})${infer Second}` // Check priority calculation
-		? _Eval<`${First}${_Eval<Priority>}${Second}`>
+		? Evaluate<`${First extends `${string}${Operator}` | "" ? First : `${First}*`}${Evaluate<Priority>}${Second extends `${Operator}${string}` | "" ? Second : `*${Second}`}`>
 		: T extends `-${Calculation}` // Check negative simple calculation
 			? Calculate<T>
 			: T extends `${Calculation}` // Check positive simple calculation
 				? Calculate<T>
-				: T extends `-${Calculation}${Operator}${infer Next}` // Check negative multiple calculation
-					? T extends `${infer Prefix}${MainString<Satisfy<ToArray<Next>, string[]>>}`
-						? T extends `${infer FirstCalculation}${Last<Split<Prefix>>}${MainString<Satisfy<ToArray<Next>, string[]>>}`
-							? _Eval<`${Calculate<FirstCalculation>}${Last<Split<Prefix>>}${MainString<Satisfy<ToArray<Next>, string[]>>}`>
-							: never
-						: never
-					: T extends `${Calculation}${Operator}${infer Next}` // Check positive multiple calculation
-						? T extends `${infer Prefix}${MainString<Satisfy<ToArray<Next>, string[]>>}`
-							? T extends `${infer FirstCalculation}${Last<Split<Prefix>>}${MainString<Satisfy<ToArray<Next>, string[]>>}`
-								? _Eval<`${Calculate<FirstCalculation>}${Last<Split<Prefix>>}${MainString<Satisfy<ToArray<Next>, string[]>>}`>
+				: T extends `${infer Head}${PriorityOperator}${infer Rest}` // then, Check multiple calculation with priority operator "*" and "/"
+					? T extends `${Head}${infer Op}${Super<Rest>}`
+						? T extends `${infer _Head}${Op}${PickFirstNumber<Super<Rest>>}${infer _Rest}`
+							? T extends `${infer __Head}${PickLastNumber<_Head>}${Op}${PickFirstNumber<Super<Rest>>}${_Rest}`
+								? Evaluate<`${__Head}${Calculate<`${PickLastNumber<_Head>}${Op}${PickFirstNumber<Super<Rest>>}`>}${_Rest}`>
 								: never
 							: never
-						: T extends `${infer Result extends number}`
-							? Result
-							: number;
+						: never
+					: T extends `-${infer Head}${AdditiveOperator}${infer Rest}` // finally resolve negative additional operators
+						? T extends `-${Head}${infer Op}${Super<Rest>}`
+							? T extends `-${infer _Head}${Op}${Super<Rest>}`
+								? T extends `-${_Head}${Op}${infer _Rest}`
+									? T extends `-${_Head}${Op}${PickFirstNumber<_Rest>}${infer __Rest}`
+										? Evaluate<`${Calculate<`-${_Head}${Op}${PickFirstNumber<_Rest>}`>}${__Rest}`>
+										: never
+									: never
+								: never
+							: never
+						: T extends `${infer Head}${AdditiveOperator}${infer Rest}` // finally resolve positive additional operators
+							? T extends `${Head}${infer Op}${Super<Rest>}`
+								? T extends `${infer _Head}${Op}${Super<Rest>}`
+									? T extends `${_Head}${Op}${infer _Rest}`
+										? T extends `${_Head}${Op}${PickFirstNumber<_Rest>}${infer __Rest}`
+											? Evaluate<`${Calculate<`${_Head}${Op}${PickFirstNumber<_Rest>}`>}${__Rest}`>
+											: never
+										: never
+									: never
+								: never
+							: T extends `${infer Result extends number}`
+								? Result
+								: number;
+
+declare type PickFirstNumber<T extends string> =
+	T extends `${infer Char}${infer Rest}`
+		? Char extends "-"
+			? `-${ExtractNumber<Rest>}`
+			: Char extends Operator
+				? PickFirstNumber<Rest>
+				: `${Char}${ExtractNumber<Rest>}`
+		: never;
+
+declare type ExtractNumber<T extends string> =
+	T extends `${infer Char}${infer Rest}`
+		? Char extends Operator
+			? ""
+			: `${Char}${ExtractNumber<Rest>}`
+		: "";
+
+declare type ReverseString<
+	T extends string,
+	R extends string = "",
+> = T extends `${infer F}${infer Rest}` ? ReverseString<Rest, `${F}${R}`> : R;
+
+declare type PickLastNumber<T extends string> =
+	PickFirstNumber<ReverseString<T>> extends `${infer RevNumber}`
+		? ReverseString<RevNumber>
+		: never;
 
 declare type IsSubstring<
 	A extends string,
@@ -52,20 +93,22 @@ declare type IsSubstring<
 declare type IsSubstringOfAny<
 	T extends string,
 	U extends string[],
-> = U extends [infer First extends string, ...infer Next extends string[]]
+> = U extends [infer First extends string, ...infer Rest extends string[]]
 	? IsSubstring<First, T> extends true
 		? true
-		: IsSubstringOfAny<T, Next>
+		: IsSubstringOfAny<T, Rest>
 	: false;
 
-declare type MainString<
+declare type SuperElement<
 	T extends string[],
 	U extends string[] = T,
-> = T extends [infer First extends string, ...infer Next extends string[]]
-	? IsSubstringOfAny<First, Next> extends true
-		? MainString<Next, U>
+> = T extends [infer First extends string, ...infer Rest extends string[]]
+	? IsSubstringOfAny<First, Rest> extends true
+		? SuperElement<Rest, U>
 		: First
 	: never;
+
+declare type Super<T> = SuperElement<Satisfy<ToArray<T>, string[]>>;
 
 /**
  * Type-safe evaluation of mathematical expressions represented as string literals.
@@ -88,4 +131,4 @@ declare type MainString<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Eval<T extends string> = _Eval<ReplaceAll<T, " ", "">>;
+export declare type Eval<T extends string> = Evaluate<ReplaceAll<T, " ", "">>;

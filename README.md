@@ -53,6 +53,10 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ### 👉 `Numbers`
 
+- New feature since version `1.1.1`! Eval function return type for calculation 🤯
+
+![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/eval.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/eval.png)
+
 - Check if a number is `positive`
 
 ```tsx
