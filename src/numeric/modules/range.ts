@@ -22,7 +22,7 @@ export declare type DescRange<
 
 /**
  * - Create an array of a range between two numbers `TNumber1` and `TNumber2`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -32,7 +32,7 @@ export declare type DescRange<
  * ```
  * ---------------------------
  * Do you have any questions about {@link Range} usage ?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

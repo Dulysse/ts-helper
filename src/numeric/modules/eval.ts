@@ -124,19 +124,22 @@ declare type Evaluate<T extends string> =
 /**
  * Type-safe evaluation of mathematical expressions represented as string literals.
  * This type allows you to calculate the result of the expression at compile time.
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
  *
  * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  * // good syntaxe
- * type A = Num.Eval<"3*(4+1)">; // 15
+ * type A = Num.Eval<"3*(4+1) - 1">; // 14
  * // bad syntaxe
- * type B = Num.Eval<"2dzjedkz">; // number
+ * type B = Num.Eval<"2dzjedkz">; // unknown
+ * // value too big
+ * type B = Num.Eval<"476+382838">; // number
  * ```
  * ---------------------------
  * Do you have any questions about {@link Eval} usage ?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

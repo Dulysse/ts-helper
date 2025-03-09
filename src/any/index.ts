@@ -2,12 +2,12 @@ import type { Strict } from "./modules/strict";
 import type { Is } from "./modules/is";
 
 /**
- * ### ✨ List of `ts-helper` any types ✨:
+ * #### ✨ List of `ts-helper` any types ✨:
  * - {@link Strict}
  * - {@link Is}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

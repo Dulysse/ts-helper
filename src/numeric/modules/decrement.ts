@@ -15,7 +15,7 @@ declare type _Decrement<
 
 /**
  * - Decrement a number `TNumber` of one
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -25,7 +25,7 @@ declare type _Decrement<
  * ```
  * ---------------------------
  * Do you have any questions about {@link Decrement} usage ?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

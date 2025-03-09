@@ -6,7 +6,7 @@ import type { ReplaceAll } from "./modules/replaceAll";
 import type { PlacedAt } from "./modules/placedAt";
 
 /**
- * ### ✨ List of `ts-helper` string types ✨:
+ * #### ✨ List of `ts-helper` string types ✨:
  * - {@link IsExactString}
  * - {@link Split}
  * - {@link Width}
@@ -15,7 +15,7 @@ import type { PlacedAt } from "./modules/placedAt";
  * - {@link PlacedAt}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)
