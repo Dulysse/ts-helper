@@ -18,7 +18,7 @@ export declare type _LowerEq<
 
 /**
  * - Check if number `TNumber1` is lower than `TNumber2` or equal to `TNumber2`
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -29,7 +29,7 @@ export declare type _LowerEq<
  * ```
  * ---------------------------
  * Do you have any questions about {@link LowerEq} usage ?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

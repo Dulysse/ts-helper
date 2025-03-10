@@ -16,7 +16,7 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
 
 /**
  * - Check if a number `TNumber` is a negative number
- * ### ⚠️ Returns an absolute result for numbers in the interval `[-200; 200]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -27,7 +27,7 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
  * ```
  * ---------------------------
  * Do you have any questions about {@link Opposite} usage ?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

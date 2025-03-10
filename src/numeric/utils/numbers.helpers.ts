@@ -10,7 +10,9 @@ export declare type IsValidNumberInput<T extends number> =
 			? true
 			: false;
 
-export declare type Range = `${Numbers[0]}` extends `-${infer R}` ? R : never;
+export declare type Range = `${Numbers[0]}` extends `-${infer R extends number}`
+	? R
+	: never;
 
 export declare type IndexOf<
 	TNumber extends number,

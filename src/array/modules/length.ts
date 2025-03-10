@@ -11,7 +11,7 @@ import type { TDefaultArray } from "../utils";
  * ```
  * ---------------------------
  * Do you have any questions about {@link Length} usage ?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

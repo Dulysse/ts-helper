@@ -6,7 +6,7 @@ import type { Partial } from "./modules/partial";
 import type { Required } from "./modules/required";
 
 /**
- * ### ✨ List of `ts-helper` object types ✨:
+ * #### ✨ List of `ts-helper` object types ✨:
  * - {@link Merge}
  * - {@link KeyOf}
  * - {@link Interception}
@@ -15,7 +15,7 @@ import type { Required } from "./modules/required";
  * - {@link Required}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)

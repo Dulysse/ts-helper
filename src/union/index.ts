@@ -8,7 +8,7 @@ import type { Through } from "./modules/through";
 import type { Has } from "./modules/has";
 
 /**
- * ### ✨ List of `ts-helper` union types ✨:
+ * #### ✨ List of `ts-helper` union types ✨:
  * - {@link Last}
  * - {@link Exclude}
  * - {@link ToArray}
@@ -19,7 +19,7 @@ import type { Has } from "./modules/has";
  * - {@link Has}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
- * ### Contact me!
+ * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)
