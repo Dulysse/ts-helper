@@ -53,6 +53,8 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ### 👉 `Numbers`
 
+- ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+
 - New feature since version `1.1.1`! Eval function return type for calculation 🤯
 
 ![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/eval.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/eval.png)
@@ -95,6 +97,16 @@ import type { Num } from "@dulysse1/ts-helper";
 type A = Num.Divide<20, 10>; // 2
 type B = Num.Divide<0, 7>; // 0
 type C = Num.Divide<7, 0>; // number
+```
+
+- Get the factorial of one number
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.Factorial<0>; // 1
+type B = Num.Factorial<-3>; // -6
+type C = Num.Factorial<5>; // 120
 ```
 
 ### 👉 `Object`

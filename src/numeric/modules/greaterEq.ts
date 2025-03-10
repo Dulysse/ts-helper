@@ -18,7 +18,7 @@ declare type _GreaterEq<
 
 /**
  * - Check if number `TNumber1` is greater than `TNumber2` or equal to `TNumber2`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

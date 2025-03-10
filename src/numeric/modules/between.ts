@@ -4,7 +4,7 @@ import type { LowerEq, GreaterEq } from "@/numeric";
 
 /**
  * - Check if type `TNumber` is between `From` and `To` numbers
- * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

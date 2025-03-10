@@ -124,7 +124,7 @@ declare type Evaluate<T extends string> =
 /**
  * Type-safe evaluation of mathematical expressions represented as string literals.
  * This type allows you to calculate the result of the expression at compile time.
- * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  *
  * ---------------------------
  * @example

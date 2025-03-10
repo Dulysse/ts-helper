@@ -12,11 +12,9 @@ declare type _Factorial<TNumber extends number> =
 		? 1
 		: Multiply<TNumber, _Factorial<Decrement<TNumber>>>;
 
-type result = Factorial<5>;
-//    ^?
 /**
  * Get the factorial value of `TNumber`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -24,7 +22,7 @@ type result = Factorial<5>;
  *
  * type A = Num.Factorial<0>; // 1
  * type B = Num.Factorial<5>; // 120
- * type C = Num.Factorial<-5>; // -120
+ * type C = Num.Factorial<-3>; // -6
  * ```
  * ---------------------------
  * Do you have any questions about {@link Factorial} usage ?

@@ -1,5 +1,5 @@
-pnpm format:fix
-# pnpm lint TODO: fix eslint
+pnpm format
+pnpm lint
 npx tsc
 pnpm build
 pnpm check-exports

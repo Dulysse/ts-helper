@@ -20,7 +20,7 @@ export declare type _Lower<
 
 /**
  * - Check if number `TNumber1` is lower than `TNumber2`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

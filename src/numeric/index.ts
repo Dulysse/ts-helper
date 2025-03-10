@@ -15,6 +15,7 @@ import type { IsZero } from "./modules/isZero";
 import type { Multiply } from "./modules/multiply";
 import type { Divide } from "./modules/divide";
 import type { Eval } from "./modules/eval";
+import type { Factorial } from "./modules/factorial";
 
 /**
  * #### ✨ List of `ts-helper` numeric types ✨:
@@ -35,8 +36,9 @@ import type { Eval } from "./modules/eval";
  * - {@link Multiply}*
  * - {@link Divide}*
  * - {@link Eval}*
+ * - {@link Factorial}*
  *
- *  #### _⚠️ *Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`._
+ *  #### _⚠️ *Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`._
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -64,6 +66,7 @@ export declare namespace Num {
 		Multiply,
 		Divide,
 		Eval,
+		Factorial,
 	};
 }
 
@@ -85,4 +88,5 @@ export {
 	Multiply,
 	Divide,
 	Eval,
+	Factorial,
 };

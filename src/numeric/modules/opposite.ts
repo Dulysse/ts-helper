@@ -16,7 +16,7 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
 
 /**
  * - Check if a number `TNumber` is a negative number
- * - ⚠️ Returns an absolute result for numbers in the interval `[-400; 400]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
