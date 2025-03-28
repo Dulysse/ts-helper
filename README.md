@@ -53,7 +53,7 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ### 👉 `Numbers`
 
-- ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+- ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
 
 - New feature since version `1.1.1`! Eval function return type for calculation 🤯
 

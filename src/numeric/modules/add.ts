@@ -18,7 +18,7 @@ declare type AddNegative<TNumber1 extends number, TNumber2 extends number> =
 
 /**
  * - Add `TNumber2` to `TNumber1`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

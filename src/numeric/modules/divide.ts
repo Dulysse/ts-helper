@@ -36,7 +36,7 @@ declare type DivideNegative<
 
 /**
  * - Divide `TNumber1` by `TNumber2`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

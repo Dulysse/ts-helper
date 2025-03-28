@@ -14,7 +14,7 @@ declare type _Factorial<TNumber extends number> =
 
 /**
  * Get the factorial value of `TNumber`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

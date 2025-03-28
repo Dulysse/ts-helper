@@ -38,7 +38,7 @@ import type { Factorial } from "./modules/factorial";
  * - {@link Eval}*
  * - {@link Factorial}*
  *
- *  #### _⚠️ *Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`._
+ *  #### _⚠️ *Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

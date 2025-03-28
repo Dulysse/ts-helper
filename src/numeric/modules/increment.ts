@@ -1,21 +1,24 @@
-import type { Equal, Satisfy } from "@/operator";
-import type { IsValidNumberInput, Numbers } from "../utils";
+import type { Equal } from "@/operator";
+import type { IsValidNumberInput } from "../utils";
+import { IsPositive, Opposite } from "@/numeric";
+import { PreviousPositive } from "@/numeric/modules/decrement";
 
-declare type _Increment<
+export declare type NextPositive<
 	TNumber extends number,
-	L extends readonly number[] = Numbers,
+	L extends readonly number[] = [],
 > =
-	IsValidNumberInput<TNumber> extends true
-		? L extends readonly [infer First, infer Next, ...infer Rest]
-			? Equal<First, TNumber> extends true
-				? Next
-				: _Increment<TNumber, Satisfy<[Next, ...Rest], readonly number[]>>
-			: never
-		: number;
+	Equal<TNumber, L["length"]> extends true
+		? [...L, 0]["length"]
+		: NextPositive<TNumber, [...L, 0]>;
+
+declare type Next<TNumber extends number> = {
+	true: NextPositive<TNumber>;
+	false: Opposite<PreviousPositive<Opposite<TNumber>>>;
+}[`${IsPositive<TNumber>}`];
 
 /**
  * - Increment a number `TNumber` of one
- * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -31,4 +34,5 @@ declare type _Increment<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Increment<TNumber extends number> = _Increment<TNumber>;
+export declare type Increment<TNumber extends number> =
+	IsValidNumberInput<TNumber> extends true ? Next<TNumber> : number;

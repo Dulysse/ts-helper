@@ -1,24 +1,16 @@
-import type { And, Equal, Satisfy } from "@/operator";
-import type { IsValidNumberInput, Numbers } from "../utils";
+import type { And } from "@/operator";
+import type { Compare, IsValidNumberInput } from "../utils";
 
-declare type _GreaterEq<
-	TNumber1 extends number,
-	TNumber2 extends number,
-	L extends readonly number[] = Numbers,
-> =
+declare type _GreaterEq<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-		? L extends readonly [infer First, ...infer Next]
-			? Equal<First, TNumber1> extends true
-				? Equal<TNumber1, TNumber2>
-				: Equal<First, TNumber2> extends true
-					? true
-					: _GreaterEq<TNumber1, TNumber2, Satisfy<Next, readonly number[]>>
-			: never
+		? Compare<TNumber1, TNumber2> extends "greater" | "equal"
+			? true
+			: false
 		: boolean;
 
 /**
  * - Check if number `TNumber1` is greater than `TNumber2` or equal to `TNumber2`
- * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx

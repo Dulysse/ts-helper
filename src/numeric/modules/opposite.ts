@@ -1,22 +1,16 @@
-import type { IsPositive } from "@/numeric";
-import type {
-	IsValidNumberInput,
-	PositiveNumbers,
-	NegativeNumbers,
-} from "../utils";
+import type { IsPositive, IsZero } from "@/numeric";
+import type { IsValidNumberInput } from "../utils";
 import type { Satisfy } from "@/operator";
 
 declare type OppositePositive<TNumber extends number> =
-	NegativeNumbers[TNumber];
+	`-${TNumber}` extends `${infer N extends number}` ? N : never;
 
-declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
-	`${TNumber}` extends `-${infer Index}` ? Index : never,
-	keyof PositiveNumbers
->];
+declare type OppositeNegative<TNumber extends number> =
+	`${TNumber}` extends `-${infer N extends number}` ? N : never;
 
 /**
  * - Check if a number `TNumber` is a negative number
- * - ⚠️ Returns an absolute result for numbers in the interval `[-300; 300]`, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  * ---------------------------
  * @example
  * ```tsx
@@ -35,10 +29,12 @@ declare type OppositeNegative<TNumber extends number> = PositiveNumbers[Satisfy<
  */
 export declare type Opposite<TNumber extends number> = Satisfy<
 	IsValidNumberInput<TNumber> extends true
-		? {
-				true: OppositePositive<TNumber>;
-				false: OppositeNegative<TNumber>;
-			}[`${IsPositive<TNumber>}`]
+		? IsZero<TNumber> extends true
+			? 0
+			: {
+					true: OppositePositive<TNumber>;
+					false: OppositeNegative<TNumber>;
+				}[`${IsPositive<TNumber>}`]
 		: number,
 	number
 >;
