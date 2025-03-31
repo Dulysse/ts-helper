@@ -27,3 +27,8 @@ export declare type Compare<
 			: Equal<TNumber2, L["length"]> extends true
 				? "greater"
 				: Compare<TNumber1, TNumber2, [...L, 0]>;
+
+export declare type BuildTuple<
+	L extends number,
+	T extends number[] = [],
+> = T["length"] extends L ? T : BuildTuple<L, [...T, 0]>;

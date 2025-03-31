@@ -1,20 +1,14 @@
-import type { Equal } from "@/operator";
-import type { IsValidNumberInput } from "../utils";
+import type { BuildTuple, IsValidNumberInput } from "../utils";
 import { IsZero } from "@/numeric/modules/isZero";
 import { IsPositive, Opposite } from "@/numeric";
 import { NextPositive } from "@/numeric/modules/increment";
 
-export declare type PreviousPositive<
-	TNumber extends number,
-	L extends readonly number[] = [],
-> =
+export declare type PreviousPositive<TNumber extends number> =
 	IsZero<TNumber> extends true
 		? -1
-		: Equal<TNumber, L["length"]> extends true
-			? L extends [infer _, ...infer Rest]
-				? Rest["length"]
-				: never
-			: PreviousPositive<TNumber, [...L, 0]>;
+		: BuildTuple<TNumber> extends [...infer U, infer _]
+			? U["length"]
+			: never;
 
 declare type Previous<TNumber extends number> = {
 	true: PreviousPositive<TNumber>;
