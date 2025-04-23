@@ -4,8 +4,10 @@ import type {
 	IsZero,
 	Multiply,
 	Decrement,
+	IsFloat,
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
+import type { And, Not } from "@/operator";
 
 declare type _Factorial<TNumber extends number> =
 	IsZero<TNumber> extends true
@@ -33,7 +35,7 @@ declare type _Factorial<TNumber extends number> =
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Factorial<TNumber extends number> =
-	IsValidNumberInput<TNumber> extends true
+	And<IsValidNumberInput<TNumber>, Not<IsFloat<TNumber>>> extends true
 		? {
 				true: _Factorial<TNumber>;
 				false: Opposite<_Factorial<Opposite<TNumber>>>;

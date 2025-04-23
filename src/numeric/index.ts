@@ -16,6 +16,12 @@ import type { Multiply } from "./modules/multiply";
 import type { Divide } from "./modules/divide";
 import type { Eval } from "./modules/eval";
 import type { Factorial } from "./modules/factorial";
+import type { Modulo } from "./modules/modulo";
+import type { Power } from "./modules/power";
+import type { IsFloat } from "./modules/isFloat";
+import type { Compare } from "./modules/compare";
+import type { ParseInt } from "./modules/parseInt";
+import type { ParseFloat } from "./modules/parseFloat";
 
 /**
  * #### ✨ List of `ts-helper` numeric types ✨:
@@ -37,6 +43,12 @@ import type { Factorial } from "./modules/factorial";
  * - {@link Divide}*
  * - {@link Eval}*
  * - {@link Factorial}*
+ * - {@link Modulo}*
+ * - {@link Power}*
+ * - {@link IsFloat}
+ * - {@link Compare}*
+ * - {@link ParseInt}
+ * - {@link ParseFloat}
  *
  *  #### _⚠️ *Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
  * ---------------------------
@@ -67,6 +79,12 @@ export declare namespace Num {
 		Divide,
 		Eval,
 		Factorial,
+		Modulo,
+		Power,
+		IsFloat,
+		Compare,
+		ParseInt,
+		ParseFloat,
 	};
 }
 
@@ -89,4 +107,10 @@ export {
 	Divide,
 	Eval,
 	Factorial,
+	Modulo,
+	Power,
+	IsFloat,
+	Compare,
+	ParseInt,
+	ParseFloat,
 };

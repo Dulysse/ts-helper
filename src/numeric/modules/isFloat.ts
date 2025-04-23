@@ -1,0 +1,22 @@
+/**
+ * - Check if a number `TNumber` is a float number
+ * ---------------------------
+ * @example
+ * ```tsx
+ * import type { Num } from "@dulysse1/ts-helper";
+ *
+ * type A = Num.IsFloat<-23>; // false
+ * type B = Num.IsFloat<10.29>; // true
+ * ```
+ * ---------------------------
+ * Do you have any questions about {@link IsFloat} usage ?
+ * #### Contact me!
+ * @author Ulysse Dupont -->
+ *  [my email](mailto:ulyssedupont2707@gmail.com)
+ *  | [my github](https://github.com/Dulysse)
+ *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
+ */
+export declare type IsFloat<TNumber extends number> =
+	`${TNumber}` extends `${infer _ extends number}.${infer __ extends number}`
+		? true
+		: false;

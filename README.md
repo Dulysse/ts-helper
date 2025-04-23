@@ -55,6 +55,10 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
 
+- New feature since version `1.2.2`! Add and Substract functions allow `float` type 🤯🤯
+
+![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/float.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/float.png)
+
 - New feature since version `1.1.1`! Eval function return type for calculation 🤯
 
 ![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/eval.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/eval.png)
@@ -77,6 +81,17 @@ import type { Num } from "@dulysse1/ts-helper";
 type A = Num.Add<10, 10>; // 20
 type B = Num.Add<-10, 10>; // 0
 type C = Num.Add<-23, -34>; // -57
+type C = Num.Add<87.67, 10.34>; // 98.01  NEW!
+```
+
+- Substract two numbers
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.Subtract<10, 10>; // 0
+type B = Num.Subtract<10, -40>; // 50
+type C = Num.Subtract<12.4, 3.2>; // 9.2  NEW!
 ```
 
 - Multiply two numbers

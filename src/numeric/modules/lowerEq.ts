@@ -1,5 +1,6 @@
 import type { And } from "@/operator";
-import type { Compare, IsValidNumberInput } from "../utils";
+import type { IsValidNumberInput } from "../utils";
+import type { Compare } from "@/numeric";
 
 export declare type _LowerEq<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true

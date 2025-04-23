@@ -1,5 +1,5 @@
-import { Strict } from "@/any";
-import { Equal } from "@/operator";
+import type { Strict } from "@/any";
+import type { Equal } from "@/operator";
 
 /**
  * - Check if `T` is equal to `any`

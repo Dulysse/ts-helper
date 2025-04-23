@@ -1,6 +1,17 @@
-import type { BuildTuple, IsValidNumberInput } from "../utils";
-import { IsPositive, Opposite } from "@/numeric";
-import { PreviousPositive } from "@/numeric/modules/decrement";
+import type {
+	BuildTuple,
+	OppositeDenominator,
+	IsValidNumberInput,
+	TwoDigit,
+} from "../utils";
+import type {
+	IsFloat,
+	IsPositive,
+	Lower,
+	Opposite,
+	ParseFloat,
+} from "@/numeric";
+import type { PreviousPositive } from "@/numeric/modules/decrement";
 
 export declare type NextPositive<TNumber extends number> =
 	BuildTuple<TNumber> extends [...infer U] ? [...U, 0]["length"] : never;
@@ -29,4 +40,14 @@ declare type Next<TNumber extends number> = {
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Increment<TNumber extends number> =
-	IsValidNumberInput<TNumber> extends true ? Next<TNumber> : number;
+	IsValidNumberInput<TNumber> extends true
+		? IsFloat<TNumber> extends true
+			? `${TNumber}` extends `-1.${infer Denominator}`
+				? ParseFloat<`-0.${Denominator}`>
+				: `${TNumber}` extends `-0.${infer Denominator}`
+					? ParseFloat<`0.${Lower<OppositeDenominator<TwoDigit<Denominator>>, 10> extends true ? `0${OppositeDenominator<TwoDigit<Denominator>>}` : OppositeDenominator<TwoDigit<Denominator>>}`>
+					: `${TNumber}` extends `${infer Numerator extends number}.${infer Denominator}`
+						? ParseFloat<`${Next<Numerator>}.${Denominator}`>
+						: never
+			: Next<TNumber>
+		: number;

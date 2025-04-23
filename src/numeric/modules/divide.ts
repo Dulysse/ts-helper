@@ -7,6 +7,7 @@ import type {
 	Subtract,
 	Increment,
 	Decrement,
+	IsFloat,
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
@@ -33,6 +34,17 @@ declare type DivideNegative<
 			? Result
 			: DivideNegative<Rest, TNumber2, Decrement<Result>>
 		: number;
+
+declare type _Divide<TNumber1 extends number, TNumber2 extends number> = {
+	true: {
+		true: DividePositive<TNumber1, TNumber2>;
+		false: DivideNegative<TNumber1, TNumber2>;
+	};
+	false: {
+		true: DivideNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
+		false: DividePositive<Opposite<TNumber1>, Opposite<TNumber2>>;
+	};
+}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`];
 
 /**
  * - Divide `TNumber1` by `TNumber2`
@@ -62,12 +74,12 @@ export declare type Divide<TNumber1 extends number, TNumber2 extends number> =
 				? number // Infinity
 				: {
 						true: {
-							true: DividePositive<TNumber1, TNumber2>;
-							false: DivideNegative<TNumber1, TNumber2>;
+							true: number;
+							false: number;
 						};
 						false: {
-							true: DivideNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
-							false: DividePositive<Opposite<TNumber1>, Opposite<TNumber2>>;
+							true: number;
+							false: _Divide<TNumber1, TNumber2>;
 						};
-					}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
+					}[`${IsFloat<TNumber1>}`][`${IsFloat<TNumber2>}`]
 		: number;

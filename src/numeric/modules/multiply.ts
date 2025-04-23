@@ -7,6 +7,7 @@ import type {
 	Subtract,
 	Increment,
 	Decrement,
+	IsFloat,
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
@@ -36,6 +37,17 @@ declare type MultiplyNegative<
 				>
 		: number;
 
+declare type _Multiply<TNumber1 extends number, TNumber2 extends number> = {
+	true: {
+		true: MultiplyPositive<TNumber1, TNumber2>;
+		false: MultiplyNegative<TNumber1, TNumber2>;
+	};
+	false: {
+		true: MultiplyNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
+		false: MultiplyPositive<Opposite<TNumber1>, Opposite<TNumber2>>;
+	};
+}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`];
+
 /**
  * - Multiply `TNumber1` and `TNumber2`
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
@@ -62,12 +74,12 @@ export declare type Multiply<TNumber1 extends number, TNumber2 extends number> =
 			? 0
 			: {
 					true: {
-						true: MultiplyPositive<TNumber1, TNumber2>;
-						false: MultiplyNegative<TNumber1, TNumber2>;
+						true: number;
+						false: number;
 					};
 					false: {
-						true: MultiplyNegative<Opposite<TNumber1>, Opposite<TNumber2>>;
-						false: MultiplyPositive<Opposite<TNumber1>, Opposite<TNumber2>>;
+						true: number;
+						false: _Multiply<TNumber1, TNumber2>;
 					};
-				}[`${IsPositive<TNumber1>}`][`${IsPositive<TNumber2>}`]
+				}[`${IsFloat<TNumber1>}`][`${IsFloat<TNumber2>}`]
 		: number;
