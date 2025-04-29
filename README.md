@@ -114,7 +114,7 @@ type B = Num.Divide<0, 7>; // 0
 type C = Num.Divide<7, 0>; // number
 ```
 
-- Get the factorial of one number
+- Get the `factorial` of one number
 
 ```tsx
 import type { Num } from "@dulysse1/ts-helper";
@@ -122,6 +122,56 @@ import type { Num } from "@dulysse1/ts-helper";
 type A = Num.Factorial<0>; // 1
 type B = Num.Factorial<-3>; // -6
 type C = Num.Factorial<5>; // 120
+```
+
+- Check if a number is `even`
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.IsEven<0>; // true
+type B = Num.IsEven<-3>; // false
+type C = Num.IsEven<5.5>; // false
+```
+
+- Check if a number is `odd`
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.IsOdd<0>; // false
+type B = Num.IsOdd<-3>; // true
+type C = Num.IsOdd<5.5>; // true
+```
+
+- Check if a number is `float`
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.IsFloat<0>; // false
+type B = Num.IsFloat<-3>; // false
+type C = Num.IsFloat<5.5>; // true
+```
+
+- Parse a string to `float` number
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.ParseFloat<"0">; // 0
+type B = Num.ParseFloat<"-3">; // -3
+type C = Num.ParseFloat<"5.5">; // 5.5
+```
+
+- Parse a string to `integer` number
+
+```tsx
+import type { Num } from "@dulysse1/ts-helper";
+
+type A = Num.ParseInt<"0">; // 0
+type B = Num.ParseInt<"-3">; // -3
+type C = Num.ParseInt<"5.5">; // 5
 ```
 
 ### 👉 `Object`
@@ -194,6 +244,10 @@ const name: Any.Strict = {}; // "wrong way !"
 ```
 
 ### And many more besides! 😲
+
+- New feature since version `1.2.3`! There is now a `lab` with experimental types to show the power of `@dulysse1/ts-helper`!
+
+![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/tictactoe.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/tictactoe.png)
 
 ## Do you have any ideas or recommendations for improvement? 🤔
 

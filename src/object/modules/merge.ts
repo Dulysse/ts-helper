@@ -1,5 +1,6 @@
 import type { And, Satisfy, Equal } from "@/operator";
 import type { ObjectMode } from "../utils";
+import type { Prettify } from "@/object";
 
 /**
  * - Merge type object `TObjectA` with type object `TObjectB`
@@ -29,7 +30,7 @@ export declare type Merge<
 	TObjectA extends object,
 	TObjectB extends object,
 	Mode extends ObjectMode = "flat",
-> = {
+> = Prettify<{
 	[key in keyof (TObjectA & TObjectB)]: And<
 		key extends keyof TObjectA ? true : false,
 		key extends keyof TObjectB ? true : false
@@ -54,4 +55,4 @@ export declare type Merge<
 			: key extends keyof TObjectB
 				? TObjectB[key]
 				: never;
-};
+}>;

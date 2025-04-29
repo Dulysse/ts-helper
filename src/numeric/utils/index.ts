@@ -152,3 +152,5 @@ export declare type GetSign<TNumber1 extends number, TNumber2 extends number> =
 
 export declare type TwoDigitify<TNumber extends number> =
 	Lower<TNumber, 10> extends true ? `0${TNumber}` : TNumber;
+
+export declare type EvenNumber = 0 | 2 | 4 | 6 | 8;

@@ -1,6 +1,7 @@
 import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Exclude } from "@/union";
+import type { Prettify } from "@/object";
 
 /**
  * - Omit `TKey` keys from object `TObject`
@@ -27,7 +28,7 @@ export declare type Omit<
 	TObject extends object,
 	TKey extends string | number | symbol,
 	Mode extends ObjectMode = "flat",
-> = {
+> = Prettify<{
 	[key in Exclude<keyof TObject, TKey>]-?: key extends keyof TObject
 		? And<
 				Equal<Mode, "deep"> extends true ? true : false,
@@ -36,4 +37,4 @@ export declare type Omit<
 			? Omit<Satisfy<TObject[key], object>, TKey, Mode>
 			: TObject[key]
 		: never;
-};
+}>;

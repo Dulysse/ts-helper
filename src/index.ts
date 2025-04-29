@@ -5,3 +5,4 @@ export type { Arr } from "@/array";
 export type { Union } from "@/union";
 export type { Str } from "@/string";
 export type { Any } from "@/any";
+export type { Lab } from "@/lab";

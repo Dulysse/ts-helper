@@ -1,5 +1,6 @@
 import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
+import type { Prettify } from "@/object";
 
 /**
  * - Make all keys of `TObject` object type required
@@ -27,11 +28,11 @@ import type { ObjectMode } from "../utils";
 export declare type Required<
 	TObject extends object,
 	Mode extends ObjectMode = "flat",
-> = {
+> = Prettify<{
 	[key in keyof TObject]-?: And<
 		Equal<Mode, "deep"> extends true ? true : false,
 		TObject[key] extends object ? true : false
 	> extends true
 		? Required<Satisfy<TObject[key], object>, Mode>
 		: TObject[key];
-};
+}>;

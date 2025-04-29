@@ -1,5 +1,6 @@
 import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
+import type { Prettify } from "@/object";
 
 /**
  * - Get the Interception object type of `TObjectA` and `TObjectB`
@@ -29,7 +30,7 @@ export declare type Interception<
 	TObjectA extends object,
 	TObjectB extends object,
 	Mode extends ObjectMode = "flat",
-> = {
+> = Prettify<{
 	[key in {
 		[key in keyof TObjectA | keyof TObjectB]: And<
 			key extends keyof TObjectA ? true : false,
@@ -61,4 +62,4 @@ export declare type Interception<
 			: key extends keyof TObjectB
 				? TObjectB[key]
 				: never;
-};
+}>;

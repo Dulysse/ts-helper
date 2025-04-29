@@ -1,4 +1,4 @@
-import type { Num } from "../dist";
+import type { Num, Lab } from "../dist";
 
 declare function eval<T extends string>(value: T): Num.Eval<T>;
 
@@ -19,3 +19,18 @@ const resAdd = add(87.67, 10.34);
 
 const resSub = sub(77.67, 154.34);
 //      ^?
+
+type res = Lab.TicTacToe<
+	[
+		//    ^?
+		"X",
+		"O",
+		"",
+		"X",
+		"X",
+		"O",
+		"X",
+		"",
+		"O",
+	]
+>;
