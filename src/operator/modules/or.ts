@@ -1,5 +1,9 @@
 /**
  * - Check if one of condition `A` and `B` are true, if it's the case, return `true` else return `false`
+ *
+ * @template A The first condition to check
+ * @template B The second condition to check
+ *
  * ---------------------------
  * @example
  * ```tsx

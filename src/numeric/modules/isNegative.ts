@@ -1,5 +1,7 @@
 /**
  * - Check if a number `TNumber` is a negative number
+ *
+ * @template TNumber - The number to check.
  * ---------------------------
  * @example
  * ```tsx

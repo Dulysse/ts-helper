@@ -71,6 +71,9 @@ export declare type _Compare<
 /**
  * - Compare number `TNumber1` with `TNumber2` it will return (`"lower"`, `"greater"` or `"equal"`)
  * - ⚠️ Returns an absolute re ult for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ *
+ * @template TNumber1 - The first number to compare.
+ * @template TNumber2 - The second number to compare.
  * ---------------------------
  * @example
  * ```tsx

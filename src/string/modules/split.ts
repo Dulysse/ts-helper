@@ -17,6 +17,9 @@ declare type _Split<
 
 /**
  * - Split a type `TString` to an array for each `TSeparator` string apparition
+ *
+ * @template TString The string to split
+ * @template TSeparator The separator to split the string by (default is `""`).
  * ---------------------------
  * @example
  * ```tsx

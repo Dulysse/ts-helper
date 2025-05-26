@@ -6,3 +6,4 @@ export type { Union } from "@/union";
 export type { Str } from "@/string";
 export type { Any } from "@/any";
 export type { Lab } from "@/lab";
+export type { Class } from "@/class";

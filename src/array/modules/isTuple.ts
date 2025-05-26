@@ -3,6 +3,8 @@ import type { TDefaultArray } from "../utils";
 
 /**
  * - Check whether an array of type `TArray` is a tuple or not
+ *
+ * @template TArray - The array type to check if it is a tuple.
  * ---------------------------
  * @example
  * ```tsx

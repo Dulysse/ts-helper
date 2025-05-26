@@ -1,5 +1,7 @@
 /**
  * - Check if a number `TNumber` is a float number
+ *
+ * @template TNumber - The number to check.
  * ---------------------------
  * @example
  * ```tsx

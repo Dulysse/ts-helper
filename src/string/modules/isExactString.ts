@@ -2,6 +2,8 @@ import type { Equal } from "@/operator";
 
 /**
  * - Check if a type `TString` is exactly a string type
+ *
+ * @template TString The type to check
  * ---------------------------
  * @example
  * ```tsx

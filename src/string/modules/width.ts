@@ -3,6 +3,8 @@ import type { Length } from "@/array";
 
 /**
  * - Get the length of a string type `TString`
+ *
+ * @template TString The string type to get the length of
  * ---------------------------
  * @example
  * ```tsx

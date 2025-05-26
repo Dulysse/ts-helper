@@ -1,5 +1,7 @@
 /**
  * - Get keys of `TObject` object by an optional filter `ValueLike` value, if value look like this `ValueLike` value, it will return this key else it will skip that key
+ *
+ * @template TObject The object type to get keys from
  * ---------------------------
  * @example
  * ```tsx

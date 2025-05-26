@@ -2,6 +2,8 @@ import type { Satisfy } from "@/operator";
 
 /**
  * - ParseInt `T` it will return the string as integer number
+ *
+ * @template T - The string to parse as integer.
  * ---------------------------
  * @example
  * ```tsx

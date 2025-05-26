@@ -12,6 +12,9 @@ export declare type _Lower<TNumber1 extends number, TNumber2 extends number> =
 /**
  * - Check if number `TNumber1` is lower than `TNumber2`
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ *
+ * @template TNumber1 - The first number to compare.
+ * @template TNumber2 - The second number to compare.
  * ---------------------------
  * @example
  * ```tsx

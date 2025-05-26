@@ -29,6 +29,8 @@ declare type Previous<TNumber extends number> = {
 /**
  * - Decrement a number `TNumber` of one
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ *
+ * @template TNumber - The number to decrement.
  * ---------------------------
  * @example
  * ```tsx

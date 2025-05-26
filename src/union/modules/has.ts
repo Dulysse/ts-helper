@@ -2,6 +2,9 @@ import type { Includes } from "@/array";
 import type { ToArray } from "@/union";
 /**
  * - Check if `TIncluded` is an element of an union type `TUnion`
+ *
+ * @template TUnion The union type to check
+ * @template TIncluded The type to check if it is included in `TUnion`
  * ---------------------------
  * @example
  * ```tsx

@@ -3,6 +3,8 @@ import type { Equal } from "@/operator";
 
 /**
  * - Check if union type `TUnion` is an union with many choices
+ *
+ * @template TUnion - The union type to check
  * ---------------------------
  * @example
  * ```tsx

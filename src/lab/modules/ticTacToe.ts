@@ -1,25 +1,10 @@
+import type { Count } from "@/array";
 import type { Increment } from "@/numeric";
 import type { Equal, Or } from "@/operator";
 
 declare type Player = "X" | "O";
 
 declare type Cell = Player | "" | " " | undefined | null;
-
-declare type Count<
-	TBoard extends readonly Cell[],
-	T extends Player,
-	C extends number = 0,
-> =
-	Equal<TBoard, []> extends true
-		? C
-		: TBoard extends readonly [
-					infer First,
-					...infer Rest extends readonly Cell[],
-			  ]
-			? First extends T
-				? Count<Rest, T, Increment<C>>
-				: Count<Rest, T, C>
-			: never;
 
 declare type BoardIsCorrect<TBoard extends readonly Cell[]> =
 	TBoard["length"] extends 9
@@ -96,6 +81,8 @@ declare type BoardIsFull<TBoard extends readonly Cell[]> =
 
 /**
  * - The TicTacToe type is a type-level implementation of the Tic Tac Toe game.
+ *
+ * @template TBoard - The board type, which is an array of cells (X, O, or empty).
  * ---------------------------
  * @example
  * ```tsx

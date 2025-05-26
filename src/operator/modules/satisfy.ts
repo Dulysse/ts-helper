@@ -1,5 +1,9 @@
 /**
  * - Check if `A` is satisfying `B`, if it's the case, return `A` else `B`
+ *
+ * @template A The type to check
+ * @template B The type to satisfy
+ *
  * ---------------------------
  * @example
  * ```tsx

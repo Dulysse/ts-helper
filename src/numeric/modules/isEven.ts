@@ -5,6 +5,8 @@ import type { Split } from "@/string";
 
 /**
  * - Check if a number `TNumber` is an `even` number
+ *
+ * @template TNumber - The number to check.
  * ---------------------------
  * @example
  * ```tsx

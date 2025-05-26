@@ -6,6 +6,10 @@ import type { And } from "@/operator";
 
 /**
  * - Get the element with number `TIndex` from the index of array type `TArray`.
+ *
+ * @template TArray - The array type to get the element from.
+ * @template TIndex - The index of the element to get from the array type.
+ *
  * ---------------------------
  * @example
  * ```tsx

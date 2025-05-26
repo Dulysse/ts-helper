@@ -5,7 +5,9 @@ import type { Prettify } from "@/object";
 /**
  * - Merge type object `TObjectA` with type object `TObjectB`
  * ---------------------------
- * @param Mode The object operator mode
+ * @template TObjectA The first object type
+ * @template TObjectB The second object type
+ * @template Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
  * ---------------------------

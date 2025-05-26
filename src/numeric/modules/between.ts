@@ -5,6 +5,10 @@ import type { LowerEq, GreaterEq } from "@/numeric";
 /**
  * - Check if type `TNumber` is between `From` and `To` numbers
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ *
+ * @template TNumber - The number to check.
+ * @template From - The lower bound of the range.
+ * @template To - The upper bound of the range.
  * ---------------------------
  * @example
  * ```tsx

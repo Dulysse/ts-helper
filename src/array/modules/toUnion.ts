@@ -2,6 +2,8 @@ import type { TDefaultArray } from "../utils";
 
 /**
  * - Transform an array type `TArray` to union with each properties
+ * 
+ * @param TArray - The array type to transform into a union.
  * ---------------------------
  * @example
  * ```tsx

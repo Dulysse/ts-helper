@@ -58,6 +58,9 @@ export declare type _Subtract<
 /**
  * - Subtract `TNumber2` from `TNumber1`
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ *
+ * @template TNumber1 - The first number (the minuend).
+ * @template TNumber2 - The second number (the subtrahend).
  * ---------------------------
  * @example
  * ```tsx

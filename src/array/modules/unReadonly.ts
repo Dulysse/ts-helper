@@ -1,5 +1,7 @@
 /**
  * - Get a readonly `TArray` array as writable
+ *
+ * @template TArray - The array type to convert to writable.
  * ---------------------------
  * @example
  * ```tsx

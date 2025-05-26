@@ -4,6 +4,10 @@ import type { IsUnion } from "@/union";
 
 /**
  * - Replace all iteration of the `From` character with the `To` character in the `TString` string type.
+ *
+ * @template TString - The string type to perform the replacement on.
+ * @template From - The character to replace.
+ * @template To - The character to replace with.
  * ---------------------------
  * @example
  * ```tsx

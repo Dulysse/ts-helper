@@ -3,6 +3,8 @@ import type { IsTuple } from "@/array";
 
 /**
  * - Get the `last` element of an array type `TArray`
+ *
+ * @template TArray - The array type to get the last element from.
  * ---------------------------
  * @example
  * ```tsx

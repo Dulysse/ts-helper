@@ -2,6 +2,8 @@ import type { ToArray } from "@/union";
 
 /**
  * - Get an union type `TUnion` length of possibilities
+ *
+ * @template TUnion The union type to count the number of possibilities
  * ---------------------------
  * @example
  * ```tsx

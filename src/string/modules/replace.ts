@@ -2,6 +2,10 @@ import type { IsExactString } from "@/string";
 
 /**
  * - Replace the first iteration of the `From` character with the `To` character in the `TString` string type.
+ *
+ * @template TString - The string type in which to perform the replacement.
+ * @template From - The character or substring to be replaced.
+ * @template To - The character or substring to replace `From` with.
  * ---------------------------
  * @example
  * ```tsx

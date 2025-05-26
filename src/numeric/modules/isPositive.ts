@@ -1,6 +1,8 @@
 import type { Equal } from "@/operator";
 /**
  * - Check if a number `TNumber` is positive or equal to zero
+ *
+ * @template TNumber - The number to check.
  * ---------------------------
  * @example
  * ```tsx

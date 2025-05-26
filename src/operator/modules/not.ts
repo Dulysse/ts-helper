@@ -2,6 +2,8 @@ import type { Equal } from "@/operator";
 
 /**
  * - Get the opposite of a boolean `TOperator`
+ *
+ * @template TOperator - The boolean type to negate.
  * ---------------------------
  * @example
  * ```tsx

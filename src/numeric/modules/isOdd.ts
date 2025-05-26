@@ -3,6 +3,8 @@ import type { Not } from "@/operator";
 
 /**
  * - Check if a number `TNumber` is an `odd` number
+ *
+ * @template TNumber - The number to check.
  * ---------------------------
  * @example
  * ```tsx

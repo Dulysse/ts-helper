@@ -9,6 +9,8 @@ declare type _ToArray<TUnion, Res extends unknown[] = []> = [
 
 /**
  * - Transform an union type `TUnion` to array with each properties
+ *
+ * @template TUnion - The union type to transform into an array.
  * ---------------------------
  * @example
  * ```tsx

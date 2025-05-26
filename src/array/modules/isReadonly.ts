@@ -4,6 +4,8 @@ import type { UnReadonly } from "@/array";
 
 /**
  * - Check if an array `TArray` type is readonly or not
+ *
+ * @template TArray - The array type to check for readonly status.
  * ---------------------------
  * @example
  * ```tsx

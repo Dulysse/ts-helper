@@ -2,6 +2,8 @@ import type { IntersectOf } from "../utils";
 
 /**
  * - Get the last element of an union type `TUnion`
+ *
+ * @template TUnion - The union type from which to extract the last element.
  * ---------------------------
  * @example
  * ```tsx

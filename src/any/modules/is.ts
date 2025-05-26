@@ -3,6 +3,8 @@ import type { Equal } from "@/operator";
 
 /**
  * - Check if `T` is equal to `any`
+ *
+ * @template T - The type to check
  * ---------------------------
  * @example
  * ```tsx

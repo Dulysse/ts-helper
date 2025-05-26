@@ -3,6 +3,9 @@ import type { ToArray } from "@/union";
 
 /**
  * - Get the element with number `TIndex` from the index of union type `TUnion`.
+ *
+ * @template TUnion The union type to get the element from
+ * @template TIndex The index of the element to get from the union type
  * ---------------------------
  * @example
  * ```tsx

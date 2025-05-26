@@ -2,6 +2,8 @@ import type { ToArray } from "@/union";
 
 /**
  * - Get the first element of an union type `TUnion`
+ *
+ * @template TUnion The union type to get the first element from
  * ---------------------------
  * @example
  * ```tsx

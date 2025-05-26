@@ -6,7 +6,9 @@ import type { Prettify } from "@/object";
 /**
  * - Omit `TKey` keys from object `TObject`
  * ---------------------------
- * @param Mode The object operator mode
+ * @template TObject The object type to omit keys from
+ * @template TKey The keys to omit from the object, which can be a string, number, or symbol
+ * @template Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
  * ---------------------------
@@ -26,7 +28,7 @@ import type { Prettify } from "@/object";
  */
 export declare type Omit<
 	TObject extends object,
-	TKey extends string | number | symbol,
+	TKey extends PropertyKey,
 	Mode extends ObjectMode = "flat",
 > = Prettify<{
 	[key in Exclude<keyof TObject, TKey>]-?: key extends keyof TObject

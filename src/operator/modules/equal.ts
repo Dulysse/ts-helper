@@ -1,5 +1,9 @@
 /**
  * - Check if `A` is strictly equal to `B`
+ *
+ * @template A The first type to compare
+ * @template B The second type to compare
+ *
  * ---------------------------
  * @example
  * ```tsx

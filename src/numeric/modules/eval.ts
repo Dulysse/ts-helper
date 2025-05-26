@@ -133,6 +133,7 @@ declare type Evaluate<T extends string> =
  * This type allows you to calculate the result of the expression at compile time.
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
+ * @template T - The mathematical expression to evaluate, represented as a string literal.
  * ---------------------------
  * @example
  * ```tsx

@@ -5,7 +5,8 @@ import type { Prettify } from "@/object";
 /**
  * - Make all keys of `TObject` object type required
  * ---------------------------
- * @param Mode The object operator mode
+ * @template TObject The object type to make keys required
+ * @template Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
  * ---------------------------

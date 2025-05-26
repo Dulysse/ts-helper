@@ -11,6 +11,8 @@ declare type OppositeNegative<TNumber extends number> =
 /**
  * - Check if a number `TNumber` is a negative number
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ *
+ * @template TNumber - The number to check.
  * ---------------------------
  * @example
  * ```tsx

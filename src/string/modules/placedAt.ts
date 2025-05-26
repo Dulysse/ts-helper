@@ -2,6 +2,9 @@ import type { At } from "@/array";
 import type { Split } from "@/string";
 /**
  * - Get the string with number `TIndex` from the index of string type `TString`.
+ *
+ * @template TString The string type to get the character from
+ * @template TIndex The index of the character to get
  * ---------------------------
  * @example
  * ```tsx

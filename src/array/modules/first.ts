@@ -3,6 +3,9 @@ import type { IsTuple } from "@/array";
 
 /**
  * - Get the `first` element of an array type `TArray`
+ *
+ * @template TArray - The array type to get the first element from.
+ *
  * ---------------------------
  * @example
  * ```tsx

@@ -1,5 +1,8 @@
 /**
  * - Exclude an element of an union type `TUnion`
+ *
+ * @template TUnion - The union type from which to exclude an element.
+ * @template TExcluded - The element to exclude from the union type.
  * ---------------------------
  * @example
  * ```tsx

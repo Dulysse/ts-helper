@@ -13,6 +13,8 @@ declare type _Reverse<
 
 /**
  * - Get a reversed `TArray` array
+ *
+ * @template TArray - The array type to reverse.
  * ---------------------------
  * @example
  * ```tsx

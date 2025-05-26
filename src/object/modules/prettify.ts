@@ -1,5 +1,7 @@
 /**
  * - Prettify object `TObject`
+ * 
+ * @template TObject The object type to prettify
  * ---------------------------
  * @example
  * ```tsx

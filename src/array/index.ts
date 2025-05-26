@@ -9,6 +9,7 @@ import type { Includes } from "./modules/includes";
 import type { Join } from "./modules/join";
 import type { First } from "./modules/first";
 import type { Last } from "./modules/last";
+import type { Count } from "./modules/count";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
@@ -23,6 +24,7 @@ import type { Last } from "./modules/last";
  * - {@link Join}
  * - {@link First}
  * - {@link Last}
+ * - {@link Count}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -44,6 +46,7 @@ export declare namespace Arr {
 		Join,
 		First,
 		Last,
+		Count,
 	};
 }
 
@@ -59,4 +62,5 @@ export {
 	Join,
 	First,
 	Last,
+	Count,
 };

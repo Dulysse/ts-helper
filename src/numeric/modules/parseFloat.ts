@@ -2,6 +2,8 @@ import type { Satisfy } from "@/operator";
 
 /**
  * - ParseFloat `T` it will return the string as float number
+ * 
+ * @template T - The string to parse as float.
  * ---------------------------
  * @example
  * ```tsx

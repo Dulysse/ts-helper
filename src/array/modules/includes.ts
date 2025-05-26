@@ -13,6 +13,9 @@ declare type IncludesInTuple<
 
 /**
  * - Check if `TIncluded` is an element of an array type `TArray`
+ *
+ * @template TArray - The array type to check for inclusion.
+ * @template TIncluded - The element type to check for inclusion in the array type.
  * ---------------------------
  * @example
  * ```tsx

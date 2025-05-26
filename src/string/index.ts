@@ -4,6 +4,7 @@ import type { Width } from "./modules/width";
 import type { Replace } from "./modules/replace";
 import type { ReplaceAll } from "./modules/replaceAll";
 import type { PlacedAt } from "./modules/placedAt";
+import type { Reversed } from "./modules/reversed";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
@@ -13,6 +14,7 @@ import type { PlacedAt } from "./modules/placedAt";
  * - {@link Replace}
  * - {@link ReplaceAll}
  * - {@link PlacedAt}
+ * - {@link Reversed}
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -28,6 +30,7 @@ export declare namespace Str {
 	export { Replace };
 	export { ReplaceAll };
 	export { PlacedAt };
+	export { Reversed };
 }
 
-export { IsExactString, Split, Width, Replace, ReplaceAll, PlacedAt };
+export { IsExactString, Split, Width, Replace, ReplaceAll, PlacedAt, Reversed };

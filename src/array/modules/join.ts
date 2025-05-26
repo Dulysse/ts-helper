@@ -37,6 +37,10 @@ declare type Stringify<
 
 /**
  * - Join all element of an array `TArray` type with `TSeparator` for each element
+ *
+ * @template TArray - The array type to join elements from.
+ * @template TSeparator - The separator to use between elements (default is `,`).
+ *
  * ---------------------------
  * @example
  * ```tsx
