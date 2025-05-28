@@ -9,14 +9,14 @@ import type { Has } from "./modules/has";
 
 /**
  * #### ✨ List of `ts-helper` union types ✨:
- * - {@link Last}
- * - {@link Exclude}
- * - {@link ToArray}
- * - {@link Count}
- * - {@link First}
- * - {@link IsUnion}
- * - {@link Through}
- * - {@link Has}
+ * - `Last`
+ * - `Exclude`
+ * - `ToArray`
+ * - `Count`
+ * - `First`
+ * - `IsUnion`
+ * - `Through`
+ * - `Has`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

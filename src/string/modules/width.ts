@@ -5,7 +5,6 @@ import type { Length } from "@/array";
  * - Get the length of a string type `TString`
  *
  * @template TString The string type to get the length of
- * ---------------------------
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@ import type { Length } from "@/array";
  * type A = Str.Width<"Hello world!">; // 12
  * ```
  * ---------------------------
- * Do you have any questions about {@link Width} usage ?
+ * Do you have any questions about `Width` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

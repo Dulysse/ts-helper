@@ -6,11 +6,11 @@ import type { Not } from "./modules/not";
 
 /**
  * #### ✨ List of `ts-helper` operator types ✨:
- * - {@link Equal}
- * - {@link Satisfy}
- * - {@link And}
- * - {@link Or}
- * - {@link Not}
+ * - `Equal`
+ * - `Satisfy`
+ * - `And`
+ * - `Or`
+ * - `Not`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

@@ -15,7 +15,6 @@ export declare type _LowerEq<TNumber1 extends number, TNumber2 extends number> =
  *
  * @template TNumber1 - The first number to compare.
  * @template TNumber2 - The second number to compare.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -24,7 +23,7 @@ export declare type _LowerEq<TNumber1 extends number, TNumber2 extends number> =
  * type B = Num.LowerEq<10, 10>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link LowerEq} usage ?
+ * Do you have any questions about `LowerEq` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

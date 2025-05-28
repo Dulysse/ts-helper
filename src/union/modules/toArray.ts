@@ -11,7 +11,6 @@ declare type _ToArray<TUnion, Res extends unknown[] = []> = [
  * - Transform an union type `TUnion` to array with each properties
  *
  * @template TUnion - The union type to transform into an array.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
@@ -19,7 +18,7 @@ declare type _ToArray<TUnion, Res extends unknown[] = []> = [
  * type A = Union.ToArray<1 | 2 | 3>; // [1, 2, 3]
  * ```
  * ---------------------------
- * Do you have any questions about {@link ToArray} usage ?
+ * Do you have any questions about `ToArray` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

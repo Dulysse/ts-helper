@@ -4,8 +4,7 @@ import type { TDefaultArray } from "../utils";
  * - Transform an array type `TArray` to union with each properties
  * 
  * @param TArray - The array type to transform into a union.
- * ---------------------------
- * @example
+  * @example
  * ```tsx
  * import type { Array } from "@dulysse1/ts-helper";
 import IsUnion from '@/union';
@@ -13,7 +12,7 @@ import IsUnion from '@/union';
  * type A = Array.ToUnion<[1, 2, 3]>; // 1 | 2 | 3
  * ```
  * ---------------------------
- * Do you have any questions about {@link ToUnion} usage ?
+ * Do you have any questions about `ToUnion` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

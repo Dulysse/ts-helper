@@ -1,7 +1,7 @@
 import type { TicTacToe } from "./modules/ticTacToe";
 /**
  * #### 🧪 List of `ts-helper` laboratory types 🧪:
- * - {@link TicTacToe}
+ * - `TicTacToe`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

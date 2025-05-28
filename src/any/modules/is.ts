@@ -5,7 +5,6 @@ import type { Equal } from "@/operator";
  * - Check if `T` is equal to `any`
  *
  * @template T - The type to check
- * ---------------------------
  * @example
  * ```tsx
  * import type { Any } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { Equal } from "@/operator";
  * type B = Any.Is<any>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link Equal} usage ?
+ * Do you have any questions about `Equal` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

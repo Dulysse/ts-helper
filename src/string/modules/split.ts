@@ -20,7 +20,6 @@ declare type _Split<
  *
  * @template TString The string to split
  * @template TSeparator The separator to split the string by (default is `""`).
- * ---------------------------
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
@@ -28,7 +27,7 @@ declare type _Split<
  * type A = Str.Split<"Hello">; // ["H", "e", "l", "l", "o"]
  * ```
  * ---------------------------
- * Do you have any questions about {@link Split} usage ?
+ * Do you have any questions about `Split` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

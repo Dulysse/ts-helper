@@ -5,7 +5,6 @@ import type { Not } from "@/operator";
  * - Check if a number `TNumber` is an `odd` number
  *
  * @template TNumber - The number to check.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { Not } from "@/operator";
  * type B = Num.IsOdd<10.29>; // false
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsOdd} usage ?
+ * Do you have any questions about `IsOdd` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

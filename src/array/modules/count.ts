@@ -19,7 +19,6 @@ declare type _Count<
  * @template TArray - The array type to search in.
  * @template TElement - The element type to count in the array.
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -29,7 +28,7 @@ declare type _Count<
  * type C = Arr.Count<[], 1>; // 0
  * ```
  * ---------------------------
- * Do you have any questions about {@link Count} usage ?
+ * Do you have any questions about `Count` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

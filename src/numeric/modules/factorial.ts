@@ -19,7 +19,6 @@ declare type _Factorial<TNumber extends number> =
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber - The number to get the factorial of.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -29,7 +28,7 @@ declare type _Factorial<TNumber extends number> =
  * type C = Num.Factorial<-3>; // -6
  * ```
  * ---------------------------
- * Do you have any questions about {@link Factorial} usage ?
+ * Do you have any questions about `Factorial` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

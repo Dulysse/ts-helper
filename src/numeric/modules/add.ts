@@ -39,7 +39,6 @@ export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
  *
  * @template TNumber1 - The first number to add.
  * @template TNumber2 - The second number to add.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -49,7 +48,7 @@ export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
  * type C = Num.Add<12.41, 3.21>; // 15.62  NEW!
  * ```
  * ---------------------------
- * Do you have any questions about {@link Add} usage ?
+ * Do you have any questions about `Add` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

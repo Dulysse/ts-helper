@@ -4,7 +4,6 @@ import type { Satisfy } from "@/operator";
  * - ParseInt `T` it will return the string as integer number
  *
  * @template T - The string to parse as integer.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { Satisfy } from "@/operator";
  * type C = Num.ParseInt<"s90">; // never
  * ```
  * ---------------------------
- * Do you have any questions about {@link ParseInt} usage ?
+ * Do you have any questions about `ParseInt` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

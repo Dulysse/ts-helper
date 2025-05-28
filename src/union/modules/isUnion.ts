@@ -5,7 +5,6 @@ import type { Equal } from "@/operator";
  * - Check if union type `TUnion` is an union with many choices
  *
  * @template TUnion - The union type to check
- * ---------------------------
  * @example
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { Equal } from "@/operator";
  * type B = Union.IsUnion<1 | 2 | 3>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsUnion} usage ?
+ * Do you have any questions about `IsUnion` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

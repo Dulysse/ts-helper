@@ -4,7 +4,6 @@ import type { ToArray } from "@/union";
  * - Get an union type `TUnion` length of possibilities
  *
  * @template TUnion The union type to count the number of possibilities
- * ---------------------------
  * @example
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
@@ -12,7 +11,7 @@ import type { ToArray } from "@/union";
  * type A = Union.Count<1 | 2 | 3>; // 3
  * ```
  * ---------------------------
- * Do you have any questions about {@link Count} usage ?
+ * Do you have any questions about `Count` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

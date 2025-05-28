@@ -4,7 +4,6 @@
  * @template A The first condition to check
  * @template B The second condition to check
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@
  * type B = Op.Or<false, false>; // false
  * ```
  * ---------------------------
- * Do you have any questions about {@link Or} usage ?
+ * Do you have any questions about `Or` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

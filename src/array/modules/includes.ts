@@ -16,7 +16,6 @@ declare type IncludesInTuple<
  *
  * @template TArray - The array type to check for inclusion.
  * @template TIncluded - The element type to check for inclusion in the array type.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -25,7 +24,7 @@ declare type IncludesInTuple<
  * type B = Arr.Includes<[1, 2, 3], 4>; // false
  * ```
  * ---------------------------
- * Do you have any questions about {@link Has} usage ?
+ * Do you have any questions about `Includes` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

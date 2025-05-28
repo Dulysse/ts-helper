@@ -15,7 +15,6 @@ declare type _Reverse<
  * - Get a reversed `TArray` array
  *
  * @template TArray - The array type to reverse.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -25,7 +24,7 @@ declare type _Reverse<
  * >; // [3, 2, 1]
  * ```
  * ---------------------------
- * Do you have any questions about {@link Reverse} usage ?
+ * Do you have any questions about `Reverse` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

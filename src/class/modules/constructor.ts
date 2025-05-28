@@ -6,7 +6,6 @@
  * @template TArgs - An array of argument types that the constructor accepts.
  * @template TReturn - The return type of the constructor, typically the class instance type.
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Class } from "@dulysse1/ts-helper";
@@ -15,7 +14,7 @@
  * const myInstance: MyClass = new MyClass('example', 42);
  * ```
  * ---------------------------
- * Do you have any questions about {@link Strict} usage ?
+ * Do you have any questions about `Strict` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

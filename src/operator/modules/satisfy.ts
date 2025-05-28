@@ -4,7 +4,6 @@
  * @template A The type to check
  * @template B The type to satisfy
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@
  * type B = Op.Satisfy<"hello", number>; // number
  * ```
  * ---------------------------
- * Do you have any questions about {@link Satisfy} usage ?
+ * Do you have any questions about `Satisfy` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

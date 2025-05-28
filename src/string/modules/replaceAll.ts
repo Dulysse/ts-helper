@@ -8,7 +8,6 @@ import type { IsUnion } from "@/union";
  * @template TString - The string type to perform the replacement on.
  * @template From - The character to replace.
  * @template To - The character to replace with.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
@@ -16,7 +15,7 @@ import type { IsUnion } from "@/union";
  * type A = Str.ReplaceAll<"Hello world!", "l", "x">; // "Hexxo worxd!"
  * ```
  * ---------------------------
- * Do you have any questions about {@link ReplaceAll} usage ?
+ * Do you have any questions about `ReplaceAll` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

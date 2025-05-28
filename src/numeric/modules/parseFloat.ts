@@ -4,8 +4,7 @@ import type { Satisfy } from "@/operator";
  * - ParseFloat `T` it will return the string as float number
  * 
  * @template T - The string to parse as float.
- * ---------------------------
- * @example
+  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
 import IsZero from '@/numeric';
@@ -15,7 +14,7 @@ import IsZero from '@/numeric';
  * type C = Num.ParseFloat<"s90">; // never
  * ```
  * ---------------------------
- * Do you have any questions about {@link ParseFloat} usage ?
+ * Do you have any questions about `ParseFloat` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

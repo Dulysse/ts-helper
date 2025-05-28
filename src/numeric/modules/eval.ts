@@ -134,7 +134,6 @@ declare type Evaluate<T extends string> =
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template T - The mathematical expression to evaluate, represented as a string literal.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -146,7 +145,7 @@ declare type Evaluate<T extends string> =
  * type B = Num.Eval<"476+382838">; // number
  * ```
  * ---------------------------
- * Do you have any questions about {@link Eval} usage ?
+ * Do you have any questions about `Eval` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

@@ -4,7 +4,6 @@ import type { Equal } from "@/operator";
  * - Get the opposite of a boolean `TOperator`
  *
  * @template TOperator - The boolean type to negate.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@ import type { Equal } from "@/operator";
  * type B = Op.Not<true>; // false
  * ```
  * ---------------------------
- * Do you have any questions about {@link Not} usage ?
+ * Do you have any questions about `Not` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

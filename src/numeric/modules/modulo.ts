@@ -46,7 +46,6 @@ declare type _Modulo<TNumber1 extends number, TNumber2 extends number> =
  *
  * @template TNumber1 - The first number (the dividend).
  * @template TNumber2 - The second number (the divisor).
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -57,7 +56,7 @@ declare type _Modulo<TNumber1 extends number, TNumber2 extends number> =
  * type D = Num.Modulo<20, 3>; // 2
  * ```
  * ---------------------------
- * Do you have any questions about {@link Modulo} usage ?
+ * Do you have any questions about `Modulo` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

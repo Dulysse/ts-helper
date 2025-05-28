@@ -5,16 +5,24 @@ import type { Replace } from "./modules/replace";
 import type { ReplaceAll } from "./modules/replaceAll";
 import type { PlacedAt } from "./modules/placedAt";
 import type { Reversed } from "./modules/reversed";
+import type { Repeat } from "./modules/repeat";
+import type { Trim } from "./modules/trim";
+import type { Count } from "./modules/count";
+import type { Includes } from "./modules/includes";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
- * - {@link IsExactString}
- * - {@link Split}
- * - {@link Width}
- * - {@link Replace}
- * - {@link ReplaceAll}
- * - {@link PlacedAt}
- * - {@link Reversed}
+ * - `IsExactString`
+ * - `Split`
+ * - `Width`
+ * - `Replace`
+ * - `ReplaceAll`
+ * - `PlacedAt`
+ * - `Reversed`
+ * - `Repeat`
+ * - `Trim`
+ * - `Count`
+ * - `Includes`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -31,6 +39,22 @@ export declare namespace Str {
 	export { ReplaceAll };
 	export { PlacedAt };
 	export { Reversed };
+	export { Repeat };
+	export { Trim };
+	export { Count };
+	export { Includes };
 }
 
-export { IsExactString, Split, Width, Replace, ReplaceAll, PlacedAt, Reversed };
+export {
+	IsExactString,
+	Split,
+	Width,
+	Replace,
+	ReplaceAll,
+	PlacedAt,
+	Reversed,
+	Repeat,
+	Trim,
+	Count,
+	Includes,
+};

@@ -10,21 +10,23 @@ import type { Join } from "./modules/join";
 import type { First } from "./modules/first";
 import type { Last } from "./modules/last";
 import type { Count } from "./modules/count";
+import type { Concat } from "./modules/concat";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
- * - {@link IsTuple}
- * - {@link Reverse}
- * - {@link UnReadonly}
- * - {@link Length}
- * - {@link At}
- * - {@link ToUnion}
- * - {@link IsReadonly}
- * - {@link Includes}
- * - {@link Join}
- * - {@link First}
- * - {@link Last}
- * - {@link Count}
+ * - `IsTuple`
+ * - `Reverse`
+ * - `UnReadonly`
+ * - `Length`
+ * - `At`
+ * - `ToUnion`
+ * - `IsReadonly`
+ * - `Includes`
+ * - `Join`
+ * - `First`
+ * - `Last`
+ * - `Count`
+ * - `Concat`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -47,6 +49,7 @@ export declare namespace Arr {
 		First,
 		Last,
 		Count,
+		Concat,
 	};
 }
 
@@ -63,4 +66,5 @@ export {
 	First,
 	Last,
 	Count,
+	Concat,
 };

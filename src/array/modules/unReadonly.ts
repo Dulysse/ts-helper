@@ -2,7 +2,6 @@
  * - Get a readonly `TArray` array as writable
  *
  * @template TArray - The array type to convert to writable.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -12,7 +11,7 @@
  * >; // [1, 2, 3]
  * ```
  * ---------------------------
- * Do you have any questions about {@link UnReadonly} usage ?
+ * Do you have any questions about `UnReadonly` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

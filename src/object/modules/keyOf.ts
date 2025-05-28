@@ -2,7 +2,6 @@
  * - Get keys of `TObject` object by an optional filter `ValueLike` value, if value look like this `ValueLike` value, it will return this key else it will skip that key
  *
  * @template TObject The object type to get keys from
- * ---------------------------
  * @example
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@
  * >; // "a"
  * ```
  * ---------------------------
- * Do you have any questions about {@link KeyOf} usage ?
+ * Do you have any questions about `KeyOf` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

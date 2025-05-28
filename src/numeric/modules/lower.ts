@@ -15,7 +15,6 @@ export declare type _Lower<TNumber1 extends number, TNumber2 extends number> =
  *
  * @template TNumber1 - The first number to compare.
  * @template TNumber2 - The second number to compare.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -24,7 +23,7 @@ export declare type _Lower<TNumber1 extends number, TNumber2 extends number> =
  * type B = Num.Lower<7, 10>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link Lower} usage ?
+ * Do you have any questions about `Lower` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

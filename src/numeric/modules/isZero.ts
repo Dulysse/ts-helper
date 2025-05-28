@@ -4,7 +4,6 @@ import type { Equal } from "@/operator";
  * - Check if a number `TNumber` is equal to zero
  *
  * @template TNumber - The number to check.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@ import type { Equal } from "@/operator";
  * type B = Num.IsZero<0>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsZero} usage ?
+ * Do you have any questions about `IsZero` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

@@ -10,7 +10,6 @@ import type { And } from "@/operator";
  * @template TArray - The array type to get the element from.
  * @template TIndex - The index of the element to get from the array type.
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -21,7 +20,7 @@ import type { And } from "@/operator";
  * >; // 3
  * ```
  * ---------------------------
- * Do you have any questions about {@link At} usage ?
+ * Do you have any questions about `At` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

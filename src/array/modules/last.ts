@@ -5,7 +5,6 @@ import type { IsTuple } from "@/array";
  * - Get the `last` element of an array type `TArray`
  *
  * @template TArray - The array type to get the last element from.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@ import type { IsTuple } from "@/array";
  * type A = Arr.Last<[1, 2, 3]>; // 3
  * ```
  * ---------------------------
- * Do you have any questions about {@link Last} usage ?
+ * Do you have any questions about `Last` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

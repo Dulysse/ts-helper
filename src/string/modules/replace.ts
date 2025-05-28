@@ -6,7 +6,6 @@ import type { IsExactString } from "@/string";
  * @template TString - The string type in which to perform the replacement.
  * @template From - The character or substring to be replaced.
  * @template To - The character or substring to replace `From` with.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { IsExactString } from "@/string";
  * type A = Str.Replace<"Hello world!", "l", "x">; // "Hexlo world!"
  * ```
  * ---------------------------
- * Do you have any questions about {@link Replace} usage ?
+ * Do you have any questions about `Replace` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

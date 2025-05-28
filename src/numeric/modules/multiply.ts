@@ -54,7 +54,6 @@ declare type _Multiply<TNumber1 extends number, TNumber2 extends number> = {
  *
  * @template TNumber1 - The first number to multiply.
  * @template TNumber2 - The second number to multiply.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -62,9 +61,10 @@ declare type _Multiply<TNumber1 extends number, TNumber2 extends number> = {
  * type A = Num.Multiply<6, 7>; // 42
  * type B = Num.Multiply<6, -7>; // -42
  * type C = Num.Multiply<6, 0>; // 0
+ * type D = Multiply<6.58, 7>; // 46.06
  * ```
  * ---------------------------
- * Do you have any questions about {@link Multiply} usage ?
+ * Do you have any questions about `Multiply` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
@@ -78,10 +78,10 @@ export declare type Multiply<TNumber1 extends number, TNumber2 extends number> =
 			: {
 					true: {
 						true: number;
-						false: number;
+						false: _Multiply<TNumber1, TNumber2>;
 					};
 					false: {
-						true: number;
+						true: _Multiply<TNumber2, TNumber1>;
 						false: _Multiply<TNumber1, TNumber2>;
 					};
 				}[`${IsFloat<TNumber1>}`][`${IsFloat<TNumber2>}`]

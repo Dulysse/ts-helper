@@ -74,7 +74,6 @@ export declare type _Compare<
  *
  * @template TNumber1 - The first number to compare.
  * @template TNumber2 - The second number to compare.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -83,7 +82,7 @@ export declare type _Compare<
  * type B = Num.Compare<23, 10>; // "greater"
  * ```
  * ---------------------------
- * Do you have any questions about {@link Compare} usage ?
+ * Do you have any questions about `Compare` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

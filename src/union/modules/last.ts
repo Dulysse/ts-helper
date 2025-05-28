@@ -4,7 +4,6 @@ import type { IntersectOf } from "../utils";
  * - Get the last element of an union type `TUnion`
  *
  * @template TUnion - The union type from which to extract the last element.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
@@ -12,7 +11,7 @@ import type { IntersectOf } from "../utils";
  * type A = Union.Last<1 | 2 | 3>; // 3
  * ```
  * ---------------------------
- * Do you have any questions about {@link Last} usage ?
+ * Do you have any questions about `Last` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

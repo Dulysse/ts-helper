@@ -2,7 +2,6 @@
  * - Check if a number `TNumber` is a float number
  *
  * @template TNumber - The number to check.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -11,7 +10,7 @@
  * type B = Num.IsFloat<10.29>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsFloat} usage ?
+ * Do you have any questions about `IsFloat` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

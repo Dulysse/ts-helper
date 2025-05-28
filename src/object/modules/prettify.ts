@@ -2,8 +2,7 @@
  * - Prettify object `TObject`
  * 
  * @template TObject The object type to prettify
- * ---------------------------
- * @example
+  * @example
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
  *
@@ -16,7 +15,7 @@
 	};>; // { a: string; b: number; c: boolean; }
  * ```
  * ---------------------------
- * Do you have any questions about {@link Prettify} usage ?
+ * Do you have any questions about `Prettify` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

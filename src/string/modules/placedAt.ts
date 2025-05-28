@@ -5,7 +5,6 @@ import type { Split } from "@/string";
  *
  * @template TString The string type to get the character from
  * @template TIndex The index of the character to get
- * ---------------------------
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
@@ -16,7 +15,7 @@ import type { Split } from "@/string";
  * >; // "o"
  * ```
  * ---------------------------
- * Do you have any questions about {@link PlacedAt} usage ?
+ * Do you have any questions about `PlacedAt` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

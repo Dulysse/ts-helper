@@ -5,16 +5,18 @@ import type { Omit } from "./modules/omit";
 import type { Partial } from "./modules/partial";
 import type { Required } from "./modules/required";
 import type { Prettify } from "./modules/prettify";
+import type { Rename } from "./modules/rename";
 
 /**
  * #### ✨ List of `ts-helper` object types ✨:
- * - {@link Merge}
- * - {@link KeyOf}
- * - {@link Interception}
- * - {@link Omit}
- * - {@link Partial}
- * - {@link Required}
- * - {@link Prettify}
+ * - `Merge`
+ * - `KeyOf`
+ * - `Interception`
+ * - `Omit`
+ * - `Partial`
+ * - `Required`
+ * - `Prettify`
+ * - `Rename`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -24,7 +26,25 @@ import type { Prettify } from "./modules/prettify";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Obj {
-	export { Merge, KeyOf, Interception, Omit, Partial, Required, Prettify };
+	export {
+		Merge,
+		KeyOf,
+		Interception,
+		Omit,
+		Partial,
+		Required,
+		Prettify,
+		Rename,
+	};
 }
 
-export { Merge, KeyOf, Interception, Omit, Partial, Required, Prettify };
+export {
+	Merge,
+	KeyOf,
+	Interception,
+	Omit,
+	Partial,
+	Required,
+	Prettify,
+	Rename,
+};

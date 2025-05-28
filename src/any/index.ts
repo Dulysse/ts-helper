@@ -3,8 +3,8 @@ import type { Is } from "./modules/is";
 
 /**
  * #### ✨ List of `ts-helper` any types ✨:
- * - {@link Strict}
- * - {@link Is}
+ * - `Strict`
+ * - `Is`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

@@ -9,7 +9,6 @@ import type { LowerEq, GreaterEq } from "@/numeric";
  * @template TNumber - The number to check.
  * @template From - The lower bound of the range.
  * @template To - The upper bound of the range.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -18,7 +17,7 @@ import type { LowerEq, GreaterEq } from "@/numeric";
  * type B = Num.Between<2, 1, 5>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link Between} usage ?
+ * Do you have any questions about `Between` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

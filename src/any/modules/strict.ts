@@ -1,7 +1,6 @@
 /**
  * - The only valid way to use `any` as type. it's provide you to override the default eslint `@typescript-eslint/no-explicit-any` rule.
  * But be careful ! Don't use this type in your code for bad reasons.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Any } from "@dulysse1/ts-helper";
@@ -10,7 +9,7 @@
  * const name: Any.Strict = {} // "wrong way !"
  * ```
  * ---------------------------
- * Do you have any questions about {@link Strict} usage ?
+ * Do you have any questions about `Strict` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

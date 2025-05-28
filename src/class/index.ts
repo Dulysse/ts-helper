@@ -2,7 +2,7 @@ import type { Constructor } from "./modules/constructor";
 
 /**
  * #### ✨ List of `ts-helper` class types ✨:
- * - {@link Constructor}
+ * - `Constructor`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

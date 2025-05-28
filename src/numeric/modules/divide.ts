@@ -52,7 +52,6 @@ declare type _Divide<TNumber1 extends number, TNumber2 extends number> = {
  *
  * @template TNumber1 - The first number to divide.
  * @template TNumber2 - The second number to divide.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -62,7 +61,7 @@ declare type _Divide<TNumber1 extends number, TNumber2 extends number> = {
  * type C = Num.Divide<6, 0>; // number infinite
  * ```
  * ---------------------------
- * Do you have any questions about {@link Divide} usage ?
+ * Do you have any questions about `Divide` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

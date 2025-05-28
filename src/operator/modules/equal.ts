@@ -4,7 +4,6 @@
  * @template A The first type to compare
  * @template B The second type to compare
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Op } from "@dulysse1/ts-helper";
@@ -13,7 +12,7 @@
  * type B = Op.Equal<1 | 2, number>; // false
  * ```
  * ---------------------------
- * Do you have any questions about {@link Equal} usage ?
+ * Do you have any questions about `Equal` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

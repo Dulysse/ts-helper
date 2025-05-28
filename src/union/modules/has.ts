@@ -5,7 +5,6 @@ import type { ToArray } from "@/union";
  *
  * @template TUnion The union type to check
  * @template TIncluded The type to check if it is included in `TUnion`
- * ---------------------------
  * @example
  * ```tsx
  * import type { Union } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { ToArray } from "@/union";
  * type B = Union.Has<1 | 2 | 3, 4>; // false
  * ```
  * ---------------------------
- * Do you have any questions about {@link Has} usage ?
+ * Do you have any questions about `Has` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

@@ -83,7 +83,6 @@ declare type BoardIsFull<TBoard extends readonly Cell[]> =
  * - The TicTacToe type is a type-level implementation of the Tic Tac Toe game.
  *
  * @template TBoard - The board type, which is an array of cells (X, O, or empty).
- * ---------------------------
  * @example
  * ```tsx
  * import type { Lab } from "@dulysse1/ts-helper";
@@ -97,7 +96,7 @@ declare type BoardIsFull<TBoard extends readonly Cell[]> =
  * ]>;
  * ```
  * ---------------------------
- * Do you have any questions about {@link TicTacToe} usage ?
+ * Do you have any questions about `TicTacToe` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

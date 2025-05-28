@@ -29,7 +29,6 @@ declare type _Power<TNumber1 extends number, TNumber2 extends number> =
  *
  * @template TNumber1 - The first number (the base).
  * @template TNumber2 - The second number (the exponent).
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -39,7 +38,7 @@ declare type _Power<TNumber1 extends number, TNumber2 extends number> =
  * type C = Num.Power<2, 9>; // 512
  * ```
  * ---------------------------
- * Do you have any questions about {@link Power} usage ?
+ * Do you have any questions about `Power` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

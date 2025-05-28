@@ -27,32 +27,32 @@ import type { IsOdd } from "./modules/isOdd";
 
 /**
  * #### ✨ List of `ts-helper` numeric types ✨:
- * - {@link Increment}*
- * - {@link Decrement}*
- * - {@link Greater}*
- * - {@link Lower}*
- * - {@link GreaterEq}*
- * - {@link LowerEq}*
- * - {@link IsPositive}
- * - {@link IsNegative}
- * - {@link Add}*
- * - {@link Subtract}*
- * - {@link Opposite}*
- * - {@link Range}*
- * - {@link Between}*
- * - {@link IsZero}
- * - {@link Multiply}*
- * - {@link Divide}*
- * - {@link Eval}*
- * - {@link Factorial}*
- * - {@link Modulo}*
- * - {@link Power}*
- * - {@link IsFloat}
- * - {@link Compare}*
- * - {@link ParseInt}
- * - {@link ParseFloat}
- * - {@link IsEven}
- * - {@link IsOdd}
+ * - `Increment`*
+ * - `Decrement`*
+ * - `Greater`*
+ * - `Lower`*
+ * - `GreaterEq`*
+ * - `LowerEq`*
+ * - `IsPositive`
+ * - `IsNegative`
+ * - `Add`*
+ * - `Subtract`*
+ * - `Opposite`*
+ * - `Range`*
+ * - `Between`*
+ * - `IsZero`
+ * - `Multiply`*
+ * - `Divide`*
+ * - `Eval`*
+ * - `Factorial`*
+ * - `Modulo`*
+ * - `Power`*
+ * - `IsFloat`
+ * - `Compare`*
+ * - `ParseInt`
+ * - `ParseFloat`
+ * - `IsEven`
+ * - `IsOdd`
  *
  *  #### _⚠️ *Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
  * ---------------------------

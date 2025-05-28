@@ -9,7 +9,6 @@ import type { Prettify } from "@/object";
  * @template Mode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
- * ---------------------------
  * @example
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
@@ -19,7 +18,7 @@ import type { Prettify } from "@/object";
  * >; // { a?: string; b?: number;  }
  * ```
  * ---------------------------
- * Do you have any questions about {@link Partial} usage ?
+ * Do you have any questions about `Partial` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

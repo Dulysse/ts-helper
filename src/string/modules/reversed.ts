@@ -21,7 +21,7 @@ declare type _Reversed<
  * ```
  *
  * ---------------------------
- * Do you have any questions about {@link Reversed} usage ?
+ * Do you have any questions about `Reversed` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

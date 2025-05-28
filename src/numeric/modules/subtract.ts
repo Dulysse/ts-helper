@@ -61,7 +61,6 @@ export declare type _Subtract<
  *
  * @template TNumber1 - The first number (the minuend).
  * @template TNumber2 - The second number (the subtrahend).
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -71,7 +70,7 @@ export declare type _Subtract<
  * type C = Num.Subtract<12.4, 3.2>; // 9.2  NEW!
  * ```
  * ---------------------------
- * Do you have any questions about {@link Subtract} usage ?
+ * Do you have any questions about `Subtract` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

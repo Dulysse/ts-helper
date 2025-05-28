@@ -5,7 +5,6 @@ import type { TDefaultArray } from "../utils";
  * - Check whether an array of type `TArray` is a tuple or not
  *
  * @template TArray - The array type to check if it is a tuple.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { TDefaultArray } from "../utils";
  * type B = Arr.IsTuple<[1, 2, 3]>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsTuple} usage ?
+ * Do you have any questions about `IsTuple` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

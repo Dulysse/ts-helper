@@ -6,7 +6,6 @@ import type { UnReadonly } from "@/array";
  * - Check if an array `TArray` type is readonly or not
  *
  * @template TArray - The array type to check for readonly status.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -16,7 +15,7 @@ import type { UnReadonly } from "@/array";
  * >; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsReadonly} usage ?
+ * Do you have any questions about `IsReadonly` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

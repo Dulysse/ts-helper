@@ -26,7 +26,6 @@ export declare type DescRange<
  *
  * @template From - The first number of the range (inclusive).
  * @template To - The last number of the range (inclusive).
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -34,7 +33,7 @@ export declare type DescRange<
  * type A = Num.Range<1, 5>; // [1, 2, 3, 4, 5]
  * ```
  * ---------------------------
- * Do you have any questions about {@link Range} usage ?
+ * Do you have any questions about `Range` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

@@ -6,7 +6,6 @@ import type { IsTuple } from "@/array";
  *
  * @template TArray - The array type to get the first element from.
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -14,7 +13,7 @@ import type { IsTuple } from "@/array";
  * type A = Arr.First<[1, 2, 3]>; // 1
  * ```
  * ---------------------------
- * Do you have any questions about {@link First} usage ?
+ * Do you have any questions about `First` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

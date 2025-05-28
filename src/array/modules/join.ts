@@ -41,7 +41,6 @@ declare type Stringify<
  * @template TArray - The array type to join elements from.
  * @template TSeparator - The separator to use between elements (default is `,`).
  *
- * ---------------------------
  * @example
  * ```tsx
  * import type { Arr } from "@dulysse1/ts-helper";
@@ -49,7 +48,7 @@ declare type Stringify<
  * type A = Arr.Join<["H", "e", "l", "l", "o"]>; // "h,e,l,l,o"
  * ```
  * ---------------------------
- * Do you have any questions about {@link Join} usage ?
+ * Do you have any questions about `Join` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

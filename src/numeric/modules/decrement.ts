@@ -31,7 +31,6 @@ declare type Previous<TNumber extends number> = {
  * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber - The number to decrement.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -39,7 +38,7 @@ declare type Previous<TNumber extends number> = {
  * type A = Num.Decrement<10>; // 9
  * ```
  * ---------------------------
- * Do you have any questions about {@link Decrement} usage ?
+ * Do you have any questions about `Decrement` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)

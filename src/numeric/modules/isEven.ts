@@ -7,7 +7,6 @@ import type { Split } from "@/string";
  * - Check if a number `TNumber` is an `even` number
  *
  * @template TNumber - The number to check.
- * ---------------------------
  * @example
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
@@ -16,7 +15,7 @@ import type { Split } from "@/string";
  * type B = Num.IsEven<10.29>; // true
  * ```
  * ---------------------------
- * Do you have any questions about {@link IsEven} usage ?
+ * Do you have any questions about `IsEven` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
