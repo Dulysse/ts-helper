@@ -9,6 +9,7 @@ declare function add<T1 extends number, T2 extends number>(
 	n1: T1,
 	n2: T2,
 ): Num.Add<T1, T2>;
+
 declare function sub<T1 extends number, T2 extends number>(
 	n1: T1,
 	n2: T2,
@@ -18,6 +19,14 @@ const resAdd = add(87.67, 10.34);
 //      ^?
 
 const resSub = sub(77.67, 154.34);
+//      ^?
+
+declare function multiply<T1 extends number, T2 extends number>(
+	n1: T1,
+	n2: T2,
+): Num.Multiply<T1, T2>;
+
+const resMultiply = multiply(18, 15.34);
 //      ^?
 
 type res = Lab.TicTacToe<

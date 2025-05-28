@@ -55,6 +55,10 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
 
+- New feature since version `1.2.6`! The multiply function allow one `float` type 🤯🤯🤯
+
+![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/multiply.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/multiply.png)
+
 - New feature since version `1.2.2`! Add and Substract functions allow `float` type 🤯🤯
 
 ![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/float.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/float.png)
