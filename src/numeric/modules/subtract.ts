@@ -27,30 +27,30 @@ export declare type _Subtract<
 	TNumber1 extends number,
 	TNumber2 extends number,
 	TSign extends Sign = "+",
-	TDenominator1 extends number = `${TNumber1}` extends `${string}.${infer D}`
+	TDecimal1 extends number = `${TNumber1}` extends `${string}.${infer D}`
 		? TwoDigit<D>
 		: 100,
 > =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
 		? IsPositive<TNumber2> extends true
-			? `${TNumber2}` extends `0.${infer TDenominator2}`
+			? `${TNumber2}` extends `0.${infer TDecimal2}`
 				? {
 						"+": {
-							true: ParseFloat<`${PickNumerator<TNumber1>}.${TwoDigitify<_Subtract<TDenominator1, TwoDigit<TDenominator2>>>}`>;
-							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${TwoDigitify<_Subtract<_Add<TDenominator1, 100>, TwoDigit<TDenominator2>>>}`>;
+							true: ParseFloat<`${PickNumerator<TNumber1>}.${TwoDigitify<_Subtract<TDecimal1, TwoDigit<TDecimal2>>>}`>;
+							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${TwoDigitify<_Subtract<_Add<TDecimal1, 100>, TwoDigit<TDecimal2>>>}`>;
 						};
 						"-": {
-							true: ParseFloat<`${PickNumerator<TNumber1>}.${TwoDigitify<_Subtract<_Add<TwoDigit<TDenominator2>, 100>, TDenominator1>>}`>;
-							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${TwoDigitify<_Subtract<TwoDigit<TDenominator2>, TDenominator1>>}`>;
+							true: ParseFloat<`${PickNumerator<TNumber1>}.${TwoDigitify<_Subtract<_Add<TwoDigit<TDecimal2>, 100>, TDecimal1>>}`>;
+							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${TwoDigitify<_Subtract<TwoDigit<TDecimal2>, TDecimal1>>}`>;
 						};
-					}[TSign][`${GreaterEq<TDenominator1, TwoDigit<TDenominator2>>}`]
+					}[TSign][`${GreaterEq<TDecimal1, TwoDigit<TDecimal2>>}`]
 				: Equal<TNumber2, 0> extends true
 					? TNumber1
 					: _Subtract<
 							Decrement<TNumber1>,
 							Decrement<TNumber2>,
 							TSign,
-							TDenominator1
+							TDecimal1
 						>
 			: number
 		: number;

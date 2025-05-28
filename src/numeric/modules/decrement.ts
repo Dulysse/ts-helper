@@ -1,6 +1,6 @@
 import type {
 	BuildTuple,
-	OppositeDenominator,
+	OppositeDecimal,
 	IsValidNumberInput,
 	TwoDigit,
 } from "../utils";
@@ -48,10 +48,10 @@ declare type Previous<TNumber extends number> = {
 export declare type Decrement<TNumber extends number> =
 	IsValidNumberInput<TNumber> extends true
 		? IsFloat<TNumber> extends true
-			? `${TNumber}` extends `0.${infer Denominator}`
-				? ParseFloat<`-0.${Lower<OppositeDenominator<TwoDigit<Denominator>>, 10> extends true ? `0${OppositeDenominator<TwoDigit<Denominator>>}` : OppositeDenominator<TwoDigit<Denominator>>}`>
-				: `${TNumber}` extends `${infer Numerator extends number}.${infer Denominator}`
-					? ParseFloat<`${Previous<Numerator>}.${Denominator}`>
+			? `${TNumber}` extends `0.${infer Decimal}`
+				? ParseFloat<`-0.${Lower<OppositeDecimal<TwoDigit<Decimal>>, 10> extends true ? `0${OppositeDecimal<TwoDigit<Decimal>>}` : OppositeDecimal<TwoDigit<Decimal>>}`>
+				: `${TNumber}` extends `${infer Numerator extends number}.${infer Decimal}`
+					? ParseFloat<`${Previous<Numerator>}.${Decimal}`>
 					: never
 			: Previous<TNumber>
 		: number;

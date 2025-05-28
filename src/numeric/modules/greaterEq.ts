@@ -1,10 +1,12 @@
 import type { And } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
-import type { Compare } from "@/numeric";
+import type { Comparators, Compare } from "@/numeric";
 
 declare type _GreaterEq<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-		? Compare<TNumber1, TNumber2> extends "greater" | "equal"
+		? Compare<TNumber1, TNumber2> extends
+				| Comparators.GREATER
+				| Comparators.EQUAL
 			? true
 			: false
 		: boolean;

@@ -1,4 +1,5 @@
 import type {
+	Comparators,
 	Compare,
 	Decrement,
 	IsFloat,
@@ -13,7 +14,7 @@ import type { And } from "@/operator";
 declare type _Power<TNumber1 extends number, TNumber2 extends number> =
 	IsZero<TNumber2> extends true
 		? 1
-		: Compare<TNumber2, 1> extends "equal"
+		: Compare<TNumber2, 1> extends Comparators.EQUAL
 			? TNumber1
 			: IsPositive<TNumber2> extends true
 				? Multiply<TNumber1, _Power<TNumber1, Decrement<TNumber2>>>

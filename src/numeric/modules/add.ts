@@ -19,14 +19,14 @@ import type { _Subtract } from "@/numeric/modules/subtract";
 export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
 		? IsPositive<TNumber2> extends true
-			? `${TNumber2}` extends `0.${infer TDenominator2}`
-				? `${TNumber1}` extends `${infer _}.${infer TDenominator1}`
-					? `${_Add<TwoDigit<TDenominator1>, TwoDigit<TDenominator2>>}` extends `${infer D extends number}`
+			? `${TNumber2}` extends `0.${infer TDecimal2}`
+				? `${TNumber1}` extends `${infer _}.${infer TDecimal1}`
+					? `${_Add<TwoDigit<TDecimal1>, TwoDigit<TDecimal2>>}` extends `${infer D extends number}`
 						? GreaterEq<D, 100> extends true
 							? ParseFloat<`${Increment<ParseInt<`${TNumber1}`>>}.${TwoDigitify<_Subtract<D, 100>>}`>
 							: ParseFloat<`${ParseInt<`${TNumber1}`>}.${TwoDigitify<D>}`>
 						: never
-					: ParseFloat<`${TNumber1}.${TwoDigit<TDenominator2>}`>
+					: ParseFloat<`${TNumber1}.${TwoDigit<TDecimal2>}`>
 				: Equal<TNumber2, 0> extends true
 					? TNumber1
 					: _Add<Increment<TNumber1>, Decrement<TNumber2>>

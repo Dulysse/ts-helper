@@ -19,7 +19,7 @@ import type { Factorial } from "./modules/factorial";
 import type { Modulo } from "./modules/modulo";
 import type { Power } from "./modules/power";
 import type { IsFloat } from "./modules/isFloat";
-import type { Compare } from "./modules/compare";
+import type { Compare, Comparators } from "./modules/compare";
 import type { ParseInt } from "./modules/parseInt";
 import type { ParseFloat } from "./modules/parseFloat";
 import type { IsEven } from "./modules/isEven";
@@ -53,6 +53,7 @@ import type { IsOdd } from "./modules/isOdd";
  * - `ParseFloat`
  * - `IsEven`
  * - `IsOdd`
+ * - `Comparators`*
  *
  *  #### _⚠️ *Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
  * ---------------------------
@@ -91,6 +92,7 @@ export declare namespace Num {
 		ParseFloat,
 		IsEven,
 		IsOdd,
+		Comparators,
 	};
 }
 
@@ -121,4 +123,5 @@ export {
 	ParseFloat,
 	IsEven,
 	IsOdd,
+	Comparators,
 };

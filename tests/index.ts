@@ -26,10 +26,5 @@ declare function multiply<T1 extends number, T2 extends number>(
 	n2: T2,
 ): Num.Multiply<T1, T2>;
 
-const resMultiply = multiply(18, 15.34);
+const resMultiply = add(1.008, 2);
 //      ^?
-
-type res = Lab.TicTacToe<
-	//    ^?
-	["X", "O", "X", "O", "X", "X", "O", "O", "X"]
->;

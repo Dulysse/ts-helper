@@ -37,10 +37,9 @@ export declare type TwoDigit<T extends string> =
 			: never
 		: never;
 
-export declare type OppositeDenominator<T extends keyof DenominatorMap> =
-	DenominatorMap[T];
+export declare type OppositeDecimal<T extends keyof DecimalMap> = DecimalMap[T];
 
-declare type DenominatorMap = {
+declare type DecimalMap = {
 	0: 100;
 	1: 99;
 	2: 98;

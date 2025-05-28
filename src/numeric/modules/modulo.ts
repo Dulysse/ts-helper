@@ -5,14 +5,15 @@ import type {
 	Opposite,
 	Compare,
 	IsFloat,
+	Comparators,
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 import type { And } from "@/operator";
 
 declare type _PositiveModulo<TNumber1 extends number, TNumber2 extends number> =
-	Compare<TNumber1, TNumber2> extends "equal"
+	Compare<TNumber1, TNumber2> extends Comparators.EQUAL
 		? 0
-		: Compare<TNumber1, TNumber2> extends "greater"
+		: Compare<TNumber1, TNumber2> extends Comparators.GREATER
 			? _PositiveModulo<Subtract<TNumber1, TNumber2>, TNumber2>
 			: TNumber1;
 
