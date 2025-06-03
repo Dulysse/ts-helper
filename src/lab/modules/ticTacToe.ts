@@ -80,7 +80,13 @@ declare type BoardIsFull<TBoard extends readonly Cell[]> =
 	"" extends TBoard[number] ? false : true;
 
 /**
+ *
+ * ![Exemple here](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/tictactoe.png)
+ *
  * - The TicTacToe type is a type-level implementation of the Tic Tac Toe game.
+ * - It checks the current state of the game based on the provided board.
+ * - It determines if the board is valid, checks for a win or draw condition, and provides the next player's turn.
+ * - The board is represented as a one-dimensional array of cells, where each cell can be "X", "O", or empty.
  *
  * @template TBoard - The board type, which is an array of cells (X, O, or empty).
  * @example

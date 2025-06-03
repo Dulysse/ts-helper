@@ -1,4 +1,6 @@
 import type { TicTacToe } from "./modules/ticTacToe";
+import type { Connect4 } from "./modules/connect4";
+
 /**
  * #### 🧪 List of `ts-helper` laboratory types 🧪:
  * - `TicTacToe`
@@ -12,6 +14,7 @@ import type { TicTacToe } from "./modules/ticTacToe";
  */
 export declare namespace Lab {
 	export { TicTacToe };
+	export { Connect4 };
 }
 
-export { TicTacToe };
+export { TicTacToe, Connect4 };

@@ -28,3 +28,15 @@ declare function multiply<T1 extends number, T2 extends number>(
 
 const resMultiply = add(1.008, 2);
 //      ^?
+
+type GAME = Lab.Connect4<
+	//  ^?
+	[
+		["O", ".", "O", "X", "X", ".", "X"],
+		["X", ".", "X", "X", "X", ".", "O"],
+		["O", ".", "X", "O", "X", ".", "X"],
+		["X", ".", "X", "X", "O", ".", "O"],
+		["O", "O", "O", "O", "O", ".", "O"],
+		["O", "X", "X", "X", "O", ".", "O"],
+	]
+>;

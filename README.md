@@ -253,6 +253,8 @@ const name: Any.Strict = {}; // "wrong way !"
 
 ![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/tictactoe.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/tictactoe.png)
 
+![https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/connect4.png](https://raw.githubusercontent.com/Dulysse/ts-helper/refs/heads/main/assets/connect4.png)
+
 ## Do you have any ideas or recommendations for improvement? 🤔
 
 ## Contact me! 😃
