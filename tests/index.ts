@@ -26,24 +26,23 @@ declare function multiply<T1 extends number, T2 extends number>(
 	n2: T2,
 ): Num.Multiply<T1, T2>;
 
-const resMultiply = add(1.008, 2);
+const resMultiply = add(1.08, 2);
 //      ^?
 
-type GAME = Lab.Connect4<
-	//  ^?
+type GAME = Lab.TicTacToe<
+	//    ^?
 	[
-		[".", ".", ".", ".", ".", ".", "."],
-		[".", ".", ".", ".", ".", ".", "."],
-		[".", ".", ".", ".", ".", ".", "."],
-		[".", ".", ".", "X", ".", ".", "."],
-		[".", ".", ".", "O", "O", ".", "."],
-		[".", ".", "X", "X", "X", "O", "."],
+		["X", ".", "O", ".", "."],
+		[".", "X", "X", "O", "O"],
+		[".", "O", "X", "X", "."],
+		[".", ".", "X", "X", "."],
+		[".", "X", "O", "O", "O"],
 	],
 	{
-		TARGET_SCORE: 3;
+		COL: 5;
+		ROW: 5;
+		TARGET_SCORE: 4;
 		PLAYERS: ["X", "O"];
 		EMPTY_CELL: ".";
-		COL: 7;
-		ROW: 6;
 	}
 >;
