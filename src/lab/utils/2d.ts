@@ -192,10 +192,10 @@ export declare type ReactiveBoard2D<TRules extends GameRules> =
  * - It uses the `Fill` utility type to create a 2D array with the specified number of rows and columns.
  * - If the game rules are invalid, it returns an error type instead of a valid board.
  */
-export declare type Board<TRules extends GameRules> = Fill<
-	Fill<TRules["PLAYERS"][number] | TRules["EMPTY_CELL"], TRules["COL"]>,
-	TRules["ROW"]
->;
+export declare type Board<
+	TRules extends GameRules,
+	TValue = TRules["PLAYERS"][number] | TRules["EMPTY_CELL"],
+> = Fill<Fill<TValue, TRules["COL"]>, TRules["ROW"]>;
 
 /**
  * Check if a specific vector in the game board has a winning condition.
@@ -451,7 +451,7 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 					>
 				>
 			> extends true
-			? ` ❌ Invalid game rules! The rules should not be a union type. `
+			? ` ❌ Invalid game rules! A rule must not be a union type. `
 			: Or<
 						Or<
 							Equal<TRules["ROW"], GameRules["ROW"]>,
