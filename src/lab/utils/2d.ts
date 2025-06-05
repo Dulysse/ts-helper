@@ -165,6 +165,9 @@ declare type Cell = GameRules["PLAYERS"][number] | GameRules["EMPTY_CELL"];
 
 /**
  * The `ReactiveBoard` type represents a two-dimensional game board.
+ * - It is a 2D array where each cell can be occupied by one of the players or be empty.
+ * - The dimensions of the board are defined by the `ROW` and `COL` properties in the game rules.
+ * - If the game rules are invalid, it returns an error type instead of a valid board.
  */
 export declare type ReactiveBoard<TRules extends GameRules> =
 	InferRulesError<TRules> extends null
@@ -177,7 +180,6 @@ export declare type ReactiveBoard<TRules extends GameRules> =
 /**
  * Check if a specific vector in the game board has a winning condition.
  * - It recursively checks the next cell in the specified direction (vertical, horizontal, diagonal up, or diagonal down).
- * - If the score reaches the {@link C4_WIN_SCORE_TARGET}, it returns true.
  * - If the next cell is out of bounds or does not match the player, it returns false.
  * - The recursion continues until either a win is found or the next cell is out of bounds.
  */
