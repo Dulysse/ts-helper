@@ -11,6 +11,8 @@ import type { First } from "./modules/first";
 import type { Last } from "./modules/last";
 import type { Count } from "./modules/count";
 import type { Concat } from "./modules/concat";
+import type { Flat } from "./modules/flat";
+import type { Fill } from "./modules/fill";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
@@ -27,6 +29,8 @@ import type { Concat } from "./modules/concat";
  * - `Last`
  * - `Count`
  * - `Concat`
+ * - `Flat`
+ * - `Fill`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -50,6 +54,8 @@ export declare namespace Arr {
 		Last,
 		Count,
 		Concat,
+		Flat,
+		Fill,
 	};
 }
 
@@ -67,4 +73,6 @@ export {
 	Last,
 	Count,
 	Concat,
+	Flat,
+	Fill,
 };

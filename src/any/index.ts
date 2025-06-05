@@ -14,8 +14,7 @@ import type { Is } from "./modules/is";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Any {
-	export { Strict };
-	export { Is };
+	export { Strict, Is };
 }
 
 export { Strict, Is };

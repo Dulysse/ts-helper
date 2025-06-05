@@ -13,8 +13,7 @@ import type { Connect4 } from "./modules/connect4";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Lab {
-	export { TicTacToe };
-	export { Connect4 };
+	export { TicTacToe, Connect4 };
 }
 
 export { TicTacToe, Connect4 };

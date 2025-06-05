@@ -32,17 +32,19 @@ import type { Includes } from "./modules/includes";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Str {
-	export { IsExactString };
-	export { Split };
-	export { Width };
-	export { Replace };
-	export { ReplaceAll };
-	export { PlacedAt };
-	export { Reversed };
-	export { Repeat };
-	export { Trim };
-	export { Count };
-	export { Includes };
+	export {
+		IsExactString,
+		Split,
+		Width,
+		Replace,
+		ReplaceAll,
+		PlacedAt,
+		Reversed,
+		Repeat,
+		Trim,
+		Count,
+		Includes,
+	};
 }
 
 export {
