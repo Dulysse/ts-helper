@@ -22,7 +22,7 @@ export declare type DescRange<
 
 /**
  * - Create an array of a range between two numbers `TNumber1` and `TNumber2`
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template From - The first number of the range (inclusive).
  * @template To - The last number of the range (inclusive).

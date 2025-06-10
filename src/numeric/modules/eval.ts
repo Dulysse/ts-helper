@@ -1,6 +1,6 @@
 import type { Add, Multiply, Divide, Subtract, Factorial } from "@/numeric";
 import type { Satisfy } from "@/operator";
-import type { ReplaceAll } from "@/string";
+import type { ReplaceAll, Reversed } from "@/string";
 import type { ToArray } from "@/union";
 
 declare type PriorityOperator = "*" | "/";
@@ -9,7 +9,7 @@ declare type Operator = PriorityOperator | AdditiveOperator;
 declare type Calculation = `${number}${Operator}${number}`;
 declare type EvaluationFailed = unknown;
 declare type AllowedEvaluateChar =
-	`${number | Operator | "(" | ")" | " " | "!"}`;
+	`${number | Operator | "(" | ")" | " " | "!" | "."}`;
 
 declare type IsAllowedCharacter<C extends string> =
 	C extends AllowedEvaluateChar ? true : false;
@@ -37,14 +37,9 @@ declare type ExtractNumber<T extends string> =
 			: `${Char}${ExtractNumber<Rest>}`
 		: "";
 
-declare type ReverseString<
-	T extends string,
-	R extends string = "",
-> = T extends `${infer F}${infer Rest}` ? ReverseString<Rest, `${F}${R}`> : R;
-
 declare type PickLastNumber<T extends string> =
-	PickFirstNumber<ReverseString<T>> extends `${infer RevNumber}`
-		? ReverseString<RevNumber>
+	PickFirstNumber<Reversed<T>> extends `${infer RevNumber}`
+		? Reversed<RevNumber>
 		: never;
 
 declare type IsSubstring<
@@ -131,7 +126,7 @@ declare type Evaluate<T extends string> =
 /**
  * Type-safe evaluation of mathematical expressions represented as string literals.
  * This type allows you to calculate the result of the expression at compile time.
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template T - The mathematical expression to evaluate, represented as a string literal.
  * @example

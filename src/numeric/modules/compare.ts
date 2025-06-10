@@ -10,7 +10,7 @@ import type { Split } from "@/string";
  * - `GREATER`: Indicates that the first number is greater than the second number.
  * - `EQUAL`: Indicates that the two numbers are equal.
  * - This enum is used in the `Compare` type to return the result of the comparison.
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  */
 export declare enum Comparators {
 	LOWER = "lower",

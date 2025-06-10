@@ -2,7 +2,7 @@ import type { Num, Lab } from "../dist";
 
 declare function eval<T extends string>(value: T): Num.Eval<T>;
 
-const evaluation = eval("21+1");
+const evaluation = eval("21.2-1.9");
 //     ^?
 
 declare function add<T1 extends number, T2 extends number>(

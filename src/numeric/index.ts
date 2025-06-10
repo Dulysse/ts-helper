@@ -55,7 +55,7 @@ import type { IsOdd } from "./modules/isOdd";
  * - `IsOdd`
  * - `Comparators`*
  *
- *  #### _⚠️ *Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
+ *  #### _⚠️ *Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

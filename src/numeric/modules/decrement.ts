@@ -2,7 +2,8 @@ import type {
 	BuildTuple,
 	OppositeDecimal,
 	IsValidNumberInput,
-	TwoDigit,
+	DecimalOf,
+	ParseDecimal,
 } from "../utils";
 import type {
 	IsFloat,
@@ -28,7 +29,7 @@ declare type Previous<TNumber extends number> = {
 
 /**
  * - Decrement a number `TNumber` of one
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber - The number to decrement.
  * @example
@@ -49,9 +50,9 @@ export declare type Decrement<TNumber extends number> =
 	IsValidNumberInput<TNumber> extends true
 		? IsFloat<TNumber> extends true
 			? `${TNumber}` extends `0.${infer Decimal}`
-				? ParseFloat<`-0.${Lower<OppositeDecimal<TwoDigit<Decimal>>, 10> extends true ? `0${OppositeDecimal<TwoDigit<Decimal>>}` : OppositeDecimal<TwoDigit<Decimal>>}`>
+				? ParseFloat<`-0.${Lower<OppositeDecimal<DecimalOf<Decimal>>, 10> extends true ? `0${OppositeDecimal<DecimalOf<Decimal>>}` : OppositeDecimal<DecimalOf<Decimal>>}`>
 				: `${TNumber}` extends `${infer Numerator extends number}.${infer Decimal}`
-					? ParseFloat<`${Previous<Numerator>}.${Decimal}`>
+					? ParseFloat<`${Previous<Numerator>}.${ParseDecimal<DecimalOf<Decimal>>}`>
 					: never
 			: Previous<TNumber>
 		: number;

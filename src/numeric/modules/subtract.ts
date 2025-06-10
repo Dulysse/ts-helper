@@ -11,8 +11,8 @@ import type {
 	GetSign,
 	IsValidNumberInput,
 	Sign,
-	TwoDigit,
-	TwoDigitify,
+	DecimalOf,
+	ParseDecimal,
 } from "../utils";
 import type { _Add } from "@/numeric/modules/add";
 
@@ -28,7 +28,7 @@ export declare type _Subtract<
 	TNumber2 extends number,
 	TSign extends Sign = "+",
 	TDecimal1 extends number = `${TNumber1}` extends `${string}.${infer D}`
-		? TwoDigit<D>
+		? DecimalOf<D>
 		: 100,
 > =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
@@ -36,14 +36,14 @@ export declare type _Subtract<
 			? `${TNumber2}` extends `0.${infer TDecimal2}`
 				? {
 						"+": {
-							true: ParseFloat<`${PickNumerator<TNumber1>}.${TwoDigitify<_Subtract<TDecimal1, TwoDigit<TDecimal2>>>}`>;
-							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${TwoDigitify<_Subtract<_Add<TDecimal1, 100>, TwoDigit<TDecimal2>>>}`>;
+							true: ParseFloat<`${PickNumerator<TNumber1>}.${ParseDecimal<_Subtract<TDecimal1, DecimalOf<TDecimal2>>>}`>;
+							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${ParseDecimal<_Subtract<_Add<TDecimal1, 100>, DecimalOf<TDecimal2>>>}`>;
 						};
 						"-": {
-							true: ParseFloat<`${PickNumerator<TNumber1>}.${TwoDigitify<_Subtract<_Add<TwoDigit<TDecimal2>, 100>, TDecimal1>>}`>;
-							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${TwoDigitify<_Subtract<TwoDigit<TDecimal2>, TDecimal1>>}`>;
+							true: ParseFloat<`${PickNumerator<TNumber1>}.${ParseDecimal<_Subtract<_Add<DecimalOf<TDecimal2>, 100>, TDecimal1>>}`>;
+							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${ParseDecimal<_Subtract<DecimalOf<TDecimal2>, TDecimal1>>}`>;
 						};
-					}[TSign][`${GreaterEq<TDecimal1, TwoDigit<TDecimal2>>}`]
+					}[TSign][`${GreaterEq<TDecimal1, DecimalOf<TDecimal2>>}`]
 				: Equal<TNumber2, 0> extends true
 					? TNumber1
 					: _Subtract<
@@ -57,7 +57,7 @@ export declare type _Subtract<
 
 /**
  * - Subtract `TNumber2` from `TNumber1`
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber1 - The first number (the minuend).
  * @template TNumber2 - The second number (the subtrahend).

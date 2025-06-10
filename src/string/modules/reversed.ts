@@ -11,7 +11,6 @@ declare type _Reversed<
  * - Reverse a string type `T` to produce a new string type with the characters in reverse order.
  *
  * @template T - The string to reverse.
- * ---------------------------
  *
  * @example
  * ```tsx

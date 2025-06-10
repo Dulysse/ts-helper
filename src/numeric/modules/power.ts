@@ -26,7 +26,7 @@ declare type _Power<TNumber1 extends number, TNumber2 extends number> =
 
 /**
  * The modulo mathematical operation (often referred to as `%` in programming) is used to obtain the remainder of an integer division between two numbers.
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber1 - The first number (the base).
  * @template TNumber2 - The second number (the exponent).

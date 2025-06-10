@@ -11,8 +11,8 @@ import type {
 import type {
 	GetSign,
 	IsValidNumberInput,
-	TwoDigit,
-	TwoDigitify,
+	DecimalOf,
+	ParseDecimal,
 } from "../utils";
 import type { _Subtract } from "@/numeric/modules/subtract";
 
@@ -21,12 +21,12 @@ export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
 		? IsPositive<TNumber2> extends true
 			? `${TNumber2}` extends `0.${infer TDecimal2}`
 				? `${TNumber1}` extends `${infer _}.${infer TDecimal1}`
-					? `${_Add<TwoDigit<TDecimal1>, TwoDigit<TDecimal2>>}` extends `${infer D extends number}`
+					? `${_Add<DecimalOf<TDecimal1>, DecimalOf<TDecimal2>>}` extends `${infer D extends number}`
 						? GreaterEq<D, 100> extends true
-							? ParseFloat<`${Increment<ParseInt<`${TNumber1}`>>}.${TwoDigitify<_Subtract<D, 100>>}`>
-							: ParseFloat<`${ParseInt<`${TNumber1}`>}.${TwoDigitify<D>}`>
+							? ParseFloat<`${Increment<ParseInt<`${TNumber1}`>>}.${ParseDecimal<_Subtract<D, 100>>}`>
+							: ParseFloat<`${ParseInt<`${TNumber1}`>}.${ParseDecimal<D>}`>
 						: never
-					: ParseFloat<`${TNumber1}.${TwoDigit<TDecimal2>}`>
+					: ParseFloat<`${TNumber1}.${DecimalOf<TDecimal2>}`>
 				: Equal<TNumber2, 0> extends true
 					? TNumber1
 					: _Add<Increment<TNumber1>, Decrement<TNumber2>>
@@ -35,7 +35,7 @@ export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
 
 /**
  * - Add `TNumber2` to `TNumber1`
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber1 - The first number to add.
  * @template TNumber2 - The second number to add.

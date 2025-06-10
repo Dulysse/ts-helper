@@ -53,7 +53,7 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ### 👉 `Numbers`
 
-- ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+- ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
 
 - New feature since version `1.2.6`! The multiply function allow one `float` type 🤯🤯🤯
 

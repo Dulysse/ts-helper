@@ -24,14 +24,14 @@ export declare type BuildTuple<
 	T extends number[] = [],
 > = T["length"] extends L ? T : BuildTuple<L, [...T, 0]>;
 
-export declare type TwoDigit<T extends string> =
+export declare type DecimalOf<T extends string> =
 	T extends `${infer TNumber extends number}`
 		? Or<IsValidNumberInput<TNumber>, Not<IsFloat<TNumber>>> extends true
 			? Split<T> extends [`${infer First extends number}`, ...infer Next]
 				? Equal<Next, []> extends true
 					? ParseInt<`${First}0`>
 					: Next extends [`${infer Second extends number}`, ...infer Rest]
-						? ParseInt<`${First}${Rest[0] extends `${5 | 6 | 7 | 8 | 9}` ? NextPositive<Second> : Second}`>
+						? ParseInt<`${First}${Rest[0] extends `${UpperRoundingNumber}` ? NextPositive<Second> : Second}`>
 						: never
 				: never
 			: never
@@ -149,7 +149,8 @@ export declare type GetSign<TNumber1 extends number, TNumber2 extends number> =
 		? "+"
 		: "-";
 
-export declare type TwoDigitify<TNumber extends number> =
+export declare type ParseDecimal<TNumber extends number> =
 	Lower<TNumber, 10> extends true ? `0${TNumber}` : TNumber;
 
 export declare type EvenNumber = 0 | 2 | 4 | 6 | 8;
+export declare type UpperRoundingNumber = 5 | 6 | 7 | 8 | 9;

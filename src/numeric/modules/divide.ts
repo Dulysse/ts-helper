@@ -48,7 +48,7 @@ declare type _Divide<TNumber1 extends number, TNumber2 extends number> = {
 
 /**
  * - Divide `TNumber1` by `TNumber2`
- * - ⚠️ Returns an absolute result for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
+ * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber1 - The first number to divide.
  * @template TNumber2 - The second number to divide.
