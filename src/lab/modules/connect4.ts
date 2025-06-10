@@ -7,7 +7,6 @@ import type {
 	Infer2DBoardErrors,
 	Infer2DRulesErrors,
 	ReactiveBoard2D,
-	Board,
 } from "@/lab/utils/2d";
 import type { Increment } from "@/numeric";
 
@@ -99,9 +98,7 @@ export declare type Connect4<
 			? BOARD_ERROR_MESSAGE
 			: Check2DVectors<TBoard, TRules> extends infer PAYLOAD extends
 						VictoryPayload
-				? ` 🎉 Congratulation player '${PAYLOAD["player"]}', you won by ${PAYLOAD["dir"]} line at (${Increment<PAYLOAD["pos"][0]>}, ${Increment<PAYLOAD["pos"][1]>})! 🎉 Reset the board to play again. 🕹️ ` & {
-						reset: Board<TRules, TRules["EMPTY_CELL"]>;
-					}
+				? ` 🎉 Congratulation player '${PAYLOAD["player"]}', you won by ${PAYLOAD["dir"]} line at (${Increment<PAYLOAD["pos"][0]>}, ${Increment<PAYLOAD["pos"][1]>})! 🎉 Reset the board to play again. 🕹️ `
 				: IsBoardFull<TBoard, TRules> extends true
 					? " 🤝 It's a draw! 🤝 Reset the board to play again. 🕹️ "
 					: ` 🕹️ Player '${NextPlayer<TBoard, TRules>}' it's your turn. 🕹️ `;

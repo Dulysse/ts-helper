@@ -29,20 +29,14 @@ declare function multiply<T1 extends number, T2 extends number>(
 const resMultiply = add(1.08, 2);
 //      ^?
 
-type GAME = Lab.TicTacToe<
+type GAME = Lab.Connect4<
 	//    ^?
 	[
-		["X", ".", "O", ".", "."],
-		[".", "X", "X", "O", "O"],
-		[".", "O", "X", "X", "."],
-		[".", ".", "X", "X", "."],
-		[".", "X", "O", "O", "O"],
-	],
-	{
-		COL: 5;
-		ROW: 5;
-		TARGET_SCORE: 4;
-		PLAYERS: ["X", "O"];
-		EMPTY_CELL: ".";
-	}
+		[".", ".", ".", ".", ".", ".", "."],
+		[".", ".", ".", ".", ".", ".", "."],
+		[".", ".", ".", ".", ".", ".", "."],
+		[".", ".", ".", "O", ".", ".", "."],
+		[".", ".", ".", "O", ".", ".", "."],
+		[".", "O", "X", "X", "X", "X", "."],
+	]
 >;
