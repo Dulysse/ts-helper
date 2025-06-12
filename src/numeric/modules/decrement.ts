@@ -15,6 +15,15 @@ import type {
 } from "@/numeric";
 import type { NextPositive } from "@/numeric/modules/increment";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Decrement a number of one unit",
+	Test.It<Decrement<1>, 0, Test.Out.PASS>(),
+	Test.It<Decrement<0.88>, -0.12, Test.Out.PASS>(),
+	Test.It<Decrement<number>, number, Test.Out.PASS>(),
+);
+
 export declare type PreviousPositive<TNumber extends number> =
 	IsZero<TNumber> extends true
 		? -1

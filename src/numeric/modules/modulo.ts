@@ -10,6 +10,16 @@ import type {
 import type { IsValidNumberInput } from "../utils";
 import type { And } from "@/operator";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the remaining integer after the division of two numbers",
+	Test.It<Modulo<0, 0>, never, Test.Out.PASS>(),
+	Test.It<Modulo<0, 10>, 0, Test.Out.PASS>(),
+	Test.It<Modulo<100, 25>, 0, Test.Out.PASS>(),
+	Test.It<Modulo<20, 3>, 2, Test.Out.PASS>(),
+);
+
 declare type _PositiveModulo<TNumber1 extends number, TNumber2 extends number> =
 	Compare<TNumber1, TNumber2> extends Comparators.EQUAL
 		? 0

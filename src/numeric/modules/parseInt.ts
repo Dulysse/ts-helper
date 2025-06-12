@@ -1,5 +1,15 @@
 import type { Satisfy } from "@/operator";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Parse a string litteral to integer number",
+	Test.It<ParseInt<"10.23">, 10.23, Test.Out.FAIL>(),
+	Test.It<ParseInt<`${string}.2`>, number, Test.Out.PASS>(),
+	Test.It<ParseInt<"0">, 0, Test.Out.PASS>(),
+	Test.It<ParseInt<"0.34" | "1">, 0.34 | 1, Test.Out.FAIL>(),
+);
+
 /**
  * - ParseInt `T` it will return the string as integer number
  *

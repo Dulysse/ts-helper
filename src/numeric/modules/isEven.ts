@@ -3,6 +3,15 @@ import type { ParseInt } from "@/numeric";
 import type { EvenNumber, IsValidNumberInput } from "@/numeric/utils";
 import type { Split } from "@/string";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a number is an even number",
+	Test.It<IsEven<number>, boolean, Test.Out.PASS>(),
+	Test.It<IsEven<2.33>, true, Test.Out.PASS>(),
+	Test.It<IsEven<-5>, false, Test.Out.PASS>(),
+);
+
 /**
  * - Check if a number `TNumber` is an `even` number
  *

@@ -1,6 +1,16 @@
 import type { IsFloat, IsPositive, Opposite } from "@/numeric";
+import type { IsValidNumberInput } from "@/numeric/utils";
 import type { And, Equal, Satisfy } from "@/operator";
 import type { Split } from "@/string";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Compare a number to another",
+	Test.It<Compare<1, 1>, Comparators.EQUAL, Test.Out.PASS>(),
+	Test.It<Compare<1.01, 1.02>, Comparators.LOWER, Test.Out.PASS>(),
+	Test.It<Compare<230, 890>, Comparators.GREATER, Test.Out.FAIL>(),
+);
 
 /**
  * - The `Comparators` enum is used to define the possible comparison results
@@ -94,8 +104,8 @@ export declare type _Compare<
  * ```tsx
  * import type { Num } from "@dulysse1/ts-helper";
  *
- * type A = Num.Compare<-10, 10>; // "lower"
- * type B = Num.Compare<23, 10>; // "greater"
+ * type A = Num.Compare<-10, 10>; // Comparators.LOWER
+ * type B = Num.Compare<23, 10>; // Comparators.GREATER
  * ```
  * ---------------------------
  * Do you have any questions about `Compare` usage ?
@@ -106,6 +116,8 @@ export declare type _Compare<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Compare<TNumber1 extends number, TNumber2 extends number> =
-	Equal<TNumber1, TNumber2> extends true
-		? Comparators.EQUAL
-		: _Compare<TNumber1, TNumber2>;
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
+		? Equal<TNumber1, TNumber2> extends true
+			? Comparators.EQUAL
+			: _Compare<TNumber1, TNumber2>
+		: Comparators;

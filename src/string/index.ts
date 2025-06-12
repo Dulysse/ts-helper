@@ -9,6 +9,7 @@ import type { Repeat } from "./modules/repeat";
 import type { Trim } from "./modules/trim";
 import type { Count } from "./modules/count";
 import type { Includes } from "./modules/includes";
+import type { Infer } from "./modules/infer";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
@@ -23,6 +24,7 @@ import type { Includes } from "./modules/includes";
  * - `Trim`
  * - `Count`
  * - `Includes`
+ * - `Infer`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -44,6 +46,7 @@ export declare namespace Str {
 		Trim,
 		Count,
 		Includes,
+		Infer,
 	};
 }
 
@@ -59,4 +62,5 @@ export {
 	Trim,
 	Count,
 	Includes,
+	Infer,
 };

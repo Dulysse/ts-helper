@@ -19,8 +19,8 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Equal<A, B> = A extends B
-	? B extends A
+export declare type Equal<A, B> = [A] extends [B]
+	? [B] extends [A]
 		? true
 		: false
 	: false;

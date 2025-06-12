@@ -1,3 +1,15 @@
+import type { IsPositive } from "@/numeric";
+import type { Not } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a number is a negative number",
+	Test.It<IsNegative<number>, boolean, Test.Out.PASS>(),
+	Test.It<IsNegative<2.33>, false, Test.Out.PASS>(),
+	Test.It<IsNegative<-5>, true, Test.Out.PASS>(),
+);
+
 /**
  * - Check if a number `TNumber` is a negative number
  *
@@ -17,5 +29,6 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsNegative<TNumber extends number> =
-	`${TNumber}` extends `-${number}` ? true : false;
+export declare type IsNegative<TNumber extends number> = Not<
+	IsPositive<TNumber>
+>;

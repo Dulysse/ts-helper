@@ -1,6 +1,15 @@
-import type { And, Equal } from "@/operator";
+import type { And, Equal, Or } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
-import type { LowerEq, Increment, Decrement } from "@/numeric";
+import type { LowerEq, Increment, Decrement, IsFloat } from "@/numeric";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get a tuple of element from a specific range",
+	Test.It<Range<2, 0>, [2, 1, 0], Test.Out.PASS>(),
+	Test.It<Range<2, 4>, [2, 3, 4], Test.Out.PASS>(),
+	Test.It<Range<2, -5>, [2, 1, 0, -1, -2, -3, -4, -5], Test.Out.PASS>(),
+);
 
 export declare type AscRange<
 	From extends number,
@@ -42,8 +51,10 @@ export declare type DescRange<
  */
 export declare type Range<From extends number, To extends number> =
 	And<IsValidNumberInput<From>, IsValidNumberInput<To>> extends true
-		? {
-				true: AscRange<From, To>;
-				false: DescRange<From, To>;
-			}[`${LowerEq<From, To> extends boolean ? LowerEq<From, To> : boolean}`]
+		? Or<IsFloat<From>, IsFloat<To>> extends false
+			? {
+					true: AscRange<From, To>;
+					false: DescRange<From, To>;
+				}[`${LowerEq<From, To> extends boolean ? LowerEq<From, To> : boolean}`]
+			: number[]
 		: number[];

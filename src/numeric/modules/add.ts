@@ -16,6 +16,15 @@ import type {
 } from "../utils";
 import type { _Subtract } from "@/numeric/modules/subtract";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Add a number to another",
+	Test.It<Add<1.1, 30>, 31.1, Test.Out.PASS>(),
+	Test.It<Add<5, -10>, -5, Test.Out.PASS>(),
+	Test.It<Add<5, -10>, number, Test.Out.FAIL>(),
+);
+
 export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
 		? IsPositive<TNumber2> extends true

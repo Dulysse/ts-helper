@@ -27,6 +27,5 @@
 		"strictNullChecks": true,
 		"incremental": false
 	},
-	"include": ["src"],
-	"exclude": ["tests"]
+	"include": ["src"]
 }

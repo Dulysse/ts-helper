@@ -9,6 +9,16 @@ import type {
 import type { IsValidNumberInput } from "../utils";
 import type { And, Not } from "@/operator";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the factorial of a number",
+	Test.It<Factorial<0>, 1, Test.Out.PASS>(),
+	Test.It<Factorial<-3>, -6, Test.Out.PASS>(),
+	Test.It<Factorial<5>, 120, Test.Out.PASS>(),
+	Test.It<Factorial<1.2>, 1, Test.Out.FAIL>(),
+);
+
 declare type _Factorial<TNumber extends number> =
 	IsZero<TNumber> extends true
 		? 1

@@ -11,6 +11,15 @@ import type {
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Divide one number by another",
+	Test.It<Divide<10, 2>, 5, Test.Out.PASS>(),
+	Test.It<Divide<-100, 5>, -20, Test.Out.PASS>(),
+	Test.It<Divide<189.2, 5>, number, Test.Out.PASS>(),
+);
+
 declare type DividePositive<
 	TNumber1 extends number,
 	TNumber2 extends number,

@@ -7,7 +7,7 @@ import type {
 } from "@/numeric";
 import type { NextPositive } from "@/numeric/modules/increment";
 import type { Equal, Not, Or } from "@/operator";
-import type { Split } from "@/string";
+import type { Split, Width } from "@/string";
 import type { IsUnion } from "@/union";
 
 export declare type IsValidNumberInput<TNumber extends number> =
@@ -16,7 +16,9 @@ export declare type IsValidNumberInput<TNumber extends number> =
 			? false
 			: IsUnion<TNumber> extends true
 				? false
-				: true
+				: `${TNumber}` extends `${infer _}.${infer Decimal}`
+					? Lower<Width<Decimal>, 3>
+					: true
 		: false;
 
 export declare type BuildTuple<

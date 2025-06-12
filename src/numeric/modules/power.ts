@@ -3,6 +3,7 @@ import type {
 	Compare,
 	Decrement,
 	IsFloat,
+	IsNegative,
 	IsPositive,
 	IsZero,
 	Multiply,
@@ -10,6 +11,15 @@ import type {
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 import type { And } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the power of a number",
+	Test.It<Power<2, 0>, 1, Test.Out.PASS>(),
+	Test.It<Power<2, 4>, 16, Test.Out.PASS>(),
+	Test.It<Power<2, -5>, number, Test.Out.PASS>(),
+);
 
 declare type _Power<TNumber1 extends number, TNumber2 extends number> =
 	IsZero<TNumber2> extends true
@@ -25,7 +35,7 @@ declare type _Power<TNumber1 extends number, TNumber2 extends number> =
 					: never;
 
 /**
- * The modulo mathematical operation (often referred to as `%` in programming) is used to obtain the remainder of an integer division between two numbers.
+ * The power mathematical operation (often referred to as `^` in programming) is used to obtain the power of an integer two numbers.
  * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  *
  * @template TNumber1 - The first number (the base).
@@ -48,14 +58,16 @@ declare type _Power<TNumber1 extends number, TNumber2 extends number> =
  */
 export declare type Power<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-		? {
-				true: {
-					true: number;
-					false: number;
-				};
-				false: {
-					true: number;
-					false: _Power<TNumber1, TNumber2>;
-				};
-			}[`${IsFloat<TNumber1>}`][`${IsFloat<TNumber2>}`]
+		? IsNegative<TNumber2> extends false
+			? {
+					true: {
+						true: number;
+						false: number;
+					};
+					false: {
+						true: number;
+						false: _Power<TNumber1, TNumber2>;
+					};
+				}[`${IsFloat<TNumber1>}`][`${IsFloat<TNumber2>}`]
+			: number
 		: number;

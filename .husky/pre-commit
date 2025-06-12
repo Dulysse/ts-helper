@@ -1,6 +1,6 @@
 pnpm format
 pnpm lint
-npx tsc
+pnpm test
 pnpm build
 pnpm check-exports
 git add .

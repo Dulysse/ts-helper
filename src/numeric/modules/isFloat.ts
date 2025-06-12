@@ -1,3 +1,13 @@
+import type { IsValidNumberInput } from "@/numeric/utils";
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a number is a float number",
+	Test.It<IsFloat<number>, boolean, Test.Out.PASS>(),
+	Test.It<IsFloat<2.33>, true, Test.Out.PASS>(),
+	Test.It<IsFloat<-5>, false, Test.Out.PASS>(),
+);
+
 /**
  * - Check if a number `TNumber` is a float number
  *
@@ -18,6 +28,8 @@
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsFloat<TNumber extends number> =
-	`${TNumber}` extends `${infer _ extends number}.${infer __ extends number}`
-		? true
-		: false;
+	IsValidNumberInput<TNumber> extends true
+		? `${TNumber}` extends `${infer _ extends number}.${infer __ extends number}`
+			? true
+			: false
+		: boolean;

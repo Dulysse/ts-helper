@@ -13,6 +13,7 @@ import type { Count } from "./modules/count";
 import type { Concat } from "./modules/concat";
 import type { Flat } from "./modules/flat";
 import type { Fill } from "./modules/fill";
+import type { FillRange } from "./modules/fillRange";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
@@ -31,6 +32,7 @@ import type { Fill } from "./modules/fill";
  * - `Concat`
  * - `Flat`
  * - `Fill`
+ * - `FillRange`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -56,6 +58,7 @@ export declare namespace Arr {
 		Concat,
 		Flat,
 		Fill,
+		FillRange,
 	};
 }
 
@@ -75,4 +78,5 @@ export {
 	Concat,
 	Flat,
 	Fill,
+	FillRange,
 };

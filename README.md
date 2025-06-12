@@ -51,6 +51,40 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 
 ### Here some examples:
 
+### `🧪 Test your own types ! 🧪`
+
+- Since version `1.3.0` you can test your own types like unit test with compiler check. Here is an example of usage with a type from my module:
+
+```tsx
+import type { Num, Test } from "@dulysse1/ts-helper";
+
+Test.Describe(
+	"Type-safe evaluation of mathematical expressions represented as string.",
+	Test.It<Num.Eval<"2+2*2">, 6, Test.Out.PASS>(),
+	Test.It<Num.Eval<"20.2-4/2">, 18.2, Test.Out.PASS>(),
+	Test.It<Num.Eval<"HELLO">, number, Test.Out.FAIL>(),
+	Test.It<Num.Eval<"23.3/32323">, number, Test.Out.PASS>(),
+	//         [Tested type]  [Expected]  [Comparison result]
+);
+
+Test.Describe(
+	"Check if a number is between two other numbers.",
+	Test.It<Num.Between<1, 1, 5>, true, Test.Out.PASS>(),
+	Test.It<Num.Between<0, 10, 20>, true, Test.Out.FAIL>(),
+	Test.It<Num.Between<number, 10, 7>, boolean, Test.Out.PASS>(),
+);
+```
+
+- Add the following script in your package.json:
+
+```json
+{
+	"test:type": "npx tsc --extendedDiagnostics --noEmit"
+}
+```
+
+- You can now run the command to check your tested types!
+
 ### 👉 `Numbers`
 
 - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️

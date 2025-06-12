@@ -2,6 +2,15 @@ import type { IsPositive, IsZero } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 import type { Satisfy } from "@/operator";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the opposite number sign of a number",
+	Test.It<Opposite<10.23>, -10.23, Test.Out.PASS>(),
+	Test.It<Opposite<0>, 0, Test.Out.PASS>(),
+	Test.It<Opposite<number>, number, Test.Out.PASS>(),
+);
+
 declare type OppositePositive<TNumber extends number> =
 	`-${TNumber}` extends `${infer N extends number}` ? N : never;
 

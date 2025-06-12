@@ -14,6 +14,15 @@ import type {
 } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Increment a number of one unit",
+	Test.It<Increment<1>, 2, Test.Out.PASS>(),
+	Test.It<Increment<-0.56>, 0.44, Test.Out.PASS>(),
+	Test.It<Increment<1.902>, number, Test.Out.PASS>(),
+);
+
 export declare type NextPositive<TNumber extends number> =
 	BuildTuple<TNumber> extends [...infer U] ? [...U, 0]["length"] : never;
 
