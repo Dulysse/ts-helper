@@ -235,6 +235,29 @@ type A = type A = Obj.Merge<
 
 ### 👉 `String`
 
+- Infer filter logic to a string (`since v1.3.0`)
+
+```tsx
+import type { Str } from "@dulysse1/ts-helper";
+
+function checkEmail<T extends string>(
+	email: Str.Infer<
+		T,
+		{
+			minChar: 5;
+			maxChar: 40;
+			pattern: `${string}@${string}.${"com" | "fr" | "us"}`;
+		}
+	>,
+) {
+	//...
+}
+
+checkEmail(""); // ERROR ❌
+checkEmail("demo@d"); // ERROR ❌
+checkEmail("demo@domain.com"); // ✅
+```
+
 - Split a string to array
 
 ```tsx
