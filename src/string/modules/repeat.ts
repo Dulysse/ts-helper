@@ -1,4 +1,5 @@
-import type { Decrement, IsNegative, ParseInt } from "@/numeric";
+import type { IsNegative, ParseInt } from "@/numeric";
+import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsExactString } from "@/string";
 
 declare type _Repeat<
@@ -9,7 +10,7 @@ declare type _Repeat<
 	? Result
 	: _Repeat<
 			TString,
-			TCount extends 1 ? 0 : Decrement<TCount>,
+			TCount extends 1 ? 0 : PreviousPositive<TCount>,
 			`${Result}${TString}`
 		>;
 

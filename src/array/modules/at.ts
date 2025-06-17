@@ -1,8 +1,17 @@
 import type { Add, IsNegative } from "@/numeric";
 import type { TDefaultArray } from "../utils";
 import type { IsValidNumberInput } from "@/numeric/utils";
-import type { Length, IsTuple } from "@/array";
+import type { Length, IsTuple, ToUnion } from "@/array";
 import type { And } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get an element from an array at a specific index",
+	Test.It<At<[1, 2, 3], 2>, 3, Test.Out.PASS>(),
+	Test.It<At<string[], 1>, string | undefined, Test.Out.PASS>(),
+	Test.It<At<[], 1>, undefined, Test.Out.PASS>(),
+);
 
 /**
  * - Get the element with number `TIndex` from the index of array type `TArray`.
@@ -29,7 +38,7 @@ import type { And } from "@/operator";
  */
 export declare type At<TArray extends TDefaultArray, TIndex extends number> =
 	IsTuple<TArray> extends false
-		? TArray[number] | undefined
+		? ToUnion<TArray> | undefined
 		: IsNegative<TIndex> extends true
 			? And<
 					IsValidNumberInput<TIndex>,
@@ -38,5 +47,5 @@ export declare type At<TArray extends TDefaultArray, TIndex extends number> =
 				? IsNegative<Add<Length<TArray>, TIndex>> extends true
 					? undefined
 					: TArray[Add<Length<TArray>, TIndex>]
-				: TArray[number] | undefined
+				: ToUnion<TArray> | undefined
 			: TArray[TIndex];

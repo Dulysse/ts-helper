@@ -1,6 +1,15 @@
 import type { Equal, Not } from "@/operator";
 import type { TDefaultArray } from "../utils";
-import type { UnReadonly } from "@/array";
+import type { Readable } from "@/array";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if an array type is readonly or not",
+	Test.It<IsReadonly<[[1, 2], [3, 4]]>, false, Test.Out.PASS>(),
+	Test.It<IsReadonly<string[][]>, false, Test.Out.PASS>(),
+	Test.It<IsReadonly<readonly string[]>, true, Test.Out.PASS>(),
+);
 
 /**
  * - Check if an array `TArray` type is readonly or not
@@ -23,5 +32,5 @@ import type { UnReadonly } from "@/array";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsReadonly<TArray extends TDefaultArray> = Not<
-	Equal<UnReadonly<TArray>, TArray>
+	Equal<Readable<TArray>, TArray>
 >;

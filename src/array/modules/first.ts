@@ -1,5 +1,14 @@
 import type { TDefaultArray } from "../utils";
-import type { IsTuple } from "@/array";
+import type { IsTuple, ToUnion } from "@/array";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the first element of an array type",
+	Test.It<First<[1, 2, 3]>, 1, Test.Out.PASS>(),
+	Test.It<First<string[]>, string | undefined, Test.Out.PASS>(),
+	Test.It<First<[]>, undefined, Test.Out.PASS>(),
+);
 
 /**
  * - Get the `first` element of an array type `TArray`
@@ -21,4 +30,4 @@ import type { IsTuple } from "@/array";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type First<TArray extends TDefaultArray> =
-	IsTuple<TArray> extends true ? TArray[0] : TArray[number] | undefined;
+	IsTuple<TArray> extends true ? TArray[0] : ToUnion<TArray> | undefined;

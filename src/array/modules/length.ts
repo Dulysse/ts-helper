@@ -1,5 +1,15 @@
 import type { TDefaultArray } from "../utils";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the length of an array type",
+	Test.It<Length<[1, 2]>, 2, Test.Out.PASS>(),
+	Test.It<Length<string[]>, number, Test.Out.PASS>(),
+	Test.It<Length<[]>, 0, Test.Out.PASS>(),
+	Test.It<Length<[2, 3, 4] | [1, 2]>, 2 | 3, Test.Out.PASS>(),
+);
+
 /**
  * - Get the length of an array type `TArray`
  *

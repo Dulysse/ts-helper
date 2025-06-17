@@ -277,6 +277,25 @@ type A = Str.ReplaceAll<"coucou", "c", "x">; // "xouxou"
 
 ### 👉 `Array`
 
+- `Fill` an array type safely
+
+```tsx
+function generateUnsafeArrayOf(length: number, defaultValue?: unknown) {
+	return new Array(length).fill(defaultValue);
+}
+
+const unsafeArray = generateUnsafeArrayOf(3); // typed: any[] ❌
+
+function generateSafeArrayOf<TLength extends number, TValue = undefined>(
+	length: TLength,
+	defaultValue?: TValue,
+): Fill<TLength, TValue> {
+	return new Array(length).fill(defaultValue) as Fill<TLength, TValue>;
+}
+
+const safeArray = generateSafeArrayOf(3); // typed: [undefined, undefined, undefined] ✅
+```
+
 - Check if array is a `tuple`
 
 ```tsx
@@ -299,9 +318,9 @@ type A = Arr.Reverse<[1, 2, 3]>; // [3, 2, 1]
 - Use a strict any type : The only valid way to use `any` as type. it's provide you to override the default eslint `@typescript-eslint/no-explicit-any` rule. But be careful ! Don't use this type in your code for bad reasons.
 
 ```tsx
-declare type IAnyFunction = (...args: Any.Strict[]) => Any.Strict; // "right way !"
+declare type IAnyFunction = (...args: Any.Implicit[]) => Any.Implicit; // "right way !"
 
-const name: Any.Strict = {}; // "wrong way !"
+const name: Any.Implicit = {}; // "wrong way !"
 ```
 
 ### And many more besides! 😲

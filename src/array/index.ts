@@ -1,6 +1,6 @@
 import type { IsTuple } from "./modules/isTuple";
 import type { Reverse } from "./modules/reverse";
-import type { UnReadonly } from "./modules/unReadonly";
+import type { Readable } from "./modules/readable";
 import type { Length } from "./modules/length";
 import type { At } from "./modules/at";
 import type { ToUnion } from "./modules/toUnion";
@@ -14,12 +14,13 @@ import type { Concat } from "./modules/concat";
 import type { Flat } from "./modules/flat";
 import type { Fill } from "./modules/fill";
 import type { FillRange } from "./modules/fillRange";
+import type { Filter } from "./modules/filter";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
  * - `IsTuple`
  * - `Reverse`
- * - `UnReadonly`
+ * - `Readable`
  * - `Length`
  * - `At`
  * - `ToUnion`
@@ -33,6 +34,7 @@ import type { FillRange } from "./modules/fillRange";
  * - `Flat`
  * - `Fill`
  * - `FillRange`
+ * - `Filter`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -45,7 +47,7 @@ export declare namespace Arr {
 	export {
 		IsTuple,
 		Reverse,
-		UnReadonly,
+		Readable,
 		Length,
 		At,
 		ToUnion,
@@ -59,13 +61,14 @@ export declare namespace Arr {
 		Flat,
 		Fill,
 		FillRange,
+		Filter,
 	};
 }
 
 export {
 	IsTuple,
 	Reverse,
-	UnReadonly,
+	Readable,
 	Length,
 	At,
 	ToUnion,
@@ -79,4 +82,5 @@ export {
 	Flat,
 	Fill,
 	FillRange,
+	Filter,
 };

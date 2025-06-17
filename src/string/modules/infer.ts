@@ -75,13 +75,13 @@ export declare type Infer<
 		: Rules["minChar"] extends number
 			? CheckMinRange<TString, Rules["minChar"]> extends false
 				? {
-						[stringError]?: `The string '${TString}' must contain at least ${Rules["minChar"]} characters.`;
+						[stringError]?: `The string '${TString}' (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
 					}
 				: Infer<TString, Omit<Rules, "minChar">>
 			: Rules["maxChar"] extends number
 				? CheckMaxRange<TString, Rules["maxChar"]> extends false
 					? {
-							[stringError]?: `The string '${TString}' must contain a maximum of ${Rules["maxChar"]} characters.`;
+							[stringError]?: `The string '${TString}' (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
 						}
 					: Infer<TString, Omit<Rules, "maxChar">>
 				: Rules["pattern"] extends string

@@ -1,7 +1,17 @@
-import type { IsTuple } from "@/array";
+import type { IsTuple, ToUnion } from "@/array";
 import type { TDefaultArray } from "@/array/utils";
 import type { NextPositive } from "@/numeric/modules/increment";
 import type { Equal } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Count the number of occurrences of a specific element",
+	Test.It<Count<[3, 1, 2, 3], 3>, 2, Test.Out.PASS>(),
+	Test.It<Count<[1, 2, 3], number>, 0, Test.Out.PASS>(),
+	Test.It<Count<number[], "1">, 0, Test.Out.PASS>(),
+	Test.It<Count<number[], 1>, number, Test.Out.PASS>(),
+);
 
 declare type _Count<
 	TArray extends TDefaultArray,
@@ -39,7 +49,9 @@ export declare type Count<
 	TArray extends TDefaultArray,
 	TElement,
 > = TArray extends TDefaultArray
-	? IsTuple<TArray> extends true
-		? _Count<TArray, TElement>
-		: number
+	? TElement extends ToUnion<TArray>
+		? IsTuple<TArray> extends true
+			? _Count<TArray, TElement>
+			: number
+		: 0
 	: never;

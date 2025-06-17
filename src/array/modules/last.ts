@@ -1,5 +1,15 @@
 import type { TDefaultArray } from "../utils";
-import type { IsTuple } from "@/array";
+import type { IsTuple, ToUnion } from "@/array";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the last element of an array type",
+	Test.It<Last<[1, 2]>, 2, Test.Out.PASS>(),
+	Test.It<Last<string[]>, string | undefined, Test.Out.PASS>(),
+	Test.It<Last<[]>, undefined, Test.Out.PASS>(),
+	Test.It<Last<[2, 3, 4] | [1, 2]>, 2 | 4, Test.Out.PASS>(),
+);
 
 /**
  * - Get the `last` element of an array type `TArray`
@@ -24,4 +34,4 @@ export declare type Last<TArray extends TDefaultArray> =
 		? TArray extends [...start: unknown[], infer End]
 			? End
 			: undefined
-		: TArray[number] | undefined;
+		: ToUnion<TArray> | undefined;

@@ -1,6 +1,15 @@
 import type { TDefaultArray } from "../utils";
-import type { IsTuple } from "@/array";
+import type { IsTuple, ToUnion } from "@/array";
 import type { Equal } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a type is an element into an array type",
+	Test.It<Includes<[[1, 2], [3, 4]], [1, 2]>, true, Test.Out.PASS>(),
+	Test.It<Includes<string[][], string>, false, Test.Out.PASS>(),
+	Test.It<Includes<string[], string>, boolean, Test.Out.PASS>(),
+);
 
 declare type IncludesInTuple<
 	TArray extends TDefaultArray,
@@ -34,8 +43,6 @@ declare type IncludesInTuple<
 export declare type Includes<TArray extends TDefaultArray, TIncluded> =
 	IsTuple<TArray> extends true
 		? IncludesInTuple<TArray, TIncluded>
-		: Equal<TIncluded, TArray[number]> extends true
-			? true
-			: TIncluded extends TArray[number]
-				? boolean
-				: false;
+		: TIncluded extends ToUnion<TArray>
+			? boolean
+			: false;

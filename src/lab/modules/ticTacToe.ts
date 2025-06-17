@@ -1,14 +1,15 @@
 import type {
-	IsBoardFull,
+	Is2DBoardFull,
 	Check2DVectors,
-	NextPlayer,
 	VictoryPayload,
 	GameRules,
 	Infer2DBoardErrors,
 	Infer2DRulesErrors,
-	ReactiveBoard2D,
+	Reactive2DBoard,
+	VICTORY,
+	DRAW,
+	CONTINUE,
 } from "@/lab/utils/2d";
-import type { Increment } from "@/numeric";
 
 /**
  * The default rules for the TicTacToe game.
@@ -35,8 +36,8 @@ declare interface TicTacToeDefaultRules {
 	TARGET_SCORE: 3;
 	/**
 	 * The players in the TicTacToe game.
-	 * - DefaultPlayerOne is represented by "X".
-	 * - DefaultPlayerTwo is represented by "O".
+	 * - The default player one is represented by "X".
+	 * - The default player two is represented by "O".
 	 */
 	PLAYERS: ["X", "O"];
 	/**
@@ -82,7 +83,7 @@ declare interface TicTacToeDefaultRules {
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type TicTacToe<
-	TBoard extends ReactiveBoard2D<TRules>,
+	TBoard extends Reactive2DBoard<TRules>,
 	TRules extends GameRules = TicTacToeDefaultRules,
 > =
 	Infer2DRulesErrors<TRules> extends infer RULE_ERROR_MESSAGE extends string
@@ -95,7 +96,7 @@ export declare type TicTacToe<
 			? BOARD_ERROR_MESSAGE
 			: Check2DVectors<TBoard, TRules> extends infer PAYLOAD extends
 						VictoryPayload
-				? ` 🎉 Congratulation player '${PAYLOAD["player"]}', you won by ${PAYLOAD["dir"]} line at (${Increment<PAYLOAD["pos"][0]>}, ${Increment<PAYLOAD["pos"][1]>})! 🎉 Reset the board to play again. 🕹️ `
-				: IsBoardFull<TBoard, TRules> extends true
-					? " 🤝 It's a draw! 🤝 Reset the board to play again. 🕹️ "
-					: ` 🕹️ Player '${NextPlayer<TBoard, TRules>}' it's your turn. 🕹️ `;
+				? VICTORY<PAYLOAD>
+				: Is2DBoardFull<TBoard, TRules> extends true
+					? DRAW
+					: CONTINUE<TBoard, TRules>;

@@ -1,5 +1,13 @@
-import type { Strict } from "@/any";
-import type { Equal } from "@/operator";
+import type { Implicit } from "@/any";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a type is exact type 'any'",
+	Test.It<Is<Implicit>, true, Test.Out.PASS>(),
+	Test.It<Is<unknown>, true, Test.Out.FAIL>(),
+	Test.It<Is<string>, true, Test.Out.FAIL>(),
+);
 
 /**
  * - Check if `T` is equal to `any`
@@ -20,4 +28,8 @@ import type { Equal } from "@/operator";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Is<T> = boolean extends Equal<T, Strict> ? false : true;
+export declare type Is<T> = Implicit extends T
+	? [T] extends [{}]
+		? true
+		: false
+	: false;

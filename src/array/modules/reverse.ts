@@ -1,5 +1,15 @@
 import type { TDefaultArray } from "../utils";
-import type { UnReadonly, IsTuple } from "@/array";
+import type { Readable, IsTuple } from "@/array";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get a reversed array type",
+	Test.It<Reverse<[1, 2]>, [2, 1], Test.Out.PASS>(),
+	Test.It<Reverse<string[]>, string[], Test.Out.PASS>(),
+	Test.It<Reverse<[]>, [], Test.Out.PASS>(),
+	Test.It<Reverse<readonly [2, 3, 4, "5"]>, ["5", 4, 3, 2], Test.Out.PASS>(),
+);
 
 declare type _Reverse<
 	TArray extends TDefaultArray,
@@ -7,12 +17,12 @@ declare type _Reverse<
 > =
 	IsTuple<TArray> extends false
 		? TArray
-		: UnReadonly<TArray> extends [...infer Next, infer Last]
+		: Readable<TArray> extends [...infer Next, infer Last]
 			? _Reverse<Next, [...Res, Last]>
 			: Res;
 
 /**
- * - Get a reversed `TArray` array
+ * - Get a reversed `TArray` array type
  *
  * @template TArray - The array type to reverse.
  * @example

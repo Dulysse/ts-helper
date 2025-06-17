@@ -1,14 +1,22 @@
-import type { IsTuple } from "@/array";
+import type { IsTuple, ToUnion } from "@/array";
 import type { TDefaultArray } from "@/array/utils";
-import type {
-	Decrement,
-	Increment,
-	IsNegative,
-	IsZero,
-	ParseInt,
-} from "@/numeric";
+import type { Increment, IsNegative, IsZero, ParseInt } from "@/numeric";
+import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Or } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Flatten an array type to a specified depth",
+	Test.It<Flat<[[1, 2], [3, 4]]>, [1, 2, 3, 4], Test.Out.PASS>(),
+	Test.It<
+		Flat<[[1, 2], [3, [4, string[]]]], 2>,
+		[1, 2, 3, 4, string[]],
+		Test.Out.PASS
+	>(),
+	Test.It<Flat<string[][][][][], 4>, string[], Test.Out.PASS>(),
+);
 
 declare type _Flat<
 	TArray extends TDefaultArray,
@@ -28,17 +36,17 @@ declare type _Flat<
 						...(TArray[TIndex] extends TDefaultArray
 							? TDeepth extends 1
 								? TArray[TIndex]
-								: _Flat<TArray[TIndex], Decrement<TDeepth>>
+								: _Flat<TArray[TIndex], PreviousPositive<TDeepth>>
 							: [TArray[TIndex]]),
 					]
 				>
 		: TDeepth extends 1
-			? TArray[number] extends TDefaultArray
-				? TArray[number]
+			? ToUnion<TArray> extends TDefaultArray
+				? ToUnion<TArray>
 				: TArray
 			: _Flat<
-					TArray[number] extends TDefaultArray ? TArray[number] : TArray,
-					Decrement<TDeepth>
+					ToUnion<TArray> extends TDefaultArray ? ToUnion<TArray> : TArray,
+					PreviousPositive<TDeepth>
 				>;
 
 /**

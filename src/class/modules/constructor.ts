@@ -1,10 +1,40 @@
+import type { Implicit } from "@/any";
+
+import * as Test from "@/test/local";
+
+declare type InstanceExample = {
+	name: string;
+};
+
+declare type ParamsExample = [name: string];
+
+Test.Describe(
+	"Type definition for a constructor function",
+	Test.It<InstanceType<Constructor["prototype"]>, Implicit, Test.Out.PASS>(),
+	Test.It<
+		InstanceType<Constructor<[], InstanceExample>>,
+		InstanceExample,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		InstanceType<Constructor<[], InstanceExample>>,
+		InstanceExample,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		ConstructorParameters<Constructor<ParamsExample>>,
+		ParamsExample,
+		Test.Out.PASS
+	>(),
+);
+
 /**
  * - This module provides a type definition for a constructor function.
  * - It allows you to define a class constructor with specific argument types and a return type.
  * - The `Constructor` type can be used to create instances of classes with defined parameters.
  *
  * @template TArgs - An array of argument types that the constructor accepts.
- * @template TReturn - The return type of the constructor, typically the class instance type.
+ * @template TInstance - The return type of the constructor, typically the class instance type.
  *
  * @example
  * ```tsx
@@ -14,7 +44,7 @@
  * const myInstance: MyClass = new MyClass('example', 42);
  * ```
  * ---------------------------
- * Do you have any questions about `Strict` usage ?
+ * Do you have any questions about `Constructor` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
@@ -23,7 +53,7 @@
  */
 export declare interface Constructor<
 	TArgs extends unknown[] = unknown[],
-	TReturn = unknown,
+	TInstance = unknown,
 > {
-	new (...args: TArgs): TReturn;
+	new (...args: TArgs): TInstance;
 }

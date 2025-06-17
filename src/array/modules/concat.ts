@@ -1,6 +1,15 @@
-import type { IsTuple } from "@/array";
+import type { IsTuple, ToUnion } from "@/array";
 import type { TDefaultArray } from "../utils";
 import type { And } from "@/operator";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Concatenate two array types into a single array type",
+	Test.It<Concat<[1, 2, 3], [4]>, [1, 2, 3, 4], Test.Out.PASS>(),
+	Test.It<Concat<[1, 2, 3], string[]>, (string | 1 | 2 | 3)[], Test.Out.PASS>(),
+	Test.It<Concat<[1, 2, 3], [3]>, [1, 2, 3, 3], Test.Out.PASS>(),
+);
 
 /**
  * - Concatenate two array types `TArray1` and `TArray2` into a single array type.
@@ -30,4 +39,4 @@ export declare type Concat<
 > =
 	And<IsTuple<TArray1>, IsTuple<TArray2>> extends true
 		? [...TArray1, ...TArray2]
-		: (TArray1[number] | TArray2[number])[];
+		: (ToUnion<TArray1> | ToUnion<TArray2>)[];

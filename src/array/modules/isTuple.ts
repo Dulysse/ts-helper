@@ -1,6 +1,15 @@
 import type { Equal, Or } from "@/operator";
 import type { TDefaultArray } from "../utils";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check whether an array type is a tuple or not",
+	Test.It<IsTuple<[[1, 2], [3, 4]]>, true, Test.Out.PASS>(),
+	Test.It<IsTuple<string[][]>, false, Test.Out.PASS>(),
+	Test.It<IsTuple<readonly string[]>, false, Test.Out.PASS>(),
+);
+
 /**
  * - Check whether an array of type `TArray` is a tuple or not
  *

@@ -1,5 +1,5 @@
 import type { FillRange } from "@/array";
-import { Infer } from "@/string";
+import type { Infer } from "@/string";
 import type { Out } from "@/test";
 
 /**
@@ -19,7 +19,7 @@ declare type MAX_TEST = 8;
  * @param test - a rest array of tests that should pass, they should all pass and you must use an amount of test between {@link MIN_TEST} and {@link MAX_TEST}.
  * @example
  * ```tsx
- * import { Num, Test } from "@dulysse1/ts-helper";
+ * import type { Num, Test } from "@dulysse1/ts-helper";
  *
  * Test.Describe(
  *    "Add a number to another",
@@ -37,7 +37,7 @@ declare type MAX_TEST = 8;
  */
 export declare function DescribeFn<TDescription extends string>(
 	description: Infer<TDescription, { minChar: 10 }>,
-	...test: FillRange<Out.PASS, MIN_TEST, MAX_TEST>
+	...test: FillRange<MIN_TEST, MAX_TEST, Out.PASS>
 ): void;
 
 export declare const Describe: typeof DescribeFn;

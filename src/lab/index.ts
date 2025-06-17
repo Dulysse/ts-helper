@@ -4,6 +4,7 @@ import type { Connect4 } from "./modules/connect4";
 /**
  * #### 🧪 List of `ts-helper` laboratory types 🧪:
  * - `TicTacToe`
+ * - `Connect4`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!

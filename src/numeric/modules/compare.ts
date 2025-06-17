@@ -23,8 +23,17 @@ Test.Describe(
  * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️
  */
 export declare enum Comparators {
+	/**
+	 * Indicates that the first number is less than the second number.
+	 */
 	LOWER = "lower",
+	/**
+	 * Indicates that the first number is greater than the second number.
+	 */
 	GREATER = "greater",
+	/**
+	 *  Indicates that the two numbers are equal.
+	 */
 	EQUAL = "equal",
 }
 

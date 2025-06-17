@@ -1,13 +1,7 @@
 import type { Count, Fill, Flat, IsTuple } from "@/array";
-import type {
-	Increment,
-	Decrement,
-	Between,
-	IsNegative,
-	IsFloat,
-	Greater,
-	IsZero,
-} from "@/numeric";
+import type { Between, IsNegative, IsFloat, Greater, IsZero } from "@/numeric";
+import type { PreviousPositive } from "@/numeric/modules/decrement";
+import type { NextPositive } from "@/numeric/modules/increment";
 import type { And, Equal, Not, Or } from "@/operator";
 import type { Split } from "@/string";
 import type { IsUnion } from "@/union";
@@ -39,7 +33,7 @@ export declare type CellVector = {
 	 */
 	col: number;
 	/**
-	 * The player who occupies the cell, either {@link DefaultPlayerOne} or {@link DefaultPlayerTwo}.
+	 * The player who occupies the cell, set up in {@link GameRules}.
 	 */
 	player: string;
 	/**
@@ -81,7 +75,7 @@ export declare type NextVector<TVector extends CellVector> = {
 	 */
 	[Vector.HORIZONTAL]: {
 		row: TVector["row"];
-		col: Increment<TVector["col"]>;
+		col: NextPositive<TVector["col"]>;
 		player: TVector["player"];
 		dir: Vector.HORIZONTAL;
 	};
@@ -89,7 +83,7 @@ export declare type NextVector<TVector extends CellVector> = {
 	 * The next cell in the vertical direction.
 	 */
 	[Vector.VERTICAL]: {
-		row: Increment<TVector["row"]>;
+		row: NextPositive<TVector["row"]>;
 		col: TVector["col"];
 		player: TVector["player"];
 		dir: Vector.VERTICAL;
@@ -98,8 +92,8 @@ export declare type NextVector<TVector extends CellVector> = {
 	 * The next cell in the diagonal up direction.
 	 */
 	[Vector.DIAGONAL_UP]: {
-		row: Decrement<TVector["row"]>;
-		col: Increment<TVector["col"]>;
+		row: PreviousPositive<TVector["row"]>;
+		col: NextPositive<TVector["col"]>;
 		player: TVector["player"];
 		dir: Vector.DIAGONAL_UP;
 	};
@@ -107,8 +101,8 @@ export declare type NextVector<TVector extends CellVector> = {
 	 * The next cell in the diagonal down direction.
 	 */
 	[Vector.DIAGONAL_DOWN]: {
-		row: Increment<TVector["row"]>;
-		col: Increment<TVector["col"]>;
+		row: NextPositive<TVector["row"]>;
+		col: NextPositive<TVector["col"]>;
 		player: TVector["player"];
 		dir: Vector.DIAGONAL_DOWN;
 	};
@@ -182,7 +176,7 @@ export declare type Cell =
  * - The dimensions of the board are defined by the `ROW` and `COL` properties in the game rules.
  * - If the game rules are invalid, it returns an error type instead of a valid board.
  */
-export declare type ReactiveBoard2D<TRules extends GameRules> =
+export declare type Reactive2DBoard<TRules extends GameRules> =
 	Equal<Infer2DRulesErrors<TRules>, null> extends true ? Board<TRules> : never;
 
 /**
@@ -195,7 +189,7 @@ export declare type ReactiveBoard2D<TRules extends GameRules> =
 export declare type Board<
 	TRules extends GameRules,
 	TValue = TRules["PLAYERS"][number] | TRules["EMPTY_CELL"],
-> = Fill<Fill<TValue, TRules["COL"]>, TRules["ROW"]>;
+> = Fill<TRules["ROW"], Fill<TRules["COL"], TValue>>;
 
 /**
  * Check if a specific vector in the game board has a winning condition.
@@ -213,14 +207,14 @@ export declare type Check2DVector<
 	Equal<TScore, TRules["TARGET_SCORE"]> extends true
 		? true
 		: And<
-					Between<TNextVector["row"], 0, Decrement<TRules["ROW"]>>,
-					Between<TNextVector["col"], 0, Decrement<TRules["COL"]>>
+					Between<TNextVector["row"], 0, PreviousPositive<TRules["ROW"]>>,
+					Between<TNextVector["col"], 0, PreviousPositive<TRules["COL"]>>
 			  > extends true
 			? Equal<
 					TBoard[TNextVector["row"]][TNextVector["col"]],
 					TVector["player"]
 				> extends true
-				? Check2DVector<TBoard, TRules, TNextVector, Increment<TScore>>
+				? Check2DVector<TBoard, TRules, TNextVector, NextPositive<TScore>>
 				: false
 			: false;
 
@@ -242,7 +236,7 @@ export declare type Check2DVectors<
 			> extends true
 			? null
 			: Equal<TColIndex, TRules["COL"]> extends true
-				? Check2DVectors<TBoard, TRules, Increment<TRowIndex>, 0>
+				? Check2DVectors<TBoard, TRules, NextPositive<TRowIndex>, 0>
 				: TBoard[TRowIndex][TColIndex] extends TRules["PLAYERS"][number]
 					? Check2DVector<
 							TBoard,
@@ -308,9 +302,9 @@ export declare type Check2DVectors<
 											TBoard,
 											TRules,
 											TRowIndex,
-											Increment<TColIndex>
+											NextPositive<TColIndex>
 										>
-					: Check2DVectors<TBoard, TRules, TRowIndex, Increment<TColIndex>>
+					: Check2DVectors<TBoard, TRules, TRowIndex, NextPositive<TColIndex>>
 		: never;
 
 /**
@@ -322,9 +316,29 @@ export declare type CountFlatten<
 > = Count<Flat<TBoard>, TCell>;
 
 /**
+ * Display the victory message in case of win.
+ */
+export declare type VICTORY<TPayload extends VictoryPayload> =
+	` 🎉 Congratulation player '${TPayload["player"]}', you won by ${TPayload["dir"]} line at (${NextPositive<TPayload["pos"][0]>}, ${NextPositive<TPayload["pos"][1]>})! 🎉 Reset the board to play again. 🕹️ `;
+
+/**
+ * Display the draw message in case of win.
+ */
+export declare type DRAW =
+	" 🤝 It's a draw! 🤝 Reset the board to play again. 🕹️ ";
+
+/**
+ * Display the next player who should play.
+ */
+export declare type CONTINUE<
+	TBoard extends Cell[][],
+	TRules extends GameRules,
+> = ` 🕹️ Player '${NextPlayer<TBoard, TRules>}' it's your turn. 🕹️ `;
+
+/**
  * Get the next player based on the current board state.
- * - If the count of DefaultPlayerOne is equal to the count of DefaultPlayerTwo, it returns DefaultPlayerOne.
- * - Otherwise, it returns DefaultPlayerTwo.
+ * - If the count of `player one` is equal to the count of `player two`, it returns `player one`.
+ * - Otherwise, it returns `player two`.
  */
 export declare type NextPlayer<
 	TBoard extends Cell[][],
@@ -340,7 +354,7 @@ export declare type NextPlayer<
 /**
  * Check if the game board is full.
  */
-export declare type IsBoardFull<
+export declare type Is2DBoardFull<
 	TBoard extends Cell[][],
 	TRules extends GameRules,
 > = TRules["EMPTY_CELL"] extends TBoard[number][number] ? false : true;
@@ -368,7 +382,7 @@ declare type CheckColumnGravity<
 					TBoard,
 					TRules,
 					TColIndex,
-					Increment<TRowIndex>,
+					NextPositive<TRowIndex>,
 					true
 				>
 			: TShouldBeAtBottom extends true
@@ -377,7 +391,7 @@ declare type CheckColumnGravity<
 						TBoard,
 						TRules,
 						TColIndex,
-						Increment<TRowIndex>,
+						NextPositive<TRowIndex>,
 						TShouldBeAtBottom
 					>;
 
@@ -393,10 +407,10 @@ declare type CheckGravity<
 	TColIndex extends number = 0,
 > =
 	IsTuple<TBoard> extends true
-		? Equal<Increment<TColIndex>, TRules["COL"]> extends true
+		? Equal<NextPositive<TColIndex>, TRules["COL"]> extends true
 			? true
 			: CheckColumnGravity<TBoard, TRules, TColIndex> extends true
-				? CheckGravity<TBoard, TRules, Increment<TColIndex>>
+				? CheckGravity<TBoard, TRules, NextPositive<TColIndex>>
 				: false
 		: never;
 
@@ -411,28 +425,23 @@ export declare type Infer2DBoardErrors<
 	TGravityCheck extends `GRAVITY` | `NO_GRAVITY`,
 > =
 	TBoard extends Board<TRules>
-		? And<
-				Equal<TBoard["length"], TRules["ROW"]>,
-				Equal<TBoard[number]["length"], TRules["COL"]>
+		? Or<
+				Equal<
+					CountFlatten<TBoard, TRules["PLAYERS"][0]>,
+					CountFlatten<TBoard, TRules["PLAYERS"][1]>
+				>,
+				Equal<
+					CountFlatten<TBoard, TRules["PLAYERS"][0]>,
+					NextPositive<CountFlatten<TBoard, TRules["PLAYERS"][1]>>
+				>
 			> extends true
-			? Or<
-					Equal<
-						CountFlatten<TBoard, TRules["PLAYERS"][0]>,
-						CountFlatten<TBoard, TRules["PLAYERS"][1]>
-					>,
-					Equal<
-						CountFlatten<TBoard, TRules["PLAYERS"][0]>,
-						Increment<CountFlatten<TBoard, TRules["PLAYERS"][1]>>
-					>
-				> extends true
-				? TGravityCheck extends `GRAVITY`
-					? CheckGravity<TBoard, TRules> extends true
-						? null
-						: ` ❌ Invalid board! The gravity of the pieces is not respected. `
-					: null
-				: ` ❌ Invalid board! The number of '${TRules["PLAYERS"][0]}' and '${TRules["PLAYERS"][1]}' must be equal or '${TRules["PLAYERS"][0]}' must have one more than '${TRules["PLAYERS"][1]}'. `
-			: ` ❌ Invalid board! The board must have ${TRules["ROW"]} rows and ${TRules["COL"]} columns. `
-		: ` ❌ Invalid board! The board must be a ${TRules["ROW"]}x${TRules["COL"]} 2D array with '${TRules["PLAYERS"][0]}', '${TRules["PLAYERS"][1]}' or '${TRules["EMPTY_CELL"]}'.  `;
+			? TGravityCheck extends `GRAVITY`
+				? CheckGravity<TBoard, TRules> extends true
+					? null
+					: ERRORS<TRules>["GRAVITY"]
+				: null
+			: ERRORS<TRules>["PLAYER_TURN"]
+		: ERRORS<TRules>["SHAPE"];
 
 /**
  * Infer the errors in the game rules.
@@ -451,7 +460,7 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 					>
 				>
 			> extends true
-			? ` ❌ Invalid game rules! A rule must not be a union type. `
+			? ERRORS<TRules>["RULE_UNION"]
 			: Or<
 						Or<
 							Equal<TRules["ROW"], GameRules["ROW"]>,
@@ -471,11 +480,11 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 							>
 						>
 				  > extends true
-				? " ❌ Invalid game rules! The rule values must be different from the native types (string, number, ...). "
+				? ERRORS<TRules>["RULE_NATIVE"]
 				: Or<IsNegative<TRules["ROW"]>, IsFloat<TRules["ROW"]>> extends true
-					? ` ❌ Invalid game rules! The number of rows (${TRules["ROW"]}) must be a positive integer. `
+					? ERRORS<TRules>["RULE_ROW_INT"]
 					: Or<IsNegative<TRules["COL"]>, IsFloat<TRules["COL"]>> extends true
-						? ` ❌ Invalid game rules! The number of columns (${TRules["COL"]}) must be a positive integer. `
+						? ERRORS<TRules>["RULE_COL_INT"]
 						: Or<
 									IsNegative<TRules["TARGET_SCORE"]>,
 									Or<
@@ -483,9 +492,9 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 										IsFloat<TRules["TARGET_SCORE"]>
 									>
 							  > extends true
-							? ` ❌ Invalid game rules! The target score (${TRules["TARGET_SCORE"]}) must be a positive integer. `
+							? ERRORS<TRules>["RULE_SCORE_INT"]
 							: Not<Equal<TRules["PLAYERS"]["length"], 2>> extends true
-								? " ❌ Invalid game rules! The players must be defined as a tuple of two strings. "
+								? ERRORS<TRules>["RULE_PLAYER"]
 								: TRules["PLAYERS"] extends [
 											infer P1 extends string,
 											infer P2 extends string,
@@ -497,7 +506,7 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 											>,
 											Not<Equal<Split<TRules["EMPTY_CELL"]>["length"], 1>>
 										> extends true
-										? " ❌ Invalid game rules! The players and empty cell must be single characters. "
+										? ERRORS<TRules>["RULE_PLAYER_SINGLE_CHAR"]
 										: Or<
 													Equal<P1, P2>,
 													Or<
@@ -505,7 +514,7 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 														Equal<P2, TRules["EMPTY_CELL"]>
 													>
 											  > extends true
-											? " ❌ Invalid game rules! The players must be different from each other and from the empty cell. "
+											? ERRORS<TRules>["RULE_UNIQUE_PLAYER"]
 											: Not<
 														Between<
 															TRules["COL"],
@@ -513,7 +522,7 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 															BoardLimit["col"]["max"]
 														>
 												  > extends true
-												? ` ❌ Invalid game rules! The number of columns (${TRules["COL"]}) must be between ${BoardLimit["col"]["min"]} and ${BoardLimit["col"]["max"]}. `
+												? ERRORS<TRules>["RULE_COL_RANGE"]
 												: Not<
 															Between<
 																TRules["ROW"],
@@ -521,17 +530,41 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 																BoardLimit["row"]["max"]
 															>
 													  > extends true
-													? ` ❌ Invalid game rules! The number of rows (${TRules["ROW"]}) must be between ${BoardLimit["row"]["min"]} and ${BoardLimit["row"]["max"]}. `
+													? ERRORS<TRules>["RULE_ROW_RANGE"]
 													: Greater<
 																TRules["TARGET_SCORE"],
 																TRules["ROW"]
 														  > extends true
-														? ` ❌ Invalid game rules! The target score (${TRules["TARGET_SCORE"]}) must be less or equal to the number of rows (${TRules["ROW"]}). `
+														? ERRORS<TRules>["RULE_SCORE_GTR_ROW"]
 														: Greater<
 																	TRules["TARGET_SCORE"],
 																	TRules["COL"]
 															  > extends true
-															? ` ❌ Invalid game rules! The target score (${TRules["TARGET_SCORE"]}) must be less or equal to the number of columns (${TRules["COL"]}). `
+															? ERRORS<TRules>["RULE_SCORE_GTR_COL"]
 															: null
-									: " ❌ Invalid game rules! The players must be defined as a tuple of two strings. "
-		: ` ❌ The rule '${Exclude<keyof GameRules, keyof TRules>}' is missing! `;
+									: ERRORS<TRules>["RULE_PLAYER"]
+		: ERRORS<TRules>["RULE_MISSING"];
+
+/**
+ * This type represente the object of all possible 2D board error messages from specific {@link GameRules}.
+ */
+export declare type ERRORS<TRules extends GameRules> = {
+	// -------- BOARD ERRORS ---------
+	SHAPE: ` ❌ Invalid board! The board must be a ${TRules["ROW"]}x${TRules["COL"]} 2D array with '${TRules["PLAYERS"][0]}', '${TRules["PLAYERS"][1]}' or '${TRules["EMPTY_CELL"]}'.  `;
+	PLAYER_TURN: ` ❌ Invalid board! The number of '${TRules["PLAYERS"][0]}' and '${TRules["PLAYERS"][1]}' must be equal or '${TRules["PLAYERS"][0]}' must have one more than '${TRules["PLAYERS"][1]}'. `;
+	GRAVITY: ` ❌ Invalid board! The gravity of the pieces is not respected. `;
+	// -------- RULES ERRORS ---------
+	RULE_MISSING: ` ❌ The rule '${Exclude<keyof GameRules, keyof TRules>}' is missing! `;
+	RULE_PLAYER: " ❌ Invalid game rules! The players must be defined as a tuple of two strings. ";
+	RULE_SCORE_GTR_COL: ` ❌ Invalid game rules! The target score (${TRules["TARGET_SCORE"]}) must be less or equal to the number of columns (${TRules["COL"]}). `;
+	RULE_SCORE_GTR_ROW: ` ❌ Invalid game rules! The target score (${TRules["TARGET_SCORE"]}) must be less or equal to the number of rows (${TRules["ROW"]}). `;
+	RULE_ROW_RANGE: ` ❌ Invalid game rules! The number of rows (${TRules["ROW"]}) must be between ${BoardLimit["row"]["min"]} and ${BoardLimit["row"]["max"]}. `;
+	RULE_COL_RANGE: ` ❌ Invalid game rules! The number of columns (${TRules["COL"]}) must be between ${BoardLimit["col"]["min"]} and ${BoardLimit["col"]["max"]}. `;
+	RULE_UNIQUE_PLAYER: ` ❌ Invalid game rules! The players ('${TRules["PLAYERS"][0]}', '${TRules["PLAYERS"][1]}') must be different from each other and from the empty cell ('${TRules["EMPTY_CELL"]}'). `;
+	RULE_PLAYER_SINGLE_CHAR: ` ❌ Invalid game rules! The players ('${TRules["PLAYERS"][0]}', '${TRules["PLAYERS"][1]}') and empty cell ('${TRules["EMPTY_CELL"]}') must be single characters. `;
+	RULE_SCORE_INT: ` ❌ Invalid game rules! The target score (${TRules["TARGET_SCORE"]}) must be a positive integer. `;
+	RULE_COL_INT: ` ❌ Invalid game rules! The number of columns (${TRules["COL"]}) must be a positive integer. `;
+	RULE_ROW_INT: ` ❌ Invalid game rules! The number of rows (${TRules["ROW"]}) must be a positive integer. `;
+	RULE_NATIVE: ` ❌ Invalid game rules! The rule values must be different from the native types (string, number, boolean, ...). `;
+	RULE_UNION: ` ❌ Invalid game rules! A rule must not be a union type. `;
+};
