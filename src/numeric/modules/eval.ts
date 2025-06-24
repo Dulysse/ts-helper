@@ -6,7 +6,7 @@ import type { ToArray } from "@/union";
 import * as Test from "@/test/local";
 
 Test.Describe(
-	"Type-safe evaluation of mathematical expressions represented as string.",
+	"Type safe evaluation of mathematical expressions represented as string",
 	Test.It<Eval<"2+2*2">, 6, Test.Out.PASS>(),
 	Test.It<Eval<"20.2-4/2">, 18.2, Test.Out.PASS>(),
 	Test.It<Eval<"HELLO">, unknown, Test.Out.PASS>(),

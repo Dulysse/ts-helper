@@ -1,5 +1,6 @@
 import type { FillRange } from "@/array";
 import type { Infer } from "@/string";
+import type { InferStringRules } from "@/string/modules/infer";
 import type { Out } from "@/test";
 
 /**
@@ -11,6 +12,18 @@ declare type MIN_TEST = 1;
  * The `maximal` amount of test for {@link DescribeFn}.
  */
 declare type MAX_TEST = 8;
+
+/**
+ * The default rules for the `describe` function.
+ * - `minChar`: 10 characters minimum.
+ * - `maxChar`: 100 characters maximum.
+ * - `alphanumeric`: true, meaning the string must contain only alphanumeric characters and spaces.
+ */
+declare type DefaultDescribeRules = {
+	minChar: 10;
+	maxChar: 100;
+	alphanumeric: true;
+};
 
 /**
  * - the `describe` function for unit tests allow you to test a function with multiple test.
@@ -35,8 +48,11 @@ declare type MAX_TEST = 8;
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare function DescribeFn<TDescription extends string>(
-	description: Infer<TDescription, { minChar: 20 }>,
+export declare function DescribeFn<
+	TRules extends InferStringRules = DefaultDescribeRules,
+	TDescription extends string = string,
+>(
+	description: Infer<TDescription, TRules>,
 	...test: FillRange<MIN_TEST, MAX_TEST, Out.PASS>
 ): void;
 

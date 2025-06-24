@@ -3,7 +3,7 @@ import type { Implicit } from "@/any";
 import * as Test from "@/test/local";
 
 Test.Describe(
-	"Check if a type is exact type 'any'",
+	"Check if a type is exact type any",
 	Test.It<Is<Implicit>, true, Test.Out.PASS>(),
 	Test.It<Is<unknown>, true, Test.Out.FAIL>(),
 	Test.It<Is<string>, true, Test.Out.FAIL>(),

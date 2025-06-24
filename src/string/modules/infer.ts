@@ -1,7 +1,12 @@
 import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Equal, Or } from "@/operator";
-import type { ContainExactString, Width } from "@/string";
+import type {
+	Alphanumeric,
+	ContainExactString,
+	Includes,
+	Width,
+} from "@/string";
 import type { IsBranded } from "@/symbol";
 
 import * as Test from "@/test/local";
@@ -21,6 +26,22 @@ Test.Describe(
 	Test.It<
 		IsBranded<
 			Infer<"hello Ulysse!", { pattern: `hello ${string}.` }>,
+			typeof stringError
+		>,
+		true,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		IsBranded<
+			Infer<"Hello ulysse!", { excludeCharacters: Alphanumeric["A_Z"] }>,
+			typeof stringError
+		>,
+		true,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		IsBranded<
+			Infer<"Hello ulysse!", { alphanumeric: true }>,
 			typeof stringError
 		>,
 		true,
@@ -50,7 +71,14 @@ declare type CheckMaxRange<TString extends string, Max extends number> =
 				: false
 		: never;
 
-declare type InferStringRules = {
+declare type ContainOnlyAlphanumericOrSpace<TString extends string> =
+	TString extends `${infer First}${infer Rest}`
+		? First extends Alphanumeric[keyof Alphanumeric][number] | " "
+			? ContainOnlyAlphanumericOrSpace<Rest>
+			: false
+		: true;
+
+export declare type InferStringRules = {
 	/**
 	 * the string must contain at least `min` characteres.
 	 */
@@ -63,6 +91,14 @@ declare type InferStringRules = {
 	 * the string must match with the following pattern with the {@link Extract} method.
 	 */
 	pattern?: string;
+	/**
+	 * the string must not contain any of the following characters.
+	 */
+	excludeCharacters?: string[];
+	/**
+	 * the string must contain only alphanumeric characters and space.
+	 */
+	alphanumeric?: boolean;
 };
 
 /**
@@ -97,22 +133,49 @@ export declare type Infer<
 > =
 	ContainExactString<TString> extends true
 		? TString
-		: Rules["minChar"] extends number
-			? CheckMinRange<TString, Rules["minChar"]> extends false
-				? {
-						[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
-					}
-				: Infer<TString, Omit<Rules, "minChar">>
-			: Rules["maxChar"] extends number
-				? CheckMaxRange<TString, Rules["maxChar"]> extends false
+		: Rules["excludeCharacters"] extends string[]
+			? Rules["excludeCharacters"] extends []
+				? Infer<TString, Omit<Rules, "excludeCharacters">>
+				: Rules["excludeCharacters"] extends [
+							infer First,
+							...infer Rest extends string[],
+					  ]
+					? First extends string
+						? Includes<TString, First> extends true
+							? {
+									[stringError]?: `The string "${TString}" must not contain the character "${First}".`;
+								}
+							: Infer<
+									TString,
+									{ excludeCharacters: Rest } & Omit<Rules, "excludeCharacters">
+								>
+						: Infer<
+								TString,
+								{ excludeCharacters: Rest } & Omit<Rules, "excludeCharacters">
+							>
+					: Infer<TString, Omit<Rules, "excludeCharacters">>
+			: Rules["minChar"] extends number
+				? CheckMinRange<TString, Rules["minChar"]> extends false
 					? {
-							[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
+							[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
 						}
-					: Infer<TString, Omit<Rules, "maxChar">>
-				: Rules["pattern"] extends string
-					? Equal<Extract<TString, Rules["pattern"]>, TString> extends false
+					: Infer<TString, Omit<Rules, "minChar">>
+				: Rules["maxChar"] extends number
+					? CheckMaxRange<TString, Rules["maxChar"]> extends false
 						? {
-								[stringError]?: `The string "${TString}" must match with the following pattern: "${Rules["pattern"]}".`;
+								[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
 							}
-						: Infer<TString, Omit<Rules, "pattern">>
-					: TString;
+						: Infer<TString, Omit<Rules, "maxChar">>
+					: Rules["pattern"] extends string
+						? Equal<Extract<TString, Rules["pattern"]>, TString> extends false
+							? {
+									[stringError]?: `The string "${TString}" must match with the following pattern: "${Rules["pattern"]}".`;
+								}
+							: Infer<TString, Omit<Rules, "pattern">>
+						: Rules["alphanumeric"] extends boolean
+							? ContainOnlyAlphanumericOrSpace<TString> extends false
+								? {
+										[stringError]?: `The string "${TString}" must contain only alphanumeric characters.`;
+									}
+								: Infer<TString, Omit<Rules, "alphanumeric">>
+							: TString;

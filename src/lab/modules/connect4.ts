@@ -67,7 +67,7 @@ declare type BadRulesScore = {
 };
 
 Test.Describe(
-	"The Connect4 type is a type-level implementation of the Connect 4 game",
+	"The Connect4 type is a type level implementation of the Connect 4 game",
 	Test.It<
 		Connect4<EmptyBoardExample>,
 		CONTINUE<EmptyBoardExample, Connect4DefaultRules>,

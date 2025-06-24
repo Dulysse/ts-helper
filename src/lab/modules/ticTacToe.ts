@@ -39,7 +39,7 @@ declare type IncorrectBoardExample = [
 ];
 
 Test.Describe(
-	"The TicTacToe type is a type-level implementation of the Tic Tac Toe game",
+	"The TicTacToe type is a type level implementation of the Tic Tac Toe game",
 	Test.It<
 		TicTacToe<EmptyBoardExample>,
 		CONTINUE<EmptyBoardExample, TicTacToeDefaultRules>,
