@@ -1,7 +1,8 @@
 import type { IsTuple, ToUnion } from "@/array";
 import type { TDefaultArray } from "@/array/utils";
-import type { Increment, IsNegative, IsZero, ParseInt } from "@/numeric";
+import type { IsNegative, IsZero, ParseInt } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
+import type { NextPositive } from "@/numeric/modules/increment";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Or } from "@/operator";
 
@@ -30,7 +31,7 @@ declare type _Flat<
 			: _Flat<
 					TArray,
 					TDeepth,
-					Increment<TIndex>,
+					NextPositive<TIndex>,
 					[
 						...TResult,
 						...(TArray[TIndex] extends TDefaultArray

@@ -1,12 +1,32 @@
-import type { And, Equal, Satisfy } from "@/operator";
+import type { And, Equal } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Required keys from object type",
+	Test.It<
+		Required<{ a?: string; b: number }>,
+		{ a: string; b: number },
+		Test.Out.PASS
+	>(),
+	Test.It<
+		Required<{ a?: string; b?: number }, "deep">,
+		{ a: string; b: number },
+		Test.Out.PASS
+	>(),
+	Test.It<
+		Required<{ a?: string; b?: { c?: number } }, "deep">,
+		{ a: string; b: { c: number } },
+		Test.Out.PASS
+	>(),
+);
+
 /**
  * - Make all keys of `TObject` object type required
- * ---------------------------
  * @template TObject The object type to make keys required
- * @template Mode The object operator mode
+ * @template TMode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
  * @example
@@ -27,12 +47,12 @@ import type { Prettify } from "@/object";
  */
 export declare type Required<
 	TObject extends object,
-	Mode extends ObjectMode = "flat",
+	TMode extends ObjectMode = "flat",
 > = Prettify<{
 	[key in keyof TObject]-?: And<
-		Equal<Mode, "deep"> extends true ? true : false,
-		TObject[key] extends object ? true : false
+		Equal<TMode, "deep"> extends true ? true : false,
+		NonNullable<TObject[key]> extends Record<string, unknown> ? true : false
 	> extends true
-		? Required<Satisfy<TObject[key], object>, Mode>
+		? Required<NonNullable<TObject[key]>, TMode>
 		: TObject[key];
 }>;

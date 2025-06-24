@@ -6,6 +6,7 @@ import type { Partial } from "./modules/partial";
 import type { Required } from "./modules/required";
 import type { Prettify } from "./modules/prettify";
 import type { Rename } from "./modules/rename";
+import type { HasKey } from "./modules/hasKey";
 
 /**
  * #### ✨ List of `ts-helper` object types ✨:
@@ -17,6 +18,7 @@ import type { Rename } from "./modules/rename";
  * - `Required`
  * - `Prettify`
  * - `Rename`
+ * - `HasKey`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -35,6 +37,7 @@ export declare namespace Obj {
 		Required,
 		Prettify,
 		Rename,
+		HasKey,
 	};
 }
 
@@ -47,4 +50,5 @@ export {
 	Required,
 	Prettify,
 	Rename,
+	HasKey,
 };

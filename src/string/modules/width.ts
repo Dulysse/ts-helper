@@ -1,5 +1,14 @@
-import type { Split } from "@/string";
+import type { ContainExactString, Split } from "@/string";
 import type { Length } from "@/array";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the length of a string type",
+	Test.It<Width<"hello">, 5, Test.Out.PASS>(),
+	Test.It<Width<`demo ${string} `>, number, Test.Out.PASS>(),
+	Test.It<Width<string>, number, Test.Out.PASS>(),
+);
 
 /**
  * - Get the length of a string type `TString`
@@ -19,4 +28,5 @@ import type { Length } from "@/array";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Width<TString extends string> = Length<Split<TString>>;
+export declare type Width<TString extends string> =
+	ContainExactString<TString> extends true ? number : Length<Split<TString>>;

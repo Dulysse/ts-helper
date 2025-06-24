@@ -1,12 +1,7 @@
 import type { Fill } from "@/array/modules/fill";
-import type {
-	Comparators,
-	Compare,
-	Increment,
-	IsFloat,
-	IsNegative,
-} from "@/numeric";
+import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
+import type { NextPositive } from "@/numeric/modules/increment";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { And, Or } from "@/operator";
 
@@ -15,7 +10,7 @@ import * as Test from "@/test/local";
 Test.Describe(
 	"Fill an array type as an union array type from a range",
 	Test.It<
-		FillRange<1, 2>,
+		FillRange<2, 1>,
 		[undefined, undefined] | [undefined],
 		Test.Out.PASS
 	>(),
@@ -34,7 +29,7 @@ declare type _FillRange<
 				| Fill<From, TDefaultValue>
 				| _FillRange<
 						Compare<From, To> extends Comparators.LOWER
-							? Increment<From>
+							? NextPositive<From>
 							: PreviousPositive<From>,
 						To,
 						TDefaultValue

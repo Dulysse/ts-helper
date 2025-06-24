@@ -2,6 +2,15 @@ import type { Equal } from "@/operator";
 import type { IsExactString } from "@/string";
 import type { TDefaultStringSeparator } from "../utils";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Split a type to an array for each string characters apparition",
+	Test.It<Split<"hello">, ["h", "e", "l", "l", "o"], Test.Out.PASS>(),
+	Test.It<Split<`demo ${string}`>, string[], Test.Out.PASS>(),
+	Test.It<Split<string>, string[], Test.Out.PASS>(),
+);
+
 declare type _Split<
 	TString extends string,
 	TSeparator extends string = TDefaultStringSeparator,
@@ -23,6 +32,7 @@ declare type _Split<
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
+import type { Add from '@/numeric';
  *
  * type A = Str.Split<"Hello">; // ["H", "e", "l", "l", "o"]
  * ```

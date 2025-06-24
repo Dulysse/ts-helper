@@ -1,5 +1,22 @@
 import type { Prettify } from "@/object";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Rename a property in an object type",
+	Test.It<Rename<{ a: string }, "a", "b">, { b: string }, Test.Out.PASS>(),
+	Test.It<
+		Rename<{ a: string; b: number }, "a", "c">,
+		{ c: string; b: number },
+		Test.Out.PASS
+	>(),
+	Test.It<
+		Rename<{ a: string; b?: number }, "b", "d">,
+		{ a: string; d?: number },
+		Test.Out.PASS
+	>(),
+);
+
 /**
  * - Rename a property in an object type `TObject` from `From` to `To`
  * @template TObject - The object type to rename a property in.

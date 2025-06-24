@@ -36,7 +36,7 @@ declare type MAX_TEST = 8;
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare function DescribeFn<TDescription extends string>(
-	description: Infer<TDescription, { minChar: 10 }>,
+	description: Infer<TDescription, { minChar: 20 }>,
 	...test: FillRange<MIN_TEST, MAX_TEST, Out.PASS>
 ): void;
 

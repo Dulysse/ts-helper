@@ -1,3 +1,19 @@
+import type { HasKey } from "@/object";
+
+import * as Test from "@/test/local";
+
+declare const _exampleSymbol: unique symbol;
+
+Test.Describe(
+	"Find a symbol into a type",
+	Test.It<
+		IsBranded<"hello" & { [_exampleSymbol]: "" }, typeof _exampleSymbol>,
+		true,
+		Test.Out.PASS
+	>(),
+	Test.It<IsBranded<"hello", typeof _exampleSymbol>, false, Test.Out.PASS>(),
+);
+
 /**
  * - Find a symbol `Brand` into a `T` type.
  *
@@ -23,6 +39,4 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsBranded<T, Brand extends symbol> = Brand extends keyof T
-	? true
-	: false;
+export declare type IsBranded<T, Brand extends symbol> = HasKey<T, Brand>;

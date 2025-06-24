@@ -1,4 +1,14 @@
-import type { IsExactString } from "@/string";
+import type { Or } from "@/operator";
+import type { ContainExactString } from "@/string";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Replace the first iteration of the character with another character",
+	Test.It<Replace<"hello", "l", "x">, "hexlo", Test.Out.PASS>(),
+	Test.It<Replace<"hello", "l", string>, string, Test.Out.PASS>(),
+	Test.It<Replace<string, "b", "a">, string, Test.Out.PASS>(),
+);
 
 /**
  * - Replace the first iteration of the `From` character with the `To` character in the `TString` string type.
@@ -25,8 +35,10 @@ export declare type Replace<
 	From extends string,
 	To extends string,
 > =
-	IsExactString<TString> extends true
+	ContainExactString<TString> extends true
 		? string
-		: TString extends `${infer Before}${From}${infer After}`
-			? `${Before}${To}${After}`
-			: TString;
+		: Or<ContainExactString<From>, ContainExactString<To>> extends true
+			? string
+			: TString extends `${infer Before}${From}${infer After}`
+				? `${Before}${To}${After}`
+				: TString;

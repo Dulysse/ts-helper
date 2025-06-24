@@ -1,4 +1,4 @@
 /**
- * The default string `split` function separator
+ * The default string `split` function separator.
  */
 export declare type TDefaultStringSeparator = "";

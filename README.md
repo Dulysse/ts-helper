@@ -56,7 +56,7 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 - Since version `1.3.0` you can test your own types like unit test with compiler check. Here is an example of usage with a type from my module:
 
 ```tsx
-import type { Num, Test } from "@dulysse1/ts-helper";
+import { Test, type Num } from "@dulysse1/ts-helper";
 
 Test.Describe(
 	"Type-safe evaluation of mathematical expressions represented as string.",

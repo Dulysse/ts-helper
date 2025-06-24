@@ -1,5 +1,15 @@
 import type { Equal } from "@/operator";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a string type is exactly a string type",
+	Test.It<IsExactString<"hello">, false, Test.Out.PASS>(),
+	Test.It<IsExactString<string>, true, Test.Out.PASS>(),
+	Test.It<IsExactString<`hello${string}`>, false, Test.Out.PASS>(),
+	Test.It<IsExactString<"hello" | string>, true, Test.Out.PASS>(),
+);
+
 /**
  * - Check if a type `TString` is exactly a string type
  *

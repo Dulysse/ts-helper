@@ -9,7 +9,54 @@ import type {
 	VICTORY,
 	DRAW,
 	CONTINUE,
+	ERRORS,
 } from "@/lab/utils/2d";
+
+import * as Test from "@/test/local";
+
+declare type EmptyBoardExample = [
+	[".", ".", "."],
+	[".", ".", "."],
+	[".", ".", "."],
+];
+
+declare type FullBoardExample = [
+	["X", "X", "O"],
+	["O", "O", "X"],
+	["X", "O", "X"],
+];
+
+declare type VictoryBoardExample = [
+	["X", ".", "."],
+	["X", "X", "O"],
+	["O", "O", "X"],
+];
+
+declare type IncorrectBoardExample = [
+	["X", "X", "X"],
+	["X", "X", "O"],
+	["O", "O", "X"],
+];
+
+Test.Describe(
+	"The TicTacToe type is a type-level implementation of the Tic Tac Toe game",
+	Test.It<
+		TicTacToe<EmptyBoardExample>,
+		CONTINUE<EmptyBoardExample, TicTacToeDefaultRules>,
+		Test.Out.PASS
+	>(),
+	Test.It<TicTacToe<FullBoardExample>, DRAW, Test.Out.PASS>(),
+	Test.It<
+		TicTacToe<VictoryBoardExample>,
+		VICTORY<Check2DVectors<VictoryBoardExample, TicTacToeDefaultRules>>,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		TicTacToe<IncorrectBoardExample>,
+		ERRORS<TicTacToeDefaultRules>["PLAYER_TURN"],
+		Test.Out.PASS
+	>(),
+);
 
 /**
  * The default rules for the TicTacToe game.

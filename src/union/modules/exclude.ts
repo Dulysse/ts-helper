@@ -1,3 +1,14 @@
+import type { Range } from "@/numeric";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Exclude an element of an union type",
+	Test.It<Exclude<Range<1, 5>[number], 4>, 1 | 2 | 3 | 5, Test.Out.PASS>(),
+	Test.It<Exclude<Range<1, 5>[number], number>, never, Test.Out.PASS>(),
+	Test.It<Exclude<string, "demo">, string, Test.Out.PASS>(),
+);
+
 /**
  * - Exclude an element of an union type `TUnion`
  *

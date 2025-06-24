@@ -1,5 +1,15 @@
-import type { Exclude, Last } from "@/union";
+import type { Last } from "@/union";
 import type { Equal } from "@/operator";
+import type { Range } from "@/numeric";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if union type is an union with many choices",
+	Test.It<IsUnion<string>, false, Test.Out.PASS>(),
+	Test.It<IsUnion<1 | 2 | 3>, true, Test.Out.PASS>(),
+	Test.It<IsUnion<Range<1, 4>[number]>, true, Test.Out.PASS>(),
+);
 
 /**
  * - Check if union type `TUnion` is an union with many choices
@@ -21,4 +31,4 @@ import type { Equal } from "@/operator";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsUnion<TUnion> =
-	Equal<TUnion, Exclude<TUnion, Last<TUnion>>> extends false ? false : true;
+	Equal<TUnion, Last<TUnion>> extends true ? false : true;

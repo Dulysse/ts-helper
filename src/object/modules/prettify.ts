@@ -1,3 +1,22 @@
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Prettify object type",
+	Test.It<
+		Prettify<
+			{
+				a: string;
+			} & {
+				b: number;
+			} & {
+				c: boolean;
+			}
+		>,
+		{ a: string; b: number; c: boolean },
+		Test.Out.PASS
+	>(),
+);
+
 /**
  * - Prettify object `TObject`
  * 

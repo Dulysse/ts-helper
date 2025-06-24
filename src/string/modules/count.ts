@@ -1,6 +1,15 @@
-import type { Increment } from "@/numeric";
+import type { NextPositive } from "@/numeric/modules/increment";
 import type { Or } from "@/operator";
-import type { IsExactString } from "@/string";
+import type { ContainExactString } from "@/string";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Count the number of occurrences of a string into a string",
+	Test.It<Count<"true", string>, number, Test.Out.PASS>(),
+	Test.It<Count<"Hello world!", "l">, 3, Test.Out.PASS>(),
+	Test.It<Count<`${string}demo`, "l">, number, Test.Out.PASS>(),
+);
 
 /**
  * - Count the number of occurrences of `TSearch` in `TString`
@@ -27,10 +36,12 @@ import type { IsExactString } from "@/string";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Count<TString extends string, TSearch extends string> =
-	Or<IsExactString<TString>, IsExactString<TSearch>> extends true
+	Or<ContainExactString<TString>, ContainExactString<TSearch>> extends true
 		? number
 		: TString extends `${infer Start}${TSearch}${infer End}`
-			? Increment<Count<`${Start}${End}`, TSearch>>
+			? NextPositive<Count<`${Start}${End}`, TSearch>>
 			: TString extends string
-				? 0
+				? string extends TString
+					? number
+					: 0
 				: number;

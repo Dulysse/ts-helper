@@ -1,5 +1,15 @@
 import type { Last, Exclude } from "@/union";
 import type { Satisfy } from "@/operator";
+import type { Range } from "@/numeric";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Transform an union type to array type with each properties",
+	Test.It<ToArray<string>, [string], Test.Out.PASS>(),
+	Test.It<ToArray<1 | 2 | 3>, [1, 2, 3], Test.Out.PASS>(),
+	Test.It<ToArray<Range<1, 4>[number]>, Range<1, 4>, Test.Out.PASS>(),
+);
 
 declare type _ToArray<TUnion, Res extends unknown[] = []> = [
 	Last<TUnion>,

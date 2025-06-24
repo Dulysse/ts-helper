@@ -3,6 +3,7 @@ import type { Satisfy } from "./modules/satisfy";
 import type { And } from "./modules/and";
 import type { Or } from "./modules/or";
 import type { Not } from "./modules/not";
+import type { Xor } from "./modules/xor";
 
 /**
  * #### ✨ List of `ts-helper` operator types ✨:
@@ -11,6 +12,7 @@ import type { Not } from "./modules/not";
  * - `And`
  * - `Or`
  * - `Not`
+ * - `Xor`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -20,7 +22,7 @@ import type { Not } from "./modules/not";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Op {
-	export { Equal, Satisfy, And, Or, Not };
+	export { Equal, Satisfy, And, Or, Not, Xor };
 }
 
-export { Equal, Satisfy, And, Or, Not };
+export { Equal, Satisfy, And, Or, Not, Xor };

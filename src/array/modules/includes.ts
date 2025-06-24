@@ -17,7 +17,9 @@ declare type IncludesInTuple<
 > = TArray extends [infer First, ...infer Rest]
 	? Equal<First, TIncluded> extends true
 		? true
-		: IncludesInTuple<Rest, TIncluded>
+		: First extends TIncluded
+			? boolean
+			: IncludesInTuple<Rest, TIncluded>
 	: false;
 
 /**

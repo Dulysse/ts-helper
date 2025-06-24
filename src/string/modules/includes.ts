@@ -1,5 +1,15 @@
 import type { Or } from "@/operator";
-import type { IsExactString } from "@/string";
+import type { ContainExactString } from "@/string";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a string type includes an element",
+	Test.It<Includes<"hello", string>, boolean, Test.Out.PASS>(),
+	Test.It<Includes<"hello", "">, true, Test.Out.PASS>(),
+	Test.It<Includes<`hello${string}`, "">, boolean, Test.Out.PASS>(),
+	Test.It<Includes<`hello`, "z">, false, Test.Out.PASS>(),
+);
 
 /**
  * - Check if `TString` includes `TSearch`
@@ -25,7 +35,7 @@ import type { IsExactString } from "@/string";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Includes<TString extends string, TSearch extends string> =
-	Or<IsExactString<TString>, IsExactString<TSearch>> extends true
+	Or<ContainExactString<TString>, ContainExactString<TSearch>> extends true
 		? boolean
 		: TString extends `${infer _}${TSearch}${infer __}`
 			? true

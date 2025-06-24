@@ -1,3 +1,13 @@
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if a type is satisfying another type",
+	Test.It<Satisfy<true, false>, false, Test.Out.PASS>(),
+	Test.It<Satisfy<true, boolean>, true, Test.Out.PASS>(),
+	Test.It<Satisfy<1, number>, 1, Test.Out.PASS>(),
+	Test.It<Satisfy<string, `${string}.com`>, `${string}.com`, Test.Out.PASS>(),
+);
+
 /**
  * - Check if `A` is satisfying `B`, if it's the case, return `A` else `B`
  *

@@ -1,6 +1,15 @@
-import type { IsExactString, Replace } from "@/string";
+import type { ContainExactString, Replace } from "@/string";
 import type { Equal } from "@/operator";
 import type { IsUnion } from "@/union";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Replace all iteration of the character with another character",
+	Test.It<ReplaceAll<"hello", "l", "x">, "hexxo", Test.Out.PASS>(),
+	Test.It<ReplaceAll<"hello", "l", string>, string, Test.Out.PASS>(),
+	Test.It<ReplaceAll<string, "b", "a">, string, Test.Out.PASS>(),
+);
 
 /**
  * - Replace all iteration of the `From` character with the `To` character in the `TString` string type.
@@ -27,7 +36,7 @@ export declare type ReplaceAll<
 	From extends string,
 	To extends string,
 > =
-	IsExactString<TString> extends true
+	ContainExactString<TString> extends true
 		? string
 		: IsUnion<TString> extends true
 			? TString extends Replace<TString, From, To>

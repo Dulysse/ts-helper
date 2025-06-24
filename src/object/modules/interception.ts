@@ -2,12 +2,24 @@ import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the Interception object type of two objects",
+	Test.It<Interception<{}, {}>, {}, Test.Out.PASS>(),
+	Test.It<Interception<{ name: string }, {}>, {}, Test.Out.PASS>(),
+	Test.It<
+		Interception<{ name: string }, { name?: boolean }>,
+		{ name: string | boolean | undefined },
+		Test.Out.PASS
+	>(),
+);
+
 /**
  * - Get the Interception object type of `TObjectA` and `TObjectB`
- * ---------------------------
  * @template TObjectA The first object type
  * @template TObjectB The second object type
- * @template Mode The object operator mode
+ * @template TMode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
  * @example
@@ -30,7 +42,7 @@ import type { Prettify } from "@/object";
 export declare type Interception<
 	TObjectA extends object,
 	TObjectB extends object,
-	Mode extends ObjectMode = "flat",
+	TMode extends ObjectMode = "flat",
 > = Prettify<{
 	[key in {
 		[key in keyof TObjectA | keyof TObjectB]: And<
@@ -45,7 +57,7 @@ export declare type Interception<
 	> extends true
 		? And<
 				And<
-					Equal<Mode, "deep"> extends true ? true : false,
+					Equal<TMode, "deep"> extends true ? true : false,
 					TObjectA[Satisfy<key, keyof TObjectA>] extends object ? true : false
 				>,
 				TObjectB[Satisfy<key, keyof TObjectB>] extends object ? true : false
@@ -53,7 +65,7 @@ export declare type Interception<
 			? Interception<
 					Satisfy<TObjectA[Satisfy<key, keyof TObjectA>], object>,
 					Satisfy<TObjectB[Satisfy<key, keyof TObjectB>], object>,
-					Mode
+					TMode
 				>
 			:
 					| TObjectA[Satisfy<key, keyof TObjectA>]

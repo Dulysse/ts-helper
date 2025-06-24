@@ -1,3 +1,12 @@
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"TypeScript utility type to trim whitespace from both ends of a string",
+	Test.It<Trim<"hello ">, "hello", Test.Out.PASS>(),
+	Test.It<Trim<`demo ${string} `>, `demo ${string}`, Test.Out.PASS>(),
+	Test.It<Trim<string>, string, Test.Out.PASS>(),
+);
+
 /**
  * - TypeScript utility type to trim whitespace from both ends of a string.
  *

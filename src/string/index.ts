@@ -1,4 +1,5 @@
 import type { IsExactString } from "./modules/isExactString";
+import type { ContainExactString } from "./modules/containExactString";
 import type { Split } from "./modules/split";
 import type { Width } from "./modules/width";
 import type { Replace } from "./modules/replace";
@@ -10,10 +11,12 @@ import type { Trim } from "./modules/trim";
 import type { Count } from "./modules/count";
 import type { Includes } from "./modules/includes";
 import type { Infer } from "./modules/infer";
+import type { Alphanumeric } from "./modules/alphanumeric";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
  * - `IsExactString`
+ * - `ContainExactString`
  * - `Split`
  * - `Width`
  * - `Replace`
@@ -25,6 +28,7 @@ import type { Infer } from "./modules/infer";
  * - `Count`
  * - `Includes`
  * - `Infer`
+ * - `Alphanumeric`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -36,6 +40,7 @@ import type { Infer } from "./modules/infer";
 export declare namespace Str {
 	export {
 		IsExactString,
+		ContainExactString,
 		Split,
 		Width,
 		Replace,
@@ -47,11 +52,13 @@ export declare namespace Str {
 		Count,
 		Includes,
 		Infer,
+		Alphanumeric,
 	};
 }
 
 export {
 	IsExactString,
+	ContainExactString,
 	Split,
 	Width,
 	Replace,
@@ -63,4 +70,5 @@ export {
 	Count,
 	Includes,
 	Infer,
+	Alphanumeric,
 };

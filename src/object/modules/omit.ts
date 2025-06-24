@@ -3,12 +3,29 @@ import type { ObjectMode } from "../utils";
 import type { Exclude } from "@/union";
 import type { Prettify } from "@/object";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Omit keys from object type",
+	Test.It<Omit<{ a: string; b: number }, "a">, { b: number }, Test.Out.PASS>(),
+	Test.It<
+		Omit<{ a: string; b: { c: number } }, "b", "deep">,
+		{ a: string },
+		Test.Out.PASS
+	>(),
+	Test.It<
+		Omit<{ a: string; b: { c: number } }, "c", "deep">,
+		{ a: string; b: { c: number } },
+		Test.Out.PASS
+	>(),
+	Test.It<Omit<{ a: string; b?: number }, "b">, { a: string }, Test.Out.PASS>(),
+);
+
 /**
  * - Omit `TKey` keys from object `TObject`
- * ---------------------------
  * @template TObject The object type to omit keys from
  * @template TKey The keys to omit from the object, which can be a string, number, or symbol
- * @template Mode The object operator mode
+ * @template TMode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
  * @example
@@ -28,14 +45,14 @@ import type { Prettify } from "@/object";
 export declare type Omit<
 	TObject extends object,
 	TKey extends PropertyKey,
-	Mode extends ObjectMode = "flat",
+	TMode extends ObjectMode = "flat",
 > = Prettify<{
 	[key in Exclude<keyof TObject, TKey>]-?: key extends keyof TObject
 		? And<
-				Equal<Mode, "deep"> extends true ? true : false,
+				Equal<TMode, "deep"> extends true ? true : false,
 				keyof TObject[key] extends keyof TObject ? true : false
 			> extends true
-			? Omit<Satisfy<TObject[key], object>, TKey, Mode>
+			? Omit<Satisfy<TObject[key], object>, TKey, TMode>
 			: TObject[key]
 		: never;
 }>;

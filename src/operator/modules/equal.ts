@@ -1,3 +1,13 @@
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if first type is strictly equal to second type",
+	Test.It<Equal<1, 1>, true, Test.Out.PASS>(),
+	Test.It<Equal<true, boolean>, false, Test.Out.PASS>(),
+	Test.It<Equal<true, true>, true, Test.Out.PASS>(),
+	Test.It<Equal<false, false | 0>, true, Test.Out.FAIL>(),
+);
+
 /**
  * - Check if `A` is strictly equal to `B`
  *

@@ -1,3 +1,13 @@
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Check if both condition are true",
+	Test.It<And<true, false>, false, Test.Out.PASS>(),
+	Test.It<And<true, boolean>, boolean, Test.Out.PASS>(),
+	Test.It<And<true, true>, true, Test.Out.PASS>(),
+	Test.It<And<false, true>, true, Test.Out.FAIL>(),
+);
+
 /**
  * - Check if both condition `A` and `B` are true, if it's the case, return `true` else return `false`
  *

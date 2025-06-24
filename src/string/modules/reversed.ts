@@ -1,4 +1,13 @@
-import type { Equal } from "@/operator";
+import type { ContainExactString } from "@/string";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Reverse a string type",
+	Test.It<Reversed<"hello">, "olleh", Test.Out.PASS>(),
+	Test.It<Reversed<`demo ${string}`>, string, Test.Out.PASS>(),
+	Test.It<Reversed<string>, string, Test.Out.PASS>(),
+);
 
 declare type _Reversed<
 	TString extends string,
@@ -8,7 +17,7 @@ declare type _Reversed<
 	: Res;
 
 /**
- * - Reverse a string type `T` to produce a new string type with the characters in reverse order.
+ * - Reverse a string type `TString` to produce a new string type with the characters in reverse order.
  *
  * @template T - The string to reverse.
  *
@@ -27,8 +36,8 @@ declare type _Reversed<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Reversed<T extends string> = T extends string
-	? Equal<T, string> extends true
+export declare type Reversed<TString extends string> = TString extends string
+	? ContainExactString<TString> extends true
 		? string
-		: _Reversed<T>
+		: _Reversed<TString>
 	: never;

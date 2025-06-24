@@ -1,5 +1,15 @@
 import type { Equal } from "@/operator";
 
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Get the opposite of a boolean",
+	Test.It<Not<true>, false, Test.Out.PASS>(),
+	Test.It<Not<boolean>, boolean, Test.Out.PASS>(),
+	Test.It<Not<true | false>, boolean, Test.Out.PASS>(),
+	Test.It<Not<false>, true, Test.Out.PASS>(),
+);
+
 /**
  * - Get the opposite of a boolean `TOperator`
  *

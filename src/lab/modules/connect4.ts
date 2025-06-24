@@ -50,6 +50,22 @@ declare type IncorrectBoardExample = [
 	[".", ".", ".", ".", ".", ".", "."],
 ];
 
+declare type BadRulesInt = {
+	COL: -1;
+	ROW: 6;
+	TARGET_SCORE: 4;
+	PLAYERS: ["X", "O"];
+	EMPTY_CELL: ".";
+};
+
+declare type BadRulesScore = {
+	COL: 7;
+	ROW: 6;
+	TARGET_SCORE: 90;
+	PLAYERS: ["X", "O"];
+	EMPTY_CELL: ".";
+};
+
 Test.Describe(
 	"The Connect4 type is a type-level implementation of the Connect 4 game",
 	Test.It<
@@ -69,23 +85,13 @@ Test.Describe(
 		Test.Out.PASS
 	>(),
 	Test.It<
-		Connect4<
-			never,
-			{
-				COL: -1;
-				ROW: 6;
-				TARGET_SCORE: 4;
-				PLAYERS: ["X", "O"];
-				EMPTY_CELL: ".";
-			}
-		>,
-		ERRORS<{
-			COL: -1;
-			ROW: 6;
-			TARGET_SCORE: 4;
-			PLAYERS: ["X", "O"];
-			EMPTY_CELL: ".";
-		}>["RULE_COL_INT"],
+		Connect4<never, BadRulesInt>,
+		ERRORS<BadRulesInt>["RULE_COL_INT"],
+		Test.Out.PASS
+	>(),
+	Test.It<
+		Connect4<never, BadRulesScore>,
+		ERRORS<BadRulesScore>["RULE_SCORE_GTR_ROW"],
 		Test.Out.PASS
 	>(),
 );

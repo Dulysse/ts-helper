@@ -1,7 +1,32 @@
 import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Equal, Or } from "@/operator";
-import type { IsExactString, Width } from "@/string";
+import type { ContainExactString, Width } from "@/string";
+import type { IsBranded } from "@/symbol";
+
+import * as Test from "@/test/local";
+
+Test.Describe(
+	"Apply some rules to a string",
+	Test.It<
+		IsBranded<Infer<"hello", {}>, typeof stringError>,
+		false,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		IsBranded<Infer<"hello", { minChar: 10 }>, typeof stringError>,
+		true,
+		Test.Out.PASS
+	>(),
+	Test.It<
+		IsBranded<
+			Infer<"hello Ulysse!", { pattern: `hello ${string}.` }>,
+			typeof stringError
+		>,
+		true,
+		Test.Out.PASS
+	>(),
+);
 
 declare type CheckMinRange<TString extends string, Min extends number> =
 	IsValidNumberInput<Min> extends true
@@ -43,7 +68,7 @@ declare type InferStringRules = {
 /**
  * the {@link Infer} error message
  */
-declare const stringError: unique symbol;
+export declare const stringError: unique symbol;
 
 /**
  * - Apply some `rules` from {@link InferStringRules} to a string, if one doesnt satisfy `TString` it will return never.
@@ -70,24 +95,24 @@ export declare type Infer<
 	TString extends string,
 	Rules extends InferStringRules,
 > =
-	IsExactString<TString> extends true
+	ContainExactString<TString> extends true
 		? TString
 		: Rules["minChar"] extends number
 			? CheckMinRange<TString, Rules["minChar"]> extends false
 				? {
-						[stringError]?: `The string '${TString}' (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
+						[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
 					}
 				: Infer<TString, Omit<Rules, "minChar">>
 			: Rules["maxChar"] extends number
 				? CheckMaxRange<TString, Rules["maxChar"]> extends false
 					? {
-							[stringError]?: `The string '${TString}' (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
+							[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
 						}
 					: Infer<TString, Omit<Rules, "maxChar">>
 				: Rules["pattern"] extends string
 					? Equal<Extract<TString, Rules["pattern"]>, TString> extends false
 						? {
-								[stringError]?: `The string '${TString}' must match with the following pattern: '${Rules["pattern"]}'.`;
+								[stringError]?: `The string "${TString}" must match with the following pattern: "${Rules["pattern"]}".`;
 							}
 						: Infer<TString, Omit<Rules, "pattern">>
 					: TString;

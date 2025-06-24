@@ -19,7 +19,13 @@ declare type Operator = PriorityOperator | AdditiveOperator;
 declare type Calculation = `${number}${Operator}${number}`;
 declare type EvaluationFailed = unknown;
 declare type AllowedEvaluateChar =
-	`${number | Operator | "(" | ")" | " " | "!" | "."}`;
+	| `${number}`
+	| Operator
+	| "("
+	| ")"
+	| " "
+	| "!"
+	| ".";
 
 declare type IsAllowedCharacter<C extends string> =
 	C extends AllowedEvaluateChar ? true : false;
