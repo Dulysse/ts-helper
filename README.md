@@ -59,7 +59,7 @@ import type { Num, Arr, Str } from "@dulysse1/ts-helper";
 import { Test, type Num } from "@dulysse1/ts-helper";
 
 Test.Describe(
-	"Type-safe evaluation of mathematical expressions represented as string.",
+	"Evaluation of mathematical expressions represented as string",
 	Test.It<Num.Eval<"2+2*2">, 6, Test.Out.PASS>(),
 	Test.It<Num.Eval<"20.2-4/2">, 18.2, Test.Out.PASS>(),
 	Test.It<Num.Eval<"HELLO">, number, Test.Out.FAIL>(),
@@ -68,7 +68,7 @@ Test.Describe(
 );
 
 Test.Describe(
-	"Check if a number is between two other numbers.",
+	"Check if a number is between two other numbers",
 	Test.It<Num.Between<1, 1, 5>, true, Test.Out.PASS>(),
 	Test.It<Num.Between<0, 10, 20>, true, Test.Out.FAIL>(),
 	Test.It<Num.Between<number, 10, 7>, boolean, Test.Out.PASS>(),
