@@ -1,5 +1,5 @@
 import type { Equal, Not } from "@/operator";
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { Readable } from "@/array";
 
 import * as Test from "@/test/local";
@@ -31,6 +31,6 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsReadonly<TArray extends TDefaultArray> = Not<
+export declare type IsReadonly<TArray extends DefaultArrayType> = Not<
 	Equal<Readable<TArray>, TArray>
 >;

@@ -1,5 +1,5 @@
 import type { IsTuple, ToUnion } from "@/array";
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { And } from "@/operator";
 
 import * as Test from "@/test/local";
@@ -34,8 +34,8 @@ Test.Describe(
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Concat<
-	TArray1 extends TDefaultArray,
-	TArray2 extends TDefaultArray,
+	TArray1 extends DefaultArrayType,
+	TArray2 extends DefaultArrayType,
 > =
 	And<IsTuple<TArray1>, IsTuple<TArray2>> extends true
 		? [...TArray1, ...TArray2]

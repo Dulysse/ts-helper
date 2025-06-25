@@ -1,4 +1,4 @@
-import type { TDefaultArray, TDefaultArraySeparator } from "../utils";
+import type { DefaultArrayType, DefaultArrayTypeSeparator } from "../utils";
 import type { IsTuple } from "@/array";
 import type { Equal, Or, Satisfy } from "@/operator";
 
@@ -13,8 +13,8 @@ Test.Describe(
 );
 
 declare type _Join<
-	TArray extends TDefaultArray,
-	TSeparator extends string = TDefaultArraySeparator,
+	TArray extends DefaultArrayType,
+	TSeparator extends string = DefaultArrayTypeSeparator,
 	TResult extends string = "",
 > =
 	IsTuple<TArray> extends true
@@ -36,7 +36,7 @@ declare type _Join<
 
 declare type Stringify<
 	T,
-	TSeparator extends string = TDefaultArraySeparator,
+	TSeparator extends string = DefaultArrayTypeSeparator,
 > = T extends unknown[]
 	? _Join<T, TSeparator>
 	: T extends object
@@ -66,6 +66,6 @@ declare type Stringify<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Join<
-	TArray extends TDefaultArray,
-	TSeparator extends string = TDefaultArraySeparator,
+	TArray extends DefaultArrayType,
+	TSeparator extends string = DefaultArrayTypeSeparator,
 > = _Join<TArray, TSeparator>;

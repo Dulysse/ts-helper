@@ -1,4 +1,4 @@
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 import type { Equal } from "@/operator";
 
@@ -12,7 +12,7 @@ Test.Describe(
 );
 
 declare type IncludesInTuple<
-	TArray extends TDefaultArray,
+	TArray extends DefaultArrayType,
 	TIncluded,
 > = TArray extends [infer First, ...infer Rest]
 	? Equal<First, TIncluded> extends true
@@ -42,7 +42,7 @@ declare type IncludesInTuple<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Includes<TArray extends TDefaultArray, TIncluded> =
+export declare type Includes<TArray extends DefaultArrayType, TIncluded> =
 	IsTuple<TArray> extends true
 		? IncludesInTuple<TArray, TIncluded>
 		: TIncluded extends ToUnion<TArray>

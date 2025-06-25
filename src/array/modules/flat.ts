@@ -1,5 +1,5 @@
 import type { IsTuple, ToUnion } from "@/array";
-import type { TDefaultArray } from "@/array/utils";
+import type { DefaultArrayType } from "@/array/utils";
 import type { IsNegative, IsZero, ParseInt } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { NextPositive } from "@/numeric/modules/increment";
@@ -20,10 +20,10 @@ Test.Describe(
 );
 
 declare type _Flat<
-	TArray extends TDefaultArray,
+	TArray extends DefaultArrayType,
 	TDeepth extends number = 1,
 	TIndex extends number = 0,
-	TResult extends TDefaultArray = [],
+	TResult extends DefaultArrayType = [],
 > =
 	IsTuple<TArray> extends true
 		? TArray[TIndex] extends undefined
@@ -34,7 +34,7 @@ declare type _Flat<
 					NextPositive<TIndex>,
 					[
 						...TResult,
-						...(TArray[TIndex] extends TDefaultArray
+						...(TArray[TIndex] extends DefaultArrayType
 							? TDeepth extends 1
 								? TArray[TIndex]
 								: _Flat<TArray[TIndex], PreviousPositive<TDeepth>>
@@ -42,11 +42,11 @@ declare type _Flat<
 					]
 				>
 		: TDeepth extends 1
-			? ToUnion<TArray> extends TDefaultArray
+			? ToUnion<TArray> extends DefaultArrayType
 				? ToUnion<TArray>
 				: TArray
 			: _Flat<
-					ToUnion<TArray> extends TDefaultArray ? ToUnion<TArray> : TArray,
+					ToUnion<TArray> extends DefaultArrayType ? ToUnion<TArray> : TArray,
 					PreviousPositive<TDeepth>
 				>;
 
@@ -76,11 +76,11 @@ declare type _Flat<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Flat<
-	TArray extends TDefaultArray,
+	TArray extends DefaultArrayType,
 	TDeepth extends number = 1,
 > =
 	IsValidNumberInput<TDeepth> extends true
 		? Or<IsZero<TDeepth>, IsNegative<TDeepth>> extends true
 			? TArray
 			: _Flat<TArray, ParseInt<`${TDeepth}`>>
-		: TDefaultArray;
+		: DefaultArrayType;

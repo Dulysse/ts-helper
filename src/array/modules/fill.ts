@@ -1,4 +1,4 @@
-import type { TDefaultArray } from "@/array/utils";
+import type { DefaultArrayType } from "@/array/utils";
 import type { IsFloat, IsNegative, IsZero } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsValidNumberInput } from "@/numeric/utils";
@@ -16,7 +16,7 @@ Test.Describe(
 declare type _Fill<
 	TLength extends number,
 	TDefaultValue = undefined,
-	TResult extends TDefaultArray = [],
+	TResult extends DefaultArrayType = [],
 > =
 	IsZero<TLength> extends true
 		? TResult

@@ -1,5 +1,5 @@
 import type { IsTuple, ToUnion } from "@/array";
-import type { TDefaultArray } from "@/array/utils";
+import type { DefaultArrayType } from "@/array/utils";
 import type { NextPositive } from "@/numeric/modules/increment";
 import type { Equal } from "@/operator";
 
@@ -14,7 +14,7 @@ Test.Describe(
 );
 
 declare type _Count<
-	TArray extends TDefaultArray,
+	TArray extends DefaultArrayType,
 	TElement,
 	TResult extends number = 0,
 > = TArray extends [infer First, ...infer Rest]
@@ -46,9 +46,9 @@ declare type _Count<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Count<
-	TArray extends TDefaultArray,
+	TArray extends DefaultArrayType,
 	TElement,
-> = TArray extends TDefaultArray
+> = TArray extends DefaultArrayType
 	? TElement extends ToUnion<TArray>
 		? IsTuple<TArray> extends true
 			? _Count<TArray, TElement>

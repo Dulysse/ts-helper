@@ -1,5 +1,5 @@
 import type { Equal, Or } from "@/operator";
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 
 import * as Test from "@/test/local";
 
@@ -29,7 +29,7 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsTuple<TArray extends TDefaultArray> =
+export declare type IsTuple<TArray extends DefaultArrayType> =
 	Or<
 		Or<
 			TArray extends [unknown, ...unknown[]] ? true : false,

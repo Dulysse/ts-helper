@@ -1,4 +1,4 @@
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 
 import * as Test from "@/test/local";
@@ -29,5 +29,5 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type First<TArray extends TDefaultArray> =
+export declare type First<TArray extends DefaultArrayType> =
 	IsTuple<TArray> extends true ? TArray[0] : ToUnion<TArray> | undefined;

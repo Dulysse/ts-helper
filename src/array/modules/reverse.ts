@@ -1,4 +1,4 @@
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { Readable, IsTuple } from "@/array";
 
 import * as Test from "@/test/local";
@@ -12,8 +12,8 @@ Test.Describe(
 );
 
 declare type _Reverse<
-	TArray extends TDefaultArray,
-	TResult extends TDefaultArray = [],
+	TArray extends DefaultArrayType,
+	TResult extends DefaultArrayType = [],
 > =
 	IsTuple<TArray> extends false
 		? TArray
@@ -41,4 +41,4 @@ declare type _Reverse<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Reverse<TArray extends TDefaultArray> = _Reverse<TArray>;
+export declare type Reverse<TArray extends DefaultArrayType> = _Reverse<TArray>;

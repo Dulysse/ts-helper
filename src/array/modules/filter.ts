@@ -1,4 +1,4 @@
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 import type { Range } from "@/numeric";
 import type { Equal } from "@/operator";
@@ -17,9 +17,9 @@ Test.Describe(
 );
 
 declare type _Filter<
-	TArray extends TDefaultArray,
+	TArray extends DefaultArrayType,
 	TFilter,
-	TResult extends TDefaultArray = [],
+	TResult extends DefaultArrayType = [],
 > =
 	Equal<TArray, []> extends true
 		? TResult
@@ -61,7 +61,7 @@ declare type _Filter<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Filter<TArray extends TDefaultArray, TFilter> =
+export declare type Filter<TArray extends DefaultArrayType, TFilter> =
 	IsTuple<TArray> extends true
 		? _Filter<TArray, TFilter>
 		: Extract<ToUnion<TArray>, TFilter>[];

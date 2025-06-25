@@ -1,5 +1,5 @@
 import type { Add, IsNegative } from "@/numeric";
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Length, IsTuple, ToUnion } from "@/array";
 import type { And } from "@/operator";
@@ -36,7 +36,7 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type At<TArray extends TDefaultArray, TIndex extends number> =
+export declare type At<TArray extends DefaultArrayType, TIndex extends number> =
 	IsTuple<TArray> extends false
 		? ToUnion<TArray> | undefined
 		: IsNegative<TIndex> extends true

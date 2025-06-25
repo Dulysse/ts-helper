@@ -15,6 +15,7 @@ import type { Flat } from "./modules/flat";
 import type { Fill } from "./modules/fill";
 import type { FillRange } from "./modules/fillRange";
 import type { Filter } from "./modules/filter";
+import type { Zip } from "./modules/zip";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
@@ -35,6 +36,7 @@ import type { Filter } from "./modules/filter";
  * - `Fill`
  * - `FillRange`
  * - `Filter`
+ * - `Zip`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -62,6 +64,7 @@ export declare namespace Arr {
 		Fill,
 		FillRange,
 		Filter,
+		Zip,
 	};
 }
 
@@ -83,4 +86,5 @@ export {
 	Fill,
 	FillRange,
 	Filter,
+	Zip,
 };

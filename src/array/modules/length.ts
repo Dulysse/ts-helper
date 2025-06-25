@@ -1,4 +1,4 @@
-import type { TDefaultArray } from "../utils";
+import type { DefaultArrayType } from "../utils";
 
 import * as Test from "@/test/local";
 
@@ -28,7 +28,7 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Length<TArray extends TDefaultArray> = TArray extends {
+export declare type Length<TArray extends DefaultArrayType> = TArray extends {
 	length: infer Length;
 }
 	? Length
