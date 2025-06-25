@@ -32,7 +32,7 @@ declare type DefaultDescribeRules = {
  * @param test - a rest array of tests that should pass, they should all pass and you must use an amount of test between {@link MIN_TEST} and {@link MAX_TEST}.
  * @example
  * ```tsx
- * import type { Num, Test } from "@dulysse1/ts-helper";
+ * import { Test, type Num } from "@dulysse1/ts-helper";
  *
  * Test.Describe(
  *    "Add a number to another",

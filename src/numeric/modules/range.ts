@@ -14,20 +14,20 @@ Test.Describe(
 export declare type AscRange<
 	From extends number,
 	To extends number,
-	Res extends number[] = [],
+	TResult extends number[] = [],
 > =
 	Equal<From, To> extends true
-		? [...Res, From]
-		: AscRange<Increment<From>, To, [...Res, From]>;
+		? [...TResult, From]
+		: AscRange<Increment<From>, To, [...TResult, From]>;
 
 export declare type DescRange<
 	From extends number,
 	To extends number,
-	Res extends number[] = [],
+	TResult extends number[] = [],
 > =
 	Equal<From, To> extends true
-		? [...Res, From]
-		: DescRange<Decrement<From>, To, [...Res, From]>;
+		? [...TResult, From]
+		: DescRange<Decrement<From>, To, [...TResult, From]>;
 
 /**
  * - Create an array of a range between two numbers `TNumber1` and `TNumber2`

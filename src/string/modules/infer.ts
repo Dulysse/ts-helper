@@ -71,10 +71,14 @@ declare type CheckMaxRange<TString extends string, Max extends number> =
 				: false
 		: never;
 
-declare type ContainOnlyAlphanumericOrSpace<TString extends string> =
+declare type AlphanumericException = " " | "_" | "-" | "." | "@";
+
+declare type ContainOnlyAlphanumericOrException<TString extends string> =
 	TString extends `${infer First}${infer Rest}`
-		? First extends Alphanumeric[keyof Alphanumeric][number] | " "
-			? ContainOnlyAlphanumericOrSpace<Rest>
+		? First extends
+				| Alphanumeric[keyof Alphanumeric][number]
+				| AlphanumericException
+			? ContainOnlyAlphanumericOrException<Rest>
 			: false
 		: true;
 
@@ -173,7 +177,7 @@ export declare type Infer<
 								}
 							: Infer<TString, Omit<Rules, "pattern">>
 						: Rules["alphanumeric"] extends boolean
-							? ContainOnlyAlphanumericOrSpace<TString> extends false
+							? ContainOnlyAlphanumericOrException<TString> extends false
 								? {
 										[stringError]?: `The string "${TString}" must contain only alphanumeric characters.`;
 									}

@@ -11,11 +11,11 @@ Test.Describe(
 	Test.It<ToArray<Range<1, 4>[number]>, Range<1, 4>, Test.Out.PASS>(),
 );
 
-declare type _ToArray<TUnion, Res extends unknown[] = []> = [
+declare type _ToArray<TUnion, TResult extends unknown[] = []> = [
 	Last<TUnion>,
 ] extends [never]
-	? Res
-	: _ToArray<Exclude<TUnion, Last<TUnion>>, [Last<TUnion>, ...Res]>;
+	? TResult
+	: _ToArray<Exclude<TUnion, Last<TUnion>>, [Last<TUnion>, ...TResult]>;
 
 /**
  * - Transform an union type `TUnion` to array with each properties

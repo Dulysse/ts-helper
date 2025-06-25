@@ -16,12 +16,12 @@ Test.Describe(
 declare type _Count<
 	TArray extends TDefaultArray,
 	TElement,
-	Result extends number = 0,
+	TResult extends number = 0,
 > = TArray extends [infer First, ...infer Rest]
 	? Equal<First, TElement> extends true
-		? _Count<Rest, TElement, NextPositive<Result>>
-		: _Count<Rest, TElement, Result>
-	: Result;
+		? _Count<Rest, TElement, NextPositive<TResult>>
+		: _Count<Rest, TElement, TResult>
+	: TResult;
 
 /**
  * - Count the number of occurrences of a specific element `TElement` in an array type `TArray`.

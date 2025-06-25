@@ -8,6 +8,7 @@ import type {
 	Increment,
 	Decrement,
 	IsFloat,
+	Lower,
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
@@ -17,31 +18,35 @@ Test.Describe(
 	"Divide one number by another",
 	Test.It<Divide<10, 2>, 5, Test.Out.PASS>(),
 	Test.It<Divide<-100, 5>, -20, Test.Out.PASS>(),
-	Test.It<Divide<189.2, 5>, number, Test.Out.PASS>(),
+	Test.It<Divide<189, 6>, number, Test.Out.PASS>(),
 );
 
 declare type DividePositive<
 	TNumber1 extends number,
 	TNumber2 extends number,
-	Result extends number = 1,
+	TResult extends number = 1,
 	Rest extends number = Subtract<TNumber1, TNumber2>,
 > =
-	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<Result>> extends true
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TResult>> extends true
 		? IsZero<Rest> extends true
-			? Result
-			: DividePositive<Rest, TNumber2, Increment<Result>>
+			? TResult
+			: Lower<Rest, TNumber2> extends true
+				? number // Float result
+				: DividePositive<Rest, TNumber2, Increment<TResult>>
 		: number;
 
 declare type DivideNegative<
 	TNumber1 extends number,
 	TNumber2 extends number,
-	Result extends number = -1,
+	TResult extends number = -1,
 	Rest extends number = Add<TNumber1, TNumber2>,
 > =
-	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<Result>> extends true
+	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TResult>> extends true
 		? IsZero<Rest> extends true
-			? Result
-			: DivideNegative<Rest, TNumber2, Decrement<Result>>
+			? TResult
+			: Lower<Rest, TNumber2> extends true
+				? number // Float result
+				: DivideNegative<Rest, TNumber2, Decrement<TResult>>
 		: number;
 
 declare type _Divide<TNumber1 extends number, TNumber2 extends number> = {
@@ -82,7 +87,7 @@ export declare type Divide<TNumber1 extends number, TNumber2 extends number> =
 		? IsZero<TNumber1> extends true
 			? 0
 			: IsZero<TNumber2> extends true
-				? number // Infinity
+				? number // Infinite result
 				: {
 						true: {
 							true: number;

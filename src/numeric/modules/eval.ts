@@ -135,8 +135,8 @@ declare type Evaluate<T extends string> =
 											: EvaluationFailed
 										: EvaluationFailed
 									: EvaluationFailed
-								: T extends `${infer Result extends number}`
-									? Result
+								: T extends `${infer TResult extends number}`
+									? TResult
 									: EvaluationFailed;
 
 /**

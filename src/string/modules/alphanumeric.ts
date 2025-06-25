@@ -6,7 +6,7 @@
  *
  * type A = Str.Alphanumeric["a_z"]; // [...]
  * type B = Str.Alphanumeric["A_Z"]; // [...]
- * type C = Str.Alphanumeric["NUM"]; // [...]
+ * type C = Str.Alphanumeric["0_9"]; // [...]
  * ```
  * ---------------------------
  * Do you have any questions about `Alphanumeric` usage ?
@@ -49,6 +49,27 @@ export declare type Alphanumeric = {
 		"z",
 	];
 	/**
+	 * - An array of lowercase letters with accents.
+	 */
+	accents: [
+		"à",
+		"â",
+		"ä",
+		"ç",
+		"é",
+		"è",
+		"ê",
+		"ë",
+		"î",
+		"ï",
+		"ô",
+		"ö",
+		"ù",
+		"û",
+		"ü",
+		"ÿ",
+	];
+	/**
 	 * - An array of uppercase letters from 'A' to 'Z'.
 	 */
 	A_Z: [
@@ -78,6 +99,45 @@ export declare type Alphanumeric = {
 		"X",
 		"Y",
 		"Z",
+		"À",
+		"Â",
+		"Ä",
+		"Ç",
+		"É",
+		"È",
+		"Ê",
+		"Ë",
+		"Î",
+		"Ï",
+		"Ô",
+		"Ö",
+		"Ù",
+		"Û",
+		"Ü",
+		"Ÿ",
+		"Æ",
+		"Œ",
+	];
+	/**
+	 * - An array of uppercase letters with accents.
+	 */
+	ACCENTS: [
+		"À",
+		"Â",
+		"Ä",
+		"Ç",
+		"É",
+		"È",
+		"Ê",
+		"Ë",
+		"Î",
+		"Ï",
+		"Ô",
+		"Ö",
+		"Ù",
+		"Û",
+		"Ü",
+		"Ÿ",
 	];
 	/**
 	 * - An array of digits from '0' to '9'.

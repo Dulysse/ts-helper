@@ -1,5 +1,5 @@
 import type { Equal } from "@/operator";
-import type { IsExactString } from "@/string";
+import type { ContainExactString } from "@/string";
 import type { TDefaultStringSeparator } from "../utils";
 
 import * as Test from "@/test/local";
@@ -14,15 +14,10 @@ Test.Describe(
 declare type _Split<
 	TString extends string,
 	TSeparator extends string = TDefaultStringSeparator,
-	Res extends string[] = [],
-> =
-	IsExactString<TString> extends true
-		? string[]
-		: Equal<TString, ""> extends true
-			? Res
-			: TString extends `${infer Start}${TSeparator}${infer Next}`
-				? _Split<Next, TSeparator, [...Res, Start]>
-				: string[];
+	TResult extends string[] = [],
+> = TString extends `${infer Start}${TSeparator}${infer Next}`
+	? _Split<Next, TSeparator, [...TResult, Start]>
+	: [...TResult, ...(Equal<TString, TSeparator> extends true ? [] : [TString])];
 
 /**
  * - Split a type `TString` to an array for each `TSeparator` string apparition
@@ -47,4 +42,7 @@ import type { Add from '@/numeric';
 export declare type Split<
 	TString extends string,
 	TSeparator extends string = TDefaultStringSeparator,
-> = _Split<TString, TSeparator>;
+> =
+	ContainExactString<TString> extends true
+		? string[]
+		: _Split<TString, TSeparator>;

@@ -11,10 +11,10 @@ Test.Describe(
 
 declare type _Reversed<
 	TString extends string,
-	Res extends string = "",
+	TResult extends string = "",
 > = TString extends `${infer First}${infer Next}`
-	? _Reversed<Next, `${First}${Res}`>
-	: Res;
+	? _Reversed<Next, `${First}${TResult}`>
+	: TResult;
 
 /**
  * - Reverse a string type `TString` to produce a new string type with the characters in reverse order.

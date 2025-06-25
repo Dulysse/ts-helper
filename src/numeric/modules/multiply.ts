@@ -23,26 +23,26 @@ Test.Describe(
 declare type MultiplyPositive<
 	TNumber1 extends number,
 	TNumber2 extends number,
-	Result extends number = 0,
+	TResult extends number = 0,
 > =
-	IsValidNumberInput<Result> extends true
+	IsValidNumberInput<TResult> extends true
 		? IsZero<TNumber2> extends true
-			? Result
-			: MultiplyPositive<TNumber1, Decrement<TNumber2>, Add<Result, TNumber1>>
+			? TResult
+			: MultiplyPositive<TNumber1, Decrement<TNumber2>, Add<TResult, TNumber1>>
 		: number;
 
 declare type MultiplyNegative<
 	TNumber1 extends number,
 	TNumber2 extends number,
-	Result extends number = 0,
+	TResult extends number = 0,
 > =
-	IsValidNumberInput<Result> extends true
+	IsValidNumberInput<TResult> extends true
 		? IsZero<TNumber2> extends true
-			? Result
+			? TResult
 			: MultiplyNegative<
 					TNumber1,
 					Increment<TNumber2>,
-					Subtract<Result, TNumber1>
+					Subtract<TResult, TNumber1>
 				>
 		: number;
 

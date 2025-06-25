@@ -258,6 +258,18 @@ checkEmail("demo@d"); // ERROR ❌
 checkEmail("demo@domain.com"); // ✅
 ```
 
+- Transform a string to `camelCase` or `snake_case` or `kebab-case` or `PascalCase`
+  (`since v1.3.6`)
+
+```tsx
+import type { Str } from "@dulysse1/ts-helper";
+
+type A = Str.ToCamelCase<"hello world">; // "helloWorld"
+type B = Str.ToSnakeCase<"hello world">; // "hello_world"
+type C = Str.ToKebabCase<"hello world">; // "hello-world"
+type D = Str.ToPascalCase<"hello world">; // "HelloWorld"
+```
+
 - Split a string to array
 
 ```tsx

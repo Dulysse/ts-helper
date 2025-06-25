@@ -3,7 +3,7 @@
  *
  * @example
  * ```tsx
- * import type { Num, Test } from "@dulysse1/ts-helper";
+ * import { Test, type Num } from "@dulysse1/ts-helper";
  *
  * Test.Describe(
  *    "Add a number to another",

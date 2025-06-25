@@ -19,13 +19,13 @@ Test.Describe(
 declare type _Repeat<
 	TString extends string,
 	TCount extends number,
-	Result extends string = "",
+	TResult extends string = "",
 > = TCount extends 0
-	? Result
+	? TResult
 	: _Repeat<
 			TString,
 			TCount extends 1 ? 0 : PreviousPositive<TCount>,
-			`${Result}${TString}`
+			`${TResult}${TString}`
 		>;
 
 /**

@@ -25,6 +25,7 @@ import type { ParseFloat } from "./modules/parseFloat";
 import type { IsEven } from "./modules/isEven";
 import type { IsOdd } from "./modules/isOdd";
 import type { IsInteger } from "./modules/isInteger";
+import type { Abs } from "./modules/abs";
 
 /**
  * #### ✨ List of `ts-helper` numeric types ✨:
@@ -56,6 +57,7 @@ import type { IsInteger } from "./modules/isInteger";
  * - `IsOdd`
  * - `Comparators`
  * - `IsInteger`
+ * - `Abs`
  *
  *  #### _⚠️ *Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`._
  * ---------------------------
@@ -96,6 +98,7 @@ export declare namespace Num {
 		IsOdd,
 		Comparators,
 		IsInteger,
+		Abs,
 	};
 }
 
@@ -128,4 +131,5 @@ export {
 	IsOdd,
 	Comparators,
 	IsInteger,
+	Abs,
 };

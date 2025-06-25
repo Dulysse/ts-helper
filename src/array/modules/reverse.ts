@@ -13,13 +13,13 @@ Test.Describe(
 
 declare type _Reverse<
 	TArray extends TDefaultArray,
-	Res extends TDefaultArray = [],
+	TResult extends TDefaultArray = [],
 > =
 	IsTuple<TArray> extends false
 		? TArray
 		: Readable<TArray> extends [...infer Next, infer Last]
-			? _Reverse<Next, [...Res, Last]>
-			: Res;
+			? _Reverse<Next, [...TResult, Last]>
+			: TResult;
 
 /**
  * - Get a reversed `TArray` array type

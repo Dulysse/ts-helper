@@ -12,6 +12,12 @@ import type { Count } from "./modules/count";
 import type { Includes } from "./modules/includes";
 import type { Infer } from "./modules/infer";
 import type { Alphanumeric } from "./modules/alphanumeric";
+import type { ReplaceMap } from "./modules/replaceMap";
+import type { UnAccent } from "./modules/unAccent";
+import type { ToPascalCase } from "./modules/toPascalCase";
+import type { ToCamelCase } from "./modules/toCamelCase";
+import type { ToKebabCase } from "./modules/toKebabCase";
+import type { ToSnakeCase } from "./modules/toSnakeCase";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
@@ -29,6 +35,12 @@ import type { Alphanumeric } from "./modules/alphanumeric";
  * - `Includes`
  * - `Infer`
  * - `Alphanumeric`
+ * - `ReplaceMap`
+ * - `UnAccent`
+ * - `ToCamelCase`
+ * - `ToPascalCase`
+ * - `ToKebabCase`
+ * - `ToSnakeCase`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -53,6 +65,12 @@ export declare namespace Str {
 		Includes,
 		Infer,
 		Alphanumeric,
+		ReplaceMap,
+		UnAccent,
+		ToCamelCase,
+		ToPascalCase,
+		ToKebabCase,
+		ToSnakeCase,
 	};
 }
 
@@ -71,4 +89,10 @@ export {
 	Includes,
 	Infer,
 	Alphanumeric,
+	ReplaceMap,
+	UnAccent,
+	ToCamelCase,
+	ToPascalCase,
+	ToKebabCase,
+	ToSnakeCase,
 };
