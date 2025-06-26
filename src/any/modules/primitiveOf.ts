@@ -7,6 +7,7 @@ Test.Describe(
 	Test.It<PrimitiveOf<true>, boolean, Test.Out.PASS>(),
 	Test.It<PrimitiveOf<bigint>, bigint, Test.Out.PASS>(),
 	Test.It<PrimitiveOf<symbol>, symbol, Test.Out.PASS>(),
+	Test.It<PrimitiveOf<23 | "23">, string | number, Test.Out.PASS>(),
 );
 
 /**
