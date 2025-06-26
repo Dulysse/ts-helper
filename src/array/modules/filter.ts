@@ -23,9 +23,9 @@ declare type _Filter<
 > =
 	Equal<TArray, []> extends true
 		? TResult
-		: TArray extends [infer Head, ...infer Rest]
+		: TArray extends [infer Head, ...infer Tail]
 			? _Filter<
-					Rest,
+					Tail,
 					TFilter,
 					[
 						...TResult,
@@ -47,11 +47,11 @@ declare type _Filter<
  * type A = Arr.Filter<
  *  [1, 2, 3, "4"],
  *  string
- * >; ["4"]
+ * >; // ["4"]
  * type B = Arr.Filter<
  *  [2, 3, 4, "5"],
  *  Num.Range<1, 3>[number]
- * >; [2, 3]
+ * >; // [2, 3]
  * ```
  * ---------------------------
  * Do you have any questions about `Filter` usage ?

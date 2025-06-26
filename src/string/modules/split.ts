@@ -15,8 +15,8 @@ declare type _Split<
 	TString extends string,
 	TSeparator extends string = TDefaultStringSeparator,
 	TResult extends string[] = [],
-> = TString extends `${infer Start}${TSeparator}${infer Next}`
-	? _Split<Next, TSeparator, [...TResult, Start]>
+> = TString extends `${infer Start}${TSeparator}${infer Tail}`
+	? _Split<Tail, TSeparator, [...TResult, Start]>
 	: [...TResult, ...(Equal<TString, TSeparator> extends true ? [] : [TString])];
 
 /**

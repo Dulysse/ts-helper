@@ -26,7 +26,7 @@ Test.Describe(
 export declare type NextPositive<TNumber extends number> =
 	BuildTuple<TNumber> extends [...infer U] ? [...U, 0]["length"] : never;
 
-declare type Next<TNumber extends number> = {
+declare type Tail<TNumber extends number> = {
 	true: NextPositive<TNumber>;
 	false: Opposite<PreviousPositive<Opposite<TNumber>>>;
 }[`${IsPositive<TNumber>}`];
@@ -58,7 +58,7 @@ export declare type Increment<TNumber extends number> =
 				: `${TNumber}` extends `-0.${infer Decimal}`
 					? ParseFloat<`0.${Lower<OppositeDecimal<DecimalOf<Decimal>>, 10> extends true ? `0${OppositeDecimal<DecimalOf<Decimal>>}` : OppositeDecimal<DecimalOf<Decimal>>}`>
 					: `${TNumber}` extends `${infer Numerator extends number}.${infer Decimal}`
-						? ParseFloat<`${Next<Numerator>}.${ParseDecimal<DecimalOf<Decimal>>}`>
+						? ParseFloat<`${Tail<Numerator>}.${ParseDecimal<DecimalOf<Decimal>>}`>
 						: never
-			: Next<TNumber>
+			: Tail<TNumber>
 		: number;

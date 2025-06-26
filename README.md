@@ -317,6 +317,31 @@ type A = Arr.IsTuple<number[]>; // false
 type B = Arr.IsTuple<[1, 2, 3]>; // true
 ```
 
+- Infer the type of an array with rules
+
+```tsx
+import type { Arr } from "@dulysse1/ts-helper";
+
+declare function uniqueArray<const T extends unknown[]>(
+	...elements: T
+): Arr.Infer<T, { unique: true }>;
+
+uniqueArray(1, 2, 3, 2); // { arrayError: "The array must have only unique elements." }
+```
+
+- `Map` of `Filter` an array (`since 1.3.8`)
+
+```tsx
+import type { Arr, Num } from "@dulysse1/ts-helper";
+
+type A = Arr.Map<[1, 2, 3], `2 * ${number}`, "eval">; // [2, 4, 6]
+type B = Arr.Map<[1, 2, 3], string>; // ["1", "2", "3"]
+type C = Arr.Map<[1, 2, 3], "a">; // ["a", "a", "a"]
+
+type D = Arr.Filter<[1, 2, 3, "4"], string>; // ["4"]
+type E = Arr.Filter<[2, 3, 4, "5"], Num.Range<1, 3>[number]>; // [2, 3]
+```
+
 - Reverse an array
 
 ```tsx

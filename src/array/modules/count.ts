@@ -17,10 +17,10 @@ declare type _Count<
 	TArray extends DefaultArrayType,
 	TElement,
 	TResult extends number = 0,
-> = TArray extends [infer First, ...infer Rest]
-	? Equal<First, TElement> extends true
-		? _Count<Rest, TElement, NextPositive<TResult>>
-		: _Count<Rest, TElement, TResult>
+> = TArray extends [infer Head, ...infer Tail]
+	? Equal<Head, TElement> extends true
+		? _Count<Tail, TElement, NextPositive<TResult>>
+		: _Count<Tail, TElement, TResult>
 	: TResult;
 
 /**

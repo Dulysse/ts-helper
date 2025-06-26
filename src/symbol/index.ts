@@ -1,5 +1,6 @@
 import type { IsBranded } from "./modules/isBranded";
 import type { stringError } from "@/string/modules/infer";
+import type { arrayError } from "@/array/modules/infer";
 
 /**
  * #### ✨ List of `ts-helper` symbol types ✨:
@@ -13,7 +14,7 @@ import type { stringError } from "@/string/modules/infer";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Smbl {
-	export { IsBranded, stringError };
+	export { IsBranded, stringError, arrayError };
 }
 
 export { IsBranded };

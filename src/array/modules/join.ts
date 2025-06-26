@@ -20,12 +20,12 @@ declare type _Join<
 	IsTuple<TArray> extends true
 		? Equal<TArray, []> extends true
 			? TResult
-			: TArray extends [infer First, ...infer Next]
+			: TArray extends [infer Head, ...infer Tail]
 				? _Join<
-						Next,
+						Tail,
 						TSeparator,
-						`${TResult}${Stringify<First, TSeparator>}${Equal<
-							Next,
+						`${TResult}${Stringify<Head, TSeparator>}${Equal<
+							Tail,
 							[]
 						> extends true
 							? ""

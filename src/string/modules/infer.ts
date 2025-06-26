@@ -74,11 +74,11 @@ declare type CheckMaxRange<TString extends string, Max extends number> =
 declare type AlphanumericException = " " | "_" | "-" | "." | "@";
 
 declare type ContainOnlyAlphanumericOrException<TString extends string> =
-	TString extends `${infer First}${infer Rest}`
-		? First extends
+	TString extends `${infer Head}${infer Tail}`
+		? Head extends
 				| Alphanumeric[keyof Alphanumeric][number]
 				| AlphanumericException
-			? ContainOnlyAlphanumericOrException<Rest>
+			? ContainOnlyAlphanumericOrException<Tail>
 			: false
 		: true;
 
@@ -141,21 +141,21 @@ export declare type Infer<
 			? Rules["excludeCharacters"] extends []
 				? Infer<TString, Omit<Rules, "excludeCharacters">>
 				: Rules["excludeCharacters"] extends [
-							infer First,
-							...infer Rest extends string[],
+							infer Head,
+							...infer Tail extends string[],
 					  ]
-					? First extends string
-						? Includes<TString, First> extends true
+					? Head extends string
+						? Includes<TString, Head> extends true
 							? {
-									[stringError]?: `The string "${TString}" must not contain the character "${First}".`;
+									[stringError]?: `The string "${TString}" must not contain the character "${Head}".`;
 								}
 							: Infer<
 									TString,
-									{ excludeCharacters: Rest } & Omit<Rules, "excludeCharacters">
+									{ excludeCharacters: Tail } & Omit<Rules, "excludeCharacters">
 								>
 						: Infer<
 								TString,
-								{ excludeCharacters: Rest } & Omit<Rules, "excludeCharacters">
+								{ excludeCharacters: Tail } & Omit<Rules, "excludeCharacters">
 							>
 					: Infer<TString, Omit<Rules, "excludeCharacters">>
 			: Rules["minChar"] extends number

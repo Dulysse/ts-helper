@@ -25,28 +25,28 @@ declare type DividePositive<
 	TNumber1 extends number,
 	TNumber2 extends number,
 	TResult extends number = 1,
-	Rest extends number = Subtract<TNumber1, TNumber2>,
+	Tail extends number = Subtract<TNumber1, TNumber2>,
 > =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TResult>> extends true
-		? IsZero<Rest> extends true
+		? IsZero<Tail> extends true
 			? TResult
-			: Lower<Rest, TNumber2> extends true
+			: Lower<Tail, TNumber2> extends true
 				? number // Float result
-				: DividePositive<Rest, TNumber2, Increment<TResult>>
+				: DividePositive<Tail, TNumber2, Increment<TResult>>
 		: number;
 
 declare type DivideNegative<
 	TNumber1 extends number,
 	TNumber2 extends number,
 	TResult extends number = -1,
-	Rest extends number = Add<TNumber1, TNumber2>,
+	Tail extends number = Add<TNumber1, TNumber2>,
 > =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TResult>> extends true
-		? IsZero<Rest> extends true
+		? IsZero<Tail> extends true
 			? TResult
-			: Lower<Rest, TNumber2> extends true
+			: Lower<Tail, TNumber2> extends true
 				? number // Float result
-				: DivideNegative<Rest, TNumber2, Decrement<TResult>>
+				: DivideNegative<Tail, TNumber2, Decrement<TResult>>
 		: number;
 
 declare type _Divide<TNumber1 extends number, TNumber2 extends number> = {

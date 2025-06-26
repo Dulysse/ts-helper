@@ -29,11 +29,11 @@ export declare type BuildTuple<
 export declare type DecimalOf<T extends string> =
 	T extends `${infer TNumber extends number}`
 		? Or<IsValidNumberInput<TNumber>, Not<IsFloat<TNumber>>> extends true
-			? Split<T> extends [`${infer First extends number}`, ...infer Next]
-				? Equal<Next, []> extends true
-					? ParseInt<`${First}0`>
-					: Next extends [`${infer Second extends number}`, ...infer Rest]
-						? ParseInt<`${First}${Rest[0] extends `${UpperRoundingNumber}` ? NextPositive<Second> : Second}`>
+			? Split<T> extends [`${infer Head extends number}`, ...infer Tail]
+				? Equal<Tail, []> extends true
+					? ParseInt<`${Head}0`>
+					: Tail extends [`${infer Second extends number}`, ...infer Tail]
+						? ParseInt<`${Head}${Tail[0] extends `${UpperRoundingNumber}` ? NextPositive<Second> : Second}`>
 						: never
 				: never
 			: never

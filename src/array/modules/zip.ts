@@ -23,12 +23,12 @@ Test.Describe(
 declare type _Zip<
 	TArray1 extends DefaultArrayType,
 	TArray2 extends DefaultArrayType,
-	Result extends DefaultArrayType = [],
+	TResult extends DefaultArrayType = [],
 > = TArray1 extends [infer H1, ...infer R1]
 	? TArray2 extends [infer H2, ...infer R2]
-		? _Zip<R1, R2, [...Result, [H1, H2]]>
-		: Result
-	: Result;
+		? _Zip<R1, R2, [...TResult, [H1, H2]]>
+		: TResult
+	: TResult;
 
 /**
  * - Combine two tuple types into a tuple of pairs.

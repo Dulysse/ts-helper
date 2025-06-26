@@ -37,10 +37,10 @@ Test.Describe(
 export declare type ContainExactString<TString extends string> =
 	IsExactString<TString> extends true
 		? true
-		: TString extends `${infer Head}${infer Next}`
+		: TString extends `${infer Head}${infer Tail}`
 			? IsExactString<Head> extends true
 				? true
-				: Next extends ""
+				: Tail extends ""
 					? false
-					: ContainExactString<Next>
+					: ContainExactString<Tail>
 			: false;

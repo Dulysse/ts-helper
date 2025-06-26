@@ -14,12 +14,12 @@ Test.Describe(
 declare type IncludesInTuple<
 	TArray extends DefaultArrayType,
 	TIncluded,
-> = TArray extends [infer First, ...infer Rest]
-	? Equal<First, TIncluded> extends true
+> = TArray extends [infer Head, ...infer Tail]
+	? Equal<Head, TIncluded> extends true
 		? true
-		: First extends TIncluded
+		: Head extends TIncluded
 			? boolean
-			: IncludesInTuple<Rest, TIncluded>
+			: IncludesInTuple<Tail, TIncluded>
 	: false;
 
 /**

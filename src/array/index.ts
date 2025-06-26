@@ -16,6 +16,9 @@ import type { Fill } from "./modules/fill";
 import type { FillRange } from "./modules/fillRange";
 import type { Filter } from "./modules/filter";
 import type { Zip } from "./modules/zip";
+import type { Unique } from "./modules/unique";
+import type { Map } from "./modules/map";
+import type { Infer } from "./modules/infer";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
@@ -37,6 +40,9 @@ import type { Zip } from "./modules/zip";
  * - `FillRange`
  * - `Filter`
  * - `Zip`
+ * - `Unique`
+ * - `Map`
+ * - `Infer`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -65,6 +71,9 @@ export declare namespace Arr {
 		FillRange,
 		Filter,
 		Zip,
+		Unique,
+		Map,
+		Infer,
 	};
 }
 
@@ -87,4 +96,7 @@ export {
 	FillRange,
 	Filter,
 	Zip,
+	Unique,
+	Map,
+	Infer,
 };

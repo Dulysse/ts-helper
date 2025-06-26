@@ -17,8 +17,8 @@ declare type _Reverse<
 > =
 	IsTuple<TArray> extends false
 		? TArray
-		: Readable<TArray> extends [...infer Next, infer Last]
-			? _Reverse<Next, [...TResult, Last]>
+		: Readable<TArray> extends [...infer Tail, infer Last]
+			? _Reverse<Tail, [...TResult, Last]>
 			: TResult;
 
 /**

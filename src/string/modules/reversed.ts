@@ -12,8 +12,8 @@ Test.Describe(
 declare type _Reversed<
 	TString extends string,
 	TResult extends string = "",
-> = TString extends `${infer First}${infer Next}`
-	? _Reversed<Next, `${First}${TResult}`>
+> = TString extends `${infer Head}${infer Tail}`
+	? _Reversed<Tail, `${Head}${TResult}`>
 	: TResult;
 
 /**
