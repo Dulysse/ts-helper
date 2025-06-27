@@ -19,6 +19,8 @@ import type { Zip } from "./modules/zip";
 import type { Unique } from "./modules/unique";
 import type { Map } from "./modules/map";
 import type { Infer } from "./modules/infer";
+import type { Some } from "./modules/some";
+import type { IndexOf } from "./modules/indexOf";
 
 /**
  * #### ✨ List of `ts-helper` array types ✨:
@@ -43,6 +45,8 @@ import type { Infer } from "./modules/infer";
  * - `Unique`
  * - `Map`
  * - `Infer`
+ * - `Some`
+ * - `IndexOf`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -74,6 +78,8 @@ export declare namespace Arr {
 		Unique,
 		Map,
 		Infer,
+		Some,
+		IndexOf,
 	};
 }
 
@@ -99,4 +105,6 @@ export {
 	Unique,
 	Map,
 	Infer,
+	Some,
+	IndexOf,
 };
