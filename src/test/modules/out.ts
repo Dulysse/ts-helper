@@ -19,7 +19,7 @@
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare enum Out {
+export enum Out {
 	/**
 	 * ✅ The output result of a passing test. ✅
 	 */
