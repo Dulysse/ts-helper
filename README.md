@@ -60,18 +60,18 @@ import { Test, type Num } from "@dulysse1/ts-helper";
 
 Test.Describe(
 	"Evaluation of mathematical expressions represented as string",
-	Test.It<Num.Eval<"2+2*2">, 6, Test.Out.PASS>(),
-	Test.It<Num.Eval<"20.2-4/2">, 18.2, Test.Out.PASS>(),
-	Test.It<Num.Eval<"HELLO">, number, Test.Out.FAIL>(),
-	Test.It<Num.Eval<"23.3/32323">, number, Test.Out.PASS>(),
+	Test.It<Num.Eval<"2+2*2">, 6, typeof Test.Out.PASS>(),
+	Test.It<Num.Eval<"20.2-4/2">, 18.2, typeof Test.Out.PASS>(),
+	Test.It<Num.Eval<"HELLO">, number, typeof Test.Out.FAIL>(),
+	Test.It<Num.Eval<"23.3/32323">, number, typeof Test.Out.PASS>(),
 	//         [Tested type]  [Expected]  [Comparison result]
 );
 
 Test.Describe(
 	"Check if a number is between two other numbers",
-	Test.It<Num.Between<1, 1, 5>, true, Test.Out.PASS>(),
-	Test.It<Num.Between<0, 10, 20>, true, Test.Out.FAIL>(),
-	Test.It<Num.Between<number, 10, 7>, boolean, Test.Out.PASS>(),
+	Test.It<Num.Between<1, 1, 5>, true, typeof Test.Out.PASS>(),
+	Test.It<Num.Between<0, 10, 20>, true, typeof Test.Out.FAIL>(),
+	Test.It<Num.Between<number, 10, 7>, boolean, typeof Test.Out.PASS>(),
 );
 ```
 

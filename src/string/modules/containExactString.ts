@@ -1,16 +1,16 @@
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a string type contain exactly a string type as litteral string type",
-	Test.It<ContainExactString<"hello">, false, Test.Out.PASS>(),
-	Test.It<ContainExactString<string>, true, Test.Out.PASS>(),
-	Test.It<ContainExactString<`hello${string}`>, true, Test.Out.PASS>(),
+	Test.It<ContainExactString<"hello">, false, typeof Test.Out.PASS>(),
+	Test.It<ContainExactString<string>, true, typeof Test.Out.PASS>(),
+	Test.It<ContainExactString<`hello${string}`>, true, typeof Test.Out.PASS>(),
 	Test.It<
 		ContainExactString<"hello" | `hello ${string}`>,
 		boolean,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

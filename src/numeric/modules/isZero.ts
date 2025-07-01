@@ -1,12 +1,12 @@
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is equal to zero",
-	Test.It<IsZero<0>, true, Test.Out.PASS>(),
-	Test.It<IsZero<2 | 0>, false, Test.Out.PASS>(),
-	Test.It<IsZero<typeof Infinity>, false, Test.Out.PASS>(),
+	Test.It<IsZero<0>, true, typeof Test.Out.PASS>(),
+	Test.It<IsZero<2 | 0>, false, typeof Test.Out.PASS>(),
+	Test.It<IsZero<typeof Infinity>, false, typeof Test.Out.PASS>(),
 );
 
 /**

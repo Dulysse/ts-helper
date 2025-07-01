@@ -1,19 +1,23 @@
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Rename a property in an object type",
-	Test.It<Rename<{ a: string }, "a", "b">, { b: string }, Test.Out.PASS>(),
+	Test.It<
+		Rename<{ a: string }, "a", "b">,
+		{ b: string },
+		typeof Test.Out.PASS
+	>(),
 	Test.It<
 		Rename<{ a: string; b: number }, "a", "c">,
 		{ c: string; b: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Rename<{ a: string; b?: number }, "b", "d">,
 		{ a: string; d?: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

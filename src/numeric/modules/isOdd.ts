@@ -1,13 +1,13 @@
 import type { IsEven } from "@/numeric";
 import type { Not } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is an odd number",
-	Test.It<IsOdd<number>, boolean, Test.Out.PASS>(),
-	Test.It<IsOdd<2.33>, false, Test.Out.PASS>(),
-	Test.It<IsOdd<-5>, true, Test.Out.PASS>(),
+	Test.It<IsOdd<number>, boolean, typeof Test.Out.PASS>(),
+	Test.It<IsOdd<2.33>, false, typeof Test.Out.PASS>(),
+	Test.It<IsOdd<-5>, true, typeof Test.Out.PASS>(),
 );
 
 /**

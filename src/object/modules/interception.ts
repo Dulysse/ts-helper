@@ -2,16 +2,16 @@ import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the Interception object type of two objects",
-	Test.It<Interception<{}, {}>, {}, Test.Out.PASS>(),
-	Test.It<Interception<{ name: string }, {}>, {}, Test.Out.PASS>(),
+	Test.It<Interception<{}, {}>, {}, typeof Test.Out.PASS>(),
+	Test.It<Interception<{ name: string }, {}>, {}, typeof Test.Out.PASS>(),
 	Test.It<
 		Interception<{ name: string }, { name?: boolean }>,
 		{ name: string | boolean | undefined },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

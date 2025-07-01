@@ -2,13 +2,13 @@ import type { And } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
 import type { Comparators, Compare } from "@/numeric";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is lower than another",
-	Test.It<Lower<1, 2>, true, Test.Out.PASS>(),
-	Test.It<Lower<2, 2>, true, Test.Out.FAIL>(),
-	Test.It<Lower<number, 2>, boolean, Test.Out.PASS>(),
+	Test.It<Lower<1, 2>, true, typeof Test.Out.PASS>(),
+	Test.It<Lower<2, 2>, true, typeof Test.Out.FAIL>(),
+	Test.It<Lower<number, 2>, boolean, typeof Test.Out.PASS>(),
 );
 
 export declare type _Lower<TNumber1 extends number, TNumber2 extends number> =

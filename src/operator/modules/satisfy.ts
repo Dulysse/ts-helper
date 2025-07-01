@@ -1,11 +1,15 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a type is satisfying another type",
-	Test.It<Satisfy<true, false>, false, Test.Out.PASS>(),
-	Test.It<Satisfy<true, boolean>, true, Test.Out.PASS>(),
-	Test.It<Satisfy<1, number>, 1, Test.Out.PASS>(),
-	Test.It<Satisfy<string, `${string}.com`>, `${string}.com`, Test.Out.PASS>(),
+	Test.It<Satisfy<true, false>, false, typeof Test.Out.PASS>(),
+	Test.It<Satisfy<true, boolean>, true, typeof Test.Out.PASS>(),
+	Test.It<Satisfy<1, number>, 1, typeof Test.Out.PASS>(),
+	Test.It<
+		Satisfy<string, `${string}.com`>,
+		`${string}.com`,
+		typeof Test.Out.PASS
+	>(),
 );
 
 /**

@@ -5,24 +5,24 @@ import type { Equal, Not, Or } from "@/operator";
 import type { IsTuple, Length, Unique } from "@/array";
 import type { IsBranded } from "@/symbol";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if an array type satisfies the rules defined in InferArrayRules",
 	Test.It<
 		IsBranded<Infer<[1, 2, 3], { minLength: 2 }>, typeof arrayError>,
 		false,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		IsBranded<Infer<[1, 2, 3], { minLength: 4 }>, typeof arrayError>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		IsBranded<Infer<[1, 1, 3], { unique: true }>, typeof arrayError>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

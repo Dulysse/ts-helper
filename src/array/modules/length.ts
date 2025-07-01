@@ -1,13 +1,13 @@
 import type { DefaultArrayType } from "../utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the length of an array type",
-	Test.It<Length<[1, 2]>, 2, Test.Out.PASS>(),
-	Test.It<Length<string[]>, number, Test.Out.PASS>(),
-	Test.It<Length<[]>, 0, Test.Out.PASS>(),
-	Test.It<Length<[2, 3, 4] | [1, 2]>, 2 | 3, Test.Out.PASS>(),
+	Test.It<Length<[1, 2]>, 2, typeof Test.Out.PASS>(),
+	Test.It<Length<string[]>, number, typeof Test.Out.PASS>(),
+	Test.It<Length<[]>, 0, typeof Test.Out.PASS>(),
+	Test.It<Length<[2, 3, 4] | [1, 2]>, 2 | 3, typeof Test.Out.PASS>(),
 );
 
 /**

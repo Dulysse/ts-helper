@@ -1,11 +1,11 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if one of condition is true",
-	Test.It<Or<true, false>, true, Test.Out.PASS>(),
-	Test.It<Or<true, boolean>, true, Test.Out.PASS>(),
-	Test.It<Or<true, true>, true, Test.Out.PASS>(),
-	Test.It<Or<false, false>, true, Test.Out.FAIL>(),
+	Test.It<Or<true, false>, true, typeof Test.Out.PASS>(),
+	Test.It<Or<true, boolean>, true, typeof Test.Out.PASS>(),
+	Test.It<Or<true, true>, true, typeof Test.Out.PASS>(),
+	Test.It<Or<false, false>, true, typeof Test.Out.FAIL>(),
 );
 
 /**

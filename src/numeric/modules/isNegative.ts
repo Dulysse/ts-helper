@@ -1,13 +1,14 @@
 import type { IsPositive } from "@/numeric";
+
 import type { Not } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is a negative number",
-	Test.It<IsNegative<number>, boolean, Test.Out.PASS>(),
-	Test.It<IsNegative<2.33>, false, Test.Out.PASS>(),
-	Test.It<IsNegative<-5>, true, Test.Out.PASS>(),
+	Test.It<IsNegative<number>, boolean, typeof Test.Out.PASS>(),
+	Test.It<IsNegative<2.33>, false, typeof Test.Out.PASS>(),
+	Test.It<IsNegative<-5>, true, typeof Test.Out.PASS>(),
 );
 
 /**

@@ -1,6 +1,6 @@
 import type { Implicit } from "@/any";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 declare type InstanceExample = {
 	name: string;
@@ -10,21 +10,25 @@ declare type ParamsExample = [name: string];
 
 Test.Describe(
 	"Type definition for a constructor function",
-	Test.It<InstanceType<Constructor["prototype"]>, Implicit, Test.Out.PASS>(),
 	Test.It<
-		InstanceType<Constructor<[], InstanceExample>>,
-		InstanceExample,
-		Test.Out.PASS
+		InstanceType<Constructor["prototype"]>,
+		Implicit,
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		InstanceType<Constructor<[], InstanceExample>>,
 		InstanceExample,
-		Test.Out.PASS
+		typeof Test.Out.PASS
+	>(),
+	Test.It<
+		InstanceType<Constructor<[], InstanceExample>>,
+		InstanceExample,
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		ConstructorParameters<Constructor<ParamsExample>>,
 		ParamsExample,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

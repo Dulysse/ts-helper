@@ -1,13 +1,13 @@
 import type { FillRange } from "@/array";
 import type { Satisfy } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if all conditions are true",
-	Test.It<AndAll<[true, true, true]>, true, Test.Out.PASS>(),
-	Test.It<AndAll<[true, false, true]>, false, Test.Out.PASS>(),
-	Test.It<AndAll<[true, true, boolean]>, boolean, Test.Out.PASS>(),
+	Test.It<AndAll<[true, true, true]>, true, typeof Test.Out.PASS>(),
+	Test.It<AndAll<[true, false, true]>, false, typeof Test.Out.PASS>(),
+	Test.It<AndAll<[true, true, boolean]>, boolean, typeof Test.Out.PASS>(),
 );
 
 export declare type ConditionTuple = FillRange<1, 10, boolean>;

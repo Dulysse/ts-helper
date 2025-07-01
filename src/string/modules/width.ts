@@ -1,13 +1,13 @@
 import type { ContainExactString, Split } from "@/string";
 import type { Length } from "@/array";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the length of a string type",
-	Test.It<Width<"hello">, 5, Test.Out.PASS>(),
-	Test.It<Width<`demo ${string} `>, number, Test.Out.PASS>(),
-	Test.It<Width<string>, number, Test.Out.PASS>(),
+	Test.It<Width<"hello">, 5, typeof Test.Out.PASS>(),
+	Test.It<Width<`demo ${string} `>, number, typeof Test.Out.PASS>(),
+	Test.It<Width<string>, number, typeof Test.Out.PASS>(),
 );
 
 /**

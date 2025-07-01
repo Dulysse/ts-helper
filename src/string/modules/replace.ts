@@ -1,13 +1,13 @@
 import type { Or } from "@/operator";
 import type { ContainExactString } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Replace the first iteration of the character with another character",
-	Test.It<Replace<"hello", "l", "x">, "hexlo", Test.Out.PASS>(),
-	Test.It<Replace<"hello", "l", string>, string, Test.Out.PASS>(),
-	Test.It<Replace<string, "b", "a">, string, Test.Out.PASS>(),
+	Test.It<Replace<"hello", "l", "x">, "hexlo", typeof Test.Out.PASS>(),
+	Test.It<Replace<"hello", "l", string>, string, typeof Test.Out.PASS>(),
+	Test.It<Replace<string, "b", "a">, string, typeof Test.Out.PASS>(),
 );
 
 /**

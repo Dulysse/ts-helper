@@ -1,11 +1,11 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if both condition are true",
-	Test.It<And<true, false>, false, Test.Out.PASS>(),
-	Test.It<And<true, boolean>, boolean, Test.Out.PASS>(),
-	Test.It<And<true, true>, true, Test.Out.PASS>(),
-	Test.It<And<false, true>, true, Test.Out.FAIL>(),
+	Test.It<And<true, false>, false, typeof Test.Out.PASS>(),
+	Test.It<And<true, boolean>, boolean, typeof Test.Out.PASS>(),
+	Test.It<And<true, true>, true, typeof Test.Out.PASS>(),
+	Test.It<And<false, true>, true, typeof Test.Out.FAIL>(),
 );
 
 /**

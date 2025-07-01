@@ -1,10 +1,10 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"TypeScript utility type to trim whitespace from both ends of a string",
-	Test.It<Trim<"hello ">, "hello", Test.Out.PASS>(),
-	Test.It<Trim<`demo ${string} `>, `demo ${string}`, Test.Out.PASS>(),
-	Test.It<Trim<string>, string, Test.Out.PASS>(),
+	Test.It<Trim<"hello ">, "hello", typeof Test.Out.PASS>(),
+	Test.It<Trim<`demo ${string} `>, `demo ${string}`, typeof Test.Out.PASS>(),
+	Test.It<Trim<string>, string, typeof Test.Out.PASS>(),
 );
 
 /**

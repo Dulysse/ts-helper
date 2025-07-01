@@ -2,13 +2,13 @@ import type { Equal } from "@/operator";
 import type { ContainExactString } from "@/string";
 import type { TDefaultStringSeparator } from "../utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Split a type to an array for each string characters apparition",
-	Test.It<Split<"hello">, ["h", "e", "l", "l", "o"], Test.Out.PASS>(),
-	Test.It<Split<`demo ${string}`>, string[], Test.Out.PASS>(),
-	Test.It<Split<string>, string[], Test.Out.PASS>(),
+	Test.It<Split<"hello">, ["h", "e", "l", "l", "o"], typeof Test.Out.PASS>(),
+	Test.It<Split<`demo ${string}`>, string[], typeof Test.Out.PASS>(),
+	Test.It<Split<string>, string[], typeof Test.Out.PASS>(),
 );
 
 declare type _Split<

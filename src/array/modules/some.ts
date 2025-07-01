@@ -2,15 +2,15 @@ import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if array match with filter",
-	Test.It<Some<(string | number)[], string>, boolean, Test.Out.PASS>(),
-	Test.It<Some<[1, 2, 3], string>, false, Test.Out.PASS>(),
-	Test.It<Some<[1, 2, "3"], string>, true, Test.Out.PASS>(),
-	Test.It<Some<[1, 2, 3], 2>, true, Test.Out.PASS>(),
-	Test.It<Some<(1 | 2 | 3)[], 2>, boolean, Test.Out.PASS>(),
+	Test.It<Some<(string | number)[], string>, boolean, typeof Test.Out.PASS>(),
+	Test.It<Some<[1, 2, 3], string>, false, typeof Test.Out.PASS>(),
+	Test.It<Some<[1, 2, "3"], string>, true, typeof Test.Out.PASS>(),
+	Test.It<Some<[1, 2, 3], 2>, true, typeof Test.Out.PASS>(),
+	Test.It<Some<(1 | 2 | 3)[], 2>, boolean, typeof Test.Out.PASS>(),
 );
 
 declare type _Some<TArray extends DefaultArrayType, TFilter> = TArray extends [

@@ -1,11 +1,12 @@
 import type { IsValidNumberInput } from "@/numeric/utils";
-import * as Test from "@/test";
+
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is an integer number",
-	Test.It<IsInteger<number>, boolean, Test.Out.PASS>(),
-	Test.It<IsInteger<2.33>, false, Test.Out.PASS>(),
-	Test.It<IsInteger<-5>, true, Test.Out.PASS>(),
+	Test.It<IsInteger<number>, boolean, typeof Test.Out.PASS>(),
+	Test.It<IsInteger<2.33>, false, typeof Test.Out.PASS>(),
+	Test.It<IsInteger<-5>, true, typeof Test.Out.PASS>(),
 );
 
 /**

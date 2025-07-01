@@ -1,16 +1,16 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if an object has a specific key",
-	Test.It<HasKey<{}, number>, false, Test.Out.PASS>(),
-	Test.It<HasKey<{ name: string }, "name">, true, Test.Out.PASS>(),
-	Test.It<HasKey<{ name: string }, "age">, false, Test.Out.PASS>(),
+	Test.It<HasKey<{}, number>, false, typeof Test.Out.PASS>(),
+	Test.It<HasKey<{ name: string }, "name">, true, typeof Test.Out.PASS>(),
+	Test.It<HasKey<{ name: string }, "age">, false, typeof Test.Out.PASS>(),
 	Test.It<
 		HasKey<{ name: string; age?: number }, "age" | "test">,
 		boolean,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<HasKey<string, "toString">, true, Test.Out.PASS>(),
+	Test.It<HasKey<string, "toString">, true, typeof Test.Out.PASS>(),
 );
 
 /**

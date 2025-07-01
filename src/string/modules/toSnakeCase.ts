@@ -1,18 +1,18 @@
 import type { IsExactString, ReplaceMap, UnAccent } from "@/string";
 import type { SpecialCharMap } from "@/string/utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Convert a string to snake_case",
 	Test.It<
 		ToSnakeCase<"This text will be converted into snake_case">,
 		"this_text_will_be_converted_into_snake_case",
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<ToSnakeCase<"Hello-World?">, "hello_world", Test.Out.PASS>(),
-	Test.It<ToSnakeCase<"hello_world">, "hello_world", Test.Out.PASS>(),
-	Test.It<ToSnakeCase<"EÂxs LOL">, "eaxs_lol", Test.Out.PASS>(),
+	Test.It<ToSnakeCase<"Hello-World?">, "hello_world", typeof Test.Out.PASS>(),
+	Test.It<ToSnakeCase<"hello_world">, "hello_world", typeof Test.Out.PASS>(),
+	Test.It<ToSnakeCase<"EÂxs LOL">, "eaxs_lol", typeof Test.Out.PASS>(),
 );
 
 declare type _ToSnakeCase<

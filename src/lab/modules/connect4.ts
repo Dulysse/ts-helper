@@ -12,7 +12,7 @@ import type {
 	ERRORS,
 } from "@/lab/utils/2d";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 declare type EmptyBoardExample = [
 	[".", ".", ".", ".", ".", ".", "."],
@@ -71,28 +71,28 @@ Test.Describe(
 	Test.It<
 		Connect4<EmptyBoardExample>,
 		CONTINUE<EmptyBoardExample, Connect4DefaultRules>,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<Connect4<FullBoardExample>, DRAW, Test.Out.PASS>(),
+	Test.It<Connect4<FullBoardExample>, DRAW, typeof Test.Out.PASS>(),
 	Test.It<
 		Connect4<VictoryBoardExample>,
 		VICTORY<Check2DVectors<VictoryBoardExample, Connect4DefaultRules>>,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Connect4<IncorrectBoardExample>,
 		ERRORS<Connect4DefaultRules>["GRAVITY"],
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Connect4<never, BadRulesInt>,
 		ERRORS<BadRulesInt>["RULE_COL_INT"],
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Connect4<never, BadRulesScore>,
 		ERRORS<BadRulesScore>["RULE_SCORE_GTR_ROW"],
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

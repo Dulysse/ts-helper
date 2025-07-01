@@ -1,10 +1,10 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"an implicit any type",
-	Test.It<Implicit, string, Test.Out.PASS>(),
-	Test.It<Implicit, number, Test.Out.PASS>(),
-	Test.It<Implicit, unknown, Test.Out.PASS>(),
+	Test.It<Implicit, string, typeof Test.Out.PASS>(),
+	Test.It<Implicit, number, typeof Test.Out.PASS>(),
+	Test.It<Implicit, unknown, typeof Test.Out.PASS>(),
 );
 
 /**

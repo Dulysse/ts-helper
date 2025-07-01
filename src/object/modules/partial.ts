@@ -2,24 +2,24 @@ import type { And, Equal, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Make all keys of object type partial",
 	Test.It<
 		Partial<{ a: string; b: number }>,
 		{ a?: string; b?: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Partial<{ a: string; b: { c: number } }, "deep">,
 		{ a?: string; b?: { c?: number } },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Partial<{ a: string; b?: number }>,
 		{ a?: string; b?: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

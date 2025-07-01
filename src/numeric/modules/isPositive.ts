@@ -1,12 +1,12 @@
 import type { IsValidNumberInput } from "@/numeric/utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is a positive number",
-	Test.It<IsPositive<number>, boolean, Test.Out.PASS>(),
-	Test.It<IsPositive<2.33>, true, Test.Out.PASS>(),
-	Test.It<IsPositive<-5>, false, Test.Out.PASS>(),
+	Test.It<IsPositive<number>, boolean, typeof Test.Out.PASS>(),
+	Test.It<IsPositive<2.33>, true, typeof Test.Out.PASS>(),
+	Test.It<IsPositive<-5>, false, typeof Test.Out.PASS>(),
 );
 
 /**

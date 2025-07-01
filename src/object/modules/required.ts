@@ -2,24 +2,24 @@ import type { And, Equal } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Required keys from object type",
 	Test.It<
 		Required<{ a?: string; b: number }>,
 		{ a: string; b: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Required<{ a?: string; b?: number }, "deep">,
 		{ a: string; b: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Required<{ a?: string; b?: { c?: number } }, "deep">,
 		{ a: string; b: { c: number } },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

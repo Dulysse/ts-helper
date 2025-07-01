@@ -3,15 +3,15 @@ import type { IsTuple, ToUnion } from "@/array";
 import { NextPositive } from "@/numeric/modules/increment";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the index of a filtered element in an array",
-	Test.It<IndexOf<(string | number)[], string>, number, Test.Out.PASS>(),
-	Test.It<IndexOf<[1, 2, 3], string>, -1, Test.Out.PASS>(),
-	Test.It<IndexOf<[1, 2, "3"], string>, 2, Test.Out.PASS>(),
-	Test.It<IndexOf<[1, 2, 3], 2>, 1, Test.Out.PASS>(),
-	Test.It<IndexOf<(1 | 2 | 3)[], 2>, number, Test.Out.PASS>(),
+	Test.It<IndexOf<(string | number)[], string>, number, typeof Test.Out.PASS>(),
+	Test.It<IndexOf<[1, 2, 3], string>, -1, typeof Test.Out.PASS>(),
+	Test.It<IndexOf<[1, 2, "3"], string>, 2, typeof Test.Out.PASS>(),
+	Test.It<IndexOf<[1, 2, 3], 2>, 1, typeof Test.Out.PASS>(),
+	Test.It<IndexOf<(1 | 2 | 3)[], 2>, number, typeof Test.Out.PASS>(),
 );
 
 declare type _IndexOf<

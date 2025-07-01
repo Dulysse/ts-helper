@@ -9,19 +9,19 @@ import type {
 } from "@/string";
 import type { IsBranded } from "@/symbol";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Apply some rules to a string",
 	Test.It<
 		IsBranded<Infer<"hello", {}>, typeof stringError>,
 		false,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		IsBranded<Infer<"hello", { minChar: 10 }>, typeof stringError>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		IsBranded<
@@ -29,7 +29,7 @@ Test.Describe(
 			typeof stringError
 		>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		IsBranded<
@@ -37,7 +37,7 @@ Test.Describe(
 			typeof stringError
 		>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		IsBranded<
@@ -45,7 +45,7 @@ Test.Describe(
 			typeof stringError
 		>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

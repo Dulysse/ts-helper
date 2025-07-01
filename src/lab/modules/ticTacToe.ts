@@ -12,7 +12,7 @@ import type {
 	ERRORS,
 } from "@/lab/utils/2d";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 declare type EmptyBoardExample = [
 	[".", ".", "."],
@@ -43,18 +43,18 @@ Test.Describe(
 	Test.It<
 		TicTacToe<EmptyBoardExample>,
 		CONTINUE<EmptyBoardExample, TicTacToeDefaultRules>,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<TicTacToe<FullBoardExample>, DRAW, Test.Out.PASS>(),
+	Test.It<TicTacToe<FullBoardExample>, DRAW, typeof Test.Out.PASS>(),
 	Test.It<
 		TicTacToe<VictoryBoardExample>,
 		VICTORY<Check2DVectors<VictoryBoardExample, TicTacToeDefaultRules>>,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		TicTacToe<IncorrectBoardExample>,
 		ERRORS<TicTacToeDefaultRules>["PLAYER_TURN"],
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

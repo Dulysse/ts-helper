@@ -1,11 +1,11 @@
 import type { IsValidNumberInput } from "@/numeric/utils";
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is a float number",
-	Test.It<IsFloat<number>, boolean, Test.Out.PASS>(),
-	Test.It<IsFloat<2.33>, true, Test.Out.PASS>(),
-	Test.It<IsFloat<-5>, false, Test.Out.PASS>(),
+	Test.It<IsFloat<number>, boolean, typeof Test.Out.PASS>(),
+	Test.It<IsFloat<2.33>, true, typeof Test.Out.PASS>(),
+	Test.It<IsFloat<-5>, false, typeof Test.Out.PASS>(),
 );
 
 /**

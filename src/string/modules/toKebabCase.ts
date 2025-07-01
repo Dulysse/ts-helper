@@ -1,18 +1,18 @@
 import type { IsExactString, ReplaceMap, UnAccent } from "@/string";
 import type { SpecialCharMap } from "@/string/utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Convert a string to kebab-case",
 	Test.It<
 		ToKebabCase<"This text will be converted into kebab-case">,
 		"this-text-will-be-converted-into-kebab-case",
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<ToKebabCase<"Hello World">, "hello-world", Test.Out.PASS>(),
-	Test.It<ToKebabCase<"hello_world">, "hello-world", Test.Out.PASS>(),
-	Test.It<ToKebabCase<"EÂxs LOL">, "eaxs-lol", Test.Out.PASS>(),
+	Test.It<ToKebabCase<"Hello World">, "hello-world", typeof Test.Out.PASS>(),
+	Test.It<ToKebabCase<"hello_world">, "hello-world", typeof Test.Out.PASS>(),
+	Test.It<ToKebabCase<"EÂxs LOL">, "eaxs-lol", typeof Test.Out.PASS>(),
 );
 
 declare type _ToKebabCase<

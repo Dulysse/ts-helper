@@ -1,13 +1,13 @@
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a string type is exactly a string type",
-	Test.It<IsExactString<"hello">, false, Test.Out.PASS>(),
-	Test.It<IsExactString<string>, true, Test.Out.PASS>(),
-	Test.It<IsExactString<`hello${string}`>, false, Test.Out.PASS>(),
-	Test.It<IsExactString<"hello" | string>, true, Test.Out.PASS>(),
+	Test.It<IsExactString<"hello">, false, typeof Test.Out.PASS>(),
+	Test.It<IsExactString<string>, true, typeof Test.Out.PASS>(),
+	Test.It<IsExactString<`hello${string}`>, false, typeof Test.Out.PASS>(),
+	Test.It<IsExactString<"hello" | string>, true, typeof Test.Out.PASS>(),
 );
 
 /**

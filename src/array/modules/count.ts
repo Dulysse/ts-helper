@@ -3,14 +3,14 @@ import type { DefaultArrayType } from "@/array/utils";
 import type { NextPositive } from "@/numeric/modules/increment";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Count the number of occurrences of a specific element",
-	Test.It<Count<[3, 1, 2, 3], 3>, 2, Test.Out.PASS>(),
-	Test.It<Count<[1, 2, 3], number>, 0, Test.Out.PASS>(),
-	Test.It<Count<number[], "1">, 0, Test.Out.PASS>(),
-	Test.It<Count<number[], 1>, number, Test.Out.PASS>(),
+	Test.It<Count<[3, 1, 2, 3], 3>, 2, typeof Test.Out.PASS>(),
+	Test.It<Count<[1, 2, 3], number>, 0, typeof Test.Out.PASS>(),
+	Test.It<Count<number[], "1">, 0, typeof Test.Out.PASS>(),
+	Test.It<Count<number[], 1>, number, typeof Test.Out.PASS>(),
 );
 
 declare type _Count<

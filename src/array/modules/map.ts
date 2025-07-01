@@ -4,13 +4,17 @@ import type { Eval } from "@/numeric";
 import type { Satisfy } from "@/operator";
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Map an array type with a filter",
-	Test.It<Map<[1, 2, 3], string>, ["1", "2", "3"], Test.Out.PASS>(),
-	Test.It<Map<[1, 2, 3], "a">, ["a", "a", "a"], Test.Out.PASS>(),
-	Test.It<Map<[1, 2, 3], `1+${number}`, "eval">, [2, 3, 4], Test.Out.PASS>(),
+	Test.It<Map<[1, 2, 3], string>, ["1", "2", "3"], typeof Test.Out.PASS>(),
+	Test.It<Map<[1, 2, 3], "a">, ["a", "a", "a"], typeof Test.Out.PASS>(),
+	Test.It<
+		Map<[1, 2, 3], `1+${number}`, "eval">,
+		[2, 3, 4],
+		typeof Test.Out.PASS
+	>(),
 );
 
 declare type MapMode = "literal" | "eval";

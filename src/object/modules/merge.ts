@@ -2,14 +2,14 @@ import type { And, Satisfy, Equal } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Merge two object types",
 	Test.It<
 		Merge<{ a: string }, { b: number }>,
 		{ a: string; b: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Merge<{ a: string; b: { c: number } }, { b: { d: boolean } }, "deep">,
@@ -17,12 +17,12 @@ Test.Describe(
 			a: string;
 			b: { c: number; d: boolean };
 		},
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Merge<{ a: string }, { a: number }>,
 		{ a: string | number } | { a: string; b?: number },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Merge<{ a: string }, { b: number } | { c: boolean }>,
@@ -31,7 +31,7 @@ Test.Describe(
 			b?: number;
 			c?: boolean;
 		},
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

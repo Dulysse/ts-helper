@@ -3,13 +3,13 @@ import type { IsValidNumberInput } from "@/numeric/utils";
 import type { And, Equal, Satisfy } from "@/operator";
 import type { Split } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Compare a number to another",
-	Test.It<Compare<1, 1>, Comparators.EQUAL, Test.Out.PASS>(),
-	Test.It<Compare<1.01, 1.02>, Comparators.LOWER, Test.Out.PASS>(),
-	Test.It<Compare<230, 890>, Comparators.GREATER, Test.Out.FAIL>(),
+	Test.It<Compare<1, 1>, Comparators.EQUAL, typeof Test.Out.PASS>(),
+	Test.It<Compare<1.01, 1.02>, Comparators.LOWER, typeof Test.Out.PASS>(),
+	Test.It<Compare<230, 890>, Comparators.GREATER, typeof Test.Out.FAIL>(),
 );
 
 /**

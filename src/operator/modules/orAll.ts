@@ -1,15 +1,15 @@
 import type { Satisfy } from "@/operator";
 import type { ConditionTuple } from "@/operator/modules/andAll";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if all conditions are true",
-	Test.It<OrAll<[true, true, true]>, true, Test.Out.PASS>(),
-	Test.It<OrAll<[true, false, true]>, true, Test.Out.PASS>(),
-	Test.It<OrAll<[true, true, boolean]>, true, Test.Out.PASS>(),
-	Test.It<OrAll<[false, boolean]>, boolean, Test.Out.PASS>(),
-	Test.It<OrAll<[false, false]>, false, Test.Out.PASS>(),
+	Test.It<OrAll<[true, true, true]>, true, typeof Test.Out.PASS>(),
+	Test.It<OrAll<[true, false, true]>, true, typeof Test.Out.PASS>(),
+	Test.It<OrAll<[true, true, boolean]>, true, typeof Test.Out.PASS>(),
+	Test.It<OrAll<[false, boolean]>, boolean, typeof Test.Out.PASS>(),
+	Test.It<OrAll<[false, false]>, false, typeof Test.Out.PASS>(),
 );
 
 /**

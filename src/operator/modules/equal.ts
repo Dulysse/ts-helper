@@ -1,11 +1,11 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if first type is strictly equal to second type",
-	Test.It<Equal<1, 1>, true, Test.Out.PASS>(),
-	Test.It<Equal<true, boolean>, false, Test.Out.PASS>(),
-	Test.It<Equal<true, true>, true, Test.Out.PASS>(),
-	Test.It<Equal<false, false | 0>, true, Test.Out.FAIL>(),
+	Test.It<Equal<1, 1>, true, typeof Test.Out.PASS>(),
+	Test.It<Equal<true, boolean>, false, typeof Test.Out.PASS>(),
+	Test.It<Equal<true, true>, true, typeof Test.Out.PASS>(),
+	Test.It<Equal<false, false | 0>, true, typeof Test.Out.FAIL>(),
 );
 
 /**

@@ -2,13 +2,13 @@ import type { Last } from "@/union";
 import type { Equal } from "@/operator";
 import type { Range } from "@/numeric";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if union type is an union with many choices",
-	Test.It<IsUnion<string>, false, Test.Out.PASS>(),
-	Test.It<IsUnion<1 | 2 | 3>, true, Test.Out.PASS>(),
-	Test.It<IsUnion<Range<1, 4>[number]>, true, Test.Out.PASS>(),
+	Test.It<IsUnion<string>, false, typeof Test.Out.PASS>(),
+	Test.It<IsUnion<1 | 2 | 3>, true, typeof Test.Out.PASS>(),
+	Test.It<IsUnion<Range<1, 4>[number]>, true, typeof Test.Out.PASS>(),
 );
 
 /**

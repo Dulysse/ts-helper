@@ -3,22 +3,30 @@ import type { ObjectMode } from "../utils";
 import type { Exclude } from "@/union";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Omit keys from object type",
-	Test.It<Omit<{ a: string; b: number }, "a">, { b: number }, Test.Out.PASS>(),
+	Test.It<
+		Omit<{ a: string; b: number }, "a">,
+		{ b: number },
+		typeof Test.Out.PASS
+	>(),
 	Test.It<
 		Omit<{ a: string; b: { c: number } }, "b", "deep">,
 		{ a: string },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 	Test.It<
 		Omit<{ a: string; b: { c: number } }, "c", "deep">,
 		{ a: string; b: { c: number } },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<Omit<{ a: string; b?: number }, "b">, { a: string }, Test.Out.PASS>(),
+	Test.It<
+		Omit<{ a: string; b?: number }, "b">,
+		{ a: string },
+		typeof Test.Out.PASS
+	>(),
 );
 
 /**

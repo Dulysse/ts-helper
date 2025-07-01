@@ -1,18 +1,18 @@
 import type { Equal, Not, OrAll } from "@/operator";
 import type { IsUnion, ToArray } from "@/union";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 import { DefaultArrayType } from "@/array/utils";
 
 Test.Describe(
 	"Check if a type is a literal type",
-	Test.It<IsLiteral<"hello">, true, Test.Out.PASS>(),
-	Test.It<IsLiteral<1 | 2 | 3>, true, Test.Out.PASS>(),
-	Test.It<IsLiteral<true>, true, Test.Out.PASS>(),
-	Test.It<IsLiteral<bigint>, false, Test.Out.PASS>(),
-	Test.It<IsLiteral<symbol>, false, Test.Out.PASS>(),
-	Test.It<IsLiteral<string | number>, false, Test.Out.PASS>(),
-	Test.It<IsLiteral<string | 1>, boolean, Test.Out.PASS>(),
+	Test.It<IsLiteral<"hello">, true, typeof Test.Out.PASS>(),
+	Test.It<IsLiteral<1 | 2 | 3>, true, typeof Test.Out.PASS>(),
+	Test.It<IsLiteral<true>, true, typeof Test.Out.PASS>(),
+	Test.It<IsLiteral<bigint>, false, typeof Test.Out.PASS>(),
+	Test.It<IsLiteral<symbol>, false, typeof Test.Out.PASS>(),
+	Test.It<IsLiteral<string | number>, false, typeof Test.Out.PASS>(),
+	Test.It<IsLiteral<string | 1>, boolean, typeof Test.Out.PASS>(),
 );
 
 declare type IsUniqueLiteral<T> = Not<

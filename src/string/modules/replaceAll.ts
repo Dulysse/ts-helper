@@ -2,13 +2,13 @@ import type { ContainExactString, Replace } from "@/string";
 import type { Equal } from "@/operator";
 import type { IsUnion } from "@/union";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Replace all iteration of the character with another character",
-	Test.It<ReplaceAll<"hello", "l", "x">, "hexxo", Test.Out.PASS>(),
-	Test.It<ReplaceAll<"hello", "l", string>, string, Test.Out.PASS>(),
-	Test.It<ReplaceAll<string, "b", "a">, string, Test.Out.PASS>(),
+	Test.It<ReplaceAll<"hello", "l", "x">, "hexxo", typeof Test.Out.PASS>(),
+	Test.It<ReplaceAll<"hello", "l", string>, string, typeof Test.Out.PASS>(),
+	Test.It<ReplaceAll<string, "b", "a">, string, typeof Test.Out.PASS>(),
 );
 
 /**

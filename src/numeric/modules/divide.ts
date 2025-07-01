@@ -12,13 +12,13 @@ import type {
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Divide one number by another",
-	Test.It<Divide<10, 2>, 5, Test.Out.PASS>(),
-	Test.It<Divide<-100, 5>, -20, Test.Out.PASS>(),
-	Test.It<Divide<189, 6>, number, Test.Out.PASS>(),
+	Test.It<Divide<10, 2>, 5, typeof Test.Out.PASS>(),
+	Test.It<Divide<-100, 5>, -20, typeof Test.Out.PASS>(),
+	Test.It<Divide<189, 6>, number, typeof Test.Out.PASS>(),
 );
 
 declare type DividePositive<

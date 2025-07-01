@@ -1,14 +1,18 @@
 import type { DefaultArrayType } from "../utils";
 import type { Readable, IsTuple } from "@/array";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get a reversed array type",
-	Test.It<Reverse<[1, 2]>, [2, 1], Test.Out.PASS>(),
-	Test.It<Reverse<string[]>, string[], Test.Out.PASS>(),
-	Test.It<Reverse<[]>, [], Test.Out.PASS>(),
-	Test.It<Reverse<readonly [2, 3, 4, "5"]>, ["5", 4, 3, 2], Test.Out.PASS>(),
+	Test.It<Reverse<[1, 2]>, [2, 1], typeof Test.Out.PASS>(),
+	Test.It<Reverse<string[]>, string[], typeof Test.Out.PASS>(),
+	Test.It<Reverse<[]>, [], typeof Test.Out.PASS>(),
+	Test.It<
+		Reverse<readonly [2, 3, 4, "5"]>,
+		["5", 4, 3, 2],
+		typeof Test.Out.PASS
+	>(),
 );
 
 declare type _Reverse<

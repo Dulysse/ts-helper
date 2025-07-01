@@ -1,10 +1,10 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get keys of an object type by an optional filter value",
-	Test.It<KeyOf<{}, number>, never, Test.Out.PASS>(),
-	Test.It<KeyOf<{ a: string; b: number }, string>, "a", Test.Out.PASS>(),
-	Test.It<KeyOf<{ a: string; b: number }, number>, "b", Test.Out.PASS>(),
+	Test.It<KeyOf<{}, number>, never, typeof Test.Out.PASS>(),
+	Test.It<KeyOf<{ a: string; b: number }, string>, "a", typeof Test.Out.PASS>(),
+	Test.It<KeyOf<{ a: string; b: number }, number>, "b", typeof Test.Out.PASS>(),
 );
 
 /**

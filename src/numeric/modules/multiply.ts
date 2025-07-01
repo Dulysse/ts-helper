@@ -11,13 +11,13 @@ import type {
 } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Multiply one number with another",
-	Test.It<Multiply<10, 2>, 20, Test.Out.PASS>(),
-	Test.It<Multiply<-100, 5>, -500, Test.Out.PASS>(),
-	Test.It<Multiply<2.2, 2>, 4.4, Test.Out.PASS>(),
+	Test.It<Multiply<10, 2>, 20, typeof Test.Out.PASS>(),
+	Test.It<Multiply<-100, 5>, -500, typeof Test.Out.PASS>(),
+	Test.It<Multiply<2.2, 2>, 4.4, typeof Test.Out.PASS>(),
 );
 
 declare type MultiplyPositive<

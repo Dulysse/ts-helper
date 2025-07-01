@@ -1,13 +1,13 @@
 import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the first element of an array type",
-	Test.It<First<[1, 2, 3]>, 1, Test.Out.PASS>(),
-	Test.It<First<string[]>, string | undefined, Test.Out.PASS>(),
-	Test.It<First<[]>, undefined, Test.Out.PASS>(),
+	Test.It<First<[1, 2, 3]>, 1, typeof Test.Out.PASS>(),
+	Test.It<First<string[]>, string | undefined, typeof Test.Out.PASS>(),
+	Test.It<First<[]>, undefined, typeof Test.Out.PASS>(),
 );
 
 /**

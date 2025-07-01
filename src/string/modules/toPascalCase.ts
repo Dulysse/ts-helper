@@ -1,18 +1,18 @@
 import type { IsExactString, UnAccent, Split, ReplaceMap } from "@/string";
 import type { SpecialCharMap } from "@/string/utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Convert a string to Pascal Case",
 	Test.It<
 		ToPascalCase<"This text will be converted into PascalCase">,
 		"ThisTextWillBeConvertedIntoPascalcase",
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<ToPascalCase<"Hello Wo-rld">, "HelloWorld", Test.Out.PASS>(),
-	Test.It<ToPascalCase<"hello_world?">, "Helloworld", Test.Out.PASS>(),
-	Test.It<ToPascalCase<"EÂxs LOL">, "EaxsLol", Test.Out.PASS>(),
+	Test.It<ToPascalCase<"Hello Wo-rld">, "HelloWorld", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"hello_world?">, "Helloworld", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"EÂxs LOL">, "EaxsLol", typeof Test.Out.PASS>(),
 );
 
 declare type _ToPascalCase<

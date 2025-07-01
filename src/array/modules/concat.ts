@@ -2,13 +2,17 @@ import type { IsTuple, ToUnion } from "@/array";
 import type { DefaultArrayType } from "../utils";
 import type { And } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Concatenate two array types into a single array type",
-	Test.It<Concat<[1, 2, 3], [4]>, [1, 2, 3, 4], Test.Out.PASS>(),
-	Test.It<Concat<[1, 2, 3], string[]>, (string | 1 | 2 | 3)[], Test.Out.PASS>(),
-	Test.It<Concat<[1, 2, 3], [3]>, [1, 2, 3, 3], Test.Out.PASS>(),
+	Test.It<Concat<[1, 2, 3], [4]>, [1, 2, 3, 4], typeof Test.Out.PASS>(),
+	Test.It<
+		Concat<[1, 2, 3], string[]>,
+		(string | 1 | 2 | 3)[],
+		typeof Test.Out.PASS
+	>(),
+	Test.It<Concat<[1, 2, 3], [3]>, [1, 2, 3, 3], typeof Test.Out.PASS>(),
 );
 
 /**

@@ -4,13 +4,13 @@ import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Length, IsTuple, ToUnion } from "@/array";
 import type { And } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get an element from an array at a specific index",
-	Test.It<At<[1, 2, 3], 2>, 3, Test.Out.PASS>(),
-	Test.It<At<string[], 1>, string | undefined, Test.Out.PASS>(),
-	Test.It<At<[], 1>, undefined, Test.Out.PASS>(),
+	Test.It<At<[1, 2, 3], 2>, 3, typeof Test.Out.PASS>(),
+	Test.It<At<string[], 1>, string | undefined, typeof Test.Out.PASS>(),
+	Test.It<At<[], 1>, undefined, typeof Test.Out.PASS>(),
 );
 
 /**

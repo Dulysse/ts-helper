@@ -1,13 +1,13 @@
 import type { Includes } from "@/array";
 import type { ToArray } from "@/union";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a type is an element of an union type",
-	Test.It<Has<1 | 2 | 3, number>, boolean, Test.Out.PASS>(),
-	Test.It<Has<1 | 2 | 3, 2>, true, Test.Out.PASS>(),
-	Test.It<Has<string, "demo">, false, Test.Out.PASS>(),
+	Test.It<Has<1 | 2 | 3, number>, boolean, typeof Test.Out.PASS>(),
+	Test.It<Has<1 | 2 | 3, 2>, true, typeof Test.Out.PASS>(),
+	Test.It<Has<string, "demo">, false, typeof Test.Out.PASS>(),
 );
 
 /**

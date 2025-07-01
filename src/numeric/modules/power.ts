@@ -12,13 +12,13 @@ import type {
 import type { IsValidNumberInput } from "../utils";
 import type { And } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the power of a number",
-	Test.It<Power<2, 0>, 1, Test.Out.PASS>(),
-	Test.It<Power<2, 4>, 16, Test.Out.PASS>(),
-	Test.It<Power<2, -5>, number, Test.Out.PASS>(),
+	Test.It<Power<2, 0>, 1, typeof Test.Out.PASS>(),
+	Test.It<Power<2, 4>, 16, typeof Test.Out.PASS>(),
+	Test.It<Power<2, -5>, number, typeof Test.Out.PASS>(),
 );
 
 declare type _Power<TNumber1 extends number, TNumber2 extends number> =

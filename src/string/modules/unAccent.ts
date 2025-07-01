@@ -1,13 +1,13 @@
 import type { IsExactString, ReplaceMap } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Convert a string to its unaccented version",
-	Test.It<UnAccent<"Café">, "Cafe", Test.Out.PASS>(),
-	Test.It<UnAccent<"Déjà vu">, "Deja vu", Test.Out.PASS>(),
-	Test.It<UnAccent<"À bientôt">, "A bientot", Test.Out.PASS>(),
-	Test.It<UnAccent<"Crème brûlée">, "Creme brulee", Test.Out.PASS>(),
+	Test.It<UnAccent<"Café">, "Cafe", typeof Test.Out.PASS>(),
+	Test.It<UnAccent<"Déjà vu">, "Deja vu", typeof Test.Out.PASS>(),
+	Test.It<UnAccent<"À bientôt">, "A bientot", typeof Test.Out.PASS>(),
+	Test.It<UnAccent<"Crème brûlée">, "Creme brulee", typeof Test.Out.PASS>(),
 );
 
 /**

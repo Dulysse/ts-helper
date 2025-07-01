@@ -1,13 +1,13 @@
 import type { Equal, Or } from "@/operator";
 import type { DefaultArrayType } from "../utils";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check whether an array type is a tuple or not",
-	Test.It<IsTuple<[[1, 2], [3, 4]]>, true, Test.Out.PASS>(),
-	Test.It<IsTuple<string[][]>, false, Test.Out.PASS>(),
-	Test.It<IsTuple<readonly string[]>, false, Test.Out.PASS>(),
+	Test.It<IsTuple<[[1, 2], [3, 4]]>, true, typeof Test.Out.PASS>(),
+	Test.It<IsTuple<string[][]>, false, typeof Test.Out.PASS>(),
+	Test.It<IsTuple<readonly string[]>, false, typeof Test.Out.PASS>(),
 );
 
 /**

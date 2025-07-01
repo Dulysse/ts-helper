@@ -1,4 +1,4 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Prettify object type",
@@ -13,7 +13,7 @@ Test.Describe(
 			}
 		>,
 		{ a: string; b: number; c: boolean },
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
 );
 

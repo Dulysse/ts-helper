@@ -1,17 +1,17 @@
 import type { IsExactString, ToPascalCase } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Convert a string to camelCase",
 	Test.It<
 		ToCamelCase<"This text will be converted into camelCase">,
 		"thisTextWillBeConvertedIntoCamelcase",
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<ToCamelCase<"Hello Wo-rld?">, "helloWorld", Test.Out.PASS>(),
-	Test.It<ToCamelCase<"hello_world">, "helloworld", Test.Out.PASS>(),
-	Test.It<ToCamelCase<"EÂxs LOL">, "eaxsLol", Test.Out.PASS>(),
+	Test.It<ToCamelCase<"Hello Wo-rld?">, "helloWorld", typeof Test.Out.PASS>(),
+	Test.It<ToCamelCase<"hello_world">, "helloworld", typeof Test.Out.PASS>(),
+	Test.It<ToCamelCase<"EÂxs LOL">, "eaxsLol", typeof Test.Out.PASS>(),
 );
 
 /**

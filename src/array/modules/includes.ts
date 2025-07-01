@@ -2,13 +2,13 @@ import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a type is an element into an array type",
-	Test.It<Includes<[[1, 2], [3, 4]], [1, 2]>, true, Test.Out.PASS>(),
-	Test.It<Includes<string[][], string>, false, Test.Out.PASS>(),
-	Test.It<Includes<string[], string>, boolean, Test.Out.PASS>(),
+	Test.It<Includes<[[1, 2], [3, 4]], [1, 2]>, true, typeof Test.Out.PASS>(),
+	Test.It<Includes<string[][], string>, false, typeof Test.Out.PASS>(),
+	Test.It<Includes<string[], string>, boolean, typeof Test.Out.PASS>(),
 );
 
 declare type IncludesInTuple<

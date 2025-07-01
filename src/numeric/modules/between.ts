@@ -1,14 +1,15 @@
 import type { And } from "@/operator";
+
 import type { IsValidNumberInput } from "../utils";
 import type { LowerEq, GreaterEq } from "@/numeric";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a number is between two other numbers",
-	Test.It<Between<1, 1, 5>, true, Test.Out.PASS>(),
-	Test.It<Between<0, 10, 20>, true, Test.Out.FAIL>(),
-	Test.It<Between<number, 10, 7>, boolean, Test.Out.PASS>(),
+	Test.It<Between<1, 1, 5>, true, typeof Test.Out.PASS>(),
+	Test.It<Between<0, 10, 20>, true, typeof Test.Out.FAIL>(),
+	Test.It<Between<number, 10, 7>, boolean, typeof Test.Out.PASS>(),
 );
 
 /**

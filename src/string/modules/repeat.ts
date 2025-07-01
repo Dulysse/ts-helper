@@ -2,18 +2,18 @@ import type { IsNegative, ParseInt } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Repeat a string an amount of time",
-	Test.It<Repeat<"hello", -1>, never, Test.Out.PASS>(),
-	Test.It<Repeat<string, 1>, string, Test.Out.PASS>(),
+	Test.It<Repeat<"hello", -1>, never, typeof Test.Out.PASS>(),
+	Test.It<Repeat<string, 1>, string, typeof Test.Out.PASS>(),
 	Test.It<
 		Repeat<`hello${string}`, 3>,
 		`hello${string}hello${string}hello${string}`,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<Repeat<"hello ", 2.2>, "hello hello ", Test.Out.PASS>(),
+	Test.It<Repeat<"hello ", 2.2>, "hello hello ", typeof Test.Out.PASS>(),
 );
 
 declare type _Repeat<

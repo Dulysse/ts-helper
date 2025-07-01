@@ -1,11 +1,15 @@
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get a readonly array type as writable",
-	Test.It<Readable<[1, 2]>, [1, 2], Test.Out.PASS>(),
-	Test.It<Readable<string[]>, string[], Test.Out.PASS>(),
-	Test.It<Readable<[] | readonly [1]>, [1] | [], Test.Out.PASS>(),
-	Test.It<Readable<readonly [2, 3, 4, "5"]>, [2, 3, 4, "5"], Test.Out.PASS>(),
+	Test.It<Readable<[1, 2]>, [1, 2], typeof Test.Out.PASS>(),
+	Test.It<Readable<string[]>, string[], typeof Test.Out.PASS>(),
+	Test.It<Readable<[] | readonly [1]>, [1] | [], typeof Test.Out.PASS>(),
+	Test.It<
+		Readable<readonly [2, 3, 4, "5"]>,
+		[2, 3, 4, "5"],
+		typeof Test.Out.PASS
+	>(),
 );
 
 /**

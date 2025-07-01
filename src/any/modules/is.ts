@@ -1,12 +1,12 @@
 import type { Implicit } from "@/any";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a type is exact type any",
-	Test.It<Is<Implicit>, true, Test.Out.PASS>(),
-	Test.It<Is<unknown>, true, Test.Out.FAIL>(),
-	Test.It<Is<string>, true, Test.Out.FAIL>(),
+	Test.It<Is<Implicit>, true, typeof Test.Out.PASS>(),
+	Test.It<Is<unknown>, true, typeof Test.Out.FAIL>(),
+	Test.It<Is<string>, true, typeof Test.Out.FAIL>(),
 );
 
 /**

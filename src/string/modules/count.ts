@@ -2,13 +2,13 @@ import type { NextPositive } from "@/numeric/modules/increment";
 import type { Or } from "@/operator";
 import type { ContainExactString } from "@/string";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Count the number of occurrences of a string into a string",
-	Test.It<Count<"true", string>, number, Test.Out.PASS>(),
-	Test.It<Count<"Hello world!", "l">, 3, Test.Out.PASS>(),
-	Test.It<Count<`${string}demo`, "l">, number, Test.Out.PASS>(),
+	Test.It<Count<"true", string>, number, typeof Test.Out.PASS>(),
+	Test.It<Count<"Hello world!", "l">, 3, typeof Test.Out.PASS>(),
+	Test.It<Count<`${string}demo`, "l">, number, typeof Test.Out.PASS>(),
 );
 
 /**

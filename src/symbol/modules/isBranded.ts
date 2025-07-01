@@ -1,6 +1,6 @@
 import type { HasKey } from "@/object";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 declare const _exampleSymbol: unique symbol;
 
@@ -9,9 +9,13 @@ Test.Describe(
 	Test.It<
 		IsBranded<"hello" & { [_exampleSymbol]: "" }, typeof _exampleSymbol>,
 		true,
-		Test.Out.PASS
+		typeof Test.Out.PASS
 	>(),
-	Test.It<IsBranded<"hello", typeof _exampleSymbol>, false, Test.Out.PASS>(),
+	Test.It<
+		IsBranded<"hello", typeof _exampleSymbol>,
+		false,
+		typeof Test.Out.PASS
+	>(),
 );
 
 /**

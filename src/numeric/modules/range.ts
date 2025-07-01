@@ -1,14 +1,15 @@
 import type { And, Equal, Or } from "@/operator";
+
 import type { IsValidNumberInput } from "../utils";
 import type { LowerEq, Increment, Decrement, IsFloat } from "@/numeric";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get a tuple of element from a specific range",
-	Test.It<Range<2, 0>, [2, 1, 0], Test.Out.PASS>(),
-	Test.It<Range<2, 4>, [2, 3, 4], Test.Out.PASS>(),
-	Test.It<Range<2, -5>, [2, 1, 0, -1, -2, -3, -4, -5], Test.Out.PASS>(),
+	Test.It<Range<2, 0>, [2, 1, 0], typeof Test.Out.PASS>(),
+	Test.It<Range<2, 4>, [2, 3, 4], typeof Test.Out.PASS>(),
+	Test.It<Range<2, -5>, [2, 1, 0, -1, -2, -3, -4, -5], typeof Test.Out.PASS>(),
 );
 
 export declare type AscRange<

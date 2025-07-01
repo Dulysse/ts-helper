@@ -1,13 +1,13 @@
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test";
+import { Test } from "@/test";
 
 Test.Describe(
 	"Get the opposite of a boolean",
-	Test.It<Not<true>, false, Test.Out.PASS>(),
-	Test.It<Not<boolean>, boolean, Test.Out.PASS>(),
-	Test.It<Not<true | false>, boolean, Test.Out.PASS>(),
-	Test.It<Not<false>, true, Test.Out.PASS>(),
+	Test.It<Not<true>, false, typeof Test.Out.PASS>(),
+	Test.It<Not<boolean>, boolean, typeof Test.Out.PASS>(),
+	Test.It<Not<true | false>, boolean, typeof Test.Out.PASS>(),
+	Test.It<Not<false>, true, typeof Test.Out.PASS>(),
 );
 
 /**

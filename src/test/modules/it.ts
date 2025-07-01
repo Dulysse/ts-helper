@@ -14,8 +14,8 @@ import type { Out } from "@/test";
  *
  * Test.Describe(
  *    "Add a number to another",
- *    Test.It<Num.Add<1.1, 30>, 31.1, Test.Out.PASS>(), // return Out.PASS
- *    Test.It<Num.Add<5, -10>, 66, Test.Out.FAIL>(), // return Out.PASS
+ *    Test.It<Num.Add<1.1, 30>, 31.1, typeof Test.Out.PASS>(), // return Out.PASS
+ *    Test.It<Num.Add<5, -10>, 66, typeof Test.Out.FAIL>(), // return Out.PASS
  * );
  * ```
  * ---------------------------
