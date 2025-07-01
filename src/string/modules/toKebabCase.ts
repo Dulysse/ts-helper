@@ -1,7 +1,7 @@
 import type { IsExactString, ReplaceMap, UnAccent } from "@/string";
 import type { SpecialCharMap } from "@/string/utils";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Convert a string to kebab-case",

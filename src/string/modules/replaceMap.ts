@@ -1,6 +1,6 @@
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Replace characters in a string based on a mapping object",

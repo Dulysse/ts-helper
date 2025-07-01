@@ -1,6 +1,6 @@
 import type { ToArray } from "@/union";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the first element of an union type",

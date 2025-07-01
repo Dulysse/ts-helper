@@ -2,7 +2,7 @@ import type { Equal, Not } from "@/operator";
 import type { DefaultArrayType } from "../utils";
 import type { Readable } from "@/array";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if an array type is readonly or not",

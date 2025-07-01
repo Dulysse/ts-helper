@@ -2,7 +2,7 @@ import type { And, Equal, Or } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
 import type { LowerEq, Increment, Decrement, IsFloat } from "@/numeric";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get a tuple of element from a specific range",

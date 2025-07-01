@@ -14,7 +14,7 @@ import type {
 } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Increment a number of one unit",

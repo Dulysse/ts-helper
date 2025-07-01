@@ -1,4 +1,4 @@
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if one of condition is true",

@@ -10,7 +10,7 @@ import type {
 import type { IsValidNumberInput } from "../utils";
 import type { And } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the remaining integer after the division of two numbers",

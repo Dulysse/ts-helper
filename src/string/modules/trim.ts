@@ -1,4 +1,4 @@
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"TypeScript utility type to trim whitespace from both ends of a string",

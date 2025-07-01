@@ -2,7 +2,7 @@ import type { And } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
 import type { Comparators, Compare } from "@/numeric";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a number is greater than another",

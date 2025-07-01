@@ -1,7 +1,7 @@
 import type { Includes } from "@/array";
 import type { ToArray } from "@/union";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a type is an element of an union type",

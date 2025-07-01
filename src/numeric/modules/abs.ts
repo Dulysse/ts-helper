@@ -1,7 +1,7 @@
 import type { ParseInt } from "@/numeric";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a number is a float number",

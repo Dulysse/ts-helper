@@ -2,7 +2,7 @@ import type { IsTuple, ToUnion } from "@/array";
 import type { DefaultArrayType } from "@/array/utils";
 import type { Not, Or } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Combine two tuple types into a tuple of pairs",

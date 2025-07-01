@@ -1,7 +1,7 @@
 import type { Equal, Or } from "@/operator";
 import type { DefaultArrayType } from "../utils";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check whether an array type is a tuple or not",

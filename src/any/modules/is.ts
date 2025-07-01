@@ -1,6 +1,6 @@
 import type { Implicit } from "@/any";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a type is exact type any",

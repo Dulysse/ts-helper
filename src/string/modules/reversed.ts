@@ -1,6 +1,6 @@
 import type { ContainExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Reverse a string type",

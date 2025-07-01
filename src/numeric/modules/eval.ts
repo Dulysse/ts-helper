@@ -3,7 +3,7 @@ import type { Satisfy } from "@/operator";
 import type { ReplaceAll, Reversed } from "@/string";
 import type { ToArray } from "@/union";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Type safe evaluation of mathematical expressions represented as string",

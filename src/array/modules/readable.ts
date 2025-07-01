@@ -1,4 +1,4 @@
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get a readonly array type as writable",

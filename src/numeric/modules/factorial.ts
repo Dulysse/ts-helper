@@ -9,7 +9,7 @@ import type {
 import type { IsValidNumberInput } from "../utils";
 import type { And, Not } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the factorial of a number",

@@ -1,7 +1,7 @@
 import type { FillRange } from "@/array";
 import type { Satisfy } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if all conditions are true",

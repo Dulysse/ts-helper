@@ -2,7 +2,7 @@ import type { And, Satisfy, Equal } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Merge two object types",

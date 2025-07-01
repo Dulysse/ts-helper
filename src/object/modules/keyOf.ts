@@ -1,4 +1,4 @@
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get keys of an object type by an optional filter value",

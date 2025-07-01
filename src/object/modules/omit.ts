@@ -3,7 +3,7 @@ import type { ObjectMode } from "../utils";
 import type { Exclude } from "@/union";
 import type { Prettify } from "@/object";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Omit keys from object type",

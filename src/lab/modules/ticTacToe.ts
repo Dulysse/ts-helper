@@ -12,7 +12,7 @@ import type {
 	ERRORS,
 } from "@/lab/utils/2d";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 declare type EmptyBoardExample = [
 	[".", ".", "."],

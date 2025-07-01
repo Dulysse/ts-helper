@@ -3,7 +3,7 @@ import type { IsTuple, ToUnion } from "@/array";
 import type { Range } from "@/numeric";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Apply filter to an array",

@@ -1,7 +1,7 @@
 import type { ToArray } from "@/union";
 import type { Range } from "@/numeric";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get an union type length of possibilities",

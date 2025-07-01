@@ -2,7 +2,7 @@ import type { DefaultArrayType, DefaultArrayTypeSeparator } from "../utils";
 import type { IsTuple } from "@/array";
 import type { Equal, Or, Satisfy } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check whether an array type is a tuple or not",

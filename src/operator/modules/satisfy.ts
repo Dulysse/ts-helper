@@ -1,4 +1,4 @@
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a type is satisfying another type",

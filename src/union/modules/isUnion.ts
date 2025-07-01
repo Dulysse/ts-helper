@@ -2,7 +2,7 @@ import type { Last } from "@/union";
 import type { Equal } from "@/operator";
 import type { Range } from "@/numeric";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if union type is an union with many choices",

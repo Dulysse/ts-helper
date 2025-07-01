@@ -4,7 +4,7 @@ import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Or } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Fill an array type with a specified length",

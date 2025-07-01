@@ -4,7 +4,7 @@ import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Length, IsTuple, ToUnion } from "@/array";
 import type { And } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get an element from an array at a specific index",

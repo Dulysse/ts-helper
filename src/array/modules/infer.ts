@@ -5,7 +5,7 @@ import type { Equal, Not, Or } from "@/operator";
 import type { IsTuple, Length, Unique } from "@/array";
 import type { IsBranded } from "@/symbol";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if an array type satisfies the rules defined in InferArrayRules",

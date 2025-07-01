@@ -2,7 +2,7 @@ import type { Equal } from "@/operator";
 import type { ContainExactString } from "@/string";
 import type { TDefaultStringSeparator } from "../utils";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Split a type to an array for each string characters apparition",

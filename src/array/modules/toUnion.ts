@@ -1,6 +1,6 @@
 import type { DefaultArrayType } from "../utils";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Transform an array type to union with each properties",

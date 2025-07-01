@@ -2,7 +2,7 @@ import type { At } from "@/array";
 import type { ToArray } from "@/union";
 import type { Range } from "@/numeric";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the element from the index of union type",

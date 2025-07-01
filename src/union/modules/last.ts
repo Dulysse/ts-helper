@@ -1,7 +1,7 @@
 import type { Range } from "@/numeric";
 import type { IntersectOf } from "../utils";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the last element of an union type",

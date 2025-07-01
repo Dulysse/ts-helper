@@ -9,7 +9,7 @@ import type {
 } from "@/string";
 import type { IsBranded } from "@/symbol";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Apply some rules to a string",

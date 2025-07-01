@@ -2,7 +2,7 @@ import type { Last, Exclude } from "@/union";
 import type { Satisfy } from "@/operator";
 import type { Range } from "@/numeric";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Transform an union type to array type with each properties",

@@ -2,7 +2,7 @@ import type { ContainExactString, Replace } from "@/string";
 import type { Equal } from "@/operator";
 import type { IsUnion } from "@/union";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Replace all iteration of the character with another character",

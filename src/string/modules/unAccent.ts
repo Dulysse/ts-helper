@@ -1,6 +1,6 @@
 import type { IsExactString, ReplaceMap } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Convert a string to its unaccented version",

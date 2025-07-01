@@ -1,7 +1,7 @@
 import type { Or } from "@/operator";
 import type { ContainExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Replace the first iteration of the character with another character",

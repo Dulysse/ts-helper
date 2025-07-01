@@ -1,7 +1,7 @@
 import type { ContainExactString, Split } from "@/string";
 import type { Length } from "@/array";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the length of a string type",

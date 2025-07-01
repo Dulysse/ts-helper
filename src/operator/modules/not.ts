@@ -1,6 +1,6 @@
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the opposite of a boolean",

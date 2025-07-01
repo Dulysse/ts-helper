@@ -2,7 +2,7 @@ import type { IsNegative, ParseInt } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Repeat a string an amount of time",

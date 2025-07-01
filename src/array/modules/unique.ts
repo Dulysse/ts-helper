@@ -1,7 +1,7 @@
 import type { DefaultArrayType } from "../utils";
 import type { Includes, IsTuple } from "@/array";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Remove duplicate elements from an array type",

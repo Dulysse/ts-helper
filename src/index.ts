@@ -8,4 +8,4 @@ export type { Any } from "@/any";
 export type { Lab } from "@/lab";
 export type { Class } from "@/class";
 export type { Smbl } from "@/symbol";
-export { Test } from "@/test";
+export * as Test from "@/test";

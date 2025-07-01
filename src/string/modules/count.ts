@@ -2,7 +2,7 @@ import type { NextPositive } from "@/numeric/modules/increment";
 import type { Or } from "@/operator";
 import type { ContainExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Count the number of occurrences of a string into a string",

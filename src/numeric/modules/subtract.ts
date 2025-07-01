@@ -16,7 +16,7 @@ import type {
 } from "../utils";
 import type { _Add } from "@/numeric/modules/add";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Substract a number from another",

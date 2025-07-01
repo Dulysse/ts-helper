@@ -1,7 +1,7 @@
 import type { Equal, Not, OrAll } from "@/operator";
 import type { IsUnion, ToArray } from "@/union";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 import { DefaultArrayType } from "@/array/utils";
 
 Test.Describe(

@@ -1,7 +1,7 @@
 import type { IsEven } from "@/numeric";
 import type { Not } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a number is an odd number",

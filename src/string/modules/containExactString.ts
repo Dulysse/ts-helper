@@ -1,6 +1,6 @@
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a string type contain exactly a string type as litteral string type",

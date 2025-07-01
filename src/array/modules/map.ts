@@ -4,7 +4,7 @@ import type { Eval } from "@/numeric";
 import type { Satisfy } from "@/operator";
 import type { IsExactString } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Map an array type with a filter",

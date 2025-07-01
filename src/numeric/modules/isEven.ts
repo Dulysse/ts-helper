@@ -3,7 +3,7 @@ import type { ParseInt } from "@/numeric";
 import type { EvenNumber, IsValidNumberInput } from "@/numeric/utils";
 import type { Split } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Check if a number is an even number",

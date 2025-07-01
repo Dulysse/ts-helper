@@ -1,6 +1,6 @@
 import type { IsExactString, ToPascalCase } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Convert a string to camelCase",

@@ -1,7 +1,7 @@
 import type { DefaultArrayType } from "../utils";
 import type { Readable, IsTuple } from "@/array";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get a reversed array type",

@@ -1,7 +1,7 @@
 import type { At } from "@/array";
 import type { Split } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the string char at a specific index",

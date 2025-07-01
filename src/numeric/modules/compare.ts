@@ -3,7 +3,7 @@ import type { IsValidNumberInput } from "@/numeric/utils";
 import type { And, Equal, Satisfy } from "@/operator";
 import type { Split } from "@/string";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Compare a number to another",

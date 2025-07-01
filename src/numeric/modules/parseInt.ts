@@ -1,6 +1,6 @@
 import type { Satisfy } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Parse a string litteral to integer number",

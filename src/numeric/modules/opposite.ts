@@ -2,7 +2,7 @@ import type { IsPositive, IsZero } from "@/numeric";
 import type { IsValidNumberInput } from "../utils";
 import type { Satisfy } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Get the opposite number sign of a number",

@@ -1,6 +1,6 @@
 import type { HasKey } from "@/object";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 declare const _exampleSymbol: unique symbol;
 

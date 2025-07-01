@@ -2,7 +2,7 @@ import type { IsTuple, ToUnion } from "@/array";
 import type { DefaultArrayType } from "../utils";
 import type { And } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Concatenate two array types into a single array type",

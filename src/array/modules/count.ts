@@ -3,7 +3,7 @@ import type { DefaultArrayType } from "@/array/utils";
 import type { NextPositive } from "@/numeric/modules/increment";
 import type { Equal } from "@/operator";
 
-import * as Test from "@/test/local";
+import * as Test from "@/test";
 
 Test.Describe(
 	"Count the number of occurrences of a specific element",
