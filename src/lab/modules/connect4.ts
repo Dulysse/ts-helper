@@ -140,7 +140,7 @@ declare interface Connect4DefaultRules {
  * - It returns a string indicating the current player's turn, a win message, or a draw message.
  * - The board is represented as a 2D array of cells, where each cell can be a player ({@link Connect4DefaultRules}).
  * - The type uses various utility types to ensure the board is correctly formatted and to determine the game state.
- * - The game is played on a board with {@link C4_DEFAULT_MAX_ROW} rows and {@link C4_DEFAULT_MAX_COL} columns, and players take turns dropping their pieces into the columns.
+ * - The game is played on a board with {@link Connect4DefaultRules.ROW} rows and {@link Connect4DefaultRules.COL} columns, and players take turns dropping their pieces into the columns.
  * - The type is designed to be used in a TypeScript environment, providing type safety and validation for the Connect 4 game.
  *
  * @template TBoard - The board of the Connect 4 game, represented as a 2D array of cells.

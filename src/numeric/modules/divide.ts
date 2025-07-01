@@ -87,7 +87,7 @@ export declare type Divide<TNumber1 extends number, TNumber2 extends number> =
 		? IsZero<TNumber1> extends true
 			? 0
 			: IsZero<TNumber2> extends true
-				? number // Infinite result
+				? typeof Infinity
 				: {
 						true: {
 							true: number;

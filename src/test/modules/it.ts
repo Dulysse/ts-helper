@@ -39,4 +39,4 @@ export declare function ItFn<Type, Expect, Output extends Out>(
 	};
 }[`${Equal<Type, Expect>}`][Output];
 
-export declare const It: typeof ItFn;
+export const It: typeof ItFn = (() => {}) as typeof ItFn;
