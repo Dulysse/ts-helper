@@ -7,6 +7,10 @@ import type { Required } from "./modules/required";
 import type { Prettify } from "./modules/prettify";
 import type { Rename } from "./modules/rename";
 import type { HasKey } from "./modules/hasKey";
+import type { Filter } from "./modules/filter";
+import type { Update } from "./modules/update";
+import type { Reversed } from "./modules/reversed";
+import type { Exclude } from "./modules/exclude";
 
 /**
  * #### ✨ List of `ts-helper` object types ✨:
@@ -19,6 +23,10 @@ import type { HasKey } from "./modules/hasKey";
  * - `Prettify`
  * - `Rename`
  * - `HasKey`
+ * - `Filter`
+ * - `Update`
+ * - `Reversed`
+ * - `Exclude`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -38,6 +46,10 @@ export declare namespace Obj {
 		Prettify,
 		Rename,
 		HasKey,
+		Filter,
+		Update,
+		Reversed,
+		Exclude,
 	};
 }
 
@@ -51,4 +63,8 @@ export {
 	Prettify,
 	Rename,
 	HasKey,
+	Filter,
+	Update,
+	Reversed,
+	Exclude,
 };

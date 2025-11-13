@@ -1,3 +1,4 @@
+import type { Implicit, IsAny } from "@/any";
 import { Test } from "@/test";
 
 Test.Describe(
@@ -5,7 +6,9 @@ Test.Describe(
 	Test.It<Equal<1, 1>, true, typeof Test.Out.PASS>(),
 	Test.It<Equal<true, boolean>, false, typeof Test.Out.PASS>(),
 	Test.It<Equal<true, true>, true, typeof Test.Out.PASS>(),
-	Test.It<Equal<false, false | 0>, true, typeof Test.Out.FAIL>(),
+	Test.It<Equal<false, false | 0>, false, typeof Test.Out.PASS>(),
+	Test.It<Equal<"hello", Implicit>, false, typeof Test.Out.PASS>(),
+	Test.It<Equal<Implicit, Implicit>, true, typeof Test.Out.PASS>(),
 );
 
 /**
@@ -29,4 +32,16 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Equal<A, B> = (<T>() => T extends A ? 1 : 2) extends (<T>() => T extends B ? 1 : 2) ? true : false
+
+export declare type Equal<A, B> =
+	IsAny<A> extends true
+		? IsAny<B> extends true
+			? true
+			: false
+		: IsAny<B> extends true
+			? false
+			: [A] extends [B]
+				? [B] extends [A]
+					? true
+					: false
+				: false;

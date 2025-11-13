@@ -8,6 +8,7 @@ Test.Describe(
 	Test.It<PrimitiveOf<bigint>, bigint, typeof Test.Out.PASS>(),
 	Test.It<PrimitiveOf<symbol>, symbol, typeof Test.Out.PASS>(),
 	Test.It<PrimitiveOf<23 | "23">, string | number, typeof Test.Out.PASS>(),
+	Test.It<PrimitiveOf<{}>, object, typeof Test.Out.PASS>(),
 );
 
 /**
@@ -39,4 +40,6 @@ export declare type PrimitiveOf<T> = T extends string
 				? bigint
 				: T extends symbol
 					? symbol
-					: never;
+					: T extends object
+						? object
+						: never;

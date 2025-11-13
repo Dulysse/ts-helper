@@ -1,18 +1,17 @@
-import type { HasKey } from "@/object";
+import type { $brand } from "@/brand/modules/symbol";
 
 import { Test } from "@/test";
 
-declare const _exampleSymbol: unique symbol;
-
 Test.Describe(
 	"Find a symbol into a type",
+	Test.It<IsBranded<number, "mySymbol">, false, typeof Test.Out.PASS>(),
 	Test.It<
-		IsBranded<"hello" & { [_exampleSymbol]: "" }, typeof _exampleSymbol>,
+		IsBranded<number & { [$brand]: { ["mySymbol"]: true } }, "mySymbol">,
 		true,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<"hello", typeof _exampleSymbol>,
+		IsBranded<string & { [$brand]: { ["anotherSymbol"]: true } }, "mySymbol">,
 		false,
 		typeof Test.Out.PASS
 	>(),
@@ -26,14 +25,12 @@ Test.Describe(
  *
  * @example
  * ```tsx
- * import type { Smbl } from "@dulysse1/ts-helper";
+ * import type { Brd } from "@dulysse1/ts-helper";
  *
- * declare const mySymbol: unique symbol;
+ * type CheckMe = Brd.Branded<number, 'password'>;
  *
- * type CheckMe = number & { [mySymbol]: true; }
- *
- * type A = Smbl.IsBranded<number, typeof mySymbol>; // false
- * type B = Smbl.IsBranded<CheckMe, typeof mySymbol>; // true
+ * type A = Brd.IsBranded<number, 'password'>; // false
+ * type B = Brd.IsBranded<CheckMe, 'password'>; // true
  * ```
  * ---------------------------
  * Do you have any questions about `IsBranded` usage ?
@@ -43,4 +40,10 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsBranded<T, Brand extends symbol> = HasKey<T, Brand>;
+export declare type IsBranded<T, Brand extends PropertyKey> = T extends {
+	[$brand]: {
+		[key in Brand]: true;
+	};
+}
+	? true
+	: false;

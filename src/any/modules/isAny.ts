@@ -4,9 +4,13 @@ import { Test } from "@/test";
 
 Test.Describe(
 	"Check if a type is exact type any",
-	Test.It<Is<Implicit>, true, typeof Test.Out.PASS>(),
-	Test.It<Is<unknown>, true, typeof Test.Out.FAIL>(),
-	Test.It<Is<string>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<Implicit>, true, typeof Test.Out.PASS>(),
+	Test.It<IsAny<unknown>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<string>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<number>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<{}>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<[]>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<never>, true, typeof Test.Out.FAIL>(),
 );
 
 /**
@@ -28,8 +32,4 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Is<T> = Implicit extends T
-	? [T] extends [{}]
-		? true
-		: false
-	: false;
+export declare type IsAny<T> = 0 extends 1 & T ? true : false;

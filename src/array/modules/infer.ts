@@ -3,24 +3,25 @@ import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Equal, Not, Or } from "@/operator";
 import type { IsTuple, Length, Unique } from "@/array";
-import type { IsBranded } from "@/symbol";
+import type { HasKey } from "@/object";
+import type { $internal } from "@/brand/modules/symbol";
 
 import { Test } from "@/test";
 
 Test.Describe(
 	"Check if an array type satisfies the rules defined in InferArrayRules",
 	Test.It<
-		IsBranded<Infer<[1, 2, 3], { minLength: 2 }>, typeof arrayError>,
+		HasKey<Infer<[1, 2, 3], { minLength: 2 }>, typeof $internal>,
 		false,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<Infer<[1, 2, 3], { minLength: 4 }>, typeof arrayError>,
+		HasKey<Infer<[1, 2, 3], { minLength: 4 }>, typeof $internal>,
 		true,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<Infer<[1, 1, 3], { unique: true }>, typeof arrayError>,
+		HasKey<Infer<[1, 1, 3], { unique: true }>, typeof $internal>,
 		true,
 		typeof Test.Out.PASS
 	>(),
@@ -70,11 +71,6 @@ export declare type InferArrayRules = {
 };
 
 /**
- * the {@link Infer} error message
- */
-export declare const arrayError: unique symbol;
-
-/**
  * - Apply some `rules` from {@link InferArrayRules} to a array, if one doesnt satisfy `TArray` it will return never.
  *
  * @template TArray The array type to infer rules
@@ -84,8 +80,8 @@ export declare const arrayError: unique symbol;
  * import type { Arr } from "@dulysse1/ts-helper";
  *
  * type A = Arr.Infer<[1, 2, 3], { minLength: 2 }>; // [1, 2, 3]
- * type B = Arr.Infer<[1, 2, 3], { minLength: 4 }>; // { arrayError: "The array (3 elements) must contain at least 4 elements." }
- * type C = Arr.Infer<[1, 1, 3], { unique: true }>; // { arrayError: "The array must have only unique elements." }
+ * type B = Arr.Infer<[1, 2, 3], { minLength: 4 }>; // { [$internal]?: "The array (3 elements) must contain at least 4 elements." }
+ * type C = Arr.Infer<[1, 1, 3], { unique: true }>; // { [$internal]?: "The array must have only unique elements." }
  * ```
  * ---------------------------
  * Do you have any questions about `Infer` usage ?
@@ -104,19 +100,19 @@ export declare type Infer<
 		: Rules["minLength"] extends number
 			? CheckMinLength<TArray, Rules["minLength"]> extends false
 				? {
-						[arrayError]?: `The array (${Length<TArray>} elements) must contain at least ${Rules["minLength"]} elements.`;
+						[$internal]?: `The array (${Length<TArray>} elements) must contain at least ${Rules["minLength"]} elements.`;
 					}
 				: Infer<TArray, Omit<Rules, "minLength">>
 			: Rules["maxLength"] extends number
 				? CheckMaxLength<TArray, Rules["maxLength"]> extends false
 					? {
-							[arrayError]?: `The array (${Length<TArray>} elements) must contain a maximum of ${Rules["maxLength"]} elements.`;
+							[$internal]?: `The array (${Length<TArray>} elements) must contain a maximum of ${Rules["maxLength"]} elements.`;
 						}
 					: Infer<TArray, Omit<Rules, "maxLength">>
 				: Rules["unique"] extends true
 					? Equal<TArray, Unique<TArray>> extends false
 						? {
-								[arrayError]?: `The array must have only unique elements.`;
+								[$internal]?: `The array must have only unique elements.`;
 							}
 						: Infer<TArray, Omit<Rules, "unique">>
 					: TArray;

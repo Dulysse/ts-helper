@@ -7,43 +7,41 @@ import type {
 	Includes,
 	Width,
 } from "@/string";
-import type { IsBranded } from "@/symbol";
+import type { $internal } from "@/brand/modules/symbol";
+import type { HasKey } from "@/object";
 
 import { Test } from "@/test";
 
 Test.Describe(
 	"Apply some rules to a string",
 	Test.It<
-		IsBranded<Infer<"hello", {}>, typeof stringError>,
+		HasKey<Infer<"hello", {}>, typeof $internal>,
 		false,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<Infer<"hello", { minChar: 10 }>, typeof stringError>,
+		HasKey<Infer<"hello", { minChar: 10 }>, typeof $internal>,
 		true,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<
+		HasKey<
 			Infer<"hello Ulysse!", { pattern: `hello ${string}.` }>,
-			typeof stringError
+			typeof $internal
 		>,
 		true,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<
+		HasKey<
 			Infer<"Hello ulysse!", { excludeCharacters: Alphanumeric["A_Z"] }>,
-			typeof stringError
+			typeof $internal
 		>,
 		true,
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<
-			Infer<"Hello ulysse!", { alphanumeric: true }>,
-			typeof stringError
-		>,
+		HasKey<Infer<"Hello ulysse!", { alphanumeric: true }>, typeof $internal>,
 		true,
 		typeof Test.Out.PASS
 	>(),
@@ -106,11 +104,6 @@ export declare type InferStringRules = {
 };
 
 /**
- * the {@link Infer} error message
- */
-export declare const stringError: unique symbol;
-
-/**
  * - Apply some `rules` from {@link InferStringRules} to a string, if one doesnt satisfy `TString` it will return never.
  *
  * @template TString The string type to infer rules
@@ -119,7 +112,7 @@ export declare const stringError: unique symbol;
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type A = Str.Infer<"Hello world!", { maxChar: 8 }>; // { [stringError]?: '...' }
+ * type A = Str.Infer<"Hello world!", { maxChar: 8 }>; // { [$internal]?: '...' }
  * type B = Str.Infer<"Hello", { minChar: 2, maxChar: 10 }>; // "Hello"
  * type C = Str.Infer<"ulysse@demo.com", { pattern: `${string}@${string}.${string}` }>; // "ulysse@demo.com"
  * ```
@@ -147,7 +140,7 @@ export declare type Infer<
 					? Head extends string
 						? Includes<TString, Head> extends true
 							? {
-									[stringError]?: `The string "${TString}" must not contain the character "${Head}".`;
+									[$internal]?: `The string "${TString}" must not contain the character "${Head}".`;
 								}
 							: Infer<
 									TString,
@@ -161,25 +154,25 @@ export declare type Infer<
 			: Rules["minChar"] extends number
 				? CheckMinRange<TString, Rules["minChar"]> extends false
 					? {
-							[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
+							[$internal]?: `The string "${TString}" (${Width<TString>} characters) must contain at least ${Rules["minChar"]} characters.`;
 						}
 					: Infer<TString, Omit<Rules, "minChar">>
 				: Rules["maxChar"] extends number
 					? CheckMaxRange<TString, Rules["maxChar"]> extends false
 						? {
-								[stringError]?: `The string "${TString}" (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
+								[$internal]?: `The string "${TString}" (${Width<TString>} characters) must contain a maximum of ${Rules["maxChar"]} characters.`;
 							}
 						: Infer<TString, Omit<Rules, "maxChar">>
 					: Rules["pattern"] extends string
 						? Equal<Extract<TString, Rules["pattern"]>, TString> extends false
 							? {
-									[stringError]?: `The string "${TString}" must match with the following pattern: "${Rules["pattern"]}".`;
+									[$internal]?: `The string "${TString}" must match with the following pattern: "${Rules["pattern"]}".`;
 								}
 							: Infer<TString, Omit<Rules, "pattern">>
 						: Rules["alphanumeric"] extends boolean
 							? ContainOnlyAlphanumericOrException<TString> extends false
 								? {
-										[stringError]?: `The string "${TString}" must contain only alphanumeric characters.`;
+										[$internal]?: `The string "${TString}" must contain only alphanumeric characters.`;
 									}
 								: Infer<TString, Omit<Rules, "alphanumeric">>
 							: TString;
