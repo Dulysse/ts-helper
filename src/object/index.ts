@@ -1,6 +1,6 @@
 import type { Merge } from "./modules/merge";
 import type { KeyOf } from "./modules/keyOf";
-import type { Interception } from "./modules/interception";
+import type { Intersection } from "./modules/intersection";
 import type { Omit } from "./modules/omit";
 import type { Partial } from "./modules/partial";
 import type { Required } from "./modules/required";
@@ -16,7 +16,7 @@ import type { Exclude } from "./modules/exclude";
  * #### ✨ List of `ts-helper` object types ✨:
  * - `Merge`
  * - `KeyOf`
- * - `Interception`
+ * - `Intersection`
  * - `Omit`
  * - `Partial`
  * - `Required`
@@ -39,7 +39,7 @@ export declare namespace Obj {
 	export {
 		Merge,
 		KeyOf,
-		Interception,
+		Intersection,
 		Omit,
 		Partial,
 		Required,
@@ -56,7 +56,7 @@ export declare namespace Obj {
 export {
 	Merge,
 	KeyOf,
-	Interception,
+	Intersection,
 	Omit,
 	Partial,
 	Required,
