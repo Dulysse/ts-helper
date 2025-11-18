@@ -1,8 +1,7 @@
-import type { Equal, Not, OrAll } from "@/operator";
-import type { IsUnion, ToArray } from "@/union";
+import type { Not } from "@/operator";
+import type { IsPrimitive } from "@/any";
 
 import { Test } from "@/test";
-import { DefaultArrayType } from "@/array/utils";
 
 Test.Describe(
 	"Check if a type is a literal type",
@@ -14,29 +13,6 @@ Test.Describe(
 	Test.It<IsLiteral<string | number>, false, typeof Test.Out.PASS>(),
 	Test.It<IsLiteral<string | 1>, boolean, typeof Test.Out.PASS>(),
 );
-
-declare type IsUniqueLiteral<T> = Not<
-	OrAll<
-		[
-			Equal<T, string>,
-			Equal<T, number>,
-			Equal<T, boolean>,
-			Equal<T, bigint>,
-			Equal<T, symbol>,
-			Equal<T, never>,
-			Equal<T, unknown>,
-		]
-	>
->;
-
-declare type CheckTupleLiteral<
-	T extends DefaultArrayType,
-	TResult extends boolean = IsUniqueLiteral<T[0]>,
-> = T extends [infer Head, ...infer Tail]
-	? Equal<TResult, IsUniqueLiteral<Head>> extends true
-		? CheckTupleLiteral<Tail, TResult>
-		: boolean
-	: TResult;
 
 /**
  * - Check if `T` is a literal type.
@@ -57,5 +33,4 @@ declare type CheckTupleLiteral<
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsLiteral<T> =
-	IsUnion<T> extends true ? CheckTupleLiteral<ToArray<T>> : IsUniqueLiteral<T>;
+export declare type IsLiteral<T> = Not<IsPrimitive<T>>;

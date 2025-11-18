@@ -6,6 +6,7 @@ import type { Not } from "./modules/not";
 import type { Xor } from "./modules/xor";
 import type { AndAll } from "./modules/andAll";
 import type { OrAll } from "./modules/orAll";
+import type { If } from "./modules/if";
 
 /**
  * #### ✨ List of `ts-helper` operator types ✨:
@@ -17,6 +18,7 @@ import type { OrAll } from "./modules/orAll";
  * - `Xor`
  * - `AndAll`
  * - `OrAll`
+ * - `If`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -26,7 +28,7 @@ import type { OrAll } from "./modules/orAll";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Op {
-	export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll };
+	export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If };
 }
 
-export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll };
+export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If };

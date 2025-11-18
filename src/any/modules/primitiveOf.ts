@@ -42,4 +42,4 @@ export declare type PrimitiveOf<T> = T extends string
 					? symbol
 					: T extends object
 						? object
-						: never;
+						: T;

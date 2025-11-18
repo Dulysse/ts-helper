@@ -94,11 +94,11 @@ export declare type InferStringRules = {
 	 */
 	pattern?: string;
 	/**
-	 * the string must not contain any of the following characters.
+	 * the string must not contain the following characters.
 	 */
 	excludeCharacters?: string[];
 	/**
-	 * the string must contain only alphanumeric characters and space.
+	 * the string must contain only alphanumeric characters (a-z, A-Z, 0-9) and spaces.
 	 */
 	alphanumeric?: boolean;
 };

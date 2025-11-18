@@ -2,6 +2,7 @@ import type { Implicit } from "./modules/implicit";
 import type { IsAny } from "./modules/isAny";
 import type { IsLiteral } from "./modules/isLiteral";
 import type { PrimitiveOf } from "./modules/primitiveOf";
+import type { IsPrimitive } from "./modules/isPrimitive";
 
 /**
  * #### ✨ List of `ts-helper` any types ✨:
@@ -9,6 +10,7 @@ import type { PrimitiveOf } from "./modules/primitiveOf";
  * - `IsAny`
  * - `IsLiteral`
  * - `PrimitiveOf`
+ * - `IsPrimitive`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -18,7 +20,7 @@ import type { PrimitiveOf } from "./modules/primitiveOf";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Any {
-	export { Implicit, IsAny, IsLiteral, PrimitiveOf };
+	export { Implicit, IsAny, IsLiteral, PrimitiveOf, IsPrimitive };
 }
 
-export { Implicit, IsAny, IsLiteral, PrimitiveOf };
+export { Implicit, IsAny, IsLiteral, PrimitiveOf, IsPrimitive };

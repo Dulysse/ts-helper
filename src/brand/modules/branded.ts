@@ -1,21 +1,39 @@
 import type { IsBranded } from "@/brand";
+import type { Exclude, Filter } from "@/object";
 import type { $brand } from "@/brand/modules/symbol";
 
 import { Test } from "@/test";
 
+declare type User = {
+	uuid: Branded<string, "uuid">;
+	name: string;
+	createdAt: Branded<Date, "timestamp">;
+	updatedAt: Branded<Date, "timestamp">;
+};
+
 Test.Describe(
 	"Brand a type with a symbol and check it",
 	Test.It<
-		Branded<number, "password">,
-		number & { [$brand]: { password: true } },
+		Exclude<User, Branded<unknown, "timestamp"> | Branded<unknown, "uuid">>,
+		{ name: string },
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
-		IsBranded<Branded<number, "password">, "password">,
+		Filter<User, Branded<unknown, "uuid">>,
+		Pick<User, "uuid">,
+		typeof Test.Out.PASS
+	>(),
+	Test.It<
+		Branded<string, "password">,
+		string & { [$brand]: { password: true } },
+		typeof Test.Out.PASS
+	>(),
+	Test.It<
+		IsBranded<Branded<string, "password">, "password">,
 		true,
 		typeof Test.Out.PASS
 	>(),
-	Test.It<IsBranded<number, "password">, false, typeof Test.Out.PASS>(),
+	Test.It<IsBranded<string, "password">, false, typeof Test.Out.PASS>(),
 );
 
 /**

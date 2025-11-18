@@ -1,7 +1,7 @@
 {
 	"name": "@dulysse1/ts-helper",
 	"version": "1.3.14",
-	"description": "Typescript library for typing helpers ✨",
+	"description": "Typescript library that provide typing utilities ✨",
 	"files": [
 		"dist"
 	],
@@ -18,9 +18,6 @@
 		"check-exports": "attw --pack . --ignore-rules cjs-resolves-to-esm",
 		"test": "npx tsc --extendedDiagnostics"
 	},
-	"lint-staged": {
-		"**/*": "prettier --write --ignore-unknown"
-	},
 	"keywords": [
 		"node",
 		"typescript",
@@ -28,7 +25,10 @@
 		"types",
 		"safe",
 		"tools",
-		"typesafe"
+		"typesafe",
+		"utility",
+		"helpers",
+		"ts-helper"
 	],
 	"author": {
 		"name": "Ulysse Dupont",
@@ -55,15 +55,15 @@
 	"private": false,
 	"license": "ISC",
 	"devDependencies": {
-		"@arethetypeswrong/cli": "^0.18.2",
-		"@eslint/js": "^9.39.1",
-		"eslint": "^9.39.1",
-		"eslint-plugin-prettier": "^5.5.4",
-		"globals": "^16.5.0",
-		"husky": "^9.1.7",
-		"prettier": "^3.6.2",
-		"tsup": "^8.5.0",
-		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.46.4"
+		"@arethetypeswrong/cli": "0.18.2",
+		"@eslint/js": "9.39.1",
+		"eslint": "9.39.1",
+		"eslint-plugin-prettier": "5.5.4",
+		"globals": "16.5.0",
+		"husky": "9.1.7",
+		"prettier": "3.6.2",
+		"tsup": "8.5.1",
+		"typescript": "5.9.3",
+		"typescript-eslint": "8.47.0"
 	}
 }

@@ -20,8 +20,17 @@ declare type MAX_TEST = 8;
  * - `alphanumeric`: true, meaning the string must contain only alphanumeric characters and spaces.
  */
 declare type DefaultDescribeRules = {
+	/**
+	 * The minimum number of characters for the description.
+	 */
 	minChar: 10;
+	/**
+	 * The maximum number of characters for the description.
+	 */
 	maxChar: 100;
+	/**
+	 * Whether the description must be alphanumeric or not.
+	 */
 	alphanumeric: true;
 };
 
