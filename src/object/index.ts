@@ -11,6 +11,7 @@ import type { Filter } from "./modules/filter";
 import type { Update } from "./modules/update";
 import type { Reversed } from "./modules/reversed";
 import type { Exclude } from "./modules/exclude";
+import type { Tree } from "./modules/tree";
 
 /**
  * #### ✨ List of `ts-helper` object types ✨:
@@ -27,6 +28,7 @@ import type { Exclude } from "./modules/exclude";
  * - `Update`
  * - `Reversed`
  * - `Exclude`
+ * - `Tree`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -50,6 +52,7 @@ export declare namespace Obj {
 		Update,
 		Reversed,
 		Exclude,
+		Tree,
 	};
 }
 
@@ -67,4 +70,5 @@ export {
 	Update,
 	Reversed,
 	Exclude,
+	Tree,
 };

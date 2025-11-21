@@ -17,7 +17,7 @@ declare type MAX_TEST = 8;
  * The default rules for the `describe` function.
  * - `minChar`: 10 characters minimum.
  * - `maxChar`: 100 characters maximum.
- * - `alphanumeric`: true, meaning the string must contain only alphanumeric characters and spaces.
+ * - `alphanumeric`: false, meaning special characters are allowed.
  */
 declare type DefaultDescribeRules = {
 	/**
@@ -31,7 +31,7 @@ declare type DefaultDescribeRules = {
 	/**
 	 * Whether the description must be alphanumeric or not.
 	 */
-	alphanumeric: true;
+	alphanumeric: false;
 };
 
 /**

@@ -326,7 +326,7 @@ declare function uniqueArray<const T extends unknown[]>(
 	...elements: T
 ): Arr.Infer<T, { unique: true }>;
 
-uniqueArray(1, 2, 3, 2); // { [$internal]?: "The array must have only unique elements." }
+uniqueArray(1, 2, 3, 2); // { [$internal]: "The array must have only unique elements." }
 ```
 
 - `Map` of `Filter` an array (`since 1.3.8`)

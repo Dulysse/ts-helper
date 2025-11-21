@@ -32,7 +32,6 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-
 export declare type Equal<A, B> =
 	IsAny<A> extends true
 		? IsAny<B> extends true

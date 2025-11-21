@@ -80,8 +80,8 @@ export declare type InferArrayRules = {
  * import type { Arr } from "@dulysse1/ts-helper";
  *
  * type A = Arr.Infer<[1, 2, 3], { minLength: 2 }>; // [1, 2, 3]
- * type B = Arr.Infer<[1, 2, 3], { minLength: 4 }>; // { [$internal]?: "The array (3 elements) must contain at least 4 elements." }
- * type C = Arr.Infer<[1, 1, 3], { unique: true }>; // { [$internal]?: "The array must have only unique elements." }
+ * type B = Arr.Infer<[1, 2, 3], { minLength: 4 }>; // { [$internal]: "The array (3 elements) must contain at least 4 elements." }
+ * type C = Arr.Infer<[1, 1, 3], { unique: true }>; // { [$internal]: "The array must have only unique elements." }
  * ```
  * ---------------------------
  * Do you have any questions about `Infer` usage ?
@@ -100,19 +100,19 @@ export declare type Infer<
 		: Rules["minLength"] extends number
 			? CheckMinLength<TArray, Rules["minLength"]> extends false
 				? {
-						[$internal]?: `The array (${Length<TArray>} elements) must contain at least ${Rules["minLength"]} elements.`;
+						[$internal]: `The array (${Length<TArray>} elements) must contain at least ${Rules["minLength"]} elements.`;
 					}
 				: Infer<TArray, Omit<Rules, "minLength">>
 			: Rules["maxLength"] extends number
 				? CheckMaxLength<TArray, Rules["maxLength"]> extends false
 					? {
-							[$internal]?: `The array (${Length<TArray>} elements) must contain a maximum of ${Rules["maxLength"]} elements.`;
+							[$internal]: `The array (${Length<TArray>} elements) must contain a maximum of ${Rules["maxLength"]} elements.`;
 						}
 					: Infer<TArray, Omit<Rules, "maxLength">>
 				: Rules["unique"] extends true
 					? Equal<TArray, Unique<TArray>> extends false
 						? {
-								[$internal]?: `The array must have only unique elements.`;
+								[$internal]: `The array must have only unique elements.`;
 							}
 						: Infer<TArray, Omit<Rules, "unique">>
 					: TArray;

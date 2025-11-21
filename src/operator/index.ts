@@ -7,6 +7,7 @@ import type { Xor } from "./modules/xor";
 import type { AndAll } from "./modules/andAll";
 import type { OrAll } from "./modules/orAll";
 import type { If } from "./modules/if";
+import type { Fallback } from "./modules/fallback";
 
 /**
  * #### ✨ List of `ts-helper` operator types ✨:
@@ -19,6 +20,7 @@ import type { If } from "./modules/if";
  * - `AndAll`
  * - `OrAll`
  * - `If`
+ * - `Fallback`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -28,7 +30,7 @@ import type { If } from "./modules/if";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Op {
-	export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If };
+	export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If, Fallback };
 }
 
-export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If };
+export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If, Fallback };
