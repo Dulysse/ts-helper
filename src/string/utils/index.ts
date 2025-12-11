@@ -41,6 +41,82 @@ export declare type SpecialCharMap = {
 	"~": "";
 };
 
+/**
+ * A map of accented characters to their unaccented counterparts.
+ */
+export declare type AccentMap = {
+	à: "a";
+	â: "a";
+	ä: "a";
+	ç: "c";
+	é: "e";
+	è: "e";
+	ê: "e";
+	ë: "e";
+	î: "i";
+	ï: "i";
+	ô: "o";
+	ö: "o";
+	ù: "u";
+	û: "u";
+	ü: "u";
+	ÿ: "y";
+	À: "A";
+	Â: "A";
+	Ä: "A";
+	Ç: "C";
+	É: "E";
+	È: "E";
+	Ê: "E";
+	Ë: "E";
+	Î: "I";
+	Ï: "I";
+	Ô: "O";
+	Ö: "O";
+	Ù: "U";
+	Û: "U";
+	Ü: "U";
+	Ÿ: "Y";
+	š: "s";
+	Š: "S";
+	ž: "z";
+	Ž: "Z";
+	đ: "d";
+	Đ: "D";
+	ñ: "n";
+	Ñ: "N";
+	ƒ: "f";
+	ª: "a";
+	º: "o";
+	Á: "A";
+	Ã: "A";
+	Å: "A";
+	Ì: "I";
+	Í: "I";
+	Ð: "D";
+	Ò: "O";
+	Ó: "O";
+	Õ: "O";
+	Ø: "O";
+	Ú: "U";
+	Ý: "Y";
+	ß: "B";
+	á: "a";
+	ã: "a";
+	å: "a";
+	æ: "ae";
+	ì: "i";
+	í: "i";
+	ð: "d";
+	ò: "o";
+	ó: "o";
+	õ: "o";
+	ø: "o";
+	ú: "u";
+	ý: "y";
+	þ: "p";
+};
+
 export declare type AsciiMap = {
 	"\0": 0;
 	"\x01": 1;
