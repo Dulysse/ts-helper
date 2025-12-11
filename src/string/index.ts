@@ -18,6 +18,8 @@ import type { ToPascalCase } from "./modules/toPascalCase";
 import type { ToCamelCase } from "./modules/toCamelCase";
 import type { ToKebabCase } from "./modules/toKebabCase";
 import type { ToSnakeCase } from "./modules/toSnakeCase";
+import type { AsciiMap } from "./utils";
+import type { AsciiCode, AsciiRange } from "./modules/ascii";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
@@ -41,6 +43,9 @@ import type { ToSnakeCase } from "./modules/toSnakeCase";
  * - `ToPascalCase`
  * - `ToKebabCase`
  * - `ToSnakeCase`
+ * - `AsciiMap`
+ * - `AsciiCode`
+ * - `AsciiRange`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -71,6 +76,9 @@ export declare namespace Str {
 		ToPascalCase,
 		ToKebabCase,
 		ToSnakeCase,
+		AsciiMap,
+		AsciiCode,
+		AsciiRange,
 	};
 }
 
@@ -95,4 +103,7 @@ export {
 	ToPascalCase,
 	ToKebabCase,
 	ToSnakeCase,
+	AsciiMap,
+	AsciiCode,
+	AsciiRange,
 };
