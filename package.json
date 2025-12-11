@@ -1,6 +1,6 @@
 {
 	"name": "@dulysse1/ts-helper",
-	"version": "1.3.16",
+	"version": "1.3.17",
 	"description": "Typescript library that provide typing utilities ✨",
 	"files": [
 		"dist"
