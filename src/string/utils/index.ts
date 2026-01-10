@@ -375,3 +375,5 @@ export declare type AsciiMap = {
 	þ: 254;
 	ÿ: 255;
 };
+
+export declare type Digit = `${number}`;

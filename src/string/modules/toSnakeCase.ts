@@ -1,5 +1,4 @@
-import type { IsExactString, ReplaceMap, UnAccent } from "@/string";
-import type { SpecialCharMap } from "@/string/utils";
+import type { ContainExactString, ReplaceAll, ToKebabCase } from "@/string";
 
 import { Test } from "@/test";
 
@@ -11,19 +10,21 @@ Test.Describe(
 		typeof Test.Out.PASS
 	>(),
 	Test.It<ToSnakeCase<"Hello-World?">, "hello_world", typeof Test.Out.PASS>(),
-	Test.It<ToSnakeCase<"hello_world">, "hello_world", typeof Test.Out.PASS>(),
-	Test.It<ToSnakeCase<"EÂxs LOL">, "eaxs_lol", typeof Test.Out.PASS>(),
+	Test.It<ToSnakeCase<"DEMO">, "demo", typeof Test.Out.PASS>(),
+	Test.It<
+		ToSnakeCase<"some-mixed_string With spaces_underscores-and-hyphens">,
+		"some_mixed_string_with_spaces_underscores_and_hyphens",
+		typeof Test.Out.PASS
+	>(),
+	Test.It<
+		ToSnakeCase<"IAmEditingSomeXMLAndHTML">,
+		"i_am_editing_some_xml_and_html",
+		typeof Test.Out.PASS
+	>(),
 );
 
-declare type _ToSnakeCase<
-	TString extends string,
-	TResult extends string = "",
-> = TString extends `${infer Head}${infer Tail extends string}`
-	? _ToSnakeCase<Tail, `${TResult}${Head extends " " ? "_" : Head}`>
-	: TResult;
-
 /**
- * - Converts a string to `snake_case`. (This means that spaces are replaced with underscores and all characters are converted to ${@link Lowercase} and are {@link UnAccent}.)
+ * - Converts a string to `snake_case`. (This means that all words are in lower case and separated by underscores `_`.)
  * @template TString The string to convert to `snake_case`.
  *
  *
@@ -31,9 +32,16 @@ declare type _ToSnakeCase<
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
+ * // Examples:
  * type A = Str.ToSnakeCase<"This text will be converted into snake_case">; // "this_text_will_be_converted_into_snake_case"
  * type B = Str.ToSnakeCase<"Hello World">; // "hello_world"
- * type C = Str.ToSnakeCase<"EÂxs LOL">; // "eaxs_lol"
+ * type C = Str.ToSnakeCase<"DEMO">; // "demo"
+ * 
+ * // Typescript implementation example:
+ * const toSnakeCase = (str: string) => str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map((x) => x.toLowerCase())
+    .join("_");
  * ```
  * ---------------------------
  * Do you have any questions about `ToSnakeCase` usage ?
@@ -44,12 +52,6 @@ declare type _ToSnakeCase<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type ToSnakeCase<TString extends string> =
-	IsExactString<TString> extends true
+	ContainExactString<TString> extends true
 		? string
-		: ReplaceMap<
-				Lowercase<UnAccent<_ToSnakeCase<TString>>>,
-				{
-					"-": "_";
-					" ": "_";
-				} & SpecialCharMap
-			>;
+		: ReplaceAll<ToKebabCase<TString>, "-", "_">;

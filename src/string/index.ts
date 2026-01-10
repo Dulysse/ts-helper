@@ -7,6 +7,8 @@ import type { ReplaceAll } from "./modules/replaceAll";
 import type { PlacedAt } from "./modules/placedAt";
 import type { Reversed } from "./modules/reversed";
 import type { Repeat } from "./modules/repeat";
+import type { TrimStart } from "./modules/trimStart";
+import type { TrimEnd } from "./modules/trimEnd";
 import type { Trim } from "./modules/trim";
 import type { Count } from "./modules/count";
 import type { Includes } from "./modules/includes";
@@ -20,6 +22,9 @@ import type { ToKebabCase } from "./modules/toKebabCase";
 import type { ToSnakeCase } from "./modules/toSnakeCase";
 import type { AsciiMap } from "./utils";
 import type { AsciiCode, AsciiRange } from "./modules/ascii";
+import type { IsUpperCase } from "./modules/isUppercase";
+import type { IsLowerCase } from "./modules/isLowercase";
+import type { IsDigit } from "./modules/isDigit";
 
 /**
  * #### ✨ List of `ts-helper` string types ✨:
@@ -32,6 +37,8 @@ import type { AsciiCode, AsciiRange } from "./modules/ascii";
  * - `PlacedAt`
  * - `Reversed`
  * - `Repeat`
+ * - `TrimStart`
+ * - `TrimEnd`
  * - `Trim`
  * - `Count`
  * - `Includes`
@@ -46,6 +53,9 @@ import type { AsciiCode, AsciiRange } from "./modules/ascii";
  * - `AsciiMap`
  * - `AsciiCode`
  * - `AsciiRange`
+ * - `IsUpperCase`
+ * - `IsLowerCase`
+ * - `IsDigit`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -65,6 +75,8 @@ export declare namespace Str {
 		PlacedAt,
 		Reversed,
 		Repeat,
+		TrimStart,
+		TrimEnd,
 		Trim,
 		Count,
 		Includes,
@@ -79,6 +91,9 @@ export declare namespace Str {
 		AsciiMap,
 		AsciiCode,
 		AsciiRange,
+		IsUpperCase,
+		IsLowerCase,
+		IsDigit,
 	};
 }
 
@@ -92,6 +107,8 @@ export {
 	PlacedAt,
 	Reversed,
 	Repeat,
+	TrimStart,
+	TrimEnd,
 	Trim,
 	Count,
 	Includes,
@@ -106,4 +123,7 @@ export {
 	AsciiMap,
 	AsciiCode,
 	AsciiRange,
+	IsUpperCase,
+	IsLowerCase,
+	IsDigit,
 };

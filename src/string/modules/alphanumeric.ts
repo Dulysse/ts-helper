@@ -1,3 +1,5 @@
+import type { AsciiCode, AsciiRange } from "@/string";
+
 /**
  * - This module provides a type definition for alphanumeric characters.
  * @example
@@ -20,127 +22,21 @@ export declare type Alphanumeric = {
 	/**
 	 * - An array of lowercase letters from 'a' to 'z'.
 	 */
-	a_z: [
-		"a",
-		"b",
-		"c",
-		"d",
-		"e",
-		"f",
-		"g",
-		"h",
-		"i",
-		"j",
-		"k",
-		"l",
-		"m",
-		"n",
-		"o",
-		"p",
-		"q",
-		"r",
-		"s",
-		"t",
-		"u",
-		"v",
-		"w",
-		"x",
-		"y",
-		"z",
-	];
+	a_z: AsciiRange<AsciiCode<"a">, AsciiCode<"z">>;
 	/**
 	 * - An array of lowercase letters with accents.
 	 */
-	accents: [
-		"à",
-		"â",
-		"ä",
-		"ç",
-		"é",
-		"è",
-		"ê",
-		"ë",
-		"î",
-		"ï",
-		"ô",
-		"ö",
-		"ù",
-		"û",
-		"ü",
-		"ÿ",
-	];
+	accents: AsciiRange<AsciiCode<"à">, AsciiCode<"ÿ">>;
 	/**
 	 * - An array of uppercase letters from 'A' to 'Z'.
 	 */
-	A_Z: [
-		"A",
-		"B",
-		"C",
-		"D",
-		"E",
-		"F",
-		"G",
-		"H",
-		"I",
-		"J",
-		"K",
-		"L",
-		"M",
-		"N",
-		"O",
-		"P",
-		"Q",
-		"R",
-		"S",
-		"T",
-		"U",
-		"V",
-		"W",
-		"X",
-		"Y",
-		"Z",
-		"À",
-		"Â",
-		"Ä",
-		"Ç",
-		"É",
-		"È",
-		"Ê",
-		"Ë",
-		"Î",
-		"Ï",
-		"Ô",
-		"Ö",
-		"Ù",
-		"Û",
-		"Ü",
-		"Ÿ",
-		"Æ",
-		"Œ",
-	];
+	A_Z: AsciiRange<AsciiCode<"A">, AsciiCode<"Z">>;
 	/**
 	 * - An array of uppercase letters with accents.
 	 */
-	ACCENTS: [
-		"À",
-		"Â",
-		"Ä",
-		"Ç",
-		"É",
-		"È",
-		"Ê",
-		"Ë",
-		"Î",
-		"Ï",
-		"Ô",
-		"Ö",
-		"Ù",
-		"Û",
-		"Ü",
-		"Ÿ",
-	];
+	ACCENTS: AsciiRange<AsciiCode<"À">, AsciiCode<"Ý">>;
 	/**
 	 * - An array of digits from '0' to '9'.
 	 */
-	"0_9": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+	"0_9": AsciiRange<AsciiCode<"0">, AsciiCode<"9">>;
 };

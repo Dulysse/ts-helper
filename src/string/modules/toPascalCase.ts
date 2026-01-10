@@ -1,5 +1,4 @@
-import type { IsExactString, UnAccent, Split, ReplaceMap } from "@/string";
-import type { SpecialCharMap } from "@/string/utils";
+import type { ContainExactString, ToCamelCase, Trim } from "@/string";
 
 import { Test } from "@/test";
 
@@ -7,26 +6,21 @@ Test.Describe(
 	"Convert a string to Pascal Case",
 	Test.It<
 		ToPascalCase<"This text will be converted into PascalCase">,
-		"ThisTextWillBeConvertedIntoPascalcase",
+		"ThisTextWillBeConvertedIntoPascalCase",
 		typeof Test.Out.PASS
 	>(),
-	Test.It<ToPascalCase<"Hello Wo-rld">, "HelloWorld", typeof Test.Out.PASS>(),
-	Test.It<ToPascalCase<"hello_world?">, "Helloworld", typeof Test.Out.PASS>(),
-	Test.It<ToPascalCase<"EÂxs LOL">, "EaxsLol", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"Hello Wo-rld">, "HelloWo-rld", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"EÂxs      lOL">, "EÂxsLOL", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"EÂxs LOL">, "EÂxsLOL", typeof Test.Out.PASS>(),
+	Test.It<
+		ToPascalCase<"   he  l lo    Wo    rld     ">,
+		"HeLLoWoRld",
+		typeof Test.Out.PASS
+	>(),
 );
 
-declare type _ToPascalCase<
-	TStringAsArray extends string[],
-	TResult extends string = "",
-> = TStringAsArray extends [
-	infer Head extends string,
-	...infer Tail extends string[],
-]
-	? _ToPascalCase<Tail, `${TResult}${Capitalize<Lowercase<Head>>}`>
-	: TResult;
-
 /**
- * - Converts a string to `PascalCase`. (This means that all words are in lower case and have their 1st letter capitalized, spaces are omitted.)
+ * - Converts a string to `PascalCase`. (This means that all words have their 1st letter capitalized and spaces are omitted.)
  *
  * @template TString The string to convert to `PascalCase`.
  *
@@ -34,9 +28,9 @@ declare type _ToPascalCase<
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * type A = Str.PascalCase<"This text will be converted into Pascal Case">; // "ThisTextWillBeConvertedIntoPascalCase"
- * type B = Str.PascalCase<"Hello World">; // "HelloWorld"
- * type C = Str.PascalCase<"EÂxs LOL">; // "EaxsLol"
+ * type A = Str.ToPascalCase<"This text will be converted into Pascal Case">; // "ThisTextWillBeConvertedIntoPascalCase"
+ * type B = Str.ToPascalCase<"Hello World">; // "HelloWorld"
+ * type C = Str.ToPascalCase<"EÂxs   lOL">; // "EÂxsLOL"
  * ```
  * ---------------------------
  * Do you have any questions about `ToPascalCase` usage ?
@@ -47,12 +41,6 @@ declare type _ToPascalCase<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type ToPascalCase<TString extends string> =
-	IsExactString<TString> extends true
+	ContainExactString<TString> extends true
 		? string
-		: ReplaceMap<
-				UnAccent<_ToPascalCase<Split<TString, " ">>>,
-				{
-					"-": "";
-					_: "";
-				} & SpecialCharMap
-			>;
+		: Capitalize<ToCamelCase<Trim<TString>>>;

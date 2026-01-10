@@ -2,6 +2,7 @@ import type { Add, Multiply, Divide, Subtract, Factorial } from "@/numeric";
 import type { Satisfy } from "@/operator";
 import type { ReplaceAll, Reversed } from "@/string";
 import type { ToArray } from "@/union";
+import type { Digit } from "@/string/utils";
 
 import { Test } from "@/test";
 
@@ -19,7 +20,7 @@ declare type Operator = PriorityOperator | AdditiveOperator;
 declare type Calculation = `${number}${Operator}${number}`;
 declare type EvaluationFailed = unknown;
 declare type AllowedEvaluateChar =
-	| `${number}`
+	| Digit
 	| Operator
 	| "("
 	| ")"
