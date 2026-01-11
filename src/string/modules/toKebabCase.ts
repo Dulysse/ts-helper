@@ -6,6 +6,8 @@ import type {
 	Trim,
 	IsLowerCase,
 	IsDigit,
+	ReplaceMap,
+	AsciiRange,
 } from "@/string";
 
 import { Test } from "@/test";
@@ -27,6 +29,11 @@ Test.Describe(
 	Test.It<
 		ToKebabCase<"IAmEditingSomeXMLAndHTML">,
 		"i-am-editing-some-xml-and-html",
+		typeof Test.Out.PASS
+	>(),
+	Test.It<
+		ToKebabCase<"IAmEdiét22222ingAAA">,
+		"i-am-edi-t22222-ing-aaa",
 		typeof Test.Out.PASS
 	>(),
 );
@@ -88,7 +95,7 @@ declare type _ToKebabCase<
 							Tail,
 							TResult,
 							`${TCurrentWord}${Head}`,
-							"letters",
+							"digits",
 							"digit"
 						>
 					: _ToKebabCase<Tail, TResult, Head, "digits", "digit">
@@ -154,6 +161,18 @@ declare type _ToKebabCase<
 		? TResult
 		: _AppendWord<TResult, TCurrentWord>;
 
+declare type FilterAllowedChars<TString extends string> = ReplaceMap<
+	TString,
+	{
+		[key in [
+			...AsciiRange<0, 47>,
+			...AsciiRange<58, 64>,
+			...AsciiRange<91, 96>,
+			...AsciiRange<123, 255>,
+		][number]]: " ";
+	}
+>;
+
 /**
  * - Converts a string to `Kebab_case`. (This means that spaces are replaced with underscores and all characters are converted to ${@link Lowercase} and are {@link UnAccent}.)
  * @template TString The string to convert to `Kebab_case`.
@@ -163,16 +182,16 @@ declare type _ToKebabCase<
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * // Examples:
+ * // Typescript implementation example:
+ * const toKebabCase = <T extends string>(str: T): Str.ToKebabCase<T> => str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map((x) => x.toLowerCase())
+    .join("-") as Str.ToKebabCase<T>;
+ * 
+ * // More examples:
  * type A = Str.ToKebabCase<"This text will be converted into kebab-case">; // "this-text-will-be-converted-into-kebab-case"
  * type B = Str.ToKebabCase<"Hello World">; // "hello-world"
  * type C = Str.ToKebabCase<"DEMO">; // "demo"
- * 
- * // Typescript implementation example:
- * const toKebabCase = (str: string) => str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map((x) => x.toLowerCase())
-    .join("-");
  * ```
  * ---------------------------
  * Do you have any questions about `ToKebabCase` usage ?
@@ -190,8 +209,8 @@ export declare type ToKebabCase<TString extends string> =
 					Split<
 						Uncapitalize<
 							IsUpperCase<TString> extends true
-								? Lowercase<Trim<TString>>
-								: Trim<TString>
+								? Lowercase<Trim<FilterAllowedChars<TString>>>
+								: Trim<FilterAllowedChars<TString>>
 						>
 					>
 				>

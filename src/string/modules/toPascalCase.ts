@@ -10,8 +10,8 @@ Test.Describe(
 		typeof Test.Out.PASS
 	>(),
 	Test.It<ToPascalCase<"Hello Wo-rld">, "HelloWo-rld", typeof Test.Out.PASS>(),
-	Test.It<ToPascalCase<"EÂxs      lOL">, "EÂxsLOL", typeof Test.Out.PASS>(),
-	Test.It<ToPascalCase<"EÂxs LOL">, "EÂxsLOL", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"22222">, "22222", typeof Test.Out.PASS>(),
+	Test.It<ToPascalCase<"eÂxs">, "EÂxs", typeof Test.Out.PASS>(),
 	Test.It<
 		ToPascalCase<"   he  l lo    Wo    rld     ">,
 		"HeLLoWoRld",
@@ -30,7 +30,8 @@ Test.Describe(
  *
  * type A = Str.ToPascalCase<"This text will be converted into Pascal Case">; // "ThisTextWillBeConvertedIntoPascalCase"
  * type B = Str.ToPascalCase<"Hello World">; // "HelloWorld"
- * type C = Str.ToPascalCase<"EÂxs   lOL">; // "EÂxsLOL"
+ * type C = Str.ToPascalCase<"222">; // "222"
+ * type D = Str.ToPascalCase<"eÂxs">; // "EÂxs"
  * ```
  * ---------------------------
  * Do you have any questions about `ToPascalCase` usage ?

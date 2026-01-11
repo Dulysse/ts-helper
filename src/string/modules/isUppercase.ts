@@ -1,16 +1,31 @@
-import type { And, Equal, Not } from "@/operator";
-import type { ContainExactString } from "@/string/modules/containExactString";
+import type { And, AndAll, Equal, Not } from "@/operator";
+import type { ContainExactString, IsExactString } from "@/string";
 
 import { Test } from "@/test";
 
 Test.Describe(
 	"TypeScript utility type to check if a string is uppercase",
 	Test.It<IsUpperCase<"hello">, false, typeof Test.Out.PASS>(),
-	Test.It<IsUpperCase<`${string} demo`>, boolean, typeof Test.Out.PASS>(),
+	Test.It<IsUpperCase<`${string} demo`>, false, typeof Test.Out.PASS>(),
 	Test.It<IsUpperCase<`${string} DEMO`>, boolean, typeof Test.Out.PASS>(),
 	Test.It<IsUpperCase<string>, boolean, typeof Test.Out.PASS>(),
 	Test.It<IsUpperCase<"DEMO">, true, typeof Test.Out.PASS>(),
 );
+
+declare type IsUpperCaseAndWhenContainExactString<
+	TString extends string,
+	Result = boolean,
+> = TString extends `${infer Head}${infer Tail}`
+	? AndAll<
+			[
+				Not<Equal<Head, string>>,
+				Equal<Lowercase<Head>, Head>,
+				Not<Equal<Uppercase<Head>, Head>>,
+			]
+		> extends true
+		? false
+		: IsUpperCaseAndWhenContainExactString<Tail, Result>
+	: Result;
 
 /**
  * - TypeScript utility type to check if a string is uppercase.
@@ -32,11 +47,13 @@ Test.Describe(
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsUpperCase<TString extends string> =
-	ContainExactString<TString> extends true
+	IsExactString<TString> extends true
 		? boolean
-		: And<
-					Equal<Uppercase<TString>, TString>,
-					Not<Equal<Lowercase<TString>, TString>>
-			  > extends true
-			? true
-			: false;
+		: ContainExactString<TString> extends true
+			? IsUpperCaseAndWhenContainExactString<TString>
+			: And<
+						Equal<Uppercase<TString>, TString>,
+						Not<Equal<Lowercase<TString>, TString>>
+				  > extends true
+				? true
+				: false;

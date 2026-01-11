@@ -21,6 +21,11 @@ Test.Describe(
 		"i_am_editing_some_xml_and_html",
 		typeof Test.Out.PASS
 	>(),
+	Test.It<
+		ToSnakeCase<"IAmEdiét22222ingAAA">,
+		"i_am_edi_t22222_ing_aaa",
+		typeof Test.Out.PASS
+	>(),
 );
 
 /**
@@ -32,16 +37,17 @@ Test.Describe(
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * // Examples:
+ * // Typescript implementation example:
+ * const toSnakeCase = <T extends string>(str: T): Str.ToSnakeCase<T> => str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map((x) => x.toLowerCase())
+    .join("_") as Str.ToSnakeCase<T>;
+ * 
+ * // More examples:
  * type A = Str.ToSnakeCase<"This text will be converted into snake_case">; // "this_text_will_be_converted_into_snake_case"
  * type B = Str.ToSnakeCase<"Hello World">; // "hello_world"
  * type C = Str.ToSnakeCase<"DEMO">; // "demo"
- * 
- * // Typescript implementation example:
- * const toSnakeCase = (str: string) => str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map((x) => x.toLowerCase())
-    .join("_");
+ *
  * ```
  * ---------------------------
  * Do you have any questions about `ToSnakeCase` usage ?

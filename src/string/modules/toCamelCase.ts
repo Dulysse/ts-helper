@@ -11,8 +11,8 @@ Test.Describe(
 		typeof Test.Out.PASS
 	>(),
 	Test.It<ToCamelCase<"Hello Wo-rld?">, "helloWo-rld?", typeof Test.Out.PASS>(),
-	Test.It<ToCamelCase<"EÂxs        LOL">, "eÂxsLOL", typeof Test.Out.PASS>(),
-	Test.It<ToCamelCase<"EÂxs LOL">, "eÂxsLOL", typeof Test.Out.PASS>(),
+	Test.It<ToCamelCase<"22222">, "22222", typeof Test.Out.PASS>(),
+	Test.It<ToCamelCase<"EÂxs">, "eÂxs", typeof Test.Out.PASS>(),
 	Test.It<
 		ToCamelCase<"  he  l lo    Wo    rld     ">,
 		"heLLoWoRld",
@@ -49,7 +49,8 @@ declare type _ToCamelCase<
  *
  * type A = Str.ToCamelCase<"This text will be converted into camel Case">; // "thisTextWillBeConvertedIntoCamelCase"
  * type B = Str.ToCamelCase<"Hello World">; // "helloWorld"
- * type C = Str.ToCamelCase<"EÂxs   lOL">; // "eÂxsLOL"
+ * type C = Str.ToCamelCase<"222">; // "222"
+ * type D = Str.ToCamelCase<"EÂxs">; // "eÂxs"
  * ```
  * ---------------------------
  * Do you have any questions about `ToCamelCase` usage ?
