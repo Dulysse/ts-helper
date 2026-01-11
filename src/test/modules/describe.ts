@@ -11,7 +11,7 @@ declare type MIN_TEST = 1;
 /**
  * The `maximal` amount of test for {@link DescribeFn}.
  */
-declare type MAX_TEST = 8;
+declare type MAX_TEST = 10;
 
 /**
  * The default rules for the `describe` function.
