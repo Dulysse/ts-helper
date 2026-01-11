@@ -174,7 +174,8 @@ declare type FilterAllowedChars<TString extends string> = ReplaceMap<
 >;
 
 /**
- * - Converts a string to `Kebab_case`. (This means that spaces are replaced with underscores and all characters are converted to ${@link Lowercase} and are {@link UnAccent}.)
+ * Converts a string to `Kebab_case`.
+ * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules, you can found an example of implementation there and a Typescript implementation example below.*
  * @template TString The string to convert to `Kebab_case`.
  *
  *

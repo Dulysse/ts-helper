@@ -29,7 +29,8 @@ Test.Describe(
 );
 
 /**
- * - Converts a string to `snake_case`. (This means that all words are in lower case and separated by underscores `_`.)
+ * Converts a string to `snake_case`.
+ * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules for kebab-case applied to snake_case, you can found an example of implementation there and a Typescript implementation example below.*
  * @template TString The string to convert to `snake_case`.
  *
  *
