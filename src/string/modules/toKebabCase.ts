@@ -36,6 +36,12 @@ Test.Describe(
 		"i-am-edi-t22222-ing-aaa",
 		typeof Test.Out.PASS
 	>(),
+	Test.It<ToKebabCase<`demo ${string}`>, string, typeof Test.Out.PASS>(),
+	// TODO: ask copilot to fix this: Test.It<
+	// 	ToKebabCase<'d5Z3Rh,iLw{*zOdb&JwWpF7(DONLMN&'>,
+	// 	'd5-z-3-rh-i-lw-z-odb-jw-wp-f-7-donlmn',
+	// 	typeof Test.Out.PASS
+	// >(),
 );
 
 declare type _IsSkipKebabifyChar<TChar extends string> = OrAll<
