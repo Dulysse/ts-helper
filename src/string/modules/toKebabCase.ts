@@ -37,11 +37,11 @@ Test.Describe(
 		typeof Test.Out.PASS
 	>(),
 	Test.It<ToKebabCase<`demo ${string}`>, string, typeof Test.Out.PASS>(),
-	// TODO: ask copilot to fix this: Test.It<
-	// 	ToKebabCase<'d5Z3Rh,iLw{*zOdb&JwWpF7(DONLMN&'>,
-	// 	'd5-z-3-rh-i-lw-z-odb-jw-wp-f-7-donlmn',
-	// 	typeof Test.Out.PASS
-	// >(),
+	Test.It<
+		ToKebabCase<"D5Z3Rh,iLw{*zOdb&JwWpG8(DONLMN&">,
+		"d-5-z-3-rh-i-lw-z-odb-jw-wp-g-8-donlmn",
+		typeof Test.Out.PASS
+	>(),
 );
 
 declare type _IsSkipKebabifyChar<TChar extends string> = OrAll<
@@ -75,6 +75,15 @@ declare type _PeekKind<TArray extends string[]> = TArray extends [
 	? _CharKind<Next>
 	: null;
 
+declare type _PeekNextNonSepKind<TArray extends string[]> = TArray extends [
+	infer Head extends string,
+	...infer Tail extends string[],
+]
+	? _CharKind<Head> extends "sep"
+		? _PeekNextNonSepKind<Tail>
+		: _CharKind<Head>
+	: null;
+
 declare type _ToKebabCase<
 	TStringAsArray extends string[],
 	TResult extends string = "",
@@ -97,13 +106,21 @@ declare type _ToKebabCase<
 						"digit"
 					>
 				: TCurrentKind extends "letters"
-					? _ToKebabCase<
-							Tail,
-							TResult,
-							`${TCurrentWord}${Head}`,
-							"digits",
-							"digit"
-						>
+					? _PeekNextNonSepKind<Tail> extends "upper"
+						? _ToKebabCase<
+								Tail,
+								_AppendWord<TResult, TCurrentWord>,
+								Head,
+								"digits",
+								"digit"
+							>
+						: _ToKebabCase<
+								Tail,
+								TResult,
+								`${TCurrentWord}${Head}`,
+								"digits",
+								"digit"
+							>
 					: _ToKebabCase<Tail, TResult, Head, "digits", "digit">
 			: _CharKind<Head> extends "lower"
 				? TCurrentKind extends "digits"
@@ -190,10 +207,10 @@ declare type FilterAllowedChars<TString extends string> = ReplaceMap<
  * import type { Str } from "@dulysse1/ts-helper";
  *
  * // Typescript implementation example:
- * const toKebabCase = <T extends string>(str: T): Str.ToKebabCase<T> => str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map((x) => x.toLowerCase())
-    .join("-") as Str.ToKebabCase<T>;
+ * const toKebabCase = <T extends string>(str: T): Str.ToKebabCase<T> => (str
+    ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    ?.map((x) => x.toLowerCase())
+    ?.join("-") ?? "") as Str.ToKebabCase<T>;
  * 
  * // More examples:
  * type A = Str.ToKebabCase<"This text will be converted into kebab-case">; // "this-text-will-be-converted-into-kebab-case"
