@@ -42,9 +42,9 @@ Test.Describe(
  * // Typescript implementation example:
  * const toPascalCase = <T extends string>(str: T): ToPascalCase<T> => {
  *	return (str
- *		.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+ *		?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
  *		?.map(word => word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase())
- *		.join("") ?? "") as ToPascalCase<T>;
+ *		?.join("") ?? "") as ToPascalCase<T>;
  *};
  *
  * // More examples:

@@ -205,13 +205,13 @@ declare type FilterAllowedChars<TString extends string> = ReplaceMap<
  * const toCamelCase = <T extends string>(str: T): Str.ToCamelCase<T> => {
  *	const camelCaseString =
  *		str
- *			.match(
+ *			?.match(
  *				/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g,
  *			)
  *			?.map(
  *				word => word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase(),
  *			)
- *			.join("") ?? "";
+ *			?.join("") ?? "";
  *	return (camelCaseString.slice(0, 1).toLowerCase() +
  *	camelCaseString.slice(1)) as Str.ToCamelCase<T>;
  *};
