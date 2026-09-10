@@ -10,6 +10,11 @@ Test.Describe(
 	Test.It<Range<2, 0>, [2, 1, 0], typeof Test.Out.PASS>(),
 	Test.It<Range<2, 4>, [2, 3, 4], typeof Test.Out.PASS>(),
 	Test.It<Range<2, -5>, [2, 1, 0, -1, -2, -3, -4, -5], typeof Test.Out.PASS>(),
+	Test.It<Range<-2, 2>, [-2, -1, 0, 1, 2], typeof Test.Out.PASS>(),
+	Test.It<Range<0, 0>, [0], typeof Test.Out.PASS>(),
+	Test.It<Range<-2, -2>, [-2], typeof Test.Out.PASS>(),
+	Test.It<Range<2.5, 5>, never, typeof Test.Out.PASS>(),
+	Test.It<Range<2, 5.5>, never, typeof Test.Out.PASS>(),
 );
 
 export declare type AscRange<
@@ -51,11 +56,11 @@ export declare type DescRange<
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Range<From extends number, To extends number> =
-	And<IsValidNumberInput<From>, IsValidNumberInput<To>> extends true
-		? Or<IsFloat<From>, IsFloat<To>> extends false
+	Or<IsFloat<From>, IsFloat<To>> extends false
+		? And<IsValidNumberInput<From>, IsValidNumberInput<To>> extends true
 			? {
 					true: AscRange<From, To>;
 					false: DescRange<From, To>;
 				}[`${LowerEq<From, To> extends boolean ? LowerEq<From, To> : boolean}`]
 			: number[]
-		: number[];
+		: never;

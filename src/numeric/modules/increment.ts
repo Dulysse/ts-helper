@@ -13,6 +13,7 @@ import type {
 	ParseFloat,
 } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
+import type { Satisfy } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -23,8 +24,10 @@ Test.Describe(
 	Test.It<Increment<1.902>, number, typeof Test.Out.PASS>(),
 );
 
-export declare type NextPositive<TNumber extends number> =
-	BuildTuple<TNumber> extends [...infer U] ? [...U, 0]["length"] : never;
+export declare type NextPositive<TNumber extends number> = Satisfy<
+	[...BuildTuple<TNumber>, unknown]["length"],
+	number
+>;
 
 declare type Tail<TNumber extends number> = {
 	true: NextPositive<TNumber>;
