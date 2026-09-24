@@ -1,4 +1,4 @@
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -29,7 +29,7 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsExactString<TString extends string> = Equal<
+export declare type IsExactString<TString extends string> = IsEqual<
 	TString,
 	string
 >;

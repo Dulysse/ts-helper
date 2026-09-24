@@ -1,7 +1,7 @@
 import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 import type { Range } from "@/numeric";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -25,7 +25,7 @@ declare type _Filter<
 	TFilter,
 	TResult extends DefaultArrayType = [],
 > =
-	Equal<TArray, []> extends true
+	IsEqual<TArray, []> extends true
 		? TResult
 		: TArray extends [infer Head, ...infer Tail]
 			? _Filter<
@@ -33,7 +33,9 @@ declare type _Filter<
 					TFilter,
 					[
 						...TResult,
-						...(Equal<Extract<Head, TFilter>, Head> extends true ? [Head] : []),
+						...(IsEqual<Extract<Head, TFilter>, Head> extends true
+							? [Head]
+							: []),
 					]
 				>
 			: never;

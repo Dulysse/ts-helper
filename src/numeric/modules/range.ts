@@ -1,4 +1,4 @@
-import type { And, Equal, Or } from "@/operator";
+import type { And, IsEqual, Or } from "@/operator";
 
 import type { IsValidNumberInput } from "../utils";
 import type { LowerEq, Increment, Decrement, IsFloat } from "@/numeric";
@@ -22,7 +22,7 @@ export declare type AscRange<
 	To extends number,
 	TResult extends number[] = [],
 > =
-	Equal<From, To> extends true
+	IsEqual<From, To> extends true
 		? [...TResult, From]
 		: AscRange<Increment<From>, To, [...TResult, From]>;
 
@@ -31,7 +31,7 @@ export declare type DescRange<
 	To extends number,
 	TResult extends number[] = [],
 > =
-	Equal<From, To> extends true
+	IsEqual<From, To> extends true
 		? [...TResult, From]
 		: DescRange<Decrement<From>, To, [...TResult, From]>;
 

@@ -1,6 +1,6 @@
 import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -15,7 +15,7 @@ declare type IncludesInTuple<
 	TArray extends DefaultArrayType,
 	TIncluded,
 > = TArray extends [infer Head, ...infer Tail]
-	? Equal<Head, TIncluded> extends true
+	? IsEqual<Head, TIncluded> extends true
 		? true
 		: Head extends TIncluded
 			? boolean

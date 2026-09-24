@@ -1,7 +1,7 @@
 import type { IsTuple, ToUnion } from "@/array";
 import type { DefaultArrayType } from "@/array/utils";
 import type { NextPositive } from "@/numeric/modules/increment";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -18,7 +18,7 @@ declare type _Count<
 	TElement,
 	TResult extends number = 0,
 > = TArray extends [infer Head, ...infer Tail]
-	? Equal<Head, TElement> extends true
+	? IsEqual<Head, TElement> extends true
 		? _Count<Tail, TElement, NextPositive<TResult>>
 		: _Count<Tail, TElement, TResult>
 	: TResult;

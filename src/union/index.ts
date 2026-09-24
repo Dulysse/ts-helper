@@ -6,6 +6,7 @@ import type { First } from "./modules/first";
 import type { IsUnion } from "./modules/isUnion";
 import type { Through } from "./modules/through";
 import type { Has } from "./modules/has";
+import type { OneOf } from "./modules/oneOf";
 
 /**
  * #### ✨ List of `ts-helper` union types ✨:
@@ -17,6 +18,7 @@ import type { Has } from "./modules/has";
  * - `IsUnion`
  * - `Through`
  * - `Has`
+ * - `OneOf`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -26,7 +28,7 @@ import type { Has } from "./modules/has";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Union {
-	export { Last, Exclude, ToArray, Count, First, IsUnion, Through, Has };
+	export { Last, Exclude, ToArray, Count, First, IsUnion, Through, Has, OneOf };
 }
 
-export { Last, Exclude, ToArray, Count, First, IsUnion, Through, Has };
+export { Last, Exclude, ToArray, Count, First, IsUnion, Through, Has, OneOf };

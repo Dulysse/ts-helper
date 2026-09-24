@@ -1,4 +1,5 @@
 import type { AsciiCode, AsciiRange } from "@/string";
+import type { SpecialCharMap } from "@/string/utils";
 
 /**
  * - This module provides a type definition for alphanumeric characters.
@@ -42,15 +43,16 @@ export declare type Alphanumeric = {
 };
 
 /**
- * Intercection of uppercase and lowercase strings to represent special characters.
- * Includes all characters that are neither uppercase nor lowercase letters (specials, numbers).
+ * Union of non-alphanumeric characters (special punctuation and symbols).
+ * This type is the union of the keys defined in `SpecialCharMap` (see string utils).
+ * Example values: "-", "@", "#", "!", etc.
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
  * const specialChar: Str.Special = "@"; // Valid
  * const anotherSpecialChar: Str.Special = "a"; // Error
- * const numberChar: Str.Special = "1"; // Valid
+ * const numberChar: Str.Special = "1"; // Error
  * ```
  * ---------------------------
  * Do you have any questions about `Special` usage ?
@@ -60,4 +62,4 @@ export declare type Alphanumeric = {
  * | [my github](https://github.com/Dulysse)
  * | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Special = Uppercase<string> & Lowercase<string>;
+export declare type Special = keyof SpecialCharMap;

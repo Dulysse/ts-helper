@@ -1,5 +1,3 @@
-import type { Equal } from "@/operator";
-
 import { Test } from "@/test";
 
 Test.Describe(
@@ -29,9 +27,10 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Not<TOperator extends boolean> =
-	Equal<TOperator, boolean> extends true
-		? boolean
-		: TOperator extends true
-			? false
-			: true;
+export declare type Not<TOperator extends boolean> = [boolean] extends [
+	TOperator,
+]
+	? boolean
+	: [TOperator] extends [true]
+		? false
+		: true;

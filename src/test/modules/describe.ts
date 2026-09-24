@@ -65,4 +65,4 @@ export declare function DescribeFn<
 	...test: FillRange<MIN_TEST, MAX_TEST, Out.PASS>
 ): void;
 
-export const Describe: typeof DescribeFn = (() => {}) as typeof DescribeFn;
+export const Describe = (() => {}) as unknown as typeof DescribeFn;

@@ -1,6 +1,6 @@
 import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -17,7 +17,7 @@ declare type _Some<TArray extends DefaultArrayType, TFilter> = TArray extends [
 	infer Head,
 	...infer Tail,
 ]
-	? Equal<Extract<Head, TFilter>, Head> extends true
+	? IsEqual<Extract<Head, TFilter>, Head> extends true
 		? true
 		: _Some<Tail, TFilter>
 	: false;

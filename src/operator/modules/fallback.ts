@@ -1,4 +1,4 @@
-import type { Equal, If } from "@/operator";
+import type { IsEqual, If } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -29,4 +29,4 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Fallback<A, B> = If<Equal<A, unknown>, B, A>;
+export declare type Fallback<A, B> = If<IsEqual<A, unknown>, B, A>;

@@ -1,7 +1,7 @@
 import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
 import { NextPositive } from "@/numeric/modules/increment";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -19,7 +19,7 @@ declare type _IndexOf<
 	TFilter,
 	TIndex extends number = 0,
 > = TArray extends [infer Head, ...infer Tail]
-	? Equal<Extract<Head, TFilter>, Head> extends true
+	? IsEqual<Extract<Head, TFilter>, Head> extends true
 		? TIndex
 		: _IndexOf<Tail, TFilter, NextPositive<TIndex>>
 	: -1;

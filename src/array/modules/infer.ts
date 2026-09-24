@@ -1,7 +1,7 @@
 import type { DefaultArrayType } from "@/array/utils";
 import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
-import type { Equal, Not, Or } from "@/operator";
+import type { IsEqual, Not, Or } from "@/operator";
 import type { IsTuple, Length, Unique } from "@/array";
 import type { HasKey } from "@/object";
 import type { $internal } from "@/brand/modules/symbol";
@@ -110,7 +110,7 @@ export declare type Infer<
 						}
 					: Infer<TArray, Omit<Rules, "maxLength">>
 				: Rules["unique"] extends true
-					? Equal<TArray, Unique<TArray>> extends false
+					? IsEqual<TArray, Unique<TArray>> extends false
 						? {
 								[$internal]: `The array must have only unique elements.`;
 							}

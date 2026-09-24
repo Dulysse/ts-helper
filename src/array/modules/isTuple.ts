@@ -1,4 +1,4 @@
-import type { Equal, Or } from "@/operator";
+import type { IsEqual, Or } from "@/operator";
 import type { DefaultArrayType } from "../utils";
 
 import { Test } from "@/test";
@@ -36,8 +36,8 @@ export declare type IsTuple<TArray extends DefaultArrayType> =
 			TArray extends readonly [unknown, ...unknown[]] ? true : false
 		>,
 		Or<
-			Equal<TArray, []> extends true ? true : false,
-			Equal<TArray, readonly []> extends true ? true : false
+			IsEqual<TArray, []> extends true ? true : false,
+			IsEqual<TArray, readonly []> extends true ? true : false
 		>
 	> extends true
 		? true

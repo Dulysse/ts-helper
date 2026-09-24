@@ -1,5 +1,5 @@
 import type { ParseInt } from "@/numeric";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -32,7 +32,7 @@ Test.Describe(
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type Abs<TNumber extends number> = TNumber extends number
-	? Equal<TNumber, number> extends true
+	? IsEqual<TNumber, number> extends true
 		? number
 		: ParseInt<`${TNumber}`>
 	: never;

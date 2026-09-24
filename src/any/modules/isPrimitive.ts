@@ -1,4 +1,4 @@
-import type { Equal, OrAll } from "@/operator";
+import type { IsEqual, OrAll } from "@/operator";
 import type { IsUnion, ToArray } from "@/union";
 
 import { Test } from "@/test";
@@ -19,15 +19,15 @@ Test.Describe(
  */
 declare type IsUniquePrimitive<T> = OrAll<
 	[
-		Equal<T, string>,
-		Equal<T, number>,
-		Equal<T, boolean>,
-		Equal<T, bigint>,
-		Equal<T, symbol>,
-		Equal<T, never>,
-		Equal<T, unknown>,
-		Equal<T, null>,
-		Equal<T, undefined>,
+		IsEqual<T, string>,
+		IsEqual<T, number>,
+		IsEqual<T, boolean>,
+		IsEqual<T, bigint>,
+		IsEqual<T, symbol>,
+		IsEqual<T, never>,
+		IsEqual<T, unknown>,
+		IsEqual<T, null>,
+		IsEqual<T, undefined>,
 	]
 >;
 
@@ -38,7 +38,7 @@ declare type CheckTuplePrimitive<
 	T extends DefaultArrayType,
 	TResult extends boolean = IsUniquePrimitive<T[0]>,
 > = T extends [infer Head, ...infer Tail]
-	? Equal<TResult, IsUniquePrimitive<Head>> extends true
+	? IsEqual<TResult, IsUniquePrimitive<Head>> extends true
 		? CheckTuplePrimitive<Tail, TResult>
 		: boolean
 	: TResult;

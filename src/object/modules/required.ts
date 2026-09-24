@@ -1,4 +1,4 @@
-import type { And, Equal } from "@/operator";
+import type { And, IsEqual } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
@@ -50,7 +50,7 @@ export declare type Required<
 	TMode extends ObjectMode = "flat",
 > = Prettify<{
 	[key in keyof TObject]-?: And<
-		Equal<TMode, "deep"> extends true ? true : false,
+		IsEqual<TMode, "deep"> extends true ? true : false,
 		NonNullable<TObject[key]> extends Record<string, unknown> ? true : false
 	> extends true
 		? Required<NonNullable<TObject[key]>, TMode>

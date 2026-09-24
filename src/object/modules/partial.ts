@@ -1,4 +1,4 @@
-import type { And, Equal, Satisfy } from "@/operator";
+import type { And, IsEqual, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
@@ -50,7 +50,7 @@ export declare type Partial<
 	TMode extends ObjectMode = "flat",
 > = Prettify<{
 	[key in keyof TObject]?: And<
-		Equal<TMode, "deep"> extends true ? true : false,
+		IsEqual<TMode, "deep"> extends true ? true : false,
 		TObject[key] extends object ? true : false
 	> extends true
 		? Partial<Satisfy<TObject[key], object>, TMode>

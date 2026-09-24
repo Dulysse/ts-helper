@@ -1,6 +1,6 @@
 import type { Implicit } from "@/any";
 import type { $internal } from "@/brand/modules/symbol";
-import type { Equal, Fallback, Satisfy } from "@/operator";
+import type { IsEqual, Fallback, Satisfy } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -77,7 +77,7 @@ declare interface DefaultTreeConfig extends TreeConfig {
  * Infers and validates the TreeConfig type
  */
 declare type InferTreeConfigError<TConfig extends TreeConfig> =
-	Equal<TConfig["showValues"], boolean> extends true
+	IsEqual<TConfig["showValues"], boolean> extends true
 		? {
 				[$internal]: "'showValues' must be a boolean literal (true or false)";
 			}
@@ -109,7 +109,7 @@ export declare type Tree<
 	TConfig extends TreeConfig = DefaultTreeConfig,
 > =
 	InferTreeConfigError<TConfig> extends infer TError
-		? Equal<TError, undefined> extends true
+		? IsEqual<TError, undefined> extends true
 			? {
 					[K in keyof TObject]: TObject[K] extends object
 						? `${Satisfy<K, string | number | bigint | boolean | null | undefined>}${Fallback<TConfig["pathSeparator"], DefaultTreeConfig["pathSeparator"]>}${Satisfy<Tree<TObject[K], TConfig>, string>}`

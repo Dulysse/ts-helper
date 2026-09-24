@@ -1,4 +1,4 @@
-import type { Equal, And } from "@/operator";
+import type { IsEqual, And } from "@/operator";
 
 import type {
 	Decrement,
@@ -27,7 +27,7 @@ Test.Describe(
 );
 
 declare type PickNumerator<TNumber extends number> =
-	Equal<TNumber, ParseInt<`${TNumber}`>> extends true
+	IsEqual<TNumber, ParseInt<`${TNumber}`>> extends true
 		? `${TNumber}`
 		: `${TNumber}` extends `${infer Numerator}.${string}`
 			? Numerator
@@ -54,7 +54,7 @@ export declare type _Subtract<
 							false: ParseFloat<`${PickNumerator<Decrement<TNumber1>>}.${ParseDecimal<_Subtract<DecimalOf<TDecimal2>, TDecimal1>>}`>;
 						};
 					}[TSign][`${GreaterEq<TDecimal1, DecimalOf<TDecimal2>>}`]
-				: Equal<TNumber2, 0> extends true
+				: IsEqual<TNumber2, 0> extends true
 					? TNumber1
 					: _Subtract<
 							Decrement<TNumber1>,

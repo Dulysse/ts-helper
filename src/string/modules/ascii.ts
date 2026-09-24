@@ -7,7 +7,7 @@ import type {
 	GreaterEq,
 	LowerEq,
 } from "@/numeric";
-import type { AndAll, Equal, Not } from "@/operator";
+import type { AndAll, IsEqual, Not } from "@/operator";
 import type { IsUnion } from "@/union";
 
 import { Test } from "@/test";
@@ -42,7 +42,7 @@ declare type _AsciiRange<
 	TRange extends number[],
 	TResult extends (keyof AsciiMap)[] = [],
 > =
-	Equal<TRange, []> extends true
+	IsEqual<TRange, []> extends true
 		? TResult
 		: TRange extends [
 					infer Head extends keyof Reversed<AsciiMap>,
@@ -76,12 +76,12 @@ export declare type AsciiRange<From extends number, To extends number> =
 	AndAll<
 		[
 			Not<IsUnion<From>>,
-			Not<Equal<From, number>>,
+			Not<IsEqual<From, number>>,
 			IsInteger<From>,
 			IsPositive<From>,
 			GreaterEq<From, 0>,
 			Not<IsUnion<To>>,
-			Not<Equal<To, number>>,
+			Not<IsEqual<To, number>>,
 			IsInteger<To>,
 			IsPositive<To>,
 			LowerEq<To, 255>,

@@ -1,4 +1,4 @@
-import { Equal } from "@/operator";
+import { IsEqual } from "@/operator";
 import type { IsExactString } from "@/string";
 
 import { Test } from "@/test";
@@ -91,13 +91,13 @@ declare type _Filter<
 	TOptions extends FilterOptions,
 	TResult extends string = "",
 > =
-	Equal<TString, string> extends true
+	IsEqual<TString, string> extends true
 		? `${TResult}${string}`
 		: TString extends `${infer Head}${infer Tail extends string}`
 			? _Filter<
 					Tail,
 					TOptions,
-					Equal<Head, string> extends true
+					IsEqual<Head, string> extends true
 						? `${TResult}${Head}`
 						: TOptions extends {
 									allowedChars: infer TAllowedChars extends string[];

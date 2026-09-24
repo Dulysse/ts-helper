@@ -1,4 +1,4 @@
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -29,4 +29,4 @@ Test.Describe(
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsZero<TNumber extends number> =
-	Equal<TNumber, 0> extends true ? true : false;
+	IsEqual<TNumber, 0> extends true ? true : false;

@@ -1,5 +1,5 @@
 import type { Last } from "@/union";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 import type { Range } from "@/numeric";
 
 import { Test } from "@/test";
@@ -31,4 +31,4 @@ Test.Describe(
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsUnion<TUnion> =
-	Equal<TUnion, Last<TUnion>> extends true ? false : true;
+	IsEqual<TUnion, Last<TUnion>> extends true ? false : true;

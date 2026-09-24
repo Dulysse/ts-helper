@@ -1,6 +1,6 @@
 import type { DefaultArrayType, DefaultArrayTypeSeparator } from "../utils";
 import type { IsTuple } from "@/array";
-import type { Equal, Or, Satisfy } from "@/operator";
+import type { IsEqual, Or, Satisfy } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -18,13 +18,13 @@ declare type _Join<
 	TResult extends string = "",
 > =
 	IsTuple<TArray> extends true
-		? Equal<TArray, []> extends true
+		? IsEqual<TArray, []> extends true
 			? TResult
 			: TArray extends [infer Head, ...infer Tail]
 				? _Join<
 						Tail,
 						TSeparator,
-						`${TResult}${Stringify<Head, TSeparator>}${Equal<
+						`${TResult}${Stringify<Head, TSeparator>}${IsEqual<
 							Tail,
 							[]
 						> extends true
@@ -41,7 +41,7 @@ declare type Stringify<
 	? _Join<T, TSeparator>
 	: T extends object
 		? "[object Object]"
-		: Or<Equal<T, undefined>, Equal<T, null>> extends true
+		: Or<IsEqual<T, undefined>, IsEqual<T, null>> extends true
 			? ""
 			: `${Satisfy<T, string | number | bigint | boolean>}`;
 

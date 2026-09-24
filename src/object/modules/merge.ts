@@ -1,4 +1,4 @@
-import type { And, Satisfy, Equal } from "@/operator";
+import type { And, Satisfy, IsEqual } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
@@ -70,7 +70,7 @@ export declare type Merge<
 	> extends true
 		? And<
 				And<
-					Equal<TMode, "deep"> extends true ? true : false,
+					IsEqual<TMode, "deep"> extends true ? true : false,
 					TObjectA[Satisfy<key, keyof TObjectA>] extends object ? true : false
 				>,
 				TObjectB[Satisfy<key, keyof TObjectB>] extends object ? true : false

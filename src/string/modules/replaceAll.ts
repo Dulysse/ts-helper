@@ -1,5 +1,5 @@
 import type { ContainExactString, Replace } from "@/string";
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 import type { IsUnion } from "@/union";
 
 import { Test } from "@/test";
@@ -42,6 +42,6 @@ export declare type ReplaceAll<
 			? TString extends Replace<TString, From, To>
 				? TString
 				: ReplaceAll<Replace<TString, From, To>, From, To>
-			: Equal<Replace<TString, From, To>, TString> extends true
+			: IsEqual<Replace<TString, From, To>, TString> extends true
 				? TString
 				: ReplaceAll<Replace<TString, From, To>, From, To>;

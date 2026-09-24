@@ -1,6 +1,6 @@
 import type { Prettify } from "@/object";
 import type { ObjectMode } from "@/object/utils";
-import type { And, Equal, Satisfy } from "@/operator";
+import type { And, IsEqual, Satisfy } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -76,7 +76,7 @@ export declare type Update<
 		? NewValue
 		: And<
 					TObject[key] extends object ? true : false,
-					Equal<TMode, "deep">
+					IsEqual<TMode, "deep">
 			  > extends true
 			? Update<Satisfy<TObject[key], object>, Key, NewValue, TMode>
 			: TObject[key];

@@ -6,7 +6,7 @@ import type {
 	ParseInt,
 } from "@/numeric";
 import type { NextPositive } from "@/numeric/modules/increment";
-import type { Equal, Not, Or } from "@/operator";
+import type { IsEqual, Not, Or } from "@/operator";
 import type { Split, Width } from "@/string";
 import type { IsUnion } from "@/union";
 
@@ -25,7 +25,7 @@ export declare type IsValidNumberInput<TNumber extends number> =
 	IsUnion<TNumber> extends true
 		? false
 		: TNumber extends number
-			? Equal<TNumber, number> extends true
+			? IsEqual<TNumber, number> extends true
 				? false
 				: `${TNumber}` extends `${infer _}.${infer Decimal}`
 					? Lower<Width<Decimal>, 3>
@@ -64,7 +64,7 @@ export declare type BuildTuple<
 	V = unknown,
 	T extends unknown[] = [],
 > =
-	Equal<L, number> extends true
+	IsEqual<L, number> extends true
 		? never
 		: T["length"] extends L
 			? T
@@ -74,7 +74,7 @@ export declare type DecimalOf<T extends string> =
 	T extends `${infer TNumber extends number}`
 		? Or<IsValidNumberInput<TNumber>, Not<IsFloat<TNumber>>> extends true
 			? Split<T> extends [`${infer Head extends number}`, ...infer Tail]
-				? Equal<Tail, []> extends true
+				? IsEqual<Tail, []> extends true
 					? ParseInt<`${Head}0`>
 					: Tail extends [`${infer Second extends number}`, ...infer Tail]
 						? ParseInt<`${Head}${Tail[0] extends `${UpperRoundingNumber}` ? NextPositive<Second> : Second}`>
@@ -101,7 +101,7 @@ Test.Describe(
 );
 
 declare type PositiveRange<N extends number, TResult extends number[] = []> =
-	Equal<N, number> extends true
+	IsEqual<N, number> extends true
 		? number[]
 		: TResult["length"] extends N
 			? TResult

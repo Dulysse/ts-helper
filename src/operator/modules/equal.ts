@@ -12,7 +12,8 @@ Test.Describe(
 );
 
 /**
- * - Check if `A` is strictly equal to `B`
+ * @warning you can use {@link IsEqual} since `v1.4.5` (Equal<any, any> = true // IsEqual<any, any> = false)
+ * - Check if `A` is strictly equal to `B` (deep equal)
  *
  * @template A The first type to compare
  * @template B The second type to compare

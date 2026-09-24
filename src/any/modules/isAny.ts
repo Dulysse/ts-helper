@@ -10,11 +10,14 @@ Test.Describe(
 	Test.It<IsAny<number>, true, typeof Test.Out.FAIL>(),
 	Test.It<IsAny<{}>, true, typeof Test.Out.FAIL>(),
 	Test.It<IsAny<[]>, true, typeof Test.Out.FAIL>(),
+	Test.It<IsAny<Implicit[]>, true, typeof Test.Out.PASS>(),
 	Test.It<IsAny<never>, true, typeof Test.Out.FAIL>(),
 );
 
+type ArrayElement<T> = T extends (infer I)[] ? I : never;
+
 /**
- * - Check if `T` is equal to `any`
+ * - Check if `T` is equal to `any` or `any[]`
  *
  * @template T - The type to check
  * @example
@@ -25,11 +28,15 @@ Test.Describe(
  * type B = Any.Is<any>; // true
  * ```
  * ---------------------------
- * Do you have any questions about `Equal` usage ?
+ * Do you have any questions about `IsEqual` usage ?
  * #### Contact me!
  * @author Ulysse Dupont -->
  *  [my email](mailto:ulyssedupont2707@gmail.com)
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type IsAny<T> = 0 extends 1 & T ? true : false;
+export declare type IsAny<T> = 0 extends 1 & T
+	? true
+	: 0 extends 1 & ArrayElement<T>
+		? true
+		: false;

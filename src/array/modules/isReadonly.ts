@@ -1,4 +1,4 @@
-import type { Equal, Not } from "@/operator";
+import type { IsEqual, Not } from "@/operator";
 import type { DefaultArrayType } from "../utils";
 import type { Readable } from "@/array";
 
@@ -32,5 +32,5 @@ Test.Describe(
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare type IsReadonly<TArray extends DefaultArrayType> = Not<
-	Equal<Readable<TArray>, TArray>
+	IsEqual<Readable<TArray>, TArray>
 >;

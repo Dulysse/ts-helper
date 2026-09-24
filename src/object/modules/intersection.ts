@@ -1,4 +1,4 @@
-import type { And, Equal, Satisfy } from "@/operator";
+import type { And, IsEqual, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
@@ -62,7 +62,7 @@ export declare type Intersection<
 	> extends true
 		? And<
 				And<
-					Equal<TMode, "deep"> extends true ? true : false,
+					IsEqual<TMode, "deep"> extends true ? true : false,
 					TObjectA[Satisfy<key, keyof TObjectA>] extends object ? true : false
 				>,
 				TObjectB[Satisfy<key, keyof TObjectB>] extends object ? true : false

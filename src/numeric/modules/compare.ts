@@ -1,6 +1,6 @@
 import type { IsFloat, IsPositive, Opposite } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
-import type { And, Equal, Satisfy } from "@/operator";
+import type { And, IsEqual, Satisfy } from "@/operator";
 import type { Split } from "@/string";
 
 import { Test } from "@/test";
@@ -42,9 +42,9 @@ export declare type GetBiggestNumber<
 	TNumber2 extends number,
 	L extends readonly number[] = [],
 > =
-	Equal<TNumber1, L["length"]> extends true
+	IsEqual<TNumber1, L["length"]> extends true
 		? Comparators.LOWER
-		: Equal<TNumber2, L["length"]> extends true
+		: IsEqual<TNumber2, L["length"]> extends true
 			? Comparators.GREATER
 			: GetBiggestNumber<TNumber1, TNumber2, [...L, 0]>;
 
@@ -53,7 +53,7 @@ export declare type _CompareDecimals<
 	TDecimal2 extends string[],
 > = TDecimal1 extends [`${infer TNumber1 extends number}`, ...infer Rest1]
 	? TDecimal2 extends [`${infer TNumber2 extends number}`, ...infer Rest2]
-		? Equal<TNumber1, TNumber2> extends true
+		? IsEqual<TNumber1, TNumber2> extends true
 			? _CompareDecimals<Satisfy<Rest1, string[]>, Satisfy<Rest2, string[]>>
 			: GetBiggestNumber<TNumber1, TNumber2>
 		: Comparators.GREATER
@@ -66,14 +66,14 @@ export declare type _ComparePositive<
 	And<IsFloat<TNumber1>, IsFloat<TNumber2>> extends true
 		? `${TNumber1}` extends `${infer Numerator1 extends number}.${infer TDecimal1}`
 			? `${TNumber2}` extends `${infer Numerator2 extends number}.${infer TDecimal2}`
-				? Equal<Numerator1, Numerator2> extends true
+				? IsEqual<Numerator1, Numerator2> extends true
 					? _CompareDecimals<Split<TDecimal1>, Split<TDecimal2>>
 					: GetBiggestNumber<Numerator1, Numerator2>
 				: never
 			: never
 		: IsFloat<TNumber1> extends true
 			? `${TNumber1}` extends `${infer Numerator extends number}.${infer Decimal extends number}`
-				? Equal<Numerator, TNumber2> extends true
+				? IsEqual<Numerator, TNumber2> extends true
 					? Decimal extends 0
 						? Comparators.EQUAL
 						: Comparators.GREATER
@@ -81,7 +81,7 @@ export declare type _ComparePositive<
 				: never
 			: IsFloat<TNumber2> extends true
 				? `${TNumber2}` extends `${infer Numerator extends number}.${infer Decimal extends number}`
-					? Equal<Numerator, TNumber1> extends true
+					? IsEqual<Numerator, TNumber1> extends true
 						? Decimal extends 0
 							? Comparators.EQUAL
 							: Comparators.LOWER
@@ -126,7 +126,7 @@ export declare type _Compare<
  */
 export declare type Compare<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
-		? Equal<TNumber1, TNumber2> extends true
+		? IsEqual<TNumber1, TNumber2> extends true
 			? Comparators.EQUAL
 			: _Compare<TNumber1, TNumber2>
 		: Comparators;

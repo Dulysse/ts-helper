@@ -1,4 +1,4 @@
-import type { Equal, OrAll } from "@/operator";
+import type { IsEqual, OrAll } from "@/operator";
 import type {
 	ContainExactString,
 	IsUpperCase,
@@ -45,7 +45,7 @@ Test.Describe(
 );
 
 declare type _IsSkipKebabifyChar<TChar extends string> = OrAll<
-	[Equal<TChar, " ">, Equal<TChar, "_">, Equal<TChar, "-">]
+	[IsEqual<TChar, " ">, IsEqual<TChar, "_">, IsEqual<TChar, "-">]
 >;
 
 declare type _CharKind<TChar extends string> =

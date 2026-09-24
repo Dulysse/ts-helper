@@ -1,6 +1,6 @@
 import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
-import type { Equal, Or } from "@/operator";
+import type { IsEqual, Or } from "@/operator";
 import type {
 	Alphanumeric,
 	ContainExactString,
@@ -164,7 +164,7 @@ export declare type Infer<
 							}
 						: Infer<TString, Omit<Rules, "maxChar">>
 					: Rules["pattern"] extends string
-						? Equal<Extract<TString, Rules["pattern"]>, TString> extends false
+						? IsEqual<Extract<TString, Rules["pattern"]>, TString> extends false
 							? {
 									[$internal]: `The string "${TString}" must match with the following pattern: "${Rules["pattern"]}".`;
 								}

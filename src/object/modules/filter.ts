@@ -1,6 +1,6 @@
 import type { Prettify } from "@/object";
 import type { ObjectMode } from "@/object/utils";
-import type { And, Equal, Satisfy } from "@/operator";
+import type { And, IsEqual, Satisfy } from "@/operator";
 
 import { Test } from "@/test";
 
@@ -78,20 +78,20 @@ export declare type Filter<
 			? key
 			: And<
 						TObject[key] extends object ? true : false,
-						Equal<TMode, "deep">
+						IsEqual<TMode, "deep">
 				  > extends true
 				? key
 				: never]: And<
 			TObject[key] extends object ? true : false,
-			Equal<TMode, "deep">
+			IsEqual<TMode, "deep">
 		> extends true
 			? Filter<Satisfy<TObject[key], object>, TSatisfy, TMode>
 			: TObject[key];
 	} extends infer TCleanedObject
 		? {
 				[K in keyof TCleanedObject as And<
-					Equal<TMode, "deep">,
-					Equal<TCleanedObject[K], {}>
+					IsEqual<TMode, "deep">,
+					IsEqual<TCleanedObject[K], {}>
 				> extends true
 					? never
 					: K]: TCleanedObject[K];

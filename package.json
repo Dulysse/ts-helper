@@ -1,7 +1,7 @@
 {
 	"name": "@dulysse1/ts-helper",
-	"version": "1.4.4",
-	"description": "Typescript library that provide typing utilities ✨",
+	"version": "1.4.5",
+	"description": "A personal TypeScript playground to explore the limits of the type system and keep growing my knowledge ✨",
 	"files": [
 		"dist"
 	],

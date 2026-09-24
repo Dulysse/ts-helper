@@ -1,4 +1,4 @@
-import type { And, AndAll, Equal, Not } from "@/operator";
+import type { And, AndAll, IsEqual, Not } from "@/operator";
 import type { ContainExactString, IsExactString } from "@/string";
 
 import { Test } from "@/test";
@@ -18,9 +18,9 @@ declare type IsUpperCaseAndWhenContainExactString<
 > = TString extends `${infer Head}${infer Tail}`
 	? AndAll<
 			[
-				Not<Equal<Head, string>>,
-				Equal<Lowercase<Head>, Head>,
-				Not<Equal<Uppercase<Head>, Head>>,
+				Not<IsEqual<Head, string>>,
+				IsEqual<Lowercase<Head>, Head>,
+				Not<IsEqual<Uppercase<Head>, Head>>,
 			]
 		> extends true
 		? false
@@ -52,8 +52,8 @@ export declare type IsUpperCase<TString extends string> =
 		: ContainExactString<TString> extends true
 			? IsUpperCaseAndWhenContainExactString<TString>
 			: And<
-						Equal<Uppercase<TString>, TString>,
-						Not<Equal<Lowercase<TString>, TString>>
+						IsEqual<Uppercase<TString>, TString>,
+						Not<IsEqual<Lowercase<TString>, TString>>
 				  > extends true
 				? true
 				: false;

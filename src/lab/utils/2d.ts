@@ -2,7 +2,7 @@ import type { Count, Fill, Flat, IsTuple } from "@/array";
 import type { Between, IsNegative, IsFloat, Greater, IsZero } from "@/numeric";
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { NextPositive } from "@/numeric/modules/increment";
-import type { And, Equal, Not, Or } from "@/operator";
+import type { And, IsEqual, Not, Or } from "@/operator";
 import type { Split } from "@/string";
 import type { IsUnion } from "@/union";
 
@@ -177,7 +177,9 @@ export declare type Cell =
  * - If the game rules are invalid, it returns an error type instead of a valid board.
  */
 export declare type Reactive2DBoard<TRules extends GameRules> =
-	Equal<Infer2DRulesErrors<TRules>, null> extends true ? Board<TRules> : never;
+	IsEqual<Infer2DRulesErrors<TRules>, null> extends true
+		? Board<TRules>
+		: never;
 
 /**
  * The `Board` type represents a two-dimensional game board based on the game rules.
@@ -204,13 +206,13 @@ export declare type Check2DVector<
 	TScore extends number = 1,
 	TNextVector extends CellVector = NextVector<TVector>[TVector["dir"]],
 > =
-	Equal<TScore, TRules["TARGET_SCORE"]> extends true
+	IsEqual<TScore, TRules["TARGET_SCORE"]> extends true
 		? true
 		: And<
 					Between<TNextVector["row"], 0, PreviousPositive<TRules["ROW"]>>,
 					Between<TNextVector["col"], 0, PreviousPositive<TRules["COL"]>>
 			  > extends true
-			? Equal<
+			? IsEqual<
 					TBoard[TNextVector["row"]][TNextVector["col"]],
 					TVector["player"]
 				> extends true
@@ -231,11 +233,11 @@ export declare type Check2DVectors<
 > =
 	IsTuple<TBoard> extends true
 		? And<
-				Equal<TColIndex, TRules["COL"]>,
-				Equal<TRowIndex, TRules["ROW"]>
+				IsEqual<TColIndex, TRules["COL"]>,
+				IsEqual<TRowIndex, TRules["ROW"]>
 			> extends true
 			? null
-			: Equal<TColIndex, TRules["COL"]> extends true
+			: IsEqual<TColIndex, TRules["COL"]> extends true
 				? Check2DVectors<TBoard, TRules, NextPositive<TRowIndex>, 0>
 				: TBoard[TRowIndex][TColIndex] extends TRules["PLAYERS"][number]
 					? Check2DVector<
@@ -375,7 +377,7 @@ declare type CheckColumnGravity<
 		? true
 		: false,
 > =
-	Equal<TRowIndex, TRules["ROW"]> extends true
+	IsEqual<TRowIndex, TRules["ROW"]> extends true
 		? true
 		: TBoard[TRowIndex][TColIndex] extends TRules["PLAYERS"][number]
 			? CheckColumnGravity<
@@ -407,7 +409,7 @@ declare type CheckGravity<
 	TColIndex extends number = 0,
 > =
 	IsTuple<TBoard> extends true
-		? Equal<NextPositive<TColIndex>, TRules["COL"]> extends true
+		? IsEqual<NextPositive<TColIndex>, TRules["COL"]> extends true
 			? true
 			: CheckColumnGravity<TBoard, TRules, TColIndex> extends true
 				? CheckGravity<TBoard, TRules, NextPositive<TColIndex>>
@@ -426,11 +428,11 @@ export declare type Infer2DBoardErrors<
 > =
 	TBoard extends Board<TRules>
 		? Or<
-				Equal<
+				IsEqual<
 					CountFlatten<TBoard, TRules["PLAYERS"][0]>,
 					CountFlatten<TBoard, TRules["PLAYERS"][1]>
 				>,
-				Equal<
+				IsEqual<
 					CountFlatten<TBoard, TRules["PLAYERS"][0]>,
 					NextPositive<CountFlatten<TBoard, TRules["PLAYERS"][1]>>
 				>
@@ -463,20 +465,20 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 			? ERRORS<TRules>["RULE_UNION"]
 			: Or<
 						Or<
-							Equal<TRules["ROW"], GameRules["ROW"]>,
-							Equal<TRules["COL"], GameRules["COL"]>
+							IsEqual<TRules["ROW"], GameRules["ROW"]>,
+							IsEqual<TRules["COL"], GameRules["COL"]>
 						>,
 						Or<
 							Or<
-								Equal<TRules["PLAYERS"], GameRules["PLAYERS"]>,
-								Equal<TRules["TARGET_SCORE"], GameRules["TARGET_SCORE"]>
+								IsEqual<TRules["PLAYERS"], GameRules["PLAYERS"]>,
+								IsEqual<TRules["TARGET_SCORE"], GameRules["TARGET_SCORE"]>
 							>,
 							Or<
 								Or<
-									Equal<TRules["PLAYERS"][0], GameRules["PLAYERS"][0]>,
-									Equal<TRules["PLAYERS"][1], GameRules["PLAYERS"][1]>
+									IsEqual<TRules["PLAYERS"][0], GameRules["PLAYERS"][0]>,
+									IsEqual<TRules["PLAYERS"][1], GameRules["PLAYERS"][1]>
 								>,
-								Equal<TRules["EMPTY_CELL"], GameRules["EMPTY_CELL"]>
+								IsEqual<TRules["EMPTY_CELL"], GameRules["EMPTY_CELL"]>
 							>
 						>
 				  > extends true
@@ -493,7 +495,7 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 									>
 							  > extends true
 							? ERRORS<TRules>["RULE_SCORE_INT"]
-							: Not<Equal<TRules["PLAYERS"]["length"], 2>> extends true
+							: Not<IsEqual<TRules["PLAYERS"]["length"], 2>> extends true
 								? ERRORS<TRules>["RULE_PLAYER"]
 								: TRules["PLAYERS"] extends [
 											infer P1 extends string,
@@ -501,17 +503,17 @@ export declare type Infer2DRulesErrors<TRules extends GameRules> =
 									  ]
 									? Or<
 											Or<
-												Not<Equal<Split<P1>["length"], 1>>,
-												Not<Equal<Split<P2>["length"], 1>>
+												Not<IsEqual<Split<P1>["length"], 1>>,
+												Not<IsEqual<Split<P2>["length"], 1>>
 											>,
-											Not<Equal<Split<TRules["EMPTY_CELL"]>["length"], 1>>
+											Not<IsEqual<Split<TRules["EMPTY_CELL"]>["length"], 1>>
 										> extends true
 										? ERRORS<TRules>["RULE_PLAYER_SINGLE_CHAR"]
 										: Or<
-													Equal<P1, P2>,
+													IsEqual<P1, P2>,
 													Or<
-														Equal<P1, TRules["EMPTY_CELL"]>,
-														Equal<P2, TRules["EMPTY_CELL"]>
+														IsEqual<P1, TRules["EMPTY_CELL"]>,
+														IsEqual<P2, TRules["EMPTY_CELL"]>
 													>
 											  > extends true
 											? ERRORS<TRules>["RULE_UNIQUE_PLAYER"]

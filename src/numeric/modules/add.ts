@@ -1,4 +1,4 @@
-import type { Equal, And } from "@/operator";
+import type { IsEqual, And } from "@/operator";
 import type {
 	Increment,
 	Decrement,
@@ -36,7 +36,7 @@ export declare type _Add<TNumber1 extends number, TNumber2 extends number> =
 							: ParseFloat<`${ParseInt<`${TNumber1}`>}.${ParseDecimal<D>}`>
 						: never
 					: ParseFloat<`${TNumber1}.${DecimalOf<TDecimal2>}`>
-				: Equal<TNumber2, 0> extends true
+				: IsEqual<TNumber2, 0> extends true
 					? TNumber1
 					: _Add<Increment<TNumber1>, Decrement<TNumber2>>
 			: number

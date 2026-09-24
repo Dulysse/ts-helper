@@ -1,4 +1,4 @@
-import type { Equal } from "@/operator";
+import type { IsEqual } from "@/operator";
 import type { ContainExactString } from "@/string";
 import type { TDefaultStringSeparator } from "../utils";
 
@@ -17,7 +17,10 @@ declare type _Split<
 	TResult extends string[] = [],
 > = TString extends `${infer Start}${TSeparator}${infer Tail}`
 	? _Split<Tail, TSeparator, [...TResult, Start]>
-	: [...TResult, ...(Equal<TString, TSeparator> extends true ? [] : [TString])];
+	: [
+			...TResult,
+			...(IsEqual<TString, TSeparator> extends true ? [] : [TString]),
+		];
 
 /**
  * - Split a type `TString` to an array for each `TSeparator` string apparition

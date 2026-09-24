@@ -8,10 +8,12 @@ import type { AndAll } from "./modules/andAll";
 import type { OrAll } from "./modules/orAll";
 import type { If } from "./modules/if";
 import type { Fallback } from "./modules/fallback";
+import type { IsEqual } from "./modules/is-equal";
+import type { IsAssignable } from "./modules/is-assignable";
 
 /**
  * #### ✨ List of `ts-helper` operator types ✨:
- * - `Equal`
+ * - `Equal` (deprecated since v1.4.5)
  * - `Satisfy`
  * - `And`
  * - `Or`
@@ -21,6 +23,8 @@ import type { Fallback } from "./modules/fallback";
  * - `OrAll`
  * - `If`
  * - `Fallback`
+ * - `IsEqual`
+ * - `IsAssignable`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
  * #### Contact me!
@@ -30,7 +34,33 @@ import type { Fallback } from "./modules/fallback";
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
 export declare namespace Op {
-	export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If, Fallback };
+	export {
+		Equal,
+		Satisfy,
+		And,
+		Or,
+		Not,
+		Xor,
+		AndAll,
+		OrAll,
+		If,
+		Fallback,
+		IsEqual,
+		IsAssignable,
+	};
 }
 
-export { Equal, Satisfy, And, Or, Not, Xor, AndAll, OrAll, If, Fallback };
+export {
+	Equal,
+	Satisfy,
+	And,
+	Or,
+	Not,
+	Xor,
+	AndAll,
+	OrAll,
+	If,
+	Fallback,
+	IsEqual,
+	IsAssignable,
+};
