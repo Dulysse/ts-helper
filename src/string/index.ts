@@ -134,3 +134,5 @@ export {
 	IsDigit,
 	Filter,
 };
+
+export * as str from "./functions";

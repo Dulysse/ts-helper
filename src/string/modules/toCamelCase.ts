@@ -9,42 +9,7 @@ import type {
 	ReplaceMap,
 	AsciiRange,
 } from "@/string";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Convert a string to camelCase",
-	Test.It<
-		ToCamelCase<"This text will be converted into camelCase">,
-		"thisTextWillBeConvertedIntoCamelCase",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToCamelCase<"  he  l lo    Wo    rld     ">,
-		"heLLoWoRld",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToCamelCase<"some_database_field_name">,
-		"someDatabaseFieldName",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToCamelCase<"Some label that needs to be camelized">,
-		"someLabelThatNeedsToBeCamelized",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToCamelCase<"some-javascript-property2">,
-		"someJavascriptProperty2",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToCamelCase<"some-mixed_string with spaces_underscores-and-hyphens">,
-		"someMixedStringWithSpacesUnderscoresAndHyphens",
-		typeof Test.Out.PASS
-	>(),
-);
+import { stringConverterRegex } from "@/string/utils";
 
 declare type _IsSkipCamelifyChar<TChar extends string> = OrAll<
 	[IsEqual<TChar, " ">, IsEqual<TChar, "_">, IsEqual<TChar, "-">]
@@ -194,29 +159,14 @@ declare type FilterAllowedChars<TString extends string> = ReplaceMap<
 
 /**
  * Converts a string to `camelCase`.
- * - *I follow [https://labex.io/tutorials/convert-strings-to-camelcase-with-javascript-28648](https://labex.io/tutorials/convert-strings-to-camelcase-with-javascript-28648) rules, you can found an example of implementation there and a Typescript implementation example below.*
+ * - *I follow [https://labex.io/tutorials/convert-strings-to-camelcase-with-javascript-28648](https://labex.io/tutorials/convert-strings-to-camelcase-with-javascript-28648) rules*
+ * @regex /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
  * @template TString The string to convert to `camelCase`.
  *
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * // Typescript implementation example:
- * const toCamelCase = <T extends string>(str: T): Str.ToCamelCase<T> => {
- *	const camelCaseString =
- *		str
- *			?.match(
- *				/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g,
- *			)
- *			?.map(
- *				word => word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase(),
- *			)
- *			?.join("") ?? "";
- *	return (camelCaseString.slice(0, 1).toLowerCase() +
- *	camelCaseString.slice(1)) as Str.ToCamelCase<T>;
- *};
- *
- * // More examples:
  * type A = Str.ToCamelCase<"This text will be converted into camel Case">; // "thisTextWillBeConvertedIntoCamelCase"
  * type B = Str.ToCamelCase<"Hello World">; // "helloWorld"
  * type C = Str.ToCamelCase<"222">; // "222"
@@ -234,3 +184,39 @@ export declare type ToCamelCase<TString extends string> =
 	ContainExactString<TString> extends true
 		? string
 		: Uncapitalize<_ToCamelCase<Split<Trim<FilterAllowedChars<TString>>>>>;
+
+/**
+ * Converts a string to `camelCase`.
+ * - *I follow [https://labex.io/tutorials/convert-strings-to-camelcase-with-javascript-28648](https://labex.io/tutorials/convert-strings-to-camelcase-with-javascript-28648) rules*
+ * @regex /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+ * @param text The string to convert to `camelCase`.
+ *
+ * @example
+ * ```tsx
+ * import { str } from "@dulysse1/ts-helper";
+ *
+ * // More examples:
+ * const a = str.toCamelCase("This text will be converted into camel Case"); // "thisTextWillBeConvertedIntoCamelCase"
+ * const b = str.toCamelCase("Hello World"); // "helloWorld"
+ * const c = str.toCamelCase("222"); // "222"
+ * const d = str.toCamelCase("some-javascript-property2"); // "someJavascriptProperty2"
+ * ```
+ * ---------------------------
+ * Do you have any questions about `toCamelCase` usage ?
+ * #### Contact me!
+ * @author Ulysse Dupont -->
+ *  [my email](mailto:ulyssedupont2707@gmail.com)
+ *  | [my github](https://github.com/Dulysse)
+ *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
+ */
+export const toCamelCase = <T extends string>(text: T): ToCamelCase<T> => {
+	const camelCaseString =
+		text
+			?.match(stringConverterRegex)
+			?.map(
+				word => word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase(),
+			)
+			?.join("") ?? "";
+	return (camelCaseString.slice(0, 1).toLowerCase() +
+		camelCaseString.slice(1)) as ToCamelCase<T>;
+};

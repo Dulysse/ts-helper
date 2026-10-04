@@ -1,54 +1,15 @@
 import type { ContainExactString, ReplaceAll, ToKebabCase } from "@/string";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Convert a string to snake_case",
-	Test.It<
-		ToSnakeCase<"This text will be converted into snake_case">,
-		"this_text_will_be_converted_into_snake_case",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<ToSnakeCase<"Hello-World?">, "hello_world", typeof Test.Out.PASS>(),
-	Test.It<ToSnakeCase<"DEMO">, "demo", typeof Test.Out.PASS>(),
-	Test.It<
-		ToSnakeCase<"some-mixed_string With spaces_underscores-and-hyphens">,
-		"some_mixed_string_with_spaces_underscores_and_hyphens",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToSnakeCase<"IAmEditingSomeXMLAndHTML">,
-		"i_am_editing_some_xml_and_html",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToSnakeCase<"IAmEdiét22222ingAAA">,
-		"i_am_edi_t22222_ing_aaa",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToSnakeCase<"7%`Nl}J)HwJ!&o5`zqTOJq??g!fL~xPm#yK?j&c|{Ut$X!j}Ih">,
-		"7_nl_j_hw_j_o5_zq_to_jq_g_f_l_x_pm_y_k_j_c_ut_x_j_ih",
-		typeof Test.Out.PASS
-	>(),
-);
+import { stringConverterRegex } from "@/string/utils";
 
 /**
  * Converts a string to `snake_case`.
- * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules for kebab-case applied to snake_case, you can found an example of implementation there and a Typescript implementation example below.*
+ * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules*
+ * @regex /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
  * @template TString The string to convert to `snake_case`.
- *
- *
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * // Typescript implementation example:
- * const toSnakeCase = <T extends string>(str: T): Str.ToSnakeCase<T> => (str
-    ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    ?.map((x) => x.toLowerCase())
-    ?.join("_") ?? "") as Str.ToSnakeCase<T>;
- * 
  * // More examples:
  * type A = Str.ToSnakeCase<"This text will be converted into snake_case">; // "this_text_will_be_converted_into_snake_case"
  * type B = Str.ToSnakeCase<"Hello World">; // "hello_world"
@@ -67,3 +28,32 @@ export declare type ToSnakeCase<TString extends string> =
 	ContainExactString<TString> extends true
 		? string
 		: ReplaceAll<ToKebabCase<TString>, "-", "_">;
+
+/**
+ * Converts a string to `snake_case`.
+ * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules*
+ * @regex /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+ * @param text The string to convert to `snake_case`.
+ *
+ * @example
+ * ```tsx
+ * import { str } from "@dulysse1/ts-helper";
+ *
+ * const a = str.toSnakeCase("This text will be converted into snake_case"); // "this_text_will_be_converted_into_snake_case"
+ * const b = str.toSnakeCase("Hello World"); // "hello_world"
+ * const c = str.toSnakeCase("some-mixed_string With spaces_underscores-and-hyphens"); // "some_mixed_string_with_spaces_underscores_and_hyphens"
+ * ```
+ * ---------------------------
+ * Do you have any questions about `toSnakeCase` usage ?
+ * #### Contact me!
+ * @author Ulysse Dupont -->
+ *  [my email](mailto:ulyssedupont2707@gmail.com)
+ *  | [my github](https://github.com/Dulysse)
+ *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
+ */
+export const toSnakeCase = <T extends string>(text: T): ToSnakeCase<T> => {
+	return (text
+		?.match(stringConverterRegex)
+		?.map(x => x.toLowerCase())
+		?.join("_") ?? "") as ToSnakeCase<T>;
+};

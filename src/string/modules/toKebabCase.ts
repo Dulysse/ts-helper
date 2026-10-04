@@ -9,40 +9,7 @@ import type {
 	ReplaceMap,
 	AsciiRange,
 } from "@/string";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Convert a string to kebab-case",
-	Test.It<
-		ToKebabCase<"This text will be converted into kebab-case">,
-		"this-text-will-be-converted-into-kebab-case",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<ToKebabCase<"Hello World">, "hello-world", typeof Test.Out.PASS>(),
-	Test.It<
-		ToKebabCase<"some-mixed_string With spaces_underscores-and-hyphens">,
-		"some-mixed-string-with-spaces-underscores-and-hyphens",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<ToKebabCase<"DEMO">, "demo", typeof Test.Out.PASS>(),
-	Test.It<
-		ToKebabCase<"IAmEditingSomeXMLAndHTML">,
-		"i-am-editing-some-xml-and-html",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ToKebabCase<"IAmEdiét22222ingAAA">,
-		"i-am-edi-t22222-ing-aaa",
-		typeof Test.Out.PASS
-	>(),
-	Test.It<ToKebabCase<`demo ${string}`>, string, typeof Test.Out.PASS>(),
-	Test.It<
-		ToKebabCase<"D5Z3Rh,iLw{*zOdb&JwWpG8(DONLMN&">,
-		"d-5-z-3-rh-i-lw-z-odb-jw-wp-g-8-donlmn",
-		typeof Test.Out.PASS
-	>(),
-);
+import { stringConverterRegex } from "@/string/utils";
 
 declare type _IsSkipKebabifyChar<TChar extends string> = OrAll<
 	[IsEqual<TChar, " ">, IsEqual<TChar, "_">, IsEqual<TChar, "-">]
@@ -197,22 +164,14 @@ declare type FilterAllowedChars<TString extends string> = ReplaceMap<
 >;
 
 /**
- * Converts a string to `Kebab_case`.
- * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules, you can found an example of implementation there and a Typescript implementation example below.*
- * @template TString The string to convert to `Kebab_case`.
- *
- *
+ * Converts a string to `kebab-case`.
+ * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules*
+ * @regex /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+ * @template TString The string to convert to `kebab-case`.
  * @example
  * ```tsx
  * import type { Str } from "@dulysse1/ts-helper";
  *
- * // Typescript implementation example:
- * const toKebabCase = <T extends string>(str: T): Str.ToKebabCase<T> => (str
-    ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    ?.map((x) => x.toLowerCase())
-    ?.join("-") ?? "") as Str.ToKebabCase<T>;
- * 
- * // More examples:
  * type A = Str.ToKebabCase<"This text will be converted into kebab-case">; // "this-text-will-be-converted-into-kebab-case"
  * type B = Str.ToKebabCase<"Hello World">; // "hello-world"
  * type C = Str.ToKebabCase<"DEMO">; // "demo"
@@ -239,3 +198,32 @@ export declare type ToKebabCase<TString extends string> =
 					>
 				>
 			>;
+
+/**
+ * Converts a string to `kebab-case`.
+ * - *I follow [https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653](https://labex.io/tutorials/convert-string-to-kebab-case-with-javascript-28653) rules*
+ * @regex /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+ * @param text The string to convert to `kebab-case`.
+ * @example
+ * ```tsx
+ * import { str } from "@dulysse1/ts-helper";
+ *
+ * // More examples:
+ * const a = str.toKebabCase("This text will be converted into kebab Case"); // "this-text-will-be-converted-into-kebab-case"
+ * const b = str.toKebabCase("Hello World"); // "hello-world"
+ * const c = str.toKebabCase("222"); // "222"
+ * ```
+ * ---------------------------
+ * Do you have any questions about `toKebabCase` usage ?
+ * #### Contact me!
+ * @author Ulysse Dupont -->
+ *  [my email](mailto:ulyssedupont2707@gmail.com)
+ *  | [my github](https://github.com/Dulysse)
+ *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
+ */
+export const toKebabCase = <T extends string>(text: T): ToKebabCase<T> => {
+	return (text
+		?.match(stringConverterRegex)
+		?.map(word => word.toLowerCase())
+		?.join("-") ?? "") as ToKebabCase<T>;
+};

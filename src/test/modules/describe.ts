@@ -2,6 +2,7 @@ import type { FillRange } from "@/array";
 import type { Infer } from "@/string";
 import type { InferStringRules } from "@/string/modules/infer";
 import { Out } from "@/test";
+import { Branded } from "@/brand";
 
 /**
  * The `minimal` amount of test for {@link DescribeFn}.
@@ -11,11 +12,11 @@ declare type MIN_TEST = 1;
 /**
  * The `maximal` amount of test for {@link DescribeFn}.
  */
-declare type MAX_TEST = 10;
+declare type MAX_TEST = 20;
 
 /**
  * The default rules for the `describe` function.
- * - `minChar`: 10 characters minimum.
+ * - `minChar`: 1 characters minimum.
  * - `maxChar`: 100 characters maximum.
  * - `alphanumeric`: false, meaning special characters are allowed.
  */
@@ -23,7 +24,7 @@ declare type DefaultDescribeRules = {
 	/**
 	 * The minimum number of characters for the description.
 	 */
-	minChar: 10;
+	minChar: 1;
 	/**
 	 * The maximum number of characters for the description.
 	 */
@@ -62,7 +63,9 @@ export declare function DescribeFn<
 	TDescription extends string = string,
 >(
 	description: Infer<TDescription, TRules>,
-	...test: FillRange<MIN_TEST, MAX_TEST, Out.PASS>
-): void;
+	...test: FillRange<MIN_TEST, MAX_TEST, Out.PASS> | [DescribeFnReturnType]
+): DescribeFnReturnType;
+
+type DescribeFnReturnType = Branded<void, "DescribeFn">;
 
 export const Describe = (() => {}) as unknown as typeof DescribeFn;

@@ -6,8 +6,8 @@
 		"dist"
 	],
 	"engines": {
-		"node": ">=22",
-		"pnpm": ">=9"
+		"node": ">=24",
+		"pnpm": ">=12"
 	},
 	"scripts": {
 		"build": "tsup",
@@ -16,7 +16,8 @@
 		"prepublishOnly": "pnpm build",
 		"prepare": "husky",
 		"check-exports": "attw --pack . --ignore-rules cjs-resolves-to-esm",
-		"test": "npx tsc --extendedDiagnostics"
+		"test:type": "npx tsc --extendedDiagnostics",
+		"test": "vitest ./src"
 	},
 	"keywords": [
 		"node",
@@ -57,8 +58,9 @@
 	"devDependencies": {
 		"@arethetypeswrong/cli": "0.18.5",
 		"@eslint/js": "9.39.1",
-		"@typescript-eslint/eslint-plugin": "^8.53.0",
-		"@typescript-eslint/parser": "^8.53.0",
+		"@typescript-eslint/eslint-plugin": "^8.71.0",
+		"@typescript-eslint/parser": "^8.71.0",
+		"@vitest/coverage-v8": "^5.0.3",
 		"eslint": "9.39.1",
 		"eslint-plugin-prettier": "5.5.4",
 		"globals": "16.5.0",
@@ -66,6 +68,8 @@
 		"prettier": "3.6.2",
 		"tsup": "8.5.1",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.47.0"
+		"typescript-eslint": "8.47.0",
+		"vite-tsconfig-paths": "^6.1.1",
+		"vitest": "^5.0.3"
 	}
 }

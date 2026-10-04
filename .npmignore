@@ -11,3 +11,6 @@ assets/
 src/
 tests/
 tsup.config.ts
+.vitest/
+vitest.config.js
+pnpm-workspace.yaml

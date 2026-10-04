@@ -643,26 +643,14 @@ checkEmail("demo@domain.com"); // ✅
   (`since v1.4.1`)
 
 ```tsx
-import type { Str } from "@dulysse1/ts-helper";
+import type { Str, str } from "@dulysse1/ts-helper";
 
 type A = Str.ToCamelCase<"hello world">; // "helloWorld"
 type B = Str.ToPascalCase<"hello world">; // "HelloWorld"
 
 // Typescript implementation example:
-
-// very usefull with vuejs to convert JS props to HTML attributes!
-const toKebabCase = <T extends string>(str: T): Str.ToKebabCase<T> =>
-	str
-		.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-		.map(x => x.toLowerCase())
-		.join("-") as Str.ToKebabCase<T>;
-
-// very usefull to convert JS props to Python/Django props!
-const toSnakeCase = <T extends string>(str: T): Str.ToSnakeCase<T> =>
-	str
-		.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-		.map(x => x.toLowerCase())
-		.join("_") as Str.ToSnakeCase<T>;
+const a = str.toCamelCase("This text will be converted into camel Case"); // "thisTextWillBeConvertedIntoCamelCase"
+const b = str.toSnakeCase("Hello World"); // "hello_world"
 ```
 
 - Split a string to array

@@ -3,7 +3,7 @@
 		"lib": ["ES2022"],
 		"module": "Preserve",
 		"target": "ES2022",
-		"allowJs": false,
+		"allowJs": true,
 		"outDir": "dist",
 		"rootDir": "src",
 		"paths": {
@@ -25,7 +25,8 @@
 		"emitDecoratorMetadata": false,
 		"useUnknownInCatchVariables": true,
 		"strictNullChecks": true,
-		"incremental": false
+		"incremental": false,
+		"allowUnreachableCode": false
 	},
 	"include": ["src"]
 }

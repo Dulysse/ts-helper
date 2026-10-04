@@ -1,5 +1,6 @@
 pnpm format
 pnpm lint
+pnpm test:type
 pnpm test
 pnpm build
 pnpm check-exports
