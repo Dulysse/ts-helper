@@ -1,6 +1,6 @@
 {
 	"name": "@dulysse1/ts-helper",
-	"version": "1.4.6",
+	"version": "1.4.7",
 	"description": "A personal TypeScript playground to explore the limits of the type system and keep growing my knowledge ✨",
 	"files": [
 		"dist"
