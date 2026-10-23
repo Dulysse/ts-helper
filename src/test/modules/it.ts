@@ -6,7 +6,7 @@ import type { Out } from "@/test";
  *
  * @template Type - The entry type to compare with the expected type.
  * @template Expect - The output type expected that will be compared with the input type.
- * @template Output - The expected result of the compare between the input and expected type.
+ * @template Output - The expected result of the compare between the input and expected type. (default "PASS" {@link Out.PASS})
  * @param description - The description of the current test.
  * @example
  * ```tsx
@@ -14,6 +14,7 @@ import type { Out } from "@/test";
  *
  * Test.Describe(
  *    "Add a number to another",
+ *    Test.It<Num.Add<1.23, 30>, 31.23>(), // return Out.PASS
  *    Test.It<Num.Add<1.1, 30>, 31.1, typeof Test.Out.PASS>(), // return Out.PASS
  *    Test.It<Num.Add<5, -10>, 66, typeof Test.Out.FAIL>(), // return Out.PASS
  * );
@@ -26,7 +27,7 @@ import type { Out } from "@/test";
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare function ItFn<Type, Expect, Output extends Out>(
+export declare function ItFn<Type, Expect, Output extends Out = Out.PASS>(
 	description?: string,
 ): {
 	true: {

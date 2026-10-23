@@ -59,7 +59,7 @@ This shows the exports currently provided from the `src/` directory.
 
 - Num: [Increment](#num-increment), [Decrement](#num-decrement), [Greater](#num-greater), [Lower](#num-lower), [GreaterEq](#num-greatereq), [LowerEq](#num-lowereq), [IsPositive](#num-ispositive), [IsNegative](#num-isnegative), [Add](#num-add), [Subtract](#num-subtract), [Opposite](#num-opposite), [Range](#num-range), [Between](#num-between), [IsZero](#num-iszero), [Multiply](#num-multiply), [Divide](#num-divide), [Eval](#num-eval), [Factorial](#num-factorial), [Modulo](#num-modulo), [Power](#num-power), [IsFloat](#num-isfloat), [Compare](#num-compare), [Comparators](#num-comparators), [ParseInt](#num-parseint), [ParseFloat](#num-parsefloat), [IsEven](#num-iseven), [IsOdd](#num-isodd), [IsInteger](#num-isinteger), [Abs](#num-abs)
 - Op: [Equal](#op-equal), [Satisfy](#op-satisfy), [And](#op-and), [Or](#op-or), [Not](#op-not), [Xor](#op-xor), [AndAll](#op-andall), [OrAll](#op-orall), [If](#op-if), [Fallback](#op-fallback), [IsEqual](#op-isequal), [IsAssignable](#op-isassignable)
-- Obj: [Merge](#obj-merge), [KeyOf](#obj-keyof), [Intersection](#obj-intersection), [Omit](#obj-omit), [Partial](#obj-partial), [Required](#obj-required), [Prettify](#obj-prettify), [Rename](#obj-rename), [HasKey](#obj-haskey), [Filter](#obj-filter), [Update](#obj-update), [Reversed](#obj-reversed), [Exclude](#obj-exclude), [Tree](#obj-tree), [Entries](#obj-entries)
+- Obj: [Merge](#obj-merge), [KeyOf](#obj-keyof), [Intersection](#obj-intersection), [Omit](#obj-omit), [Partial](#obj-partial), [Required](#obj-required), [Prettify](#obj-prettify), [Rename](#obj-rename), [HasKey](#obj-haskey), [Filter](#obj-filter), [Update](#obj-update), [Reversed](#obj-reversed), [Exclude](#obj-exclude), [Tree](#obj-tree), [Entries](#obj-entries)[FromEntries](#obj-from-entries)
 - Arr: [IsTuple](#arr-istuple), [Reverse](#arr-reverse), [Readable](#arr-readable), [Length](#arr-length), [At](#arr-at), [ToUnion](#arr-tounion), [IsReadonly](#arr-isreadonly), [Includes](#arr-includes), [Join](#arr-join), [First](#arr-first), [Last](#arr-last), [Count](#arr-count), [Concat](#arr-concat), [Flat](#arr-flat), [Fill](#arr-fill), [FillRange](#arr-fillrange), [Filter](#arr-filter), [Zip](#arr-zip), [Unique](#arr-unique), [Map](#arr-map), [Infer](#arr-infer), [Some](#arr-some), [IndexOf](#arr-indexof)
 - Union: [Last](#union-last), [Exclude](#union-exclude), [ToArray](#union-toarray), [Count](#union-count), [First](#union-first), [IsUnion](#union-isunion), [Through](#union-through), [Has](#union-has), [OneOf](#union-oneof)
 - Str: [IsExactString](#str-isexactstring), [ContainExactString](#str-containexactstring), [Split](#str-split), [Width](#str-width), [Replace](#str-replace), [ReplaceAll](#str-replaceall), [PlacedAt](#str-placedat), [Reversed](#str-reversed), [Repeat](#str-repeat), [TrimStart](#str-trimstart), [TrimEnd](#str-trimend), [Trim](#str-trim), [Count](#str-count), [Includes](#str-includes), [Infer](#str-infer), [Alphanumeric](#str-alphanumeric), [Special](#str-special), [ReplaceMap](#str-replacemap), [UnAccent](#str-unaccent), [ToCamelCase](#str-tocamelcase), [ToPascalCase](#str-topascalcase), [ToKebabCase](#str-tokebabcase), [ToSnakeCase](#str-tosnakecase), [AsciiMap](#str-asciimap), [AsciiCode](#str-asciicode), [AsciiRange](#str-asciirange), [IsUpperCase](#str-isuppercase), [IsLowerCase](#str-islowercase), [IsDigit](#str-isdigit), [Filter](#str-filter)
@@ -88,11 +88,11 @@ import { Test, type Num } from "@dulysse1/ts-helper";
 
 Test.Describe(
 	"Evaluation of mathematical expressions represented as string",
-	Test.It<Num.Eval<"2+2*2">, 6, typeof Test.Out.PASS>(),
+	Test.It<Num.Eval<"2+2*2">, 6>(),
 	Test.It<Num.Eval<"20.2-4/2">, 18.2, typeof Test.Out.PASS>(),
 	Test.It<Num.Eval<"HELLO">, number, typeof Test.Out.FAIL>(),
 	Test.It<Num.Eval<"23.3/32323">, number, typeof Test.Out.PASS>(),
-	//         [Tested type]  [Expected]  [Comparison result]
+	//         [Tested type]  [Expected]  [Comparison result (optional)]
 );
 
 Test.Describe(
@@ -607,9 +607,31 @@ type A = Obj.Tree<{ user: { name: string } }>; // { user: { name: string } }
 - Extract object entries as a union of `[key, value]` tuples
 
 ```tsx
-import type { Obj } from "@dulysse1/ts-helper";
+import { type Obj, obj } from "@dulysse1/ts-helper";
 
-type A = Obj.Entries<{ a: string; b: number }>; // ["a", string] | ["b", number]
+type A = Obj.Entries<{ a: string; b: number }>; // [["a", string], ["b", number]]
+
+const a = obj.entries({
+	id: 11,
+	name: "Diego",
+	age: 43,
+}); // TYPED [["id", 11], ["name", "Diego"], ["age", 43]]
+```
+
+<a id="obj-from-entries"></a>
+
+- Get object from given entries union of `[key, value]` tuples
+
+```tsx
+import { type Obj, obj } from "@dulysse1/ts-helper";
+
+type A = Obj.FromEntries<[["a", string], ["b", number]]>; // { a: string; b: number }
+
+const a = obj.fromEntries([
+	["id", 11],
+	["name", "Diego"],
+	["age", 43],
+]); // TYPED { id: 11; name: "Diego"; age: 43; }
 ```
 
 <a id="string"></a>

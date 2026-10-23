@@ -1,4 +1,4 @@
-import type { And, Satisfy, IsEqual } from "@/operator";
+import type { IsEqual } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
@@ -21,7 +21,7 @@ Test.Describe(
 	>(),
 	Test.It<
 		Merge<{ a: string }, { a: number }>,
-		{ a: string | number } | { a: string; b?: number },
+		{ a: string | number },
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
@@ -33,7 +33,49 @@ Test.Describe(
 		},
 		typeof Test.Out.PASS
 	>(),
+	Test.It<
+		Merge<{ a: string }, { a: number } | { a: string; b?: number }>,
+		{ a: string | number; b?: number },
+		typeof Test.Out.PASS
+	>(),
 );
+
+type AllKeys<T> = T extends unknown ? keyof T : never;
+
+type OptionalKeys<T> = Exclude<AllKeys<T>, keyof T>;
+
+type ValueAt<T, Key extends PropertyKey> = T extends unknown
+	? Key extends keyof T
+		? T[Key]
+		: never
+	: never;
+
+type MergeValue<Left, Right, Mode extends ObjectMode> = Left extends object
+	? Right extends object
+		? IsEqual<Mode, "deep"> extends true
+			? Merge<Left, Right, Mode>
+			: Left | Right
+		: Left | Right
+	: Left | Right;
+
+type MergeObjects<
+	Left extends object,
+	Right extends object,
+	Mode extends ObjectMode,
+> = Prettify<
+	{
+		[Key in Exclude<
+			keyof Left | AllKeys<Right>,
+			OptionalKeys<Right>
+		>]: Key extends keyof Left
+			? Key extends AllKeys<Right>
+				? MergeValue<Left[Key], ValueAt<Right, Key>, Mode>
+				: Left[Key]
+			: ValueAt<Right, Key>;
+	} & {
+		[Key in Exclude<OptionalKeys<Right>, keyof Left>]?: ValueAt<Right, Key>;
+	}
+>;
 
 /**
  * - Merge type object `TObjectA` with type object `TObjectB`
@@ -42,6 +84,7 @@ Test.Describe(
  * @template TMode The object operator mode
  * - `flat`: do not apply changes for sub-objects
  * - `deep`: apply changes recursively inside the object
+ * - When `TObjectB` is a union, keys not present in every member are optional
  * @example
  * ```tsx
  * import type { Obj } from "@dulysse1/ts-helper";
@@ -63,29 +106,4 @@ export declare type Merge<
 	TObjectA extends object,
 	TObjectB extends object,
 	TMode extends ObjectMode = "flat",
-> = Prettify<{
-	[key in keyof (TObjectA & TObjectB)]: And<
-		key extends keyof TObjectA ? true : false,
-		key extends keyof TObjectB ? true : false
-	> extends true
-		? And<
-				And<
-					IsEqual<TMode, "deep"> extends true ? true : false,
-					TObjectA[Satisfy<key, keyof TObjectA>] extends object ? true : false
-				>,
-				TObjectB[Satisfy<key, keyof TObjectB>] extends object ? true : false
-			> extends true
-			? Merge<
-					Satisfy<TObjectA[Satisfy<key, keyof TObjectA>], object>,
-					Satisfy<TObjectB[Satisfy<key, keyof TObjectB>], object>,
-					TMode
-				>
-			:
-					| TObjectA[Satisfy<key, keyof TObjectA>]
-					| TObjectB[Satisfy<key, keyof TObjectB>]
-		: key extends keyof TObjectA
-			? TObjectA[key]
-			: key extends keyof TObjectB
-				? TObjectB[key]
-				: never;
-}>;
+> = MergeObjects<TObjectA, TObjectB, TMode>;

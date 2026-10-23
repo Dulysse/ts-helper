@@ -317,6 +317,12 @@ export declare type CountFlatten<
 	TCell,
 > = Count<Flat<TBoard>, TCell>;
 
+type IsEqualNumber<A extends number, B extends number> = [A] extends [B]
+	? [B] extends [A]
+		? true
+		: false
+	: false;
+
 /**
  * Display the victory message in case of win.
  */
@@ -428,11 +434,11 @@ export declare type Infer2DBoardErrors<
 > =
 	TBoard extends Board<TRules>
 		? Or<
-				IsEqual<
+				IsEqualNumber<
 					CountFlatten<TBoard, TRules["PLAYERS"][0]>,
 					CountFlatten<TBoard, TRules["PLAYERS"][1]>
 				>,
-				IsEqual<
+				IsEqualNumber<
 					CountFlatten<TBoard, TRules["PLAYERS"][0]>,
 					NextPositive<CountFlatten<TBoard, TRules["PLAYERS"][1]>>
 				>

@@ -9,7 +9,24 @@ Test.Describe(
 	"Make union discrimitable",
 	Test.It<
 		OneOf<[TextMessage, ImgMessage, UrlMessage]>,
-		TextMessage | ImgMessage | UrlMessage,
+		| {
+				id: string;
+				text: string;
+				imgPath: never;
+				url: never;
+		  }
+		| {
+				id: string;
+				imgPath: string;
+				text: never;
+				url: never;
+		  }
+		| {
+				id: string;
+				url: string;
+				text: never;
+				imgPath: never;
+		  },
 		typeof Test.Out.PASS
 	>(),
 	Test.It<
@@ -25,35 +42,37 @@ Test.Describe(
 		>,
 		| {
 				bar: string;
-				can: undefined;
+				can: never;
 		  }
 		| {
 				can: number;
-				bar: undefined;
+				bar: never;
 		  },
+		typeof Test.Out.PASS
+	>(),
+	Test.It<
+		OneOf<[{ value: string }, { value: number }, { other: boolean }]>,
+		| { value: string; other: never }
+		| { value: number; other: never }
+		| { other: boolean; value: never },
 		typeof Test.Out.PASS
 	>(),
 );
 
-type MergeTypes<
-	TUnionArray extends unknown[],
-	TResult = {},
-> = TUnionArray extends [infer Head, ...infer Rem]
-	? MergeTypes<Rem, TResult & Head>
-	: TResult;
+type AllKeys<T> = T extends unknown ? keyof T : never;
 
-type _OneOf<
-	TUnionArray extends unknown[],
-	TResult = never,
-	TAllProperties = MergeTypes<TUnionArray>,
-> = TUnionArray extends [infer Head, ...infer Rest]
-	? _OneOf<Rest, TResult | OnlyFirst<Head, TAllProperties>, TAllProperties>
-	: TResult;
+type Simplify<T> = { [Key in keyof T]: T[Key] };
 
-type OnlyFirst<F, S> = F & { [Key in keyof Omit<S, keyof F>]?: never };
+type AddMissingKeys<Variant, AllVariants> = Variant extends object
+	? Simplify<
+			Variant & {
+				[Key in Exclude<AllKeys<AllVariants>, keyof Variant>]: never;
+			}
+		>
+	: never;
 
 /**
- * - Make `TUnionArray` union array element discrimitable
+ * - Make `TUnionArray` union array element discriminable by adding missing keys as `undefined`
  *
  * @template TUnionArray - The union type array.
  * @example
@@ -66,8 +85,8 @@ type OnlyFirst<F, S> = F & { [Key in keyof Omit<S, keyof F>]?: never };
  *		can: number;
  *	}]>
  *
- *	let val0: IFoo = { bar: "hello" } // OK
- *	let val1: IFoo = { can: 22 } // OK
+ *	let val0: IFoo = { bar: "hello", can: undefined } // OK
+ *	let val1: IFoo = { can: 22, bar: undefined } // OK
  *	let val2: IFoo = { bar: "hello",  can: 22 } // Error (can't be both)
  *	let val3: IFoo = {  } // Error
  * ```
@@ -79,4 +98,5 @@ type OnlyFirst<F, S> = F & { [Key in keyof Omit<S, keyof F>]?: never };
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type OneOf<TUnionArray extends unknown[]> = _OneOf<TUnionArray>;
+export declare type OneOf<TUnionArray extends readonly object[]> =
+	AddMissingKeys<TUnionArray[number], TUnionArray[number]>;

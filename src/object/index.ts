@@ -1,5 +1,4 @@
 import type { Merge } from "./modules/merge";
-import type { KeyOf } from "./modules/keyOf";
 import type { Intersection } from "./modules/intersection";
 import type { Omit } from "./modules/omit";
 import type { Partial } from "./modules/partial";
@@ -13,6 +12,8 @@ import type { Reversed } from "./modules/reversed";
 import type { Exclude } from "./modules/exclude";
 import type { Tree } from "./modules/tree";
 import type { Entries } from "./modules/entries";
+import type { FromEntries } from "./modules/fromEntries";
+import type { KeyOf } from "./modules/keyOf";
 
 /**
  * #### ✨ List of `ts-helper` object types ✨:
@@ -30,6 +31,7 @@ import type { Entries } from "./modules/entries";
  * - `Reversed`
  * - `Tree`
  * - `Entries`
+ * - `FromEntries`
  * - `Tree`
  * ---------------------------
  * Do you have any ideas or recommendations for improvement?
@@ -56,6 +58,7 @@ export declare namespace Obj {
 		Exclude,
 		Tree,
 		Entries,
+		FromEntries,
 	};
 }
 
@@ -75,4 +78,7 @@ export {
 	Exclude,
 	Tree,
 	Entries,
+	FromEntries,
 };
+
+export { obj } from "./functions";

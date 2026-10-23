@@ -1,26 +1,46 @@
+import type { IsPrimitive } from "@/any";
+import type { KeyOf } from "@/object";
+import type { Equal } from "@/operator";
+import type { ToArray } from "@/union";
+
 import { Test } from "@/test";
 
 Test.Describe(
 	"Get a tuple of an object's entries",
+	Test.It<Entries<{ a: string; b: number; c: boolean }>["length"], 3>(),
 	Test.It<
-		Entries<{ a: string; b: number; c: boolean; d: string }>,
-		["a" | "b" | "c" | "d", string | number | boolean][],
-		typeof Test.Out.PASS
+		Entries<{ a: string; b: number; c: boolean }>[number],
+		["a", string] | ["b", number] | ["c", boolean]
 	>(),
-	Test.It<Entries<{}>, [], typeof Test.Out.PASS>(),
+	Test.It<Entries<{}>, []>(),
+	Test.It<Entries<Record<"demo", unknown>>, [["demo", unknown]]>(),
+	Test.It<Entries<Record<string, unknown>>, [string, unknown][]>(),
 	Test.It<
-		Entries<Record<"demo", unknown>>,
-		["demo", unknown][],
-		typeof Test.Out.PASS
+		Entries<{
+			[key in symbol]: boolean | string;
+		}>,
+		[symbol, boolean | string][]
 	>(),
 );
 
-declare type _EntryUnion<TObject extends object> = {
-	[K in keyof TObject]: [K, TObject[K]];
-}[keyof TObject];
+declare type _EntriesTuple<
+	TObject extends object,
+	TKeys extends unknown[] = ToArray<KeyOf<TObject>>,
+> = {
+	[K in keyof TKeys]: TKeys[K] extends infer Key extends keyof TObject
+		? [Key, TObject[Key]]
+		: never;
+};
+
+declare type _Entries<TObject extends object> =
+	Equal<IsPrimitive<keyof TObject>, false> extends true
+		? _EntriesTuple<TObject>
+		: {
+				[K in NonNullable<keyof TObject>]: [K, TObject[K]];
+			}[keyof TObject][];
 
 /**
- * - Get a tuple of an object's entries
+ * - Extract object entries as a union of `[key, value]` tuples
  *
  * @template TObject The object type to get entries from.
  * @example
@@ -29,7 +49,7 @@ declare type _EntryUnion<TObject extends object> = {
  *
  * type A = Obj.Entries<
  * 	{ a: string; b: number; c: boolean; d: string; },
- * >; // ["a" | "b" | "c" | "d", string | number | boolean][]
+ * >; // tuple containing ["a", string], ["b", number], ["c", boolean], and ["d", string]
  * ```
  * ---------------------------
  * Do you have any questions about `Entries` usage ?
@@ -39,8 +59,31 @@ declare type _EntryUnion<TObject extends object> = {
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type Entries<TObject extends object> = [keyof TObject] extends [
-	never,
-]
-	? []
-	: [keyof TObject, TObject[keyof TObject]][];
+export declare type Entries<TObject extends object> =
+	Equal<TObject, object> extends true
+		? [PropertyKey, unknown][]
+		: [keyof TObject] extends [never]
+			? []
+			: _Entries<TObject>;
+
+/**
+ * - Extract object entries as a union of `[key, value]` tuples
+ *
+ * @param object The object to get entries from.
+ * @example
+ * ```tsx
+ * import { obj } from "@dulysse1/ts-helper";
+ *
+ * const a = obj.entries({ a: "ahaha", b: 111, c: true, d: "no" }); // tuple of entry pairs
+ * ```
+ * ---------------------------
+ * Do you have any questions about `entries` usage ?
+ * #### Contact me!
+ * @author Ulysse Dupont -->
+ *  [my email](mailto:ulyssedupont2707@gmail.com)
+ *  | [my github](https://github.com/Dulysse)
+ *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
+ */
+export function entries<const T extends object>(object: T): Entries<T> {
+	return Object.entries(object) as Entries<T>;
+}

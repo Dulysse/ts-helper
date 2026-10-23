@@ -9,6 +9,11 @@ Test.Describe(
 	Test.It<Equal<false, false | 0>, false, typeof Test.Out.PASS>(),
 	Test.It<Equal<"hello", Implicit>, false, typeof Test.Out.PASS>(),
 	Test.It<Equal<Implicit, Implicit>, true, typeof Test.Out.PASS>(),
+	Test.It<Equal<object, {}>, false, typeof Test.Out.PASS>(),
+	Test.It<Equal<{}, object>, false, typeof Test.Out.PASS>(),
+	Test.It<Equal<object, object>, true, typeof Test.Out.PASS>(),
+	Test.It<Equal<{}, {}>, true, typeof Test.Out.PASS>(),
+	Test.It<Equal<{ value: 1 }, object>, false, typeof Test.Out.PASS>(),
 );
 
 /**
@@ -42,6 +47,12 @@ export declare type Equal<A, B> =
 			? false
 			: [A] extends [B]
 				? [B] extends [A]
-					? true
+					? (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2
+						? (<T>() => T extends B ? 1 : 2) extends <T>() => T extends A
+								? 1
+								: 2
+							? true
+							: false
+						: false
 					: false
 				: false;

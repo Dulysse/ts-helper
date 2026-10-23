@@ -1,6 +1,6 @@
 export type { Num } from "@/numeric";
 export type { Op } from "@/operator";
-export type { Obj } from "@/object";
+export { type Obj, obj } from "@/object";
 export type { Arr } from "@/array";
 export type { Union } from "@/union";
 export { type Str, str } from "@/string";
