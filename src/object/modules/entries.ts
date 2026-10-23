@@ -3,26 +3,6 @@ import type { KeyOf } from "@/object";
 import type { Equal } from "@/operator";
 import type { ToArray } from "@/union";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Get a tuple of an object's entries",
-	Test.It<Entries<{ a: string; b: number; c: boolean }>["length"], 3>(),
-	Test.It<
-		Entries<{ a: string; b: number; c: boolean }>[number],
-		["a", string] | ["b", number] | ["c", boolean]
-	>(),
-	Test.It<Entries<{}>, []>(),
-	Test.It<Entries<Record<"demo", unknown>>, [["demo", unknown]]>(),
-	Test.It<Entries<Record<string, unknown>>, [string, unknown][]>(),
-	Test.It<
-		Entries<{
-			[key in symbol]: boolean | string;
-		}>,
-		[symbol, boolean | string][]
-	>(),
-);
-
 declare type _EntriesTuple<
 	TObject extends object,
 	TKeys extends unknown[] = ToArray<KeyOf<TObject>>,

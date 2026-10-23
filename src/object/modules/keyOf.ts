@@ -1,13 +1,3 @@
-import { Test } from "@/test";
-
-Test.Describe(
-	"Get keys of an object type by an optional filter value",
-	Test.It<KeyOf<{}, number>, never, typeof Test.Out.PASS>(),
-	Test.It<KeyOf<{ a: string; b: number }, string>, "a", typeof Test.Out.PASS>(),
-	Test.It<KeyOf<{ a: string; b: number }, number>, "b", typeof Test.Out.PASS>(),
-	Test.It<KeyOf<{ a: string; b: number }>, "a" | "b", typeof Test.Out.PASS>(),
-);
-
 /**
  * - Get keys of `TObject` object by an optional filter `TValueLike` value, if value look like this `TValueLike` value, it will return this key else it will skip that key
  *

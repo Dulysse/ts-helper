@@ -17,7 +17,7 @@
 		"prepare": "husky",
 		"check-exports": "attw --pack . --ignore-rules cjs-resolves-to-esm",
 		"test:type": "npx tsc --extendedDiagnostics",
-		"test": "vitest ./src"
+		"test": "vitest"
 	},
 	"keywords": [
 		"node",

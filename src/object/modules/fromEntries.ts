@@ -2,40 +2,6 @@ import type { IsTuple } from "@/array";
 import type { Prettify } from "@/object";
 import type { Equal, Satisfy } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Get a an object from given entries",
-	Test.It<
-		FromEntries<
-			(["a", string] | ["b", number] | ["c", boolean] | ["d", string])[]
-		>,
-		{
-			a?: string | undefined;
-			b?: number | undefined;
-			c?: boolean | undefined;
-			d?: string | undefined;
-		}
-	>(),
-	Test.It<
-		FromEntries<[["a", string], ["b", number], ["c", boolean], ["d", string]]>,
-		{
-			a: string;
-			b: number;
-			c: boolean;
-			d: string;
-		}
-	>(),
-	Test.It<
-		FromEntries<[["name", "Ulysse"], ["age", 26]]>,
-		{
-			name: "Ulysse";
-			age: 26;
-		}
-	>(),
-	Test.It<FromEntries<unknown[][]>, Record<PropertyKey, unknown>>(),
-);
-
 type UnionToIntersection<T> = (
 	T extends unknown ? (value: T) => void : never
 ) extends (value: infer I) => void
