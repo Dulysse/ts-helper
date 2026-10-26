@@ -37,11 +37,11 @@ export declare type ToPascalCase<TString extends string> =
  *
  * @example
  * ```tsx
- * import { str } from "@dulysse1/ts-helper";
+ * import { toPascalCase } from "@dulysse1/ts-helper/string";
  *
- * const a = str.toPascalCase("This text will be converted into Pascal Case"); // "ThisTextWillBeConvertedIntoPascalCase"
- * const b = str.toPascalCase("Hello World"); // "HelloWorld"
- * const c = str.toPascalCase("some-javascript-property2"); // "SomeJavascriptProperty2"
+ * const a = toPascalCase("This text will be converted into Pascal Case"); // "ThisTextWillBeConvertedIntoPascalCase"
+ * const b = toPascalCase("Hello World"); // "HelloWorld"
+ * const c = toPascalCase("some-javascript-property2"); // "SomeJavascriptProperty2"
  * ```
  * ---------------------------
  * Do you have any questions about `toPascalCase` usage ?

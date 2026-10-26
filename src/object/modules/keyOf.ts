@@ -30,9 +30,9 @@ export declare type KeyOf<TObject extends object, TValueLike = unknown> = {
  * @param object The object to get entries from.
  * @example
  * ```tsx
- * import { obj } from "@dulysse1/ts-helper";
+ * import { keys } from "@dulysse1/ts-helper/object";
  *
- * const a = obj.keys({ a: "ahaha", b: 111, c: true, d: "no" }); // ("a" | "b" | "c"| "d")[]
+ * const a = keys({ a: "ahaha", b: 111, c: true, d: "no" }); // ("a" | "b" | "c"| "d")[]
  * ```
  * ---------------------------
  * Do you have any questions about `keys` usage ?

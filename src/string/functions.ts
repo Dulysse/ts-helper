@@ -28,3 +28,5 @@ export const str: {
 	toPascalCase,
 	toSnakeCase,
 };
+
+export { toCamelCase, toKebabCase, toPascalCase, toSnakeCase };

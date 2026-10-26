@@ -81,4 +81,4 @@ export {
 	FromEntries,
 };
 
-export { obj } from "./functions";
+export * from "./functions";

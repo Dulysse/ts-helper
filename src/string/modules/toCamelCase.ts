@@ -193,13 +193,13 @@ export declare type ToCamelCase<TString extends string> =
  *
  * @example
  * ```tsx
- * import { str } from "@dulysse1/ts-helper";
+ * import { toCamelCase } from "@dulysse1/ts-helper/string";
  *
  * // More examples:
- * const a = str.toCamelCase("This text will be converted into camel Case"); // "thisTextWillBeConvertedIntoCamelCase"
- * const b = str.toCamelCase("Hello World"); // "helloWorld"
- * const c = str.toCamelCase("222"); // "222"
- * const d = str.toCamelCase("some-javascript-property2"); // "someJavascriptProperty2"
+ * const a = toCamelCase("This text will be converted into camel Case"); // "thisTextWillBeConvertedIntoCamelCase"
+ * const b = toCamelCase("Hello World"); // "helloWorld"
+ * const c = toCamelCase("222"); // "222"
+ * const d = toCamelCase("some-javascript-property2"); // "someJavascriptProperty2"
  * ```
  * ---------------------------
  * Do you have any questions about `toCamelCase` usage ?

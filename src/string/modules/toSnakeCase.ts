@@ -37,11 +37,11 @@ export declare type ToSnakeCase<TString extends string> =
  *
  * @example
  * ```tsx
- * import { str } from "@dulysse1/ts-helper";
+ * import { toSnakeCase } from "@dulysse1/ts-helper/string";
  *
- * const a = str.toSnakeCase("This text will be converted into snake_case"); // "this_text_will_be_converted_into_snake_case"
- * const b = str.toSnakeCase("Hello World"); // "hello_world"
- * const c = str.toSnakeCase("some-mixed_string With spaces_underscores-and-hyphens"); // "some_mixed_string_with_spaces_underscores_and_hyphens"
+ * const a = toSnakeCase("This text will be converted into snake_case"); // "this_text_will_be_converted_into_snake_case"
+ * const b = toSnakeCase("Hello World"); // "hello_world"
+ * const c = toSnakeCase("some-mixed_string With spaces_underscores-and-hyphens"); // "some_mixed_string_with_spaces_underscores_and_hyphens"
  * ```
  * ---------------------------
  * Do you have any questions about `toSnakeCase` usage ?

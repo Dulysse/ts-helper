@@ -24,3 +24,5 @@ export const obj: {
 	fromEntries,
 	entries,
 };
+
+export { keys, fromEntries, entries };

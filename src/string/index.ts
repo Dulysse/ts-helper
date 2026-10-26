@@ -135,4 +135,4 @@ export {
 	Filter,
 };
 
-export { str } from "./functions";
+export * from "./functions";

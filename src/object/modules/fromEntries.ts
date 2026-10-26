@@ -57,9 +57,9 @@ export declare type FromEntries<
  * @param entries The entries of the object.
  * @example
  * ```tsx
- * import { obj } from "@dulysse1/ts-helper";
+ * import { fromEntries } from "@dulysse1/ts-helper/object";
  *
- * const a = obj.fromEntries([
+ * const a = fromEntries([
 		["name", "Ulysse"],
 		["age", 26],
 	]); // { name: "Ulysse"; age: 26; }

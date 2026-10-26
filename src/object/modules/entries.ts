@@ -52,9 +52,9 @@ export declare type Entries<TObject extends object> =
  * @param object The object to get entries from.
  * @example
  * ```tsx
- * import { obj } from "@dulysse1/ts-helper";
+ * import { entries } from "@dulysse1/ts-helper/object";
  *
- * const a = obj.entries({ a: "ahaha", b: 111, c: true, d: "no" }); // tuple of entry pairs
+ * const a = entries({ a: "ahaha", b: 111, c: true, d: "no" }); // tuple of entry pairs
  * ```
  * ---------------------------
  * Do you have any questions about `entries` usage ?

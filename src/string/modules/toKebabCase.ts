@@ -206,12 +206,12 @@ export declare type ToKebabCase<TString extends string> =
  * @param text The string to convert to `kebab-case`.
  * @example
  * ```tsx
- * import { str } from "@dulysse1/ts-helper";
+ * import { toKebabCase } from "@dulysse1/ts-helper/string";
  *
  * // More examples:
- * const a = str.toKebabCase("This text will be converted into kebab Case"); // "this-text-will-be-converted-into-kebab-case"
- * const b = str.toKebabCase("Hello World"); // "hello-world"
- * const c = str.toKebabCase("222"); // "222"
+ * const a = toKebabCase("This text will be converted into kebab Case"); // "this-text-will-be-converted-into-kebab-case"
+ * const b = toKebabCase("Hello World"); // "hello-world"
+ * const c = toKebabCase("222"); // "222"
  * ```
  * ---------------------------
  * Do you have any questions about `toKebabCase` usage ?
