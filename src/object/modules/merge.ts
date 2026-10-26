@@ -2,44 +2,6 @@ import type { IsEqual } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Merge two object types",
-	Test.It<
-		Merge<{ a: string }, { b: number }>,
-		{ a: string; b: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Merge<{ a: string; b: { c: number } }, { b: { d: boolean } }, "deep">,
-		{
-			a: string;
-			b: { c: number; d: boolean };
-		},
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Merge<{ a: string }, { a: number }>,
-		{ a: string | number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Merge<{ a: string }, { b: number } | { c: boolean }>,
-		{
-			a: string;
-			b?: number;
-			c?: boolean;
-		},
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Merge<{ a: string }, { a: number } | { a: string; b?: number }>,
-		{ a: string | number; b?: number },
-		typeof Test.Out.PASS
-	>(),
-);
-
 type AllKeys<T> = T extends unknown ? keyof T : never;
 
 type OptionalKeys<T> = Exclude<AllKeys<T>, keyof T>;

@@ -1,14 +1,4 @@
 import type { ToArray } from "@/union";
-import type { Range } from "@/numeric";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Get an union type length of possibilities",
-	Test.It<Count<"hello" | "world">, 2, typeof Test.Out.PASS>(),
-	Test.It<Count<string>, 1, typeof Test.Out.PASS>(),
-	Test.It<Count<Range<1, 5>[number]>, 5, typeof Test.Out.PASS>(),
-);
 
 /**
  * - Get an union type `TUnion` length of possibilities

@@ -10,17 +10,6 @@ import type { IsEqual, Not, Or } from "@/operator";
 import type { Split, Width } from "@/string";
 import type { IsUnion } from "@/union";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"IsValidNumberInput",
-	Test.It<IsValidNumberInput<23>, true, typeof Test.Out.PASS>(),
-	Test.It<IsValidNumberInput<23 | 3434>, false, typeof Test.Out.PASS>(),
-	Test.It<IsValidNumberInput<number>, false, typeof Test.Out.PASS>(),
-	Test.It<IsValidNumberInput<23.34>, true, typeof Test.Out.PASS>(),
-	Test.It<IsValidNumberInput<23.345>, false, typeof Test.Out.PASS>(),
-);
-
 export declare type IsValidNumberInput<TNumber extends number> =
 	IsUnion<TNumber> extends true
 		? false
@@ -31,33 +20,6 @@ export declare type IsValidNumberInput<TNumber extends number> =
 					? Lower<Width<Decimal>, 3>
 					: true
 			: false;
-
-Test.Describe(
-	"BuildTuple",
-	Test.It<BuildTuple<0>, [], typeof Test.Out.PASS>(),
-	Test.It<BuildTuple<3>, [unknown, unknown, unknown], typeof Test.Out.PASS>(),
-	Test.It<
-		BuildTuple<5>,
-		[unknown, unknown, unknown, unknown, unknown],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		BuildTuple<10>,
-		[
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-			unknown,
-		],
-		typeof Test.Out.PASS
-	>(),
-);
 
 export declare type BuildTuple<
 	L extends number,
@@ -83,36 +45,20 @@ export declare type DecimalOf<T extends string> =
 			: never
 		: never;
 
-Test.Describe(
-	"SubstractPositive",
-	Test.It<SubstractPositive<10, 3>, 7, typeof Test.Out.PASS>(),
-	Test.It<SubstractPositive<100, 0>, 100, typeof Test.Out.PASS>(),
-);
-
-declare type SubstractPositive<N1 extends number, N2 extends number> =
+export declare type SubstractPositive<N1 extends number, N2 extends number> =
 	BuildTuple<N1> extends [...BuildTuple<N2>, ...infer Rest]
 		? Rest["length"]
 		: never;
 
-Test.Describe(
-	"PositiveRange",
-	Test.It<PositiveRange<0>, [], typeof Test.Out.PASS>(),
-	Test.It<PositiveRange<5>, [1, 2, 3, 4, 5], typeof Test.Out.PASS>(),
-);
-
-declare type PositiveRange<N extends number, TResult extends number[] = []> =
+export declare type PositiveRange<
+	N extends number,
+	TResult extends number[] = [],
+> =
 	IsEqual<N, number> extends true
 		? number[]
 		: TResult["length"] extends N
 			? TResult
 			: PositiveRange<N, [...TResult, [...TResult, unknown]["length"]]>;
-
-Test.Describe(
-	"DecimalMap",
-	Test.It<DecimalMap[1], 99, typeof Test.Out.PASS>(),
-	Test.It<DecimalMap[50], 50, typeof Test.Out.PASS>(),
-	Test.It<DecimalMap[99], 1, typeof Test.Out.PASS>(),
-);
 
 export declare type OppositeDecimal<T extends keyof DecimalMap> = DecimalMap[T];
 

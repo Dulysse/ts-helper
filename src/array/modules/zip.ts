@@ -2,28 +2,6 @@ import type { IsTuple, ToUnion } from "@/array";
 import type { DefaultArrayType } from "@/array/utils";
 import type { Not, Or } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Combine two tuple types into a tuple of pairs",
-	Test.It<Zip<[], []>, [], typeof Test.Out.PASS>(),
-	Test.It<
-		Zip<[1, 2, 3], ["a", "b"]>,
-		[[1, "a"], [2, "b"]],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Zip<[1, 2, 3], ["a", "b", "c"]>,
-		[[1, "a"], [2, "b"], [3, "c"]],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Zip<number[], ["1", "2", "3"]>,
-		(number | "3" | "1" | "2")[][],
-		typeof Test.Out.PASS
-	>(),
-);
-
 declare type _Zip<
 	TArray1 extends DefaultArrayType,
 	TArray2 extends DefaultArrayType,

@@ -1,13 +1,3 @@
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if one of condition is true",
-	Test.It<Or<true, false>, true, typeof Test.Out.PASS>(),
-	Test.It<Or<true, boolean>, true, typeof Test.Out.PASS>(),
-	Test.It<Or<true, true>, true, typeof Test.Out.PASS>(),
-	Test.It<Or<false, false>, true, typeof Test.Out.FAIL>(),
-);
-
 /**
  * - Check if one of condition `A` and `B` is true, if it's the case, return `true` else return `false`
  *

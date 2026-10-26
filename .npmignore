@@ -1,13 +1,16 @@
 .husky/
 node_modules/
 tsconfig.json
+tsconfig.type-test.json
 pnpm-lock.yaml
 .prettierignore
 .prettierrc.json
 .eslintignore
+eslint.config.mjs
 .eslintrc
 .vscode/
 assets/
+coverage/
 src/
 tests/
 tsup.config.ts

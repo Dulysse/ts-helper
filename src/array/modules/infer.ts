@@ -3,29 +3,7 @@ import type { Comparators, Compare, IsFloat, IsNegative } from "@/numeric";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { IsEqual, Not, Or } from "@/operator";
 import type { IsTuple, Length, Unique } from "@/array";
-import type { HasKey } from "@/object";
 import type { $internal } from "@/brand/modules/symbol";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if an array type satisfies the rules defined in InferArrayRules",
-	Test.It<
-		HasKey<Infer<[1, 2, 3], { minLength: 2 }>, typeof $internal>,
-		false,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		HasKey<Infer<[1, 2, 3], { minLength: 4 }>, typeof $internal>,
-		true,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		HasKey<Infer<[1, 1, 3], { unique: true }>, typeof $internal>,
-		true,
-		typeof Test.Out.PASS
-	>(),
-);
 
 declare type CheckMinLength<
 	TArray extends DefaultArrayType,

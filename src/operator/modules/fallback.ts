@@ -1,13 +1,5 @@
 import type { IsEqual, If } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Return type A unless it is unknown, in which case return type B",
-	Test.It<Fallback<unknown, string>, string, typeof Test.Out.PASS>(),
-	Test.It<Fallback<number, string>, number, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Returns type A if A is not unknown, otherwise returns type B
  *

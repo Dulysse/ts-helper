@@ -1,15 +1,5 @@
 import type { Digit } from "@/string/utils";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"TypeScript utility type to check if a string is a digit",
-	Test.It<IsDigit<"5">, true, typeof Test.Out.PASS>(),
-	Test.It<IsDigit<"a">, false, typeof Test.Out.PASS>(),
-	Test.It<IsDigit<"123">, true, typeof Test.Out.PASS>(),
-	Test.It<IsDigit<"">, false, typeof Test.Out.PASS>(),
-);
-
 /**
  * - TypeScript utility type to check if a string is a digit.
  *

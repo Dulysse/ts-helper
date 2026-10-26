@@ -1,14 +1,5 @@
 import type { ContainExactString } from "@/string";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Reverse a string type",
-	Test.It<Reversed<"hello">, "olleh", typeof Test.Out.PASS>(),
-	Test.It<Reversed<`demo ${string}`>, string, typeof Test.Out.PASS>(),
-	Test.It<Reversed<string>, string, typeof Test.Out.PASS>(),
-);
-
 declare type _Reversed<
 	TString extends string,
 	TResult extends string = "",

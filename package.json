@@ -1,6 +1,6 @@
 {
 	"name": "@dulysse1/ts-helper",
-	"version": "1.4.7",
+	"version": "1.4.8",
 	"description": "A personal TypeScript playground to explore the limits of the type system and keep growing my knowledge ✨",
 	"files": [
 		"dist"
@@ -16,7 +16,7 @@
 		"prepublishOnly": "pnpm build",
 		"prepare": "husky",
 		"check-exports": "attw --pack . --ignore-rules cjs-resolves-to-esm",
-		"test:type": "npx tsc --extendedDiagnostics",
+		"test:type": "npx tsc --project tsconfig.type-test.json --extendedDiagnostics",
 		"test": "vitest"
 	},
 	"keywords": [

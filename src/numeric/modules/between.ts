@@ -3,15 +3,6 @@ import type { And } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
 import type { LowerEq, GreaterEq } from "@/numeric";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if a number is between two other numbers",
-	Test.It<Between<1, 1, 5>, true, typeof Test.Out.PASS>(),
-	Test.It<Between<0, 10, 20>, true, typeof Test.Out.FAIL>(),
-	Test.It<Between<number, 10, 7>, boolean, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Check if type `TNumber` is between `From` and `To` numbers
  * - ⚠️ Returns an absolute result with a precision of two decimals for numbers that don't reach compiler limits, otherwise it returns an `explicit result`. ⚠️

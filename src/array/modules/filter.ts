@@ -1,24 +1,6 @@
 import type { DefaultArrayType } from "../utils";
 import type { IsTuple, ToUnion } from "@/array";
-import type { Range } from "@/numeric";
 import type { IsEqual } from "@/operator";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Apply filter to an array",
-	Test.It<
-		Filter<(string | number)[], string>,
-		string[],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<Filter<[1], string>, [], typeof Test.Out.PASS>(),
-	Test.It<
-		Filter<[10, 23, 45, 67, 78, 189, 568], Range<50, 100>[number]>,
-		[67, 78],
-		typeof Test.Out.PASS
-	>(),
-);
 
 declare type _Filter<
 	TArray extends DefaultArrayType,

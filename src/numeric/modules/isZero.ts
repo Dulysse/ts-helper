@@ -1,14 +1,5 @@
 import type { IsEqual } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if a number is equal to zero",
-	Test.It<IsZero<0>, true, typeof Test.Out.PASS>(),
-	Test.It<IsZero<2 | 0>, false, typeof Test.Out.PASS>(),
-	Test.It<IsZero<typeof Infinity>, false, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Check if a number `TNumber` is equal to zero
  *

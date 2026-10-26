@@ -2,24 +2,6 @@ import type { And, IsEqual, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Get the Intersection object type of two objects",
-	Test.It<Intersection<{}, {}>, {}, typeof Test.Out.PASS>(),
-	Test.It<Intersection<{ name: string }, {}>, {}, typeof Test.Out.PASS>(),
-	Test.It<
-		Intersection<{ name: string }, { name?: boolean }>,
-		{ name: string | boolean | undefined },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Intersection<{ a: string; b: number }, { b: number; c: boolean }>,
-		{ b: number },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Get the Intersection object type of `TObjectA` and `TObjectB`
  * @template TObjectA The first object type

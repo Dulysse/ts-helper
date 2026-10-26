@@ -2,15 +2,6 @@ import type { ContainExactString, Replace } from "@/string";
 import type { IsEqual } from "@/operator";
 import type { IsUnion } from "@/union";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Replace all iteration of the character with another character",
-	Test.It<ReplaceAll<"hello", "l", "x">, "hexxo", typeof Test.Out.PASS>(),
-	Test.It<ReplaceAll<"hello", "l", string>, string, typeof Test.Out.PASS>(),
-	Test.It<ReplaceAll<string, "b", "a">, string, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Replace all iteration of the `From` character with the `To` character in the `TString` string type.
  *

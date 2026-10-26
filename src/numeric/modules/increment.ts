@@ -15,15 +15,6 @@ import type {
 import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { Satisfy } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Increment a number of one unit",
-	Test.It<Increment<1>, 2, typeof Test.Out.PASS>(),
-	Test.It<Increment<-0.56>, 0.44, typeof Test.Out.PASS>(),
-	Test.It<Increment<1.902>, number, typeof Test.Out.PASS>(),
-);
-
 export declare type NextPositive<TNumber extends number> = Satisfy<
 	[...BuildTuple<TNumber>, unknown]["length"],
 	number

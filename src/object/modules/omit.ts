@@ -3,32 +3,6 @@ import type { ObjectMode } from "../utils";
 import type { Exclude } from "@/union";
 import type { Prettify } from "@/object";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Omit keys from object type",
-	Test.It<
-		Omit<{ a: string; b: number }, "a">,
-		{ b: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Omit<{ a: string; b: { c: number } }, "b", "deep">,
-		{ a: string },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Omit<{ a: string; b: { c: number } }, "c", "deep">,
-		{ a: string; b: { c: number } },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Omit<{ a: string; b?: number }, "b">,
-		{ a: string },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Omit `TKey` keys from object `TObject`
  * @template TObject The object type to omit keys from

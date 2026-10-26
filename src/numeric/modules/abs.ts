@@ -1,15 +1,6 @@
 import type { ParseInt } from "@/numeric";
 import type { IsEqual } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if a number is a float number",
-	Test.It<Abs<number>, number, typeof Test.Out.PASS>(),
-	Test.It<Abs<2.33>, 2, typeof Test.Out.PASS>(),
-	Test.It<Abs<-5>, -5, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Returns the absolute value of a number.
  * - If the number is a float, it returns the integer part.

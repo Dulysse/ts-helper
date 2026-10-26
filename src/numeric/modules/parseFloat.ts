@@ -1,15 +1,5 @@
 import type { Satisfy } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Parse a string litteral to floating number",
-	Test.It<ParseFloat<"10.23">, 10.23, typeof Test.Out.PASS>(),
-	Test.It<ParseFloat<`${string}.2`>, number, typeof Test.Out.PASS>(),
-	Test.It<ParseFloat<"0">, 0, typeof Test.Out.PASS>(),
-	Test.It<ParseFloat<"0.34" | "1">, 0.34 | 1, typeof Test.Out.PASS>(),
-);
-
 /**
  * - ParseFloat `T` it will return the string as float number
  * 

@@ -2,27 +2,6 @@ import type { And, IsEqual } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Required keys from object type",
-	Test.It<
-		Required<{ a?: string; b: number }>,
-		{ a: string; b: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Required<{ a?: string; b?: number }, "deep">,
-		{ a: string; b: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Required<{ a?: string; b?: { c?: number } }, "deep">,
-		{ a: string; b: { c: number } },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Make all keys of `TObject` object type required
  * @template TObject The object type to make keys required

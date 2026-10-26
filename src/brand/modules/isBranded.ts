@@ -1,22 +1,5 @@
 import type { $brand } from "@/brand/modules/symbol";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Find a symbol into a type",
-	Test.It<IsBranded<number, "mySymbol">, false, typeof Test.Out.PASS>(),
-	Test.It<
-		IsBranded<number & { [$brand]: { ["mySymbol"]: true } }, "mySymbol">,
-		true,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		IsBranded<string & { [$brand]: { ["anotherSymbol"]: true } }, "mySymbol">,
-		false,
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Find a symbol `Brand` into a `T` type.
  *

@@ -1,16 +1,6 @@
 import type { Or } from "@/operator";
 import type { ContainExactString } from "@/string";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if a string type includes an element",
-	Test.It<Includes<"hello", string>, boolean, typeof Test.Out.PASS>(),
-	Test.It<Includes<"hello", "">, true, typeof Test.Out.PASS>(),
-	Test.It<Includes<`hello${string}`, "">, boolean, typeof Test.Out.PASS>(),
-	Test.It<Includes<`hello`, "z">, false, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Check if `TString` includes `TSearch`
  *

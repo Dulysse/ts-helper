@@ -1,22 +1,3 @@
-import { Test } from "@/test";
-
-Test.Describe(
-	"Prettify object type",
-	Test.It<
-		Prettify<
-			{
-				a: string;
-			} & {
-				b: number;
-			} & {
-				c: boolean;
-			}
-		>,
-		{ a: string; b: number; c: boolean },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Prettify object `TObject`
  * 

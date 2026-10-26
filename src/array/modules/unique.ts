@@ -1,16 +1,6 @@
 import type { DefaultArrayType } from "../utils";
 import type { Includes, IsTuple } from "@/array";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Remove duplicate elements from an array type",
-	Test.It<Unique<[1, 2, 2, 3]>, [1, 2, 3], typeof Test.Out.PASS>(),
-	Test.It<Unique<[1, 2, 3]>, [1, 2, 3], typeof Test.Out.PASS>(),
-	Test.It<Unique<["a", "b", "a"]>, ["a", "b"], typeof Test.Out.PASS>(),
-	Test.It<Unique<string[]>, string[], typeof Test.Out.PASS>(),
-);
-
 declare type _Unique<
 	TArray extends DefaultArrayType,
 	TResult extends DefaultArrayType = [],

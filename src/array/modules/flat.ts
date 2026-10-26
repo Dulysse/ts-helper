@@ -6,19 +6,6 @@ import type { NextPositive } from "@/numeric/modules/increment";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Or } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Flatten an array type to a specified depth",
-	Test.It<Flat<[[1, 2], [3, 4]]>, [1, 2, 3, 4], typeof Test.Out.PASS>(),
-	Test.It<
-		Flat<[[1, 2], [3, [4, string[]]]], 2>,
-		[1, 2, 3, 4, string[]],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<Flat<string[][][][][], 4>, string[], typeof Test.Out.PASS>(),
-);
-
 declare type _Flat<
 	TArray extends DefaultArrayType,
 	TDeepth extends number = 1,

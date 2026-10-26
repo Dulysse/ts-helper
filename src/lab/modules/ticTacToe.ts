@@ -9,88 +9,16 @@ import type {
 	VICTORY,
 	DRAW,
 	CONTINUE,
-	ERRORS,
 } from "@/lab/utils/2d";
-
-import { Test } from "@/test";
-
-declare type EmptyBoardExample = [
-	[".", ".", "."],
-	[".", ".", "."],
-	[".", ".", "."],
-];
-
-declare type FullBoardExample = [
-	["X", "X", "O"],
-	["O", "O", "X"],
-	["X", "O", "X"],
-];
-
-declare type VictoryBoardExample = [
-	["X", ".", "."],
-	["X", "X", "O"],
-	["O", "O", "X"],
-];
-
-declare type IncorrectBoardExample = [
-	["X", "X", "X"],
-	["X", "X", "O"],
-	["O", "O", "X"],
-];
-
-Test.Describe(
-	"The TicTacToe type is a type level implementation of the Tic Tac Toe game",
-	Test.It<
-		TicTacToe<EmptyBoardExample>,
-		CONTINUE<EmptyBoardExample, TicTacToeDefaultRules>,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<TicTacToe<FullBoardExample>, DRAW, typeof Test.Out.PASS>(),
-	Test.It<
-		TicTacToe<VictoryBoardExample>,
-		VICTORY<Check2DVectors<VictoryBoardExample, TicTacToeDefaultRules>>,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		TicTacToe<IncorrectBoardExample>,
-		ERRORS<TicTacToeDefaultRules>["PLAYER_TURN"],
-		typeof Test.Out.PASS
-	>(),
-);
 
 /**
  * The default rules for the TicTacToe game.
- * - The board is a 3x3 grid.
- * - The target score to win is 3 (three in a row).
- * - The players are represented by "X" and "O".
- * - The empty cell is represented by "." (dot).
  */
 declare interface TicTacToeDefaultRules {
-	/**
-	 * The number of columns in the TicTacToe game board.
-	 * In this case, it is set to 3, meaning the board will have 3 columns.
-	 */
 	COL: 3;
-	/**
-	 * The number of rows in the TicTacToe game board.
-	 * In this case, it is set to 3, meaning the board will have 3 rows.
-	 */
 	ROW: 3;
-	/**
-	 * The target score for a win in TicTacToe.
-	 * In this case, it is set to 3, meaning a player must have 3 pieces in a row (horizontally, vertically, or diagonally) to win.
-	 */
 	TARGET_SCORE: 3;
-	/**
-	 * The players in the TicTacToe game.
-	 * - The default player one is represented by "X".
-	 * - The default player two is represented by "O".
-	 */
 	PLAYERS: ["X", "O"];
-	/**
-	 * The empty cell in the TicTacToe game.
-	 * - Represented by "." (dot).
-	 */
 	EMPTY_CELL: ".";
 }
 

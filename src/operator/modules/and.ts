@@ -1,13 +1,3 @@
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if both condition are true",
-	Test.It<And<true, false>, false, typeof Test.Out.PASS>(),
-	Test.It<And<true, boolean>, boolean, typeof Test.Out.PASS>(),
-	Test.It<And<true, true>, true, typeof Test.Out.PASS>(),
-	Test.It<And<false, true>, true, typeof Test.Out.FAIL>(),
-);
-
 /**
  * - Check if both condition `A` and `B` are true, if it's the case, return `true` else return `false`
  *

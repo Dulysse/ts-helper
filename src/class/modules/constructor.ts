@@ -1,37 +1,3 @@
-import type { Implicit } from "@/any";
-
-import { Test } from "@/test";
-
-declare type InstanceExample = {
-	name: string;
-};
-
-declare type ParamsExample = [name: string];
-
-Test.Describe(
-	"Type definition for a constructor function",
-	Test.It<
-		InstanceType<Constructor["prototype"]>,
-		Implicit,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		InstanceType<Constructor<[], InstanceExample>>,
-		InstanceExample,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		InstanceType<Constructor<[], InstanceExample>>,
-		InstanceExample,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		ConstructorParameters<Constructor<ParamsExample>>,
-		ParamsExample,
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - This module provides a type definition for a constructor function.
  * - It allows you to define a class constructor with specific argument types and a return type.

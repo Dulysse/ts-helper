@@ -1,16 +1,6 @@
 import type { IsExactString, ReplaceMap } from "@/string";
 import type { AccentMap } from "@/string/utils";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Convert a string to its unaccented version",
-	Test.It<UnAccent<"Café">, "Cafe", typeof Test.Out.PASS>(),
-	Test.It<UnAccent<"Déjà vu">, "Deja vu", typeof Test.Out.PASS>(),
-	Test.It<UnAccent<"À bientôt">, "A bientot", typeof Test.Out.PASS>(),
-	Test.It<UnAccent<"Crème brûlée">, "Creme brulee", typeof Test.Out.PASS>(),
-);
-
 /**
  * - Converts a string to its unaccented version by replacing accented characters with their non-accented counterparts.
  * @template TString The string to convert to its unaccented version.

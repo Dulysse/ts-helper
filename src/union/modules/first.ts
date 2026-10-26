@@ -1,13 +1,11 @@
 import type { ToArray } from "@/union";
 
-import { Test } from "@/test";
+type FirstFromArray<TUnion> =
+	ToArray<TUnion> extends [infer TFirst, ...unknown[]] ? TFirst : never;
 
-Test.Describe(
-	"Get the first element of an union type",
-	Test.It<First<1 | 2 | 3>, 1, typeof Test.Out.PASS>(),
-	Test.It<First<number>, number, typeof Test.Out.PASS>(),
-	Test.It<First<`${1 | 2 | 3}`>, "1", typeof Test.Out.PASS>(),
-);
+type NumberFromString<TUnion> = TUnion extends `${infer TNumber extends number}`
+	? TNumber
+	: never;
 
 /**
  * - Get the first element of an union type `TUnion`
@@ -27,5 +25,13 @@ Test.Describe(
  *  | [my github](https://github.com/Dulysse)
  *  | [my LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
  */
-export declare type First<TUnion> =
-	ToArray<TUnion> extends [infer First, ...unknown[]] ? First : never;
+export declare type First<TUnion> = [TUnion] extends [`${number}`]
+	? ToArray<NumberFromString<TUnion>> extends [
+			infer TFirst extends number,
+			...unknown[],
+		]
+		? Extract<TUnion, `${TFirst}`> extends never
+			? FirstFromArray<TUnion>
+			: Extract<TUnion, `${TFirst}`>
+		: never
+	: FirstFromArray<TUnion>;

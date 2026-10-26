@@ -17,15 +17,6 @@ import type {
 } from "../utils";
 import type { _Add } from "@/numeric/modules/add";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Substract a number from another",
-	Test.It<Subtract<10, 3>, 7, typeof Test.Out.PASS>(),
-	Test.It<Subtract<134.67, 45.87>, 88.8, typeof Test.Out.PASS>(),
-	Test.It<Subtract<typeof Infinity, -10>, number, typeof Test.Out.PASS>(),
-);
-
 declare type PickNumerator<TNumber extends number> =
 	IsEqual<TNumber, ParseInt<`${TNumber}`>> extends true
 		? `${TNumber}`

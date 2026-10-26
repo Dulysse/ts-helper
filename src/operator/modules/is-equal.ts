@@ -1,21 +1,5 @@
-import type { Implicit, IsAny } from "@/any";
+import type { IsAny } from "@/any";
 import type { Not } from "@/operator";
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if first type is strictly equal to second type",
-	Test.It<IsEqual<1, 1>, true, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<true, boolean>, false, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<true, true>, true, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<false, false | 0>, false, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<"hello", Implicit>, false, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<Implicit, Implicit>, false, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<object, {}>, false, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<{}, object>, false, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<object, object>, true, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<{}, {}>, true, typeof Test.Out.PASS>(),
-	Test.It<IsEqual<{ value: 1 }, object>, false, typeof Test.Out.PASS>(),
-);
 
 /**
  * - Check if `A` is strictly equal to `B`

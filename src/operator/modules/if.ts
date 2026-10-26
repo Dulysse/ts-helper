@@ -1,12 +1,3 @@
-import { Test } from "@/test";
-
-Test.Describe(
-	"Conditional type If that returns Then or Else based on Condition",
-	Test.It<If<true, string, number>, string, typeof Test.Out.PASS>(),
-	Test.It<If<false, string, number>, number, typeof Test.Out.PASS>(),
-	Test.It<If<boolean, string, number>, string | number, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Conditional type that returns `Then` if `Condition` is `true`, otherwise returns `Else`.
  * @template Condition - The condition to evaluate.

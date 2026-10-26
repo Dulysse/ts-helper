@@ -1,13 +1,3 @@
-import { Test } from "@/test";
-
-Test.Describe(
-	"Get the opposite of a boolean",
-	Test.It<Not<true>, false, typeof Test.Out.PASS>(),
-	Test.It<Not<boolean>, boolean, typeof Test.Out.PASS>(),
-	Test.It<Not<true | false>, boolean, typeof Test.Out.PASS>(),
-	Test.It<Not<false>, true, typeof Test.Out.PASS>(),
-);
-
 /**
  * - Get the opposite of a boolean `TOperator`
  *

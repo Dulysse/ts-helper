@@ -1,15 +1,5 @@
 import type { Last } from "@/union";
 import type { IsEqual } from "@/operator";
-import type { Range } from "@/numeric";
-
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if union type is an union with many choices",
-	Test.It<IsUnion<string>, false, typeof Test.Out.PASS>(),
-	Test.It<IsUnion<1 | 2 | 3>, true, typeof Test.Out.PASS>(),
-	Test.It<IsUnion<Range<1, 4>[number]>, true, typeof Test.Out.PASS>(),
-);
 
 /**
  * - Check if union type `TUnion` is an union with many choices

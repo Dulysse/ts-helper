@@ -2,15 +2,6 @@ import type { And } from "@/operator";
 import type { IsValidNumberInput } from "../utils";
 import type { Comparators, Compare } from "@/numeric";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check if a number is greater or equal than another",
-	Test.It<GreaterEq<1, 2>, true, typeof Test.Out.FAIL>(),
-	Test.It<GreaterEq<2, 2>, true, typeof Test.Out.PASS>(),
-	Test.It<GreaterEq<number, 2>, boolean, typeof Test.Out.PASS>(),
-);
-
 declare type _GreaterEq<TNumber1 extends number, TNumber2 extends number> =
 	And<IsValidNumberInput<TNumber1>, IsValidNumberInput<TNumber2>> extends true
 		? Compare<TNumber1, TNumber2> extends

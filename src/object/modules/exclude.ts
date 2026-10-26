@@ -2,42 +2,6 @@ import type { Prettify } from "@/object";
 import type { ObjectMode } from "@/object/utils";
 import type { And, IsEqual, Satisfy } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Exclude the properties of an object type that satisfy a condition",
-	Test.It<
-		Exclude<{ a: string; b: number; c: boolean; d: string }, string>,
-		{ b: number; c: boolean },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Exclude<{ a: string; b: number; c: boolean; d: string }, number>,
-		{ a: string; c: boolean; d: string },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Exclude<{ a: { x: string }; b: { y: number }; c: boolean }, string, "deep">,
-		{ b: { y: number }; c: boolean },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Exclude<{ a: { x: string }; b: { y: number }; c: boolean }, string>,
-		{ a: { x: string }; b: { y: number }; c: boolean },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Exclude<{ a: number; b: { c: string }; d: { e: number } }, object>,
-		{ a: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Exclude<{ a: number; b: { c: string }; d: { e: number } }, number, "deep">,
-		{ b: { c: string } },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Exclude the properties of an object type `TObject` that satisfy the `TSatisfy` condition
  * @template TObject The object type to exclude properties from.

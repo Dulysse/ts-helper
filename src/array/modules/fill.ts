@@ -4,15 +4,6 @@ import type { PreviousPositive } from "@/numeric/modules/decrement";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { Or } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Fill an array type with a specified length",
-	Test.It<Fill<3>, [undefined, undefined, undefined], typeof Test.Out.PASS>(),
-	Test.It<Fill<3, string>, [string, string, string], typeof Test.Out.PASS>(),
-	Test.It<Fill<number, string>, string[], typeof Test.Out.PASS>(),
-);
-
 declare type _Fill<
 	TLength extends number,
 	TDefaultValue = undefined,

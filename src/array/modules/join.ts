@@ -2,16 +2,6 @@ import type { DefaultArrayType, DefaultArrayTypeSeparator } from "../utils";
 import type { IsTuple } from "@/array";
 import type { IsEqual, Or, Satisfy } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Check whether an array type is a tuple or not",
-	Test.It<Join<[1, 2]>, "1,2", typeof Test.Out.PASS>(),
-	Test.It<Join<string[]>, string, typeof Test.Out.PASS>(),
-	Test.It<Join<[1, {}]>, "1,[object Object]", typeof Test.Out.PASS>(),
-	Test.It<Join<[1, 2, 3, 4], "/">, "1/2/3/4", typeof Test.Out.PASS>(),
-);
-
 declare type _Join<
 	TArray extends DefaultArrayType,
 	TSeparator extends string = DefaultArrayTypeSeparator,

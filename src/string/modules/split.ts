@@ -2,15 +2,6 @@ import type { IsEqual } from "@/operator";
 import type { ContainExactString } from "@/string";
 import type { TDefaultStringSeparator } from "../utils";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Split a type to an array for each string characters apparition",
-	Test.It<Split<"hello">, ["h", "e", "l", "l", "o"], typeof Test.Out.PASS>(),
-	Test.It<Split<`demo ${string}`>, string[], typeof Test.Out.PASS>(),
-	Test.It<Split<string>, string[], typeof Test.Out.PASS>(),
-);
-
 declare type _Split<
 	TString extends string,
 	TSeparator extends string = TDefaultStringSeparator,

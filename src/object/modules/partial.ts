@@ -2,27 +2,6 @@ import type { And, IsEqual, Satisfy } from "@/operator";
 import type { ObjectMode } from "../utils";
 import type { Prettify } from "@/object";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Make all keys of object type partial",
-	Test.It<
-		Partial<{ a: string; b: number }>,
-		{ a?: string; b?: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Partial<{ a: string; b: { c: number } }, "deep">,
-		{ a?: string; b?: { c?: number } },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Partial<{ a: string; b?: number }>,
-		{ a?: string; b?: number },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Make all keys of `TObject` object type partial
  * @template TObject The object type to omit keys from

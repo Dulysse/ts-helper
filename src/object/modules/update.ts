@@ -2,37 +2,6 @@ import type { Prettify } from "@/object";
 import type { ObjectMode } from "@/object/utils";
 import type { And, IsEqual, Satisfy } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Update a property in an object type",
-	Test.It<
-		Update<{ a: string; b: number }, "a", boolean>,
-		{ a: boolean; b: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Update<{ name: string; age: number; active: boolean }, "age", string>,
-		{ name: string; age: string; active: boolean },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Update<{ x: number; y: number; z: number }, "y", null>,
-		{ x: number; y: null; z: number },
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Update<
-			{ user: { name: string; age: number }; age: boolean },
-			"age",
-			string,
-			"deep"
-		>,
-		{ user: { name: string; age: string }; age: string },
-		typeof Test.Out.PASS
-	>(),
-);
-
 /**
  * - Update a property in an object type `TObject` from `Key` to `NewValue`
  * @template TObject - The object type to update a property in.

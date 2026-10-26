@@ -3,15 +3,6 @@ import type { IsValidNumberInput } from "@/numeric/utils";
 import type { And, IsEqual, Satisfy } from "@/operator";
 import type { Split } from "@/string";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Compare a number to another",
-	Test.It<Compare<1, 1>, Comparators.EQUAL, typeof Test.Out.PASS>(),
-	Test.It<Compare<1.01, 1.02>, Comparators.LOWER, typeof Test.Out.PASS>(),
-	Test.It<Compare<230, 890>, Comparators.GREATER, typeof Test.Out.FAIL>(),
-);
-
 /**
  * - The `Comparators` enum is used to define the possible comparison results
  *  when comparing two numbers.

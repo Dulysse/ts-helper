@@ -5,19 +5,6 @@ import type { NextPositive } from "@/numeric/modules/increment";
 import type { IsValidNumberInput } from "@/numeric/utils";
 import type { And, Or } from "@/operator";
 
-import { Test } from "@/test";
-
-Test.Describe(
-	"Fill an array type as an union array type from a range",
-	Test.It<
-		FillRange<2, 1>,
-		[undefined, undefined] | [undefined],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<FillRange<-1, 2>, never, typeof Test.Out.PASS>(),
-	Test.It<FillRange<1, number, string>, string[], typeof Test.Out.PASS>(),
-);
-
 declare type _FillRange<
 	From extends number,
 	To extends number,

@@ -9,6 +9,7 @@ export default defineConfig({
 		reporters: ["tree"],
 		logHeapUsage: true,
 		coverage: {
+			include: ["./src/**/*"],
 			enabled: true,
 			thresholds: {
 				functions: 100,

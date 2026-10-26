@@ -9,123 +9,16 @@ import type {
 	VICTORY,
 	DRAW,
 	CONTINUE,
-	ERRORS,
 } from "@/lab/utils/2d";
-
-import { Test } from "@/test";
-
-declare type EmptyBoardExample = [
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-];
-
-declare type FullBoardExample = [
-	["O", "X", "X", "O", "O", "X", "O"],
-	["X", "O", "O", "X", "X", "O", "X"],
-	["O", "O", "X", "O", "O", "X", "O"],
-	["X", "X", "O", "X", "O", "O", "X"],
-	["O", "O", "X", "O", "X", "X", "O"],
-	["X", "O", "X", "X", "X", "O", "X"],
-];
-
-declare type VictoryBoardExample = [
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", "X", "O", ".", "."],
-	[".", ".", ".", "O", "O", ".", "."],
-	[".", ".", "O", "X", "X", "X", "X"],
-];
-
-declare type IncorrectBoardExample = [
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", "X", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-	[".", ".", ".", ".", ".", ".", "."],
-];
-
-declare type BadRulesInt = {
-	COL: -1;
-	ROW: 6;
-	TARGET_SCORE: 4;
-	PLAYERS: ["X", "O"];
-	EMPTY_CELL: ".";
-};
-
-declare type BadRulesScore = {
-	COL: 7;
-	ROW: 6;
-	TARGET_SCORE: 90;
-	PLAYERS: ["X", "O"];
-	EMPTY_CELL: ".";
-};
-
-Test.Describe(
-	"The Connect4 type is a type level implementation of the Connect 4 game",
-	Test.It<
-		Connect4<EmptyBoardExample>,
-		CONTINUE<EmptyBoardExample, Connect4DefaultRules>,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<Connect4<FullBoardExample>, DRAW, typeof Test.Out.PASS>(),
-	Test.It<
-		Connect4<VictoryBoardExample>,
-		VICTORY<Check2DVectors<VictoryBoardExample, Connect4DefaultRules>>,
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Connect4<IncorrectBoardExample>,
-		ERRORS<Connect4DefaultRules>["GRAVITY"],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Connect4<never, BadRulesInt>,
-		ERRORS<BadRulesInt>["RULE_COL_INT"],
-		typeof Test.Out.PASS
-	>(),
-	Test.It<
-		Connect4<never, BadRulesScore>,
-		ERRORS<BadRulesScore>["RULE_SCORE_GTR_ROW"],
-		typeof Test.Out.PASS
-	>(),
-);
 
 /**
  * The default rules for the Connect 4 game.
- * - The board is a 7x6 grid.
- * - The target score to win is 4 (four in a row).
- * - The players are represented by "X" and "O".
- * - The empty cell is represented by "." (dot).
  */
 declare interface Connect4DefaultRules {
-	/**
-	 * The number of columns in the Connect 4 game board.
-	 */
 	COL: 7;
-	/**
-	 * The number of rows in the Connect 4 game board.
-	 */
 	ROW: 6;
-	/**
-	 * The target score for a win in Connect 4.
-	 */
 	TARGET_SCORE: 4;
-	/**
-	 * The players in the Connect 4 game.
-	 * - The default player one is represented by "X".
-	 * - The default player two is represented by "O".
-	 */
 	PLAYERS: ["X", "O"];
-	/**
-	 * The empty cell in the Connect 4 game.
-	 * - Represented by "." (dot).
-	 */
 	EMPTY_CELL: ".";
 }
 
